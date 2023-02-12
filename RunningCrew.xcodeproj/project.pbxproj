@@ -15,6 +15,16 @@
 		C7670F092995460900E3CD77 /* RunningCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670F082995460900E3CD77 /* RunningCrewUITests.swift */; };
 		C7670F0B2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670F0A2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift */; };
 		C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F22998DFC200C824A9 /* Coordinator.swift */; };
+		C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */; };
+		C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */; };
+		C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67FA29992A5E00C824A9 /* TabBarItem.swift */; };
+		C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67FC2999301800C824A9 /* RecordRunningCoordinator.swift */; };
+		C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE68012999376800C824A9 /* MyPageViewController.swift */; };
+		C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE68032999377800C824A9 /* AlarmViewController.swift */; };
+		C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE68052999378300C824A9 /* CrewViewController.swift */; };
+		C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE680B299939E800C824A9 /* CrewCoordinator.swift */; };
+		C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE680D29993A5400C824A9 /* AlarmCoordinator.swift */; };
+		C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE680F29993A7000C824A9 /* MyPageCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +57,16 @@
 		C7670F082995460900E3CD77 /* RunningCrewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningCrewUITests.swift; sourceTree = "<group>"; };
 		C7670F0A2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningCrewUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C7DE67F22998DFC200C824A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewController.swift; sourceTree = "<group>"; };
+		C7DE67FA29992A5E00C824A9 /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		C7DE67FC2999301800C824A9 /* RecordRunningCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningCoordinator.swift; sourceTree = "<group>"; };
+		C7DE68012999376800C824A9 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		C7DE68032999377800C824A9 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		C7DE68052999378300C824A9 /* CrewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewViewController.swift; sourceTree = "<group>"; };
+		C7DE680B299939E800C824A9 /* CrewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewCoordinator.swift; sourceTree = "<group>"; };
+		C7DE680D29993A5400C824A9 /* AlarmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCoordinator.swift; sourceTree = "<group>"; };
+		C7DE680F29993A7000C824A9 /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +172,11 @@
 		C7DE67F02998DF6300C824A9 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE68002999374300C824A9 /* MyPage */,
+				C7DE67FF2999373B00C824A9 /* Alarm */,
+				C7DE67FE2999372A00C824A9 /* Crew */,
+				C7DE67F72999296B00C824A9 /* RecordRunning */,
+				C7DE67F42998E4B900C824A9 /* Coordinator */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -160,6 +185,83 @@
 			isa = PBXGroup;
 			children = (
 				C7DE67F22998DFC200C824A9 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C7DE67F42998E4B900C824A9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */,
+				C7DE67FA29992A5E00C824A9 /* TabBarItem.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C7DE67F72999296B00C824A9 /* RecordRunning */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6808299939BE00C824A9 /* Coordinator */,
+				C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */,
+			);
+			path = RecordRunning;
+			sourceTree = "<group>";
+		};
+		C7DE67FE2999372A00C824A9 /* Crew */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6809299939CC00C824A9 /* Coordinator */,
+				C7DE68052999378300C824A9 /* CrewViewController.swift */,
+			);
+			path = Crew;
+			sourceTree = "<group>";
+		};
+		C7DE67FF2999373B00C824A9 /* Alarm */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE680A299939D100C824A9 /* Coordinator */,
+				C7DE68032999377800C824A9 /* AlarmViewController.swift */,
+			);
+			path = Alarm;
+			sourceTree = "<group>";
+		};
+		C7DE68002999374300C824A9 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6807299938C000C824A9 /* Coordinator */,
+				C7DE68012999376800C824A9 /* MyPageViewController.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		C7DE6807299938C000C824A9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE680F29993A7000C824A9 /* MyPageCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C7DE6808299939BE00C824A9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE67FC2999301800C824A9 /* RecordRunningCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C7DE6809299939CC00C824A9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE680B299939E800C824A9 /* CrewCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C7DE680A299939D100C824A9 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE680D29993A5400C824A9 /* AlarmCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -294,9 +396,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
+				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
+				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
+				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
+				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
+				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
+				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
+				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
+				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
+				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
