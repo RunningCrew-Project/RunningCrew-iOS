@@ -9,28 +9,27 @@ import UIKit
 
 final class TabBarCoordinator {
     var window: UIWindow
-    var tabBarController: UITabBarController
+    var tabBarController: CustomTabBarController
     var childCoordinators: [Coordinator]
     
     init(_ window: UIWindow) {
         self.window = window
-        self.tabBarController = UITabBarController()
+        self.tabBarController = CustomTabBarController()
         self.childCoordinators = []
     }
     
     func start() {
         self.window.rootViewController = tabBarController
         let items: [TabBarItem] = [.recordRunning, .crew, .alarm, .myPage].sorted { $0.rawValue < $1.rawValue }
-        print(items[1].itemTitleValue())
         let controllers = items.map { getTabController($0) }
-        
-        tabBarController.setViewControllers(controllers, animated: true)
+        tabBarController.items = controllers
+        tabBarController.configureTabBarController()
     }
     
     func getTabController(_ item: TabBarItem) -> UINavigationController {
         let navigationController = UINavigationController()
         navigationController.setNavigationBarHidden(true, animated: false)
-        navigationController.tabBarItem = .init(title: item.itemTitleValue(), image: nil, tag: item.rawValue)
+        navigationController.tabBarItem = .init(title: item.itemTitleValue(), image: item.itemImageValue(), tag: item.rawValue)
         setTabCoordinator(of: item, to: navigationController)
         return navigationController
     }
@@ -48,6 +47,7 @@ final class TabBarCoordinator {
             coordinator = MyPageCoordinator(navigationController)
         }
         if let coordinator = coordinator {
+            childCoordinators.append(coordinator)
             coordinator.start()
         }
     }

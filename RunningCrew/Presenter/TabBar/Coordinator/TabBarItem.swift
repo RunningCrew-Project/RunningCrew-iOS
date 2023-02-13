@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum TabBarItem: Int {
     case recordRunning = 0
@@ -23,6 +24,19 @@ enum TabBarItem: Int {
             return "알림"
         case .myPage:
             return "마이페이지"
+        }
+    }
+    
+    func itemImageValue() -> UIImage? {
+        switch self {
+        case .recordRunning:
+            return UIImage(named: "RecordRunning.svg")
+        case .crew:
+            return UIImage(named: "Crew.svg")
+        case .alarm:
+            return UIImage(named: "Alarm.svg")
+        case .myPage:
+            return UIImage(named: "MyPage.svg")
         }
     }
     

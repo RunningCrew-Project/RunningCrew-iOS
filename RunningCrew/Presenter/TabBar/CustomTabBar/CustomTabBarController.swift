@@ -8,22 +8,35 @@
 import UIKit
 
 class CustomTabBarController: UITabBarController {
+    
+    var items: [UIViewController]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setTabBarItemTextSize()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func configureTabBarController() {
+        self.setViewControllers(items, animated: false)
+        tabBar.backgroundColor = .white
+        tabBar.unselectedItemTintColor = .black
+        tabBar.tintColor = .tabBarSelect
+        tabBar.layer.borderColor = UIColor.tabBarBorder?.cgColor
+        tabBar.layer.borderWidth = 1
+        tabBar.clipsToBounds = true
     }
-    */
+    
+    func setTabBarItemTextSize() {
+//        let customFont = UIFont(name: "NotoSansKR-Medium", size: 8)
+//        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: customFont]
+//        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+        UIFont.familyNames.sorted().forEach { familyName in
+            print("*** \(familyName) ***")
+            UIFont.fontNames(forFamilyName: familyName).forEach { fontName in
+                print("\(fontName)")
+            }
+            print("---------------------")
+        }
+    }
 
 }
