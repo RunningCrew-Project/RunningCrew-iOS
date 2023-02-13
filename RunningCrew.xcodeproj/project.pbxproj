@@ -10,7 +10,6 @@
 		C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670EE72995460800E3CD77 /* AppDelegate.swift */; };
 		C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670EE92995460800E3CD77 /* SceneDelegate.swift */; };
 		C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7670EF02995460900E3CD77 /* Assets.xcassets */; };
-		C7670EF42995460900E3CD77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7670EF22995460900E3CD77 /* LaunchScreen.storyboard */; };
 		C7670EFF2995460900E3CD77 /* RunningCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670EFE2995460900E3CD77 /* RunningCrewTests.swift */; };
 		C7670F092995460900E3CD77 /* RunningCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670F082995460900E3CD77 /* RunningCrewUITests.swift */; };
 		C7670F0B2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670F0A2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift */; };
@@ -25,6 +24,9 @@
 		C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE680B299939E800C824A9 /* CrewCoordinator.swift */; };
 		C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE680D29993A5400C824A9 /* AlarmCoordinator.swift */; };
 		C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE680F29993A7000C824A9 /* MyPageCoordinator.swift */; };
+		C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */; };
+		C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6821299A858300C824A9 /* CustomTabBar.swift */; };
+		C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6824299A85DF00C824A9 /* Color+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +51,6 @@
 		C7670EE72995460800E3CD77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7670EE92995460800E3CD77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C7670EF02995460900E3CD77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C7670EF32995460900E3CD77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7670EF52995460900E3CD77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7670EFA2995460900E3CD77 /* RunningCrewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunningCrewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7670EFE2995460900E3CD77 /* RunningCrewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningCrewTests.swift; sourceTree = "<group>"; };
@@ -67,6 +68,9 @@
 		C7DE680B299939E800C824A9 /* CrewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewCoordinator.swift; sourceTree = "<group>"; };
 		C7DE680D29993A5400C824A9 /* AlarmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCoordinator.swift; sourceTree = "<group>"; };
 		C7DE680F29993A7000C824A9 /* MyPageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCoordinator.swift; sourceTree = "<group>"; };
+		C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		C7DE6821299A858300C824A9 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		C7DE6824299A85DF00C824A9 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,8 +124,8 @@
 				C7DE67EE2998DF2900C824A9 /* Presenter */,
 				C7DE67E92997AA3600C824A9 /* Application */,
 				C7670EF02995460900E3CD77 /* Assets.xcassets */,
-				C7670EF22995460900E3CD77 /* LaunchScreen.storyboard */,
 				C7670EF52995460900E3CD77 /* Info.plist */,
+				C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */,
 			);
 			path = RunningCrew;
 			sourceTree = "<group>";
@@ -155,6 +159,7 @@
 		C7DE67EE2998DF2900C824A9 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE6823299A85D400C824A9 /* Utils */,
 				C7DE67EF2998DF5D00C824A9 /* Common */,
 				C7DE67F02998DF6300C824A9 /* TabBar */,
 			);
@@ -172,6 +177,7 @@
 		C7DE67F02998DF6300C824A9 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE6820299A857400C824A9 /* CustomTabBar */,
 				C7DE68002999374300C824A9 /* MyPage */,
 				C7DE67FF2999373B00C824A9 /* Alarm */,
 				C7DE67FE2999372A00C824A9 /* Crew */,
@@ -264,6 +270,22 @@
 				C7DE680D29993A5400C824A9 /* AlarmCoordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C7DE6820299A857400C824A9 /* CustomTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6821299A858300C824A9 /* CustomTabBar.swift */,
+			);
+			path = CustomTabBar;
+			sourceTree = "<group>";
+		};
+		C7DE6823299A85D400C824A9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6824299A85DF00C824A9 /* Color+.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,7 +392,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7670EF42995460900E3CD77 /* LaunchScreen.storyboard in Resources */,
+				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +419,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
+				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
+				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
@@ -443,17 +467,6 @@
 			targetProxy = C7670F052995460900E3CD77 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		C7670EF22995460900E3CD77 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C7670EF32995460900E3CD77 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C7670F0C2995460900E3CD77 /* Debug */ = {
