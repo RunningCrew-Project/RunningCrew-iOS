@@ -22,7 +22,7 @@ class RunningButton: UIButton {
         setupView()
         setTitleLabel()
         setDiscussionLabel()
-        print(layoutMargins)
+        setButtonShadow()
     }
     
     required init?(coder: NSCoder) {
@@ -48,7 +48,13 @@ class RunningButton: UIButton {
             discussionLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
             discussionLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor)
         ])
-        
     }
     
+    func setButtonShadow() {
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.3
+        layer.shadowRadius = 10
+        layer.shadowOffset = CGSize(width: 10, height: 10)
+        layer.masksToBounds = false
+    }
 }
