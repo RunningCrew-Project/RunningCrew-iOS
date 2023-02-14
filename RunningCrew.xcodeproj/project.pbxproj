@@ -27,6 +27,8 @@
 		C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */; };
 		C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6821299A858300C824A9 /* CustomTabBar.swift */; };
 		C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6824299A85DF00C824A9 /* Color+.swift */; };
+		C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE682B299B934800C824A9 /* RunningButton.swift */; };
+		C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE682D299BD61300C824A9 /* LocationButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		C7DE6821299A858300C824A9 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		C7DE6824299A85DF00C824A9 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		C7DE682B299B934800C824A9 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
+		C7DE682D299BD61300C824A9 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,7 @@
 		C7DE67F72999296B00C824A9 /* RecordRunning */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE6826299B890500C824A9 /* Button */,
 				C7DE6808299939BE00C824A9 /* Coordinator */,
 				C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */,
 			);
@@ -286,6 +291,15 @@
 				C7DE6824299A85DF00C824A9 /* Color+.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		C7DE6826299B890500C824A9 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE682B299B934800C824A9 /* RunningButton.swift */,
+				C7DE682D299BD61300C824A9 /* LocationButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +435,7 @@
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
+				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
 				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
@@ -433,6 +448,7 @@
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
 				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
+				C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
