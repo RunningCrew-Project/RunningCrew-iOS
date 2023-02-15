@@ -18,13 +18,13 @@ class LocationButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    private func setupView() {
         setImage(UIImage(named: "Location"), for: .normal)
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         setTitleColor(.black, for: .normal)
     }
     
-    func setConfiguration() {
+    private func setConfiguration() {
         var config = UIButton.Configuration.plain()
         config.image = UIImage(named: "Location")
         config.imagePadding = 8
