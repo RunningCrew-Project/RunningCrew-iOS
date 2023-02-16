@@ -29,6 +29,11 @@
 		C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6824299A85DF00C824A9 /* Color+.swift */; };
 		C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE682B299B934800C824A9 /* RunningButton.swift */; };
 		C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE682D299BD61300C824A9 /* LocationButton.swift */; };
+		C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */; };
+		C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6839299D1A1C00C824A9 /* CustomTopTabBarController.swift */; };
+		C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE683C299D272A00C824A9 /* MenuBarCell.swift */; };
+		C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */; };
+		C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +80,11 @@
 		C7DE6824299A85DF00C824A9 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		C7DE682B299B934800C824A9 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
 		C7DE682D299BD61300C824A9 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
+		C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
+		C7DE6839299D1A1C00C824A9 /* CustomTopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopTabBarController.swift; sourceTree = "<group>"; };
+		C7DE683C299D272A00C824A9 /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
+		C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewAlarmViewController.swift; sourceTree = "<group>"; };
+		C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +240,8 @@
 		C7DE67FF2999373B00C824A9 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE6831299CEEBA00C824A9 /* MyRunning */,
+				C7DE6830299CEEA500C824A9 /* Crew */,
 				C7DE680A299939D100C824A9 /* Coordinator */,
 				C7DE68032999377800C824A9 /* AlarmViewController.swift */,
 			);
@@ -280,6 +292,7 @@
 		C7DE6820299A857400C824A9 /* CustomTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE6832299CF0FE00C824A9 /* CustomTopTabBar */,
 				C7DE6821299A858300C824A9 /* CustomTabBar.swift */,
 			);
 			path = CustomTabBar;
@@ -300,6 +313,40 @@
 				C7DE682D299BD61300C824A9 /* LocationButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		C7DE6830299CEEA500C824A9 /* Crew */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */,
+			);
+			path = Crew;
+			sourceTree = "<group>";
+		};
+		C7DE6831299CEEBA00C824A9 /* MyRunning */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */,
+			);
+			path = MyRunning;
+			sourceTree = "<group>";
+		};
+		C7DE6832299CF0FE00C824A9 /* CustomTopTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE683B299D26CB00C824A9 /* MenuBar */,
+				C7DE6839299D1A1C00C824A9 /* CustomTopTabBarController.swift */,
+			);
+			path = CustomTopTabBar;
+			sourceTree = "<group>";
+		};
+		C7DE683B299D26CB00C824A9 /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE683C299D272A00C824A9 /* MenuBarCell.swift */,
+				C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */,
+			);
+			path = MenuBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,13 +483,18 @@
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
 				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
+				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
 				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
+				C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
+				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
+				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
+				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
@@ -535,7 +587,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -589,7 +641,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
