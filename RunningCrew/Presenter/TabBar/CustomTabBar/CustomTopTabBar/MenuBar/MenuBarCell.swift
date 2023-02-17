@@ -27,6 +27,12 @@ class MenuBarCell: UICollectionViewCell {
         return label
     }()
     
+    override var isSelected: Bool {
+        didSet {
+            self.itemTitle.font = isSelected ? UIFont.boldSystemFont(ofSize: 16) : UIFont.systemFont(ofSize: 16)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

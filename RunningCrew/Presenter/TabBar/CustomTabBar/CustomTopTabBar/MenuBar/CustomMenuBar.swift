@@ -112,11 +112,17 @@ extension CustomMenuBar: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.isSelected = true
         let selectIndex = CGFloat(indexPath.row)
         let cellWidth = cell.frame.width
         let leadingDistance = selectIndex * cellWidth
         currentMarkLeading.constant = leadingDistance
         delegate?.didSelect(indexNum: indexPath.row)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.isSelected = false
     }
     
 }
