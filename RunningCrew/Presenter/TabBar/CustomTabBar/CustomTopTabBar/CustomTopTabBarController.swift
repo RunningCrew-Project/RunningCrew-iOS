@@ -23,6 +23,12 @@ class CustomTopTabBarController: UIViewController {
         return view
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        topTabBarMenu.menuCollectionView.selectItem(at: IndexPath(row: 0, section: 0), animated: false, scrollPosition: [])
+        pageView.addSubview(items[0].view)
+    }
+    
     private var items: [UIViewController] = []
     
     func setItems(items: [UIViewController]) {
@@ -31,22 +37,21 @@ class CustomTopTabBarController: UIViewController {
         items.forEach { vc in
             guard let vcTabBarTitle = vc.tabBarItem.title else { return }
             menuItemList.append(MenuItem(title: vcTabBarTitle, isSelect: false))
-            pageView.addSubview(vc.view)
         }
         topTabBarMenu.setItems(items: menuItemList)
-        pageView.subviews.forEach { view in
-            view.isHidden = true
-        }
     }
     
 }
 
 extension CustomTopTabBarController: CustomMenuBarDelegate {
-    
     func didSelect(indexNum: Int) {
-        pageView.subviews.forEach { view in
-            view.isHidden = true
+        if pageView.subviews.contains(where: {$0.isEqual(items[indexNum].view)}) {
+            pageView.subviews.forEach { view in
+                view.isHidden = true
+            }
+            pageView.subviews.first { $0.isEqual(items[indexNum].view) }?.isHidden = false
+        } else {
+            pageView.addSubview(items[indexNum].view)
         }
-        pageView.subviews[indexNum].isHidden = false
     }
 }
