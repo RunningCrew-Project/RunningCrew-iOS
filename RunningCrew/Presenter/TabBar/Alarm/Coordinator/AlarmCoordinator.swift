@@ -20,7 +20,7 @@ final class AlarmCoordinator: Coordinator {
     func start() {
         let alarmVC: AlarmViewController = .init()
         let crewAlarmVC = CrewAlarmViewController()
-        crewAlarmVC.tabBarItem.title = "루삥뽕"
+        crewAlarmVC.tabBarItem.title = "크루"
         let myRunningVC = MyRunningViewController()
         myRunningVC.tabBarItem.title = "마이러닝"
         alarmVC.setItems(items: [crewAlarmVC, myRunningVC])
