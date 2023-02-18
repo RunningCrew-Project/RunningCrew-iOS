@@ -34,6 +34,8 @@
 		C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE683C299D272A00C824A9 /* MenuBarCell.swift */; };
 		C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */; };
 		C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */; };
+		C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */; };
+		C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		C7DE683C299D272A00C824A9 /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
 		C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewAlarmViewController.swift; sourceTree = "<group>"; };
 		C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningViewController.swift; sourceTree = "<group>"; };
+		C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewAlarmTableViewCell.swift; sourceTree = "<group>"; };
+		C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrewAlarmTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +322,7 @@
 		C7DE6830299CEEA500C824A9 /* Crew */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE6845299FD49D00C824A9 /* Cell */,
 				C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */,
 			);
 			path = Crew;
@@ -347,6 +352,15 @@
 				C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */,
 			);
 			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		C7DE6845299FD49D00C824A9 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */,
+				C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -453,6 +467,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
 				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
 			);
@@ -479,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
