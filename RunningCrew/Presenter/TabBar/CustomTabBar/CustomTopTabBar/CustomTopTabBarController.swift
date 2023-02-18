@@ -51,7 +51,11 @@ extension CustomTopTabBarController: CustomMenuBarDelegate {
             }
             pageView.subviews.first { $0.isEqual(items[indexNum].view) }?.isHidden = false
         } else {
+            pageView.subviews.forEach { view in
+                view.isHidden = true
+            }
             pageView.addSubview(items[indexNum].view)
+            pageView.subviews.first { $0.isEqual(items[indexNum].view) }?.isHidden = false
         }
     }
 }

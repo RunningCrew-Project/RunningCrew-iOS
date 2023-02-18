@@ -13,6 +13,9 @@
 		C7670EFF2995460900E3CD77 /* RunningCrewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670EFE2995460900E3CD77 /* RunningCrewTests.swift */; };
 		C7670F092995460900E3CD77 /* RunningCrewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670F082995460900E3CD77 /* RunningCrewUITests.swift */; };
 		C7670F0B2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670F0A2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift */; };
+		C7811F6C29A0F37100801E6B /* CALayer+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7811F6B29A0F37100801E6B /* CALayer+.swift */; };
+		C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7811F6D29A0F51E00801E6B /* MyRunningCollectionViewCell.swift */; };
+		C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7811F6E29A0F51E00801E6B /* MyRunningCollectionViewCell.xib */; };
 		C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F22998DFC200C824A9 /* Coordinator.swift */; };
 		C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */; };
 		C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */; };
@@ -66,6 +69,9 @@
 		C7670F042995460900E3CD77 /* RunningCrewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunningCrewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7670F082995460900E3CD77 /* RunningCrewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningCrewUITests.swift; sourceTree = "<group>"; };
 		C7670F0A2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningCrewUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		C7811F6B29A0F37100801E6B /* CALayer+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+.swift"; sourceTree = "<group>"; };
+		C7811F6D29A0F51E00801E6B /* MyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7811F6E29A0F51E00801E6B /* MyRunningCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRunningCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7DE67F22998DFC200C824A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +169,15 @@
 				C7670F0A2995460900E3CD77 /* RunningCrewUITestsLaunchTests.swift */,
 			);
 			path = RunningCrewUITests;
+			sourceTree = "<group>";
+		};
+		C7811F6429A0AA3A00801E6B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C7811F6D29A0F51E00801E6B /* MyRunningCollectionViewCell.swift */,
+				C7811F6E29A0F51E00801E6B /* MyRunningCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C7DE67E92997AA3600C824A9 /* Application */ = {
@@ -306,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				C7DE6824299A85DF00C824A9 /* Color+.swift */,
+				C7811F6B29A0F37100801E6B /* CALayer+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -331,6 +347,7 @@
 		C7DE6831299CEEBA00C824A9 /* MyRunning */ = {
 			isa = PBXGroup;
 			children = (
+				C7811F6429A0AA3A00801E6B /* Cell */,
 				C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */,
 			);
 			path = MyRunning;
@@ -468,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
+				C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */,
 				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
 			);
@@ -497,6 +515,7 @@
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
+				C7811F6C29A0F37100801E6B /* CALayer+.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
 				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
@@ -514,6 +533,7 @@
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
+				C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
 				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
 				C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */,
