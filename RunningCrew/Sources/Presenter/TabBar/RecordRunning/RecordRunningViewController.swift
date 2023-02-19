@@ -21,6 +21,7 @@ final class RecordRunningViewController: UIViewController {
         let button = LocationButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: CGFloat(23.0)).isActive = true
+        button.addTarget(self, action: #selector(tapLocationButton), for: .touchUpInside)
         
         return button
     }()
@@ -42,6 +43,7 @@ final class RecordRunningViewController: UIViewController {
         button.discussionLabel.text = "혼자서도 잘 달릴수 있어요"
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setInset(height: view.frame.height)
+        button.addTarget(self, action: #selector(tapIndividualRunningButton), for: .touchUpInside)
         
         return button
     }()
@@ -53,6 +55,8 @@ final class RecordRunningViewController: UIViewController {
         button.discussionLabel.text = "크루원들과 함께 힘찬 러닝"
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setInset(height: view.frame.height)
+        button.addTarget(self, action: #selector(tapCrewRunningButton), for: .touchUpInside)
+        
         return button
     }()
     
@@ -91,6 +95,20 @@ final class RecordRunningViewController: UIViewController {
         setView()
         setAddView()
         setConstraint()
+    }
+    
+    //MARK: - Define Method
+    
+    @objc func tapLocationButton() {
+        print("tap Location")
+    }
+    
+    @objc func tapIndividualRunningButton() {
+        print("tap individual")
+    }
+    
+    @objc func tapCrewRunningButton() {
+        print("tap Crew")
     }
     
     //MARK: - Set UI
