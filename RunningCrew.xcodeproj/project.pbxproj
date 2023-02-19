@@ -16,6 +16,8 @@
 		C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7811F6D29A0F51E00801E6B /* MyRunningCollectionViewCell.swift */; };
 		C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7811F6E29A0F51E00801E6B /* MyRunningCollectionViewCell.xib */; };
 		C7811F7429A201B700801E6B /* DotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7811F7329A201B700801E6B /* DotView.swift */; };
+		C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */; };
+		C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */; };
 		C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F22998DFC200C824A9 /* Coordinator.swift */; };
 		C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */; };
 		C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */; };
@@ -72,6 +74,8 @@
 		C7811F6D29A0F51E00801E6B /* MyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7811F6E29A0F51E00801E6B /* MyRunningCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyRunningCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7811F7329A201B700801E6B /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
+		C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
+		C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		C7DE67F22998DFC200C824A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C730C16329A259720076C83C /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */,
+				C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		C7670EDB2995460800E3CD77 = {
 			isa = PBXGroup;
 			children = (
@@ -145,10 +158,8 @@
 		C7670EE62995460800E3CD77 /* RunningCrew */ = {
 			isa = PBXGroup;
 			children = (
-				C7DE67EE2998DF2900C824A9 /* Presenter */,
-				C7DE67E92997AA3600C824A9 /* Application */,
-				C7670EF02995460900E3CD77 /* Assets.xcassets */,
-				C7670EF52995460900E3CD77 /* Info.plist */,
+				C7811F7729A258C200801E6B /* Resources */,
+				C7811F7829A258CE00801E6B /* Sources */,
 				C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */,
 			);
 			path = RunningCrew;
@@ -179,6 +190,25 @@
 				C7811F7329A201B700801E6B /* DotView.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		C7811F7729A258C200801E6B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C730C16329A259720076C83C /* Font */,
+				C7670EF52995460900E3CD77 /* Info.plist */,
+				C7670EF02995460900E3CD77 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C7811F7829A258CE00801E6B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE67E92997AA3600C824A9 /* Application */,
+				C7DE67EE2998DF2900C824A9 /* Presenter */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		C7DE67E92997AA3600C824A9 /* Application */ = {
@@ -484,10 +514,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */,
 				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
 				C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */,
 				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
+				C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,7 +728,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SBAHW5F54N;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RunningCrew/Info.plist;
+				INFOPLIST_FILE = RunningCrew/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -724,7 +756,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SBAHW5F54N;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RunningCrew/Info.plist;
+				INFOPLIST_FILE = RunningCrew/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
