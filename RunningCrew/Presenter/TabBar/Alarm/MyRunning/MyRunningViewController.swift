@@ -44,10 +44,13 @@ extension MyRunningViewController: UICollectionViewDelegate, UICollectionViewDat
         return 10
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyRunningCollectionViewCell.identifier, for: indexPath) as? MyRunningCollectionViewCell else { return MyRunningCollectionViewCell() }
-        
+
         return cell
     }
     
