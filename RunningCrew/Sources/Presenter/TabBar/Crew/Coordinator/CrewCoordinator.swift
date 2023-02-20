@@ -19,7 +19,8 @@ final class CrewCoordinator: Coordinator {
     }
     
     func start() {
-        
+        let vc = CrewViewController()
+        navigationController.pushViewController(vc, animated: false)
     }
     
     

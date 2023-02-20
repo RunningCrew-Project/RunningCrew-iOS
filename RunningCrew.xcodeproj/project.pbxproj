@@ -86,6 +86,7 @@
 		C7811F7329A201B700801E6B /* DotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotView.swift; sourceTree = "<group>"; };
 		C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
+		C7BA068229A3A52700D2227A /* DEBUG.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEBUG.xcconfig; sourceTree = "<group>"; };
 		C7DE67F22998DFC200C824A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +229,7 @@
 				C730C16329A259720076C83C /* Font */,
 				C7670EF52995460900E3CD77 /* Info.plist */,
 				C7670EF02995460900E3CD77 /* Assets.xcassets */,
+				C7BA068229A3A52700D2227A /* DEBUG.xcconfig */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -755,6 +757,7 @@
 /* Begin XCBuildConfiguration section */
 		C7670F0C2995460900E3CD77 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C7BA068229A3A52700D2227A /* DEBUG.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
