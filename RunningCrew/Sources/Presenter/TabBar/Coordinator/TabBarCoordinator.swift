@@ -28,7 +28,7 @@ final class TabBarCoordinator {
     
     func getTabController(_ item: TabBarItem) -> UINavigationController {
         let navigationController = UINavigationController()
-        navigationController.setNavigationBarHidden(true, animated: false)
+        navigationController.navigationBar.tintColor = .black
         navigationController.tabBarItem = .init(title: item.itemTitleValue(), image: item.itemImageValue(), tag: item.rawValue)
         setTabCoordinator(of: item, to: navigationController)
         return navigationController
@@ -50,6 +50,10 @@ final class TabBarCoordinator {
             childCoordinators.append(coordinator)
             coordinator.start()
         }
+    }
+    
+    deinit {
+        print("deinit tabbar coordinator")
     }
     
 }

@@ -10,14 +10,14 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var tabBarCoordinator: TabBarCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         if let window = window {
-            let tabBarCoordinator = TabBarCoordinator(window)
-            tabBarCoordinator.start()
+            tabBarCoordinator = TabBarCoordinator(window)
+            tabBarCoordinator?.start()
             window.makeKeyAndVisible()
         }
         

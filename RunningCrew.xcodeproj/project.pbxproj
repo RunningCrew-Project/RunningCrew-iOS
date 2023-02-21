@@ -757,7 +757,6 @@
 /* Begin XCBuildConfiguration section */
 		C7670F0C2995460900E3CD77 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C7BA068229A3A52700D2227A /* DEBUG.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
