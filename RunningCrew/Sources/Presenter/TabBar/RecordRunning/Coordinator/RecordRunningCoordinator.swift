@@ -15,7 +15,6 @@ final class RecordRunningCoordinator: Coordinator {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.childCoordinators = []
-        navigationController.navigationBar.barTintColor = .systemBackground
     }
     
     func start() {

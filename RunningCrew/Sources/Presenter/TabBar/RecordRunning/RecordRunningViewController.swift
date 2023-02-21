@@ -105,6 +105,8 @@ final class RecordRunningViewController: UIViewController {
         setView()
         setAddView()
         setConstraint()
+        setBackButton()
+        self.navigationController?.navigationBar.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -185,6 +187,16 @@ final class RecordRunningViewController: UIViewController {
             runningButtonStackView.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
             runningButtonStackView.bottomAnchor.constraint(equalTo: mainStackView.bottomAnchor)
         ])
+    }
+    
+    func setBackButton() {
+        let backButton = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        backButton.imageInsets = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 0)
+        self.navigationItem.backBarButtonItem = backButton
+        self.navigationItem.backBarButtonItem?.imageInsets = .zero
+        let backImage = UIImage(systemName: "arrow.left")
+        self.navigationController?.navigationBar.backIndicatorImage = backImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
     }
 
 }
