@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol RecordRunningViewControllerDelegate: AnyObject {
+    func showIndividualView()
+    func showCrewView()
+}
+
 final class RecordRunningViewController: UIViewController {
+    
+    //MARK: - UI ProPerties
     
     lazy var advertisementContainer: UIView = {
         let view = UIView()
@@ -89,12 +96,20 @@ final class RecordRunningViewController: UIViewController {
         stackView.distribution = .fillEqually
         return stackView
     }()
-
+    
+    //MARK: - Properties
+    weak var delegate: RecordRunningViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
         setAddView()
         setConstraint()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     //MARK: - Define Method
@@ -104,11 +119,12 @@ final class RecordRunningViewController: UIViewController {
     }
     
     @objc func tapIndividualRunningButton() {
-        print("tap individual")
+        delegate?.showIndividualView()
     }
     
     @objc func tapCrewRunningButton() {
-        print("tap Crew")
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        delegate?.showCrewView()
     }
     
     //MARK: - Set UI

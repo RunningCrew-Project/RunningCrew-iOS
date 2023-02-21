@@ -15,6 +15,7 @@ final class RecordRunningCoordinator: Coordinator {
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
         self.childCoordinators = []
+        navigationController.navigationBar.barTintColor = .systemBackground
     }
     
     func start() {
@@ -22,8 +23,27 @@ final class RecordRunningCoordinator: Coordinator {
     }
     
     func showRecordRunningViewController() {
-        let recordVC: RecordRunningViewController = .init()
+        let recordVC: RecordRunningViewController = RecordRunningViewController()
         self.navigationController.pushViewController(recordVC, animated: false)
+        recordVC.delegate = self
     }
+    
+    deinit {
+        print("deinit recordRunningCoordinator")
+    }
+    
+}
+
+
+extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
+    
+    func showIndividualView() {
+        
+    }
+    
+    func showCrewView() {
+        self.navigationController.pushViewController(MyRunningViewController(), animated: true)
+    }
+    
     
 }

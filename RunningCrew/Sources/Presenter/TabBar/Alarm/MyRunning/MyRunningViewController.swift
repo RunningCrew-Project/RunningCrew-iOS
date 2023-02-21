@@ -9,6 +9,8 @@ import UIKit
 
 class MyRunningViewController: UIViewController {
     
+    //MARK: - UI Properties
+    
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         
@@ -18,11 +20,16 @@ class MyRunningViewController: UIViewController {
         return collectionView
     }()
     
+    //MARK: - Properties
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
+        view.backgroundColor = .systemBackground
         collectionView.backgroundColor = .lightGray
         collectionView.register(UINib(nibName: "MyRunningCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MyRunningCollectionViewCell.identifier)
+        let backButton = UIBarButtonItem(title: "뒤로", style: .plain, target: nil, action: nil)
+                navigationItem.backBarButtonItem = backButton
     }
     
     func setCollectionView() {
