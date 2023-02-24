@@ -121,6 +121,7 @@ final class RecordRunningViewController: UIViewController {
     }
     
     @objc func tapIndividualRunningButton() {
+        navigationController?.setNavigationBarHidden(false, animated: false)
         delegate?.showIndividualView()
     }
     

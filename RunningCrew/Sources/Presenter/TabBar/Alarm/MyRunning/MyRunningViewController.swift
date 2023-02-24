@@ -29,11 +29,6 @@ class MyRunningViewController: UIViewController {
         collectionView.backgroundColor = .lightGray
         collectionView.register(UINib(nibName: "MyRunningCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: MyRunningCollectionViewCell.identifier)
         navigationItem.title = "나의 크루 러닝"
-//        let titleLabel = UILabel()
-//        titleLabel.text = "나의 크루 러닝"
-//        titleLabel.font = UIFont.systemFont(ofSize: 17)
-//        let backButton = UIBarButtonItem(image: UIImage(systemName: "arrow.left"), style: .plain, target: self, action: nil)
-//        self.navigationItem.leftBarButtonItems = [backButton, UIBarButtonItem(customView: titleLabel)]
     }
     
     func setCollectionView() {

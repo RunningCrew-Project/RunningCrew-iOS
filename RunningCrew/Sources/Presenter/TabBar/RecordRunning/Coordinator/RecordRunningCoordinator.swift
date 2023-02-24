@@ -37,7 +37,7 @@ final class RecordRunningCoordinator: Coordinator {
 extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     
     func showIndividualView() {
-        
+        self.navigationController.pushViewController(MeasureRunningViewController(), animated: true)
     }
     
     func showCrewView() {
