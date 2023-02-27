@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
-		C7663E5329A4BFB70046068B /* MeasureRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E5229A4BFB70046068B /* MeasureRunningViewController.swift */; };
+		C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */; };
+		C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E5229A4BFB70046068B /* RunningStartViewController.swift */; };
+		C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E7A29A9F1260046068B /* GoalTextField.swift */; };
+		C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E7C29AA125B0046068B /* GoalSettingStackView.swift */; };
+		C7663E8129ABA5720046068B /* GoalSettingLabelStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E8029ABA5720046068B /* GoalSettingLabelStackView.swift */; };
 		C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670EE72995460800E3CD77 /* AppDelegate.swift */; };
 		C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7670EE92995460800E3CD77 /* SceneDelegate.swift */; };
 		C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7670EF02995460900E3CD77 /* Assets.xcassets */; };
@@ -72,7 +76,11 @@
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		C7663E5229A4BFB70046068B /* MeasureRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureRunningViewController.swift; sourceTree = "<group>"; };
+		C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
+		C7663E5229A4BFB70046068B /* RunningStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartViewController.swift; sourceTree = "<group>"; };
+		C7663E7A29A9F1260046068B /* GoalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTextField.swift; sourceTree = "<group>"; };
+		C7663E7C29AA125B0046068B /* GoalSettingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingStackView.swift; sourceTree = "<group>"; };
+		C7663E8029ABA5720046068B /* GoalSettingLabelStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingLabelStackView.swift; sourceTree = "<group>"; };
 		C7670EE42995460800E3CD77 /* RunningCrew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningCrew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7670EE72995460800E3CD77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7670EE92995460800E3CD77 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,12 +174,32 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		C75DECF529ABB36B00A4EC47 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C7663E7C29AA125B0046068B /* GoalSettingStackView.swift */,
+				C7663E8029ABA5720046068B /* GoalSettingLabelStackView.swift */,
+				C7663E7A29A9F1260046068B /* GoalTextField.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		C7663E5129A4BF6E0046068B /* MeasureRunning */ = {
 			isa = PBXGroup;
 			children = (
-				C7663E5229A4BFB70046068B /* MeasureRunningViewController.swift */,
+				C75DECF529ABB36B00A4EC47 /* UI */,
+				C7663E7929A9F1090046068B /* GoalSettingView */,
+				C7663E5229A4BFB70046068B /* RunningStartViewController.swift */,
 			);
 			path = MeasureRunning;
+			sourceTree = "<group>";
+		};
+		C7663E7929A9F1090046068B /* GoalSettingView */ = {
+			isa = PBXGroup;
+			children = (
+				C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */,
+			);
+			path = GoalSettingView;
 			sourceTree = "<group>";
 		};
 		C7670EDB2995460800E3CD77 = {
@@ -707,12 +735,14 @@
 			files = (
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
+				C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
 				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
 				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
-				C7663E5329A4BFB70046068B /* MeasureRunningViewController.swift in Sources */,
+				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
+				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
@@ -725,11 +755,13 @@
 				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
+				C7663E8129ABA5720046068B /* GoalSettingLabelStackView.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
 				C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
 				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
 				C7811F7429A201B700801E6B /* DotView.swift in Sources */,
+				C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */,
 				C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

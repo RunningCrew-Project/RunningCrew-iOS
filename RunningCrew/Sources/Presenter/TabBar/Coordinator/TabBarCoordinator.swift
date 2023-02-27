@@ -30,6 +30,7 @@ final class TabBarCoordinator {
         let navigationController = UINavigationController()
         navigationController.navigationBar.tintColor = .black
         navigationController.tabBarItem = .init(title: item.itemTitleValue(), image: item.itemImageValue(), tag: item.rawValue)
+        navigationController.navigationBar.titleTextAttributes = [.font: UIFont(name: "NotoSansKR-Medium", size: 20) ?? UIFont.boldSystemFont(ofSize: 20)]
         setTabCoordinator(of: item, to: navigationController)
         return navigationController
     }

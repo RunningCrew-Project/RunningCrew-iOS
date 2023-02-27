@@ -178,7 +178,6 @@ final class RecordRunningViewController: UIViewController {
         NSLayoutConstraint.activate([
             labelStackView.leadingAnchor.constraint(equalTo: mainStackView.leadingAnchor),
             labelStackView.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor),
-            //labelStackView.bottomAnchor.constraint(equalTo: mainStackView.bottomAnchor),
         ])
     }
     
