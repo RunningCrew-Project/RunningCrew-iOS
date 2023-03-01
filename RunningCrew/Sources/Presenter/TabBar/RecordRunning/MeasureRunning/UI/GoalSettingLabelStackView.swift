@@ -13,8 +13,18 @@ class GoalSettingLabelStackView: UIStackView {
        let destinationLabel = UILabel()
         destinationLabel.translatesAutoresizingMaskIntoConstraints = false
         let font = UIFont(name: "NotoSansKR-Bold", size: 80)
-        destinationLabel.font = font
-        destinationLabel.text = "0.0"
+        let style = NSMutableParagraphStyle()
+        style.maximumLineHeight = 80
+        style.minimumLineHeight = 80
+        if let font = font {
+            let attr: [NSAttributedString.Key: Any] = [
+                .paragraphStyle: style,
+                .font: font,
+                .baselineOffset: -10
+            ]
+            let attrString = NSAttributedString(string: "5.00", attributes: attr)
+            destinationLabel.attributedText = attrString
+        }
         
         return destinationLabel
     }()
@@ -23,7 +33,6 @@ class GoalSettingLabelStackView: UIStackView {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .black
-        view.heightAnchor.constraint(equalToConstant: 3.0).isActive = true
         
         return view
     }()
@@ -31,17 +40,16 @@ class GoalSettingLabelStackView: UIStackView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         axis = .vertical
-        spacing = 5
         addArrangedSubview(destinationLabel)
         addArrangedSubview(underLineView)
-        heightAnchor.constraint(equalToConstant: 80.0).isActive = true
         setUnderLineView()
     }
     
     func setUnderLineView() {
         NSLayoutConstraint.activate([
             underLineView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            underLineView.trailingAnchor.constraint(equalTo: trailingAnchor)
+            underLineView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            underLineView.heightAnchor.constraint(equalToConstant: 3.0)
         ])
     }
     

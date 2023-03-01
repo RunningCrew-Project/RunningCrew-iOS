@@ -18,8 +18,8 @@ class GoalSettingViewController: UIViewController {
         return textField
     }()
     
-    lazy var goalLabel: GoalSettingLabelStackView = {
-       let goalLabel = GoalSettingLabelStackView()
+    lazy var goalLabel: GoalSettingStackView = {
+       let goalLabel = GoalSettingStackView()
         goalLabel.translatesAutoresizingMaskIntoConstraints = false
         
         return goalLabel
@@ -67,9 +67,9 @@ class GoalSettingViewController: UIViewController {
             .asDriver()
             .drive(onNext: { text in
                 if text.isEmpty {
-                    self.goalLabel.destinationLabel.text = "0"
+                    self.goalLabel.goalSettingLabelStackView.destinationLabel.text = "0"
                 } else {
-                    self.goalLabel.destinationLabel.text = text
+                    self.goalLabel.goalSettingLabelStackView.destinationLabel.text = text
                 }
             })
             .disposed(by: disposeBag)

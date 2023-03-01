@@ -33,14 +33,25 @@ class RunningStartViewController: UIViewController {
         return  stackView
     }()
     
-    lazy var destinationStackView: GoalSettingStackView = {
-       let destinationStackView = GoalSettingStackView()
-        destinationStackView.translatesAutoresizingMaskIntoConstraints = false
+    lazy var distanceSettingStackView: GoalSettingStackView = {
+       let distanceSettingStackView = GoalSettingStackView()
+        distanceSettingStackView.translatesAutoresizingMaskIntoConstraints = false
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDestinationLabel))
-        destinationStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
-        destinationStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
+        distanceSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
+        distanceSettingStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
         
-        return destinationStackView
+        return distanceSettingStackView
+    }()
+    
+    lazy var timeSettingStackView: GoalSettingStackView = {
+       let timeSettingStackView = GoalSettingStackView()
+        timeSettingStackView.translatesAutoresizingMaskIntoConstraints = false
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDestinationLabel))
+        timeSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
+        timeSettingStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
+        timeSettingStackView.currentLabel.text = "시간 : 분"
+        
+        return timeSettingStackView
     }()
     
     lazy var underButtonStackView: UIStackView = {
@@ -91,7 +102,9 @@ class RunningStartViewController: UIViewController {
     
     func setStartButtonStackView() {
         view.addSubview(startButtonStackView)
-        startButtonStackView.addArrangedSubview(destinationStackView)
+        startButtonStackView.addArrangedSubview(distanceSettingStackView)
+        startButtonStackView.addArrangedSubview(timeSettingStackView)
+        timeSettingStackView.isHidden = true
         startButtonStackView.addArrangedSubview(startButton)
         
         NSLayoutConstraint.activate([
