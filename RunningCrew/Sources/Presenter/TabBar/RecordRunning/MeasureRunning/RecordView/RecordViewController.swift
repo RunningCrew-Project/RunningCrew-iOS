@@ -10,44 +10,39 @@ import UIKit
 class RecordViewController: UIViewController {
     
     @IBOutlet weak var runningMeasuringView: UIView!
-    
     @IBOutlet weak var readyDiscussionLabel: UILabel!
     @IBOutlet weak var readyTimerLabel: UILabel!
-    
     @IBOutlet weak var pauseAndPlayButton: UIButton!
-    
     @IBOutlet weak var completeButton: UIButton!
     
-    var timer: Timer?
-    var readyTimerNum = 5
+    //MARK: - Properties
+    private var timer: Timer?
+    private var readyTimerNum = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         runningMeasuringView.isHidden = true
         setControlButtonCornerRadius()
         startReadyTimer()
-        pauseAndPlayButton.addTarget(self, action: #selector(outView), for: .touchUpInside)
     }
     
-    func startReadyTimer() {
+    //MARK: - Ready Time Method
+    private func startReadyTimer() {
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(readyTimerCallBack), userInfo: nil, repeats: true)
     }
     
     @objc func readyTimerCallBack() {
         readyTimerNum -= 1
-        readyTimerLabel.text = String(readyTimerNum)
-        
         if readyTimerNum == 0 {
             timer?.invalidate()
             timer = nil
-            readyDiscussionLabel.isHidden = true
-            readyTimerLabel.isHidden = true
+            hiddenTimerLabel()
             runningMeasuringView.isHidden = false
         }
-        
+        readyTimerLabel.text = String(readyTimerNum)
     }
     
-    func setControlButtonCornerRadius() {
+    private func setControlButtonCornerRadius() {
         pauseAndPlayButton.layer.cornerRadius = pauseAndPlayButton.frame.height / 2
         pauseAndPlayButton.clipsToBounds = true
         
@@ -55,13 +50,9 @@ class RecordViewController: UIViewController {
         completeButton.clipsToBounds = true
     }
     
-    func hiddenTimerLabel() {
+    private func hiddenTimerLabel() {
         readyDiscussionLabel.isHidden = true
         readyTimerLabel.isHidden = true
-    }
-    
-    @objc func outView() {
-        dismiss(animated: false)
     }
     
     deinit {
