@@ -49,6 +49,7 @@
 		C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */; };
 		C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */; };
 		C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */; };
+		C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */; };
 		D8FCCC736C08611D78F2F5DA /* Pods_RunningCrew_RunningCrewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49645AC81E6AA34CA37B1351 /* Pods_RunningCrew_RunningCrewUITests.framework */; };
 		E912946796E36DF3B40E1925 /* Pods_RunningCrewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningViewController.swift; sourceTree = "<group>"; };
 		C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrewAlarmTableViewCell.xib; sourceTree = "<group>"; };
+		C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartViewModel.swift; sourceTree = "<group>"; };
 		C8E83F46D38D17331033544B /* Pods-RunningCrew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.release.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.release.xcconfig"; sourceTree = "<group>"; };
 		D0BCB0478C25AB8849DDAF93 /* Pods-RunningCrewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrewTests.release.xcconfig"; path = "Target Support Files/Pods-RunningCrewTests/Pods-RunningCrewTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,9 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				C75DECF529ABB36B00A4EC47 /* UI */,
+				C7F95B2B29AF7F8A00C69D1B /* RunningStart */,
 				C75DECFC29AE7E8300A4EC47 /* RecordView */,
 				C7663E7929A9F1090046068B /* GoalSettingView */,
-				C7663E5229A4BFB70046068B /* RunningStartViewController.swift */,
 			);
 			path = MeasureRunning;
 			sourceTree = "<group>";
@@ -495,6 +497,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C7F95B2B29AF7F8A00C69D1B /* RunningStart */ = {
+			isa = PBXGroup;
+			children = (
+				C7F95B2C29AF7FBE00C69D1B /* ViewModel */,
+				C7663E5229A4BFB70046068B /* RunningStartViewController.swift */,
+			);
+			path = RunningStart;
+			sourceTree = "<group>";
+		};
+		C7F95B2C29AF7FBE00C69D1B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		E0411EDA38A4BEEFC0698F7C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -765,6 +784,7 @@
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
 				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
+				C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */,
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,

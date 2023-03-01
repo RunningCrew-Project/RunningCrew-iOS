@@ -8,6 +8,7 @@
 import UIKit
 import NMapsMap
 import RxCocoa
+import RxSwift
 
 class RunningStartViewController: UIViewController {
     
@@ -72,19 +73,41 @@ class RunningStartViewController: UIViewController {
         
         return button
     }()
+    
+    //MARK: - Properties
+    let viewModel: RunningStartViewModel?
+    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationItem.title = "개인러닝"
         setMapView()
         setStartButtonStackView()
+        bind()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         startButton.clipsToBounds = true
         startButton.layer.cornerRadius = startButton.frame.height / 2
+    }
+    
+    //MARK: - Initalizer
+    init(viewModel: RunningStartViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Method
+    
+    private func bind() {
+        viewModel?.goalDistance.asDriver().drive(onNext: { self.distanceSettingStackView.goalSettingLabelStackView.destinationLabel.text = String($0)}).disposed(by: disposeBag)
+        
+        viewModel?.goalTimeMinute.asDriver().drive(onNext: { self.timeSettingStackView.goalSettingLabelStackView.destinationLabel.text = String($0)}).disposed(by: disposeBag)
     }
     
     //MARK: - UI Settings
