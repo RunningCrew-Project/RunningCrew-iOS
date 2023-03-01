@@ -68,7 +68,6 @@ class RunningStartViewController: UIViewController {
         button.backgroundColor = .tabBarSelect
         button.setTitle("시작", for: .normal)
         button.addTarget(self, action: #selector(tapStartButton), for: .touchUpInside)
-        
         button.titleLabel?.font = UIFont(name: "NotoSansKR-Bold", size: 24.0)
         
         return button
@@ -118,7 +117,7 @@ class RunningStartViewController: UIViewController {
     
     @objc func tapDestinationLabel() {
         let navigationVC = UINavigationController()
-        navigationVC.modalPresentationStyle = .overFullScreen
+        navigationVC.modalPresentationStyle = .fullScreen
         navigationVC.navigationBar.titleTextAttributes = [.font: UIFont(name: "NotoSansKR-Medium", size: 20) ?? .boldSystemFont(ofSize: 20)]
         let vc = GoalSettingViewController()
         navigationVC.pushViewController(vc, animated: false)
@@ -127,13 +126,15 @@ class RunningStartViewController: UIViewController {
     
     @objc func tapStartButton() {
         let vc = RecordViewController(nibName: "RecordViewController", bundle: nil)
-        vc.modalPresentationStyle = .overFullScreen
+        vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: false)
     }
     
+    
+    
     deinit {
-        print("deinit measure view")
+        print("deinit runningStart view")
     }
     
 }

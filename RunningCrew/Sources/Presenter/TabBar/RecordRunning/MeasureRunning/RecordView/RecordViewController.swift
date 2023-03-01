@@ -42,6 +42,7 @@ class RecordViewController: UIViewController {
         readyTimerLabel.text = String(readyTimerNum)
     }
     
+    //MARK: - Set UI Constraint
     private func setControlButtonCornerRadius() {
         pauseAndPlayButton.layer.cornerRadius = pauseAndPlayButton.frame.height / 2
         pauseAndPlayButton.clipsToBounds = true
@@ -53,6 +54,10 @@ class RecordViewController: UIViewController {
     private func hiddenTimerLabel() {
         readyDiscussionLabel.isHidden = true
         readyTimerLabel.isHidden = true
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     deinit {

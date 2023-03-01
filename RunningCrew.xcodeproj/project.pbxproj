@@ -188,20 +188,20 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		C75DECFC29AE7E8300A4EC47 /* ReadyView */ = {
+		C75DECFC29AE7E8300A4EC47 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
 				C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */,
 				C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */,
 			);
-			path = ReadyView;
+			path = RecordView;
 			sourceTree = "<group>";
 		};
 		C7663E5129A4BF6E0046068B /* MeasureRunning */ = {
 			isa = PBXGroup;
 			children = (
-				C75DECFC29AE7E8300A4EC47 /* ReadyView */,
 				C75DECF529ABB36B00A4EC47 /* UI */,
+				C75DECFC29AE7E8300A4EC47 /* RecordView */,
 				C7663E7929A9F1090046068B /* GoalSettingView */,
 				C7663E5229A4BFB70046068B /* RunningStartViewController.swift */,
 			);
