@@ -126,7 +126,10 @@ class RunningStartViewController: UIViewController {
     }
     
     @objc func tapStartButton() {
-        print("tap start")
+        let vc = ReadyViewController(nibName: "ReadyViewController", bundle: nil)
+        vc.modalPresentationStyle = .overFullScreen
+        
+        present(vc, animated: false)
     }
     
     deinit {
