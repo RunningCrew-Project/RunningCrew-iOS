@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
 		C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */; };
-		C75DECFA29AE7E7D00A4EC47 /* ReadyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF829AE7E7D00A4EC47 /* ReadyViewController.swift */; };
-		C75DECFB29AE7E7D00A4EC47 /* ReadyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75DECF929AE7E7D00A4EC47 /* ReadyViewController.xib */; };
+		C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */; };
+		C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */; };
 		C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E5229A4BFB70046068B /* RunningStartViewController.swift */; };
 		C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E7A29A9F1260046068B /* GoalTextField.swift */; };
 		C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7663E7C29AA125B0046068B /* GoalSettingStackView.swift */; };
@@ -79,8 +79,8 @@
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
-		C75DECF829AE7E7D00A4EC47 /* ReadyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyViewController.swift; sourceTree = "<group>"; };
-		C75DECF929AE7E7D00A4EC47 /* ReadyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReadyViewController.xib; sourceTree = "<group>"; };
+		C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
 		C7663E5229A4BFB70046068B /* RunningStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartViewController.swift; sourceTree = "<group>"; };
 		C7663E7A29A9F1260046068B /* GoalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTextField.swift; sourceTree = "<group>"; };
 		C7663E7C29AA125B0046068B /* GoalSettingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingStackView.swift; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		C75DECFC29AE7E8300A4EC47 /* ReadyView */ = {
 			isa = PBXGroup;
 			children = (
-				C75DECF829AE7E7D00A4EC47 /* ReadyViewController.swift */,
-				C75DECF929AE7E7D00A4EC47 /* ReadyViewController.xib */,
+				C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */,
+				C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */,
 			);
 			path = ReadyView;
 			sourceTree = "<group>";
@@ -614,7 +614,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C75DECFB29AE7E7D00A4EC47 /* ReadyViewController.xib in Resources */,
+				C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */,
 				C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */,
 				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
 				C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */,
@@ -748,7 +748,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C75DECFA29AE7E7D00A4EC47 /* ReadyViewController.swift in Sources */,
+				C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */,
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */,

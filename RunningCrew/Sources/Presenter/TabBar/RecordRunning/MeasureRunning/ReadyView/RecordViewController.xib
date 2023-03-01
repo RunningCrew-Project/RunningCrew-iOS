@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ReadyViewController" customModule="RunningCrew" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordViewController" customModule="RunningCrew" customModuleProvider="target">
             <connections>
                 <outlet property="completeButton" destination="cmW-tI-9i6" id="eop-D1-KY2"/>
                 <outlet property="pauseAndPlayButton" destination="2HC-tE-siq" id="g3W-g3-7qh"/>

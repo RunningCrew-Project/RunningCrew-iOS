@@ -1,5 +1,5 @@
 //
-//  ReadyViewController.swift
+//  RecordViewController.swift
 //  RunningCrew
 //
 //  Created by JunHwan Kim on 2023/03/01.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ReadyViewController: UIViewController {
+class RecordViewController: UIViewController {
     
     @IBOutlet weak var runningMeasuringView: UIView!
     
@@ -26,13 +26,14 @@ class ReadyViewController: UIViewController {
         runningMeasuringView.isHidden = true
         setControlButtonCornerRadius()
         startReadyTimer()
+        pauseAndPlayButton.addTarget(self, action: #selector(outView), for: .touchUpInside)
     }
     
     func startReadyTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(setReadyTimer), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(readyTimerCallBack), userInfo: nil, repeats: true)
     }
     
-    @objc func setReadyTimer() {
+    @objc func readyTimerCallBack() {
         readyTimerNum -= 1
         readyTimerLabel.text = String(readyTimerNum)
         
@@ -57,6 +58,14 @@ class ReadyViewController: UIViewController {
     func hiddenTimerLabel() {
         readyDiscussionLabel.isHidden = true
         readyTimerLabel.isHidden = true
+    }
+    
+    @objc func outView() {
+        dismiss(animated: false)
+    }
+    
+    deinit {
+        print("deinit record viewcontroller")
     }
 
 
