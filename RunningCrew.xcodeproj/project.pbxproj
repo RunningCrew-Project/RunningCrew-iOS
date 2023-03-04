@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
 		C751527929B27038003D8987 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751527829B27038003D8987 /* UIImage+.swift */; };
+		C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751527B29B34224003D8987 /* RecordViewModel.swift */; };
 		C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */; };
 		C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */; };
 		C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */; };
@@ -81,6 +82,7 @@
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C751527829B27038003D8987 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		C751527B29B34224003D8987 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
 		C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
 		C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
@@ -182,6 +184,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		C751527A29B34212003D8987 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C751527B29B34224003D8987 /* RecordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		C75DECF529ABB36B00A4EC47 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +205,7 @@
 		C75DECFC29AE7E8300A4EC47 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
+				C751527A29B34212003D8987 /* ViewModel */,
 				C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */,
 				C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */,
 			);
@@ -787,6 +798,7 @@
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
 				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
+				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
 				C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */,
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
