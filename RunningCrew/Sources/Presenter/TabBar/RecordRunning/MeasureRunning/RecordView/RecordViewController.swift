@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class RecordViewController: UIViewController {
     
@@ -14,16 +15,30 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var readyTimerLabel: UILabel!
     @IBOutlet weak var pauseAndPlayButton: UIButton!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var runningTimerLabel: UILabel!
     
     //MARK: - Properties
     private var timer: Timer?
     private var readyTimerNum = 5
+    var viewModel: RecordViewModel?
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         runningMeasuringView.isHidden = true
         setControlButtonCornerRadius()
         startReadyTimer()
+        bind()
+    }
+    
+    //MARK: - Initalizer
+    init(viewModel: RecordViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: "RecordViewController", bundle: Bundle(for: RecordViewController.self))
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - Ready Time Method
@@ -38,6 +53,7 @@ class RecordViewController: UIViewController {
             timer = nil
             hiddenTimerLabel()
             runningMeasuringView.isHidden = false
+            viewModel?.startTimer()
         }
         readyTimerLabel.text = String(readyTimerNum)
     }
@@ -60,19 +76,29 @@ class RecordViewController: UIViewController {
         return .lightContent
     }
     
+    //MARK: - bind
+    private func bind() {
+        viewModel?.timerText.asDriver()
+            .drive(runningTimerLabel.rx
+                .text)
+            .disposed(by: disposeBag)
+    }
+    
+    //MARK: - Action Method
+
+    @IBAction func tapPauseOrPlayButton(_ sender: Any) {
+        guard let viewModel = viewModel else { return }
+        if viewModel.isRunning {
+            pauseAndPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+            viewModel.stopTimer()
+        } else {
+            pauseAndPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+            viewModel.startTimer()
+        }
+    }
+    
+    //MARK: - deinit
     deinit {
         print("deinit record viewcontroller")
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

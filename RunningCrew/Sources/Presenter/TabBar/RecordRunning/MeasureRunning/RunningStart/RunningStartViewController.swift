@@ -169,7 +169,7 @@ class RunningStartViewController: UIViewController {
     }
     
     @objc func tapStartButton() {
-        let vc = RecordViewController(nibName: "RecordViewController", bundle: nil)
+        let vc = RecordViewController(viewModel: RecordViewModel())
         vc.modalPresentationStyle = .fullScreen
         
         present(vc, animated: false)
