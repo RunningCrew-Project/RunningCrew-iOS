@@ -13,18 +13,6 @@ class GoalSettingLabelStackView: UIStackView {
        let destinationLabel = UILabel()
         destinationLabel.translatesAutoresizingMaskIntoConstraints = false
         let font = UIFont(name: "NotoSansKR-Bold", size: 80)
-//        let style = NSMutableParagraphStyle()
-//        style.maximumLineHeight = 80
-//        style.minimumLineHeight = 80
-//        if let font = font {
-//            let attr: [NSAttributedString.Key: Any] = [
-//                .paragraphStyle: style,
-//                .font: font,
-//                .baselineOffset: font.descender
-//            ]
-//            let attrString = NSAttributedString(string: "5.00", attributes: attr)
-//            destinationLabel.attributedText = attrString
-//        }
         destinationLabel.font = font
         
         return destinationLabel

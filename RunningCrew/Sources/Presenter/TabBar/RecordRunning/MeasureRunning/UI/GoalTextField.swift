@@ -10,19 +10,24 @@ import RxCocoa
 
 class GoalTextField: UITextField {
     
-    enum FieldType {
-        case distance
-        case time
-    }
+    var type: GoalType
     
-    var type: FieldType?
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.keyboardType = .decimalPad
+    init(goalType: GoalType) {
+        self.type = goalType
+        super.init(frame: .zero)
         backgroundColor = .clear
         borderStyle = .none
         textColor = .clear
+        setKeyboard()
+    }
+    
+    func setKeyboard() {
+        switch type {
+        case .distance:
+            self.keyboardType = .decimalPad
+        case .time:
+            self.keyboardType = .numberPad
+        }
     }
     
     required init?(coder: NSCoder) {
