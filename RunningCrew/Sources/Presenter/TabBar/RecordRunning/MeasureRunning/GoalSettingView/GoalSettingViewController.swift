@@ -9,23 +9,31 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+protocol GoalSettingViewDelegate {
+    func tapSettingButton(goalType: GoalType, goal: String)
+}
+
 class GoalSettingViewController: UIViewController {
     
     lazy var goalLabelBindingTextField: GoalTextField = {
-       let textField = GoalTextField()
+        let textField = GoalTextField(goalType: goalType)
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
     lazy var goalLabel: GoalSettingStackView = {
-       let goalLabel = GoalSettingStackView()
+        let goalLabel = GoalSettingStackView(goalType: goalType)
         goalLabel.translatesAutoresizingMaskIntoConstraints = false
         
         return goalLabel
     }()
     
     private var disposeBag = DisposeBag()
+    
+    let goalType: GoalType
+    
+    var delegate: GoalSettingViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +41,18 @@ class GoalSettingViewController: UIViewController {
         setNavigationBarItem()
         setBindingTextField()
         setGoalLabel()
-        textFieldBingLabel()
+        setTextFieldSizeLimit()
+        bindTextFieldToLabel()
         navigationItem.title = "러닝 목표 설정"
+    }
+    
+    init(goalType: GoalType) {
+        self.goalType = goalType
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func setBindingTextField() {
@@ -56,22 +74,69 @@ class GoalSettingViewController: UIViewController {
     
     func setNavigationBarItem() {
         let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(tapCancelButton))
-        let doneButton = UIBarButtonItem(title: "확인", style: .plain, target: self, action: #selector(tapDoneButton))
+        let doneButton = UIBarButtonItem(title: "설정", style: .plain, target: self, action: #selector(tapDoneButton))
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
         navigationController?.navigationBar.tintColor = .black
     }
     
-    func textFieldBingLabel() {
+    func setTextFieldSizeLimit() {
         goalLabelBindingTextField.rx.text.orEmpty
             .asDriver()
-            .drive(onNext: { text in
-                if text.isEmpty {
-                    self.goalLabel.goalSettingLabelStackView.destinationLabel.text = "0"
+            .map({ input in
+                if input.contains(".") || input.contains(":") {
+                    return input.count <= 5
                 } else {
-                    self.goalLabel.goalSettingLabelStackView.destinationLabel.text = text
+                    return input.count <= 4
                 }
             })
+            .drive {
+                if !$0 {
+                    self.goalLabelBindingTextField.text = String(self.goalLabelBindingTextField.text?.dropLast() ?? "")
+                }
+            }.disposed(by: disposeBag)
+    }
+    
+    private func bindTextFieldToLabel() {
+        switch goalType {
+        case .distance:
+            distanceBind()
+        case .time:
+            timeBind()
+        }
+    }
+    
+    private func distanceBind() {
+        goalLabelBindingTextField.rx.text.orEmpty
+            .map{ input -> String? in
+                if input.isEmpty {
+                    return "0"
+                }
+                if input == "0" {
+                    self.goalLabelBindingTextField.text?.removeLast()
+                    return "0"
+                }
+                return input
+            }
+            .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func timeBind() {
+        goalLabelBindingTextField.rx.text.orEmpty
+            .map{ input -> String? in
+                if input.isEmpty {
+                    return "00:00"
+                }
+                let len = input.count
+                let paddedStr = String(repeating: "0", count: 4 - len) + input
+                let index1 = paddedStr.index(paddedStr.startIndex, offsetBy: 2)
+                let index2 = paddedStr.index(paddedStr.startIndex, offsetBy: 4)
+                let result = "\(paddedStr[..<index1]):\(paddedStr[index1..<index2])"
+                
+                return result
+            }
+            .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
             .disposed(by: disposeBag)
     }
     
@@ -87,6 +152,13 @@ class GoalSettingViewController: UIViewController {
     }
     
     @objc func tapDoneButton() {
+        delegate?.tapSettingButton(goalType: goalType, goal: goalLabel.goalSettingLabelStackView.destinationLabel.text ?? "")
+        closeKeyboard {
+            self.dismiss(animated: false)
+        }
+    }
+    
+    func convertToTime(num: Int) {
         
     }
     

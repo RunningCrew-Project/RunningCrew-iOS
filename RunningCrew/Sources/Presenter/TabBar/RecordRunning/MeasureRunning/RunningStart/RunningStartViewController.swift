@@ -35,22 +35,29 @@ class RunningStartViewController: UIViewController {
     }()
     
     lazy var distanceSettingStackView: GoalSettingStackView = {
-       let distanceSettingStackView = GoalSettingStackView()
+        let distanceSettingStackView = GoalSettingStackView(goalType: .distance)
         distanceSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDestinationLabel))
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDistanceLabel))
         distanceSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
         distanceSettingStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
+        
+        distanceSettingStackView.beforeButton.isHidden = true
+        distanceSettingStackView.nextButton.addTarget(self, action: #selector(tapGoalChangeButton), for: .touchUpInside)
         
         return distanceSettingStackView
     }()
     
     lazy var timeSettingStackView: GoalSettingStackView = {
-       let timeSettingStackView = GoalSettingStackView()
+        let timeSettingStackView = GoalSettingStackView(goalType: .time)
         timeSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDestinationLabel))
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapTimeLabel))
         timeSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
         timeSettingStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
-        timeSettingStackView.currentLabel.text = "시간 : 분"
+        
+        timeSettingStackView.nextButton.isHidden = true
+        timeSettingStackView.beforeButton.addTarget(self, action: #selector(tapGoalChangeButton), for: .touchUpInside)
         
         return timeSettingStackView
     }()
@@ -105,9 +112,14 @@ class RunningStartViewController: UIViewController {
     //MARK: - Method
     
     private func bind() {
-        viewModel?.goalDistance.asDriver().drive(onNext: { self.distanceSettingStackView.goalSettingLabelStackView.destinationLabel.text = String($0)}).disposed(by: disposeBag)
+        viewModel?.goalDistance.asDriver()
+            .map({String(format: "%.2f", $0)})
+            .drive(distanceSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
         
-        viewModel?.goalTimeMinute.asDriver().drive(onNext: { self.timeSettingStackView.goalSettingLabelStackView.destinationLabel.text = String($0)}).disposed(by: disposeBag)
+        viewModel?.goalTimeRelay.asDriver()
+            .drive(timeSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
     }
     
     //MARK: - UI Settings
@@ -138,11 +150,20 @@ class RunningStartViewController: UIViewController {
         ])
     }
     
-    @objc func tapDestinationLabel() {
+    @objc func tapDistanceLabel() {
+        presentSettingGoalView(goalType: .distance)
+    }
+    
+    @objc func tapTimeLabel() {
+        presentSettingGoalView(goalType: .time)
+    }
+    
+    func presentSettingGoalView(goalType: GoalType) {
         let navigationVC = UINavigationController()
         navigationVC.modalPresentationStyle = .fullScreen
         navigationVC.navigationBar.titleTextAttributes = [.font: UIFont(name: "NotoSansKR-Medium", size: 20) ?? .boldSystemFont(ofSize: 20)]
-        let vc = GoalSettingViewController()
+        let vc = GoalSettingViewController(goalType: goalType)
+        vc.delegate = self
         navigationVC.pushViewController(vc, animated: false)
         present(navigationVC, animated: false)
     }
@@ -154,10 +175,28 @@ class RunningStartViewController: UIViewController {
         present(vc, animated: false)
     }
     
-    
+    @objc func tapGoalChangeButton() {
+        distanceSettingStackView.isHidden = !distanceSettingStackView.isHidden
+        timeSettingStackView.isHidden = !timeSettingStackView.isHidden
+    }
     
     deinit {
         print("deinit runningStart view")
+    }
+    
+}
+
+extension RunningStartViewController: GoalSettingViewDelegate {
+    
+    func tapSettingButton(goalType: GoalType, goal: String) {
+        switch goalType {
+        case .distance:
+            viewModel?.goalDistance.accept(Float(goal)!)
+        case .time:
+            let time = goal.split(separator: ":").map {Int($0)}
+            viewModel?.goalHour.accept(time[0] ?? 0)
+            viewModel?.goalMinute.accept(time[1] ?? 0)
+        }
     }
     
 }
