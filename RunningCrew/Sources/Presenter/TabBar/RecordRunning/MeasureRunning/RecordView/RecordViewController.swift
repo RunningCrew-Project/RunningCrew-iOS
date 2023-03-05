@@ -15,7 +15,9 @@ class RecordViewController: UIViewController {
     @IBOutlet weak var readyTimerLabel: UILabel!
     @IBOutlet weak var pauseAndPlayButton: UIButton!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var completeButtonContainerView: UIView!
     @IBOutlet weak var runningTimerLabel: UILabel!
+    private var completeButtonRingLayer: CAShapeLayer?
     
     //MARK: - Properties
     private var timer: Timer?
@@ -28,6 +30,8 @@ class RecordViewController: UIViewController {
         runningMeasuringView.isHidden = true
         setControlButtonCornerRadius()
         startReadyTimer()
+        setCompleteButton()
+        setCompleteButtonRing()
         bind()
     }
     
@@ -61,10 +65,8 @@ class RecordViewController: UIViewController {
     //MARK: - Set UI Constraint
     private func setControlButtonCornerRadius() {
         pauseAndPlayButton.layer.cornerRadius = pauseAndPlayButton.frame.height / 2
-        pauseAndPlayButton.clipsToBounds = true
         
         completeButton.layer.cornerRadius = completeButton.frame.height / 2
-        completeButton.clipsToBounds = true
     }
     
     private func hiddenTimerLabel() {
@@ -96,6 +98,52 @@ class RecordViewController: UIViewController {
             viewModel.startTimer()
         }
     }
+    
+    func setCompleteButton() {
+        completeButton.addTarget(self, action: #selector(completeButtonTouchDown), for: .touchDown)
+        completeButton.addTarget(self, action: #selector(completeButtonTouchUp), for: .touchUpInside)
+    }
+    
+    @objc func completeButtonTouchDown() {
+        if timer == nil {
+            timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: {[weak self] timer in
+                self?.dismiss(animated: true)
+            })
+        }
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        animation.toValue = 1
+        animation.duration = 2
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        completeButtonRingLayer?.add(animation, forKey: "animation")
+    }
+    
+    @objc func completeButtonTouchUp() {
+        completeButtonRingLayer?.removeAllAnimations()
+        timer?.invalidate()
+        timer = nil
+        showToastMessage()
+    }
+    
+    func showToastMessage() {
+        print("show toast message ")
+    }
+    
+    func setCompleteButtonRing() {
+        let trackLayer = CAShapeLayer()
+        trackLayer.frame = completeButton.bounds
+        completeButtonRingLayer = CAShapeLayer()
+        guard let completeButtonRingLayer = completeButtonRingLayer else { return }
+        completeButtonContainerView.layer.addSublayer(completeButtonRingLayer)
+        completeButtonRingLayer.path = UIBezierPath(arcCenter: trackLayer.position, radius: completeButton.frame.width/2+2, startAngle: 0, endAngle: .pi*2, clockwise: true).cgPath
+        completeButtonRingLayer.strokeColor = UIColor.black.cgColor
+        completeButtonRingLayer.lineWidth = 4
+        completeButtonRingLayer.fillColor = UIColor.clear.cgColor
+        completeButtonRingLayer.strokeEnd = 0
+    }
+    
+    //MARK: - CompleteButton Action Method
+    
     
     //MARK: - deinit
     deinit {

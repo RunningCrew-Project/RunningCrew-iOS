@@ -22,6 +22,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecordViewController" customModule="RunningCrew" customModuleProvider="target">
             <connections>
                 <outlet property="completeButton" destination="cmW-tI-9i6" id="eop-D1-KY2"/>
+                <outlet property="completeButtonContainerView" destination="hoV-vj-Ho7" id="vND-nv-7EK"/>
                 <outlet property="pauseAndPlayButton" destination="2HC-tE-siq" id="g3W-g3-7qh"/>
                 <outlet property="readyDiscussionLabel" destination="vay-W8-NzT" id="KL6-dD-In9"/>
                 <outlet property="readyTimerLabel" destination="E9f-6d-nuA" id="D3R-It-96z"/>
@@ -81,17 +82,17 @@
                                     </subviews>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="k78-g1-PmP">
-                                    <rect key="frame" x="10.333333333333343" y="375" width="332.66666666666663" height="243.66666666666663"/>
+                                    <rect key="frame" x="0.0" y="375" width="353" height="243.66666666666663"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xor-TX-Qna">
-                                            <rect key="frame" x="0.0" y="0.0" width="332.66666666666669" height="3"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="3"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="3" id="VPw-fj-iRk"/>
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="WuT-97-Q5e">
-                                            <rect key="frame" x="0.0" y="27.999999999999986" width="332.66666666666669" height="215.66666666666663"/>
+                                            <rect key="frame" x="10.333333333333343" y="27.999999999999986" width="332.66666666666663" height="215.66666666666663"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="72" translatesAutoresizingMaskIntoConstraints="NO" id="9Ss-sB-Xab">
                                                     <rect key="frame" x="0.0" y="0.0" width="332.66666666666669" height="75.666666666666671"/>
@@ -139,8 +140,8 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="90" id="OeH-6r-8EP"/>
-                                                                <constraint firstAttribute="height" constant="90" id="cgp-Vm-hfN"/>
+                                                                <constraint firstAttribute="width" constant="90" id="Q7V-WI-MzV"/>
+                                                                <constraint firstAttribute="height" constant="90" id="dCG-lZ-Tbg"/>
                                                             </constraints>
                                                             <color key="tintColor" name="TabBarItemSelectColor"/>
                                                             <state key="normal" title="Button"/>
@@ -152,19 +153,28 @@
                                                                 <action selector="tapPauseOrPlayButton:" destination="-1" eventType="touchUpInside" id="vAU-HD-Ef1"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmW-tI-9i6">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoV-vj-Ho7">
                                                             <rect key="frame" x="145" y="0.0" width="90" height="90"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmW-tI-9i6">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" name="TabBarItemSelectColor"/>
+                                                                    <state key="normal" title="Button"/>
+                                                                    <buttonConfiguration key="configuration" style="plain" image="square.fill" catalog="system">
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="33"/>
+                                                                    </buttonConfiguration>
+                                                                </button>
+                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="90" id="R3j-CU-EQg"/>
-                                                                <constraint firstAttribute="height" constant="90" id="TaW-eX-gID"/>
+                                                                <constraint firstItem="cmW-tI-9i6" firstAttribute="leading" secondItem="hoV-vj-Ho7" secondAttribute="leading" id="PuT-9L-nUY"/>
+                                                                <constraint firstItem="cmW-tI-9i6" firstAttribute="top" secondItem="hoV-vj-Ho7" secondAttribute="top" id="R8v-Dz-rEw"/>
+                                                                <constraint firstAttribute="width" constant="90" id="kKD-pu-bdf"/>
+                                                                <constraint firstAttribute="trailing" secondItem="cmW-tI-9i6" secondAttribute="trailing" id="mFm-Gd-QCu"/>
+                                                                <constraint firstAttribute="height" constant="90" id="qrR-xD-CA6"/>
+                                                                <constraint firstAttribute="bottom" secondItem="cmW-tI-9i6" secondAttribute="bottom" id="tSW-az-Ig3"/>
                                                             </constraints>
-                                                            <color key="tintColor" name="TabBarItemSelectColor"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="square.fill" catalog="system">
-                                                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="33"/>
-                                                            </buttonConfiguration>
-                                                        </button>
+                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>

@@ -104,8 +104,6 @@ extension CustomMenuBar: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuBarCell.reusableIdentifier, for: indexPath) as? MenuBarCell else { return MenuBarCell() }
-//        cell.titleButton.setTitle(items[indexPath.row].title, for: .normal)
-//        cell.titleButton.isHighlighted = items[indexPath.row].isSelect
         cell.itemTitle.text = "\(items[indexPath.row].title)"
         return cell
     }
