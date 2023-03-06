@@ -9,7 +9,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-protocol GoalSettingViewDelegate {
+protocol GoalSettingViewDelegate: AnyObject {
     func tapSettingButton(goalType: GoalType, goal: String)
 }
 
@@ -33,7 +33,7 @@ class GoalSettingViewController: UIViewController {
     
     let goalType: GoalType
     
-    var delegate: GoalSettingViewDelegate?
+    weak var delegate: GoalSettingViewDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,9 +90,9 @@ class GoalSettingViewController: UIViewController {
                     return input.count <= 4
                 }
             })
-            .drive {
+            .drive { [weak self] in
                 if !$0 {
-                    self.goalLabelBindingTextField.text = String(self.goalLabelBindingTextField.text?.dropLast() ?? "")
+                    self?.goalLabelBindingTextField.text = String(self?.goalLabelBindingTextField.text?.dropLast() ?? "")
                 }
             }.disposed(by: disposeBag)
     }
@@ -108,12 +108,12 @@ class GoalSettingViewController: UIViewController {
     
     private func distanceBind() {
         goalLabelBindingTextField.rx.text.orEmpty
-            .map{ input -> String? in
+            .map{ [weak self] input -> String? in
                 if input.isEmpty {
                     return "0"
                 }
                 if input == "0" {
-                    self.goalLabelBindingTextField.text?.removeLast()
+                    self?.goalLabelBindingTextField.text?.removeLast()
                     return "0"
                 }
                 return input
