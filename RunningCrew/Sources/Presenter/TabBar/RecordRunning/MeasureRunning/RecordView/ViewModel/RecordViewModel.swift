@@ -12,10 +12,10 @@ import RxCocoa
 class RecordViewModel {
     
     //MARK: - Timer Properties
-    var runningHour: Int = 0
-    var runningMinute: Int = 0
-    var runningSecond: Int = 0
-    var timer: Timer?
+    private var runningHour: Int = 0
+    private var runningMinute: Int = 0
+    private var runningSecond: Int = 0
+    private var timer: Timer?
     let timerText: BehaviorRelay<String> = BehaviorRelay(value: "00:00:00")
     var isRunning: Bool = false
     
@@ -31,6 +31,11 @@ class RecordViewModel {
         timer?.invalidate()
     }
     
+    func deinitViewModel() {
+        self.timer?.invalidate()
+        self.timer = nil
+    }
+    
     @objc private func timerCallBack() {
         runningSecond += 1
         if runningSecond == 60 {
@@ -42,6 +47,10 @@ class RecordViewModel {
             }
         }
         timerText.accept("\(String(format: "%02d", runningHour)):\(String(format: "%02d", runningMinute)):\(String(format: "%02d", runningSecond))")
+    }
+    
+    deinit {
+        print("deinit record viewModel")
     }
     
 }

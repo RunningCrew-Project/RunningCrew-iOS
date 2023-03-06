@@ -135,7 +135,7 @@ class RecordViewController: UIViewController {
         completeButtonRingLayer = CAShapeLayer()
         guard let completeButtonRingLayer = completeButtonRingLayer else { return }
         completeButtonContainerView.layer.addSublayer(completeButtonRingLayer)
-        completeButtonRingLayer.path = UIBezierPath(arcCenter: trackLayer.position, radius: completeButton.frame.width/2+2, startAngle: 0, endAngle: .pi*2, clockwise: true).cgPath
+        completeButtonRingLayer.path = UIBezierPath(arcCenter: trackLayer.position, radius: completeButton.frame.width/2+2, startAngle: .pi * (3/2), endAngle: .pi * (7/2), clockwise: true).cgPath
         completeButtonRingLayer.strokeColor = UIColor.black.cgColor
         completeButtonRingLayer.lineWidth = 4
         completeButtonRingLayer.fillColor = UIColor.clear.cgColor
@@ -147,6 +147,9 @@ class RecordViewController: UIViewController {
     
     //MARK: - deinit
     deinit {
+        timer?.invalidate()
+        timer = nil
+        viewModel?.deinitViewModel()
         print("deinit record viewcontroller")
     }
 }
