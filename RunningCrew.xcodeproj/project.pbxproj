@@ -8,8 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
+		C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3029B9664D00ADA90C /* UIViewController+.swift */; };
+		C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */; };
+		C7211E3629B9721E00ADA90C /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */; };
+		C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3829B9EA9700ADA90C /* ImageCollectionViewCell.swift */; };
+		C7211E3B29B9EA9700ADA90C /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7211E3929B9EA9700ADA90C /* ImageCollectionViewCell.xib */; };
 		C751527929B27038003D8987 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751527829B27038003D8987 /* UIImage+.swift */; };
 		C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751527B29B34224003D8987 /* RecordViewModel.swift */; };
+		C751528029B79981003D8987 /* SaveRecordRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751527E29B79981003D8987 /* SaveRecordRunningViewController.swift */; };
+		C751528129B79981003D8987 /* SaveRecordRunningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C751527F29B79981003D8987 /* SaveRecordRunningViewController.xib */; };
 		C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */; };
 		C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */; };
 		C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */; };
@@ -81,8 +88,15 @@
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C7211E3029B9664D00ADA90C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		C7211E3829B9EA9700ADA90C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7211E3929B9EA9700ADA90C /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		C751527829B27038003D8987 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		C751527B29B34224003D8987 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		C751527E29B79981003D8987 /* SaveRecordRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveRecordRunningViewController.swift; sourceTree = "<group>"; };
+		C751527F29B79981003D8987 /* SaveRecordRunningViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SaveRecordRunningViewController.xib; sourceTree = "<group>"; };
 		C75DECF629ABB3AF00A4EC47 /* GoalSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingViewController.swift; sourceTree = "<group>"; };
 		C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordViewController.xib; sourceTree = "<group>"; };
@@ -175,6 +189,24 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C7211E3229B9717D00ADA90C /* AddImageButtonCell */ = {
+			isa = PBXGroup;
+			children = (
+				C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */,
+				C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */,
+			);
+			path = AddImageButtonCell;
+			sourceTree = "<group>";
+		};
+		C7211E3729B9EA8100ADA90C /* ImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				C7211E3829B9EA9700ADA90C /* ImageCollectionViewCell.swift */,
+				C7211E3929B9EA9700ADA90C /* ImageCollectionViewCell.xib */,
+			);
+			path = ImageCell;
+			sourceTree = "<group>";
+		};
 		C730C16329A259720076C83C /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +222,17 @@
 				C751527B29B34224003D8987 /* RecordViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C751527D29B7994B003D8987 /* SaveRunningRecord */ = {
+			isa = PBXGroup;
+			children = (
+				C7211E3729B9EA8100ADA90C /* ImageCell */,
+				C7211E3229B9717D00ADA90C /* AddImageButtonCell */,
+				C751527E29B79981003D8987 /* SaveRecordRunningViewController.swift */,
+				C751527F29B79981003D8987 /* SaveRecordRunningViewController.xib */,
+			);
+			path = SaveRunningRecord;
 			sourceTree = "<group>";
 		};
 		C75DECF529ABB36B00A4EC47 /* UI */ = {
@@ -215,6 +258,7 @@
 		C7663E5129A4BF6E0046068B /* MeasureRunning */ = {
 			isa = PBXGroup;
 			children = (
+				C751527D29B7994B003D8987 /* SaveRunningRecord */,
 				C75DECF529ABB36B00A4EC47 /* UI */,
 				C7F95B2B29AF7F8A00C69D1B /* RunningStart */,
 				C75DECFC29AE7E8300A4EC47 /* RecordView */,
@@ -453,6 +497,7 @@
 			children = (
 				C7DE6824299A85DF00C824A9 /* Color+.swift */,
 				C751527829B27038003D8987 /* UIImage+.swift */,
+				C7211E3029B9664D00ADA90C /* UIViewController+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -649,8 +694,11 @@
 			files = (
 				C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */,
 				C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */,
+				C751528129B79981003D8987 /* SaveRecordRunningViewController.xib in Resources */,
 				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
+				C7211E3B29B9EA9700ADA90C /* ImageCollectionViewCell.xib in Resources */,
 				C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */,
+				C7211E3629B9721E00ADA90C /* AddImageCollectionViewCell.xib in Resources */,
 				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
 				C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */,
@@ -789,14 +837,17 @@
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
 				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
+				C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */,
 				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
 				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
 				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C751527929B27038003D8987 /* UIImage+.swift in Sources */,
 				C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */,
+				C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
+				C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */,
 				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
@@ -804,6 +855,7 @@
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
+				C751528029B79981003D8987 /* SaveRecordRunningViewController.swift in Sources */,
 				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,

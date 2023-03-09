@@ -107,7 +107,9 @@ class RecordViewController: UIViewController {
     @objc func completeButtonTouchDown() {
         if timer == nil {
             timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: {[weak self] timer in
-                self?.dismiss(animated: true)
+                let vc = SaveRecordRunningViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self?.present(vc, animated: true)
             })
         }
         let animation = CABasicAnimation(keyPath: "strokeEnd")

@@ -1,0 +1,81 @@
+//
+//  SaveRecordRunningViewController.swift
+//  RunningCrew
+//
+//  Created by JunHwan Kim on 2023/03/08.
+//
+
+import UIKit
+import NMapsMap
+
+class SaveRecordRunningViewController: UIViewController {
+    
+    
+    @IBOutlet weak var runningCommentTextField: UITextField!
+    @IBOutlet weak var mapView: NMFMapView!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setCommentTextField()
+        setMapView()
+        setSaveButton()
+        scrollViewKeyboardHiddenSetting(scrollView: scrollView)
+        setImageCollectionView()
+    }
+    
+    //MARK: - Set UI
+    func setCommentTextField() {
+        runningCommentTextField.delegate = self
+        runningCommentTextField.layer.borderWidth = 2
+        runningCommentTextField.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    func setMapView() {
+        mapView.layer.borderWidth = 0.5
+        mapView.layer.borderColor = UIColor.black.cgColor
+        mapView.isScrollGestureEnabled = false
+    }
+    
+    func setSaveButton() {
+        saveButton.layer.cornerRadius = 10
+        saveButton.clipsToBounds = true
+    }
+    
+    //MARK: - Set CollectionView
+    func setImageCollectionView() {
+        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
+        imageCollectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ImageCollectionViewCell.reusableIdentifier)
+    }
+    
+}
+
+extension SaveRecordRunningViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        runningCommentTextField.resignFirstResponder()
+        return true
+    }
+}
+
+extension SaveRecordRunningViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reusableIdentifier, for: indexPath) as? ImageCollectionViewCell else { return ImageCollectionViewCell()}
+        
+        return cell
+    }
+    
+}
+
+extension SaveRecordRunningViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = imageCollectionView.frame.height
+        return CGSize(width: height, height: height)
+    }
+}
