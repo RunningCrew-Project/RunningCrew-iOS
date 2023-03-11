@@ -11,16 +11,6 @@ class MenuBarCell: UICollectionViewCell {
     
     static let reusableIdentifier = "MenuBarCell"
     
-    lazy var titleButton: UIButton = {
-        let button = UIButton()
-        button.setTitleColor(.lightGray, for: .normal)
-        button.setTitleColor(.black, for: .selected)
-        button.setTitleColor(.black, for: .highlighted)
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
     lazy var itemTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "NotoSansKR-Medium", size: 16)
@@ -44,13 +34,8 @@ class MenuBarCell: UICollectionViewCell {
     }
     
     private func setupView() {
-        //contentView.addSubview(titleButton)
         contentView.addSubview(itemTitle)
         NSLayoutConstraint.activate([
-//            titleButton.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            titleButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            titleButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            titleButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
             itemTitle.centerXAnchor.constraint(equalTo: centerXAnchor),
             itemTitle.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])

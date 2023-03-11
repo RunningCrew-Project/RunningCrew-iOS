@@ -71,5 +71,6 @@ class AlarmViewController: CustomTopTabBarController {
             pageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
 }
 

@@ -10,7 +10,6 @@ import NMapsMap
 
 class SaveRecordRunningViewController: UIViewController {
     
-    
     @IBOutlet weak var runningCommentTextField: UITextField!
     @IBOutlet weak var mapView: NMFMapView!
     @IBOutlet weak var saveButton: UIButton!
@@ -48,9 +47,14 @@ class SaveRecordRunningViewController: UIViewController {
     func setImageCollectionView() {
         imageCollectionView.dataSource = self
         imageCollectionView.delegate = self
-        imageCollectionView.register(UINib(nibName: "ImageCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: ImageCollectionViewCell.reusableIdentifier)
+        imageCollectionView.register(UINib(nibName: ImageCollectionViewCell.reusableIdentifier, bundle: nil), forCellWithReuseIdentifier: ImageCollectionViewCell.reusableIdentifier)
+        imageCollectionView.register(UINib(nibName: AddImageCollectionViewCell.identifier, bundle: nil), forCellWithReuseIdentifier: AddImageCollectionViewCell.identifier)
     }
     
+    //MARK: - Action
+    @IBAction func tapCloseButton(_ sender: Any) {
+        showAlert()
+    }
 }
 
 extension SaveRecordRunningViewController: UITextFieldDelegate {
@@ -66,9 +70,14 @@ extension SaveRecordRunningViewController: UICollectionViewDelegate, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reusableIdentifier, for: indexPath) as? ImageCollectionViewCell else { return ImageCollectionViewCell()}
-        
-        return cell
+        if indexPath.row == 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AddImageCollectionViewCell.identifier, for: indexPath) as? AddImageCollectionViewCell else { return AddImageCollectionViewCell() }
+            return cell
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCollectionViewCell.reusableIdentifier, for: indexPath) as? ImageCollectionViewCell else { return ImageCollectionViewCell()}
+            
+            return cell
+        }
     }
     
 }

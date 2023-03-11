@@ -10,6 +10,7 @@ import UIKit
 
 extension UIViewController {
     
+    //MARK: - Keyboard
     func scrollViewKeyboardHiddenSetting(scrollView: UIScrollView) {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(tapScrollView))
         scrollView.addGestureRecognizer(gesture)
@@ -17,5 +18,12 @@ extension UIViewController {
     
     @objc func tapScrollView() {
         self.view.endEditing(true)
+    }
+    
+    //MARK: - Alert
+    func showAlert() {
+        let customAlterVC = CustomAlertViewController()
+        customAlterVC.modalPresentationStyle = .overFullScreen
+        present(customAlterVC, animated: true)
     }
 }
