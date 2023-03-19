@@ -21,7 +21,6 @@ class SaveRecordRunningViewController: UIViewController {
         setCommentTextField()
         setMapView()
         setSaveButton()
-        scrollViewKeyboardHiddenSetting(scrollView: scrollView)
         setImageCollectionView()
     }
     
@@ -66,7 +65,7 @@ extension SaveRecordRunningViewController: UITextFieldDelegate {
 
 extension SaveRecordRunningViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        3
+        return 20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -78,6 +77,11 @@ extension SaveRecordRunningViewController: UICollectionViewDelegate, UICollectio
             
             return cell
         }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
     }
     
 }

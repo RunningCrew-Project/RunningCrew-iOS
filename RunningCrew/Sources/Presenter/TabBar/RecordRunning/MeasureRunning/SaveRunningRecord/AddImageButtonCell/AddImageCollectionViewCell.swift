@@ -8,11 +8,16 @@
 import UIKit
 
 class AddImageCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var addCellBackgroundView: UIView!
+    static let identifier = "AddImageCollectionViewCell"
 
+    @IBOutlet weak var imageCountLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.gray.cgColor
+        addCellBackgroundView.layer.borderWidth = 2
+        addCellBackgroundView.layer.borderColor = UIColor.gray.cgColor
     }
 
 }

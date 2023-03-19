@@ -38,6 +38,8 @@
 		C7A1F21929BA385A009AE7BA /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1F21829BA385A009AE7BA /* UIView+.swift */; };
 		C7A4CE5429BC2135000DAE8B /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4CE5229BC2135000DAE8B /* ImagePickerViewController.swift */; };
 		C7A4CE5529BC2135000DAE8B /* ImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A4CE5329BC2135000DAE8B /* ImagePickerViewController.xib */; };
+		C7A4CE5D29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A4CE5B29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift */; };
+		C7A4CE5E29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A4CE5C29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib */; };
 		C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */; };
 		C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */; };
 		C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F22998DFC200C824A9 /* Coordinator.swift */; };
@@ -63,6 +65,9 @@
 		C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */; };
 		C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */; };
 		C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */; };
+		C7E00A1C29C1AF8D00B39709 /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E00A1B29C1AF8D00B39709 /* ImagePickerViewModel.swift */; };
+		C7E00A2329C36F4900B39709 /* CameraCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E00A2129C36F4900B39709 /* CameraCollectionViewCell.swift */; };
+		C7E00A2429C36F4900B39709 /* CameraCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7E00A2229C36F4900B39709 /* CameraCollectionViewCell.xib */; };
 		C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */; };
 		D8FCCC736C08611D78F2F5DA /* Pods_RunningCrew_RunningCrewUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49645AC81E6AA34CA37B1351 /* Pods_RunningCrew_RunningCrewUITests.framework */; };
 		E912946796E36DF3B40E1925 /* Pods_RunningCrewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */; };
@@ -127,6 +132,8 @@
 		C7A1F21829BA385A009AE7BA /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C7A4CE5229BC2135000DAE8B /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		C7A4CE5329BC2135000DAE8B /* ImagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePickerViewController.xib; sourceTree = "<group>"; };
+		C7A4CE5B29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7A4CE5C29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePickerCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		C7BA068229A3A52700D2227A /* DEBUG.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEBUG.xcconfig; sourceTree = "<group>"; };
@@ -153,6 +160,9 @@
 		C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningViewController.swift; sourceTree = "<group>"; };
 		C7DE6846299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewAlarmTableViewCell.swift; sourceTree = "<group>"; };
 		C7DE6847299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CrewAlarmTableViewCell.xib; sourceTree = "<group>"; };
+		C7E00A1B29C1AF8D00B39709 /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
+		C7E00A2129C36F4900B39709 /* CameraCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7E00A2229C36F4900B39709 /* CameraCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartViewModel.swift; sourceTree = "<group>"; };
 		C8E83F46D38D17331033544B /* Pods-RunningCrew.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.release.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.release.xcconfig"; sourceTree = "<group>"; };
 		D0BCB0478C25AB8849DDAF93 /* Pods-RunningCrewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrewTests.release.xcconfig"; path = "Target Support Files/Pods-RunningCrewTests/Pods-RunningCrewTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -376,10 +386,22 @@
 		C7A4CE5129BC2109000DAE8B /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
+				C7E00A1A29C1AF7E00B39709 /* ViewModel */,
+				C7E00A2029C36F2C00B39709 /* CameraCell */,
+				C7A4CE5629BCABE9000DAE8B /* ImagePickerCell */,
 				C7A4CE5229BC2135000DAE8B /* ImagePickerViewController.swift */,
 				C7A4CE5329BC2135000DAE8B /* ImagePickerViewController.xib */,
 			);
 			path = ImagePicker;
+			sourceTree = "<group>";
+		};
+		C7A4CE5629BCABE9000DAE8B /* ImagePickerCell */ = {
+			isa = PBXGroup;
+			children = (
+				C7A4CE5B29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift */,
+				C7A4CE5C29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib */,
+			);
+			path = ImagePickerCell;
 			sourceTree = "<group>";
 		};
 		C7DE67E92997AA3600C824A9 /* Application */ = {
@@ -587,6 +609,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		C7E00A1A29C1AF7E00B39709 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C7E00A1B29C1AF8D00B39709 /* ImagePickerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C7E00A2029C36F2C00B39709 /* CameraCell */ = {
+			isa = PBXGroup;
+			children = (
+				C7E00A2129C36F4900B39709 /* CameraCollectionViewCell.swift */,
+				C7E00A2229C36F4900B39709 /* CameraCollectionViewCell.xib */,
+			);
+			path = CameraCell;
+			sourceTree = "<group>";
+		};
 		C7F95B2B29AF7F8A00C69D1B /* RunningStart */ = {
 			isa = PBXGroup;
 			children = (
@@ -725,6 +764,7 @@
 			files = (
 				C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */,
 				C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */,
+				C7A4CE5E29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib in Resources */,
 				C751528129B79981003D8987 /* SaveRecordRunningViewController.xib in Resources */,
 				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
 				C7A1F21729BA1194009AE7BA /* CustomAlertViewController.xib in Resources */,
@@ -735,6 +775,7 @@
 				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
 				C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */,
+				C7E00A2429C36F4900B39709 /* CameraCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,8 +924,10 @@
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
 				C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */,
+				C7E00A2329C36F4900B39709 /* CameraCollectionViewCell.swift in Sources */,
 				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
 				C7A1F21629BA1194009AE7BA /* CustomAlertViewController.swift in Sources */,
+				C7E00A1C29C1AF8D00B39709 /* ImagePickerViewModel.swift in Sources */,
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
 				C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */,
@@ -892,6 +935,7 @@
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
 				C751528029B79981003D8987 /* SaveRecordRunningViewController.swift in Sources */,
+				C7A4CE5D29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift in Sources */,
 				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
