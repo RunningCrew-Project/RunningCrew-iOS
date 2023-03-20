@@ -15,6 +15,7 @@ included:
 
 excluded:
 - Pods
+- RunningCrew/Sources/Presenter
 
 line_length:
 
