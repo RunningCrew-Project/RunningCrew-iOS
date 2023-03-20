@@ -42,6 +42,7 @@
 		C7A4CE5E29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A4CE5C29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib */; };
 		C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */; };
 		C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */; };
+		C7D5FB6B29C829ED00F54568 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C7D5FB6A29C829ED00F54568 /* .swiftlint.yml */; };
 		C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F22998DFC200C824A9 /* Coordinator.swift */; };
 		C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */; };
 		C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */; };
@@ -137,6 +138,7 @@
 		C7BA067B29A25AF100D2227A /* NotoSansKR-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Bold.otf"; sourceTree = "<group>"; };
 		C7BA067D29A25B6B00D2227A /* NotoSansKR-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansKR-Medium.otf"; sourceTree = "<group>"; };
 		C7BA068229A3A52700D2227A /* DEBUG.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEBUG.xcconfig; sourceTree = "<group>"; };
+		C7D5FB6A29C829ED00F54568 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C7DE67F22998DFC200C824A9 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C7DE67F52998E4D300C824A9 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		C7670EDB2995460800E3CD77 = {
 			isa = PBXGroup;
 			children = (
+				C7D5FB6A29C829ED00F54568 /* .swiftlint.yml */,
 				C7670EE62995460800E3CD77 /* RunningCrew */,
 				C7670EFD2995460900E3CD77 /* RunningCrewTests */,
 				C7670F072995460900E3CD77 /* RunningCrewUITests */,
@@ -665,6 +668,7 @@
 				C7670EE12995460800E3CD77 /* Frameworks */,
 				C7670EE22995460800E3CD77 /* Resources */,
 				7C9AF51D8AE76869CDD8D90C /* [CP] Embed Pods Frameworks */,
+				C7D5FB6929C8293600F54568 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -762,6 +766,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D5FB6B29C829ED00F54568 /* .swiftlint.yml in Resources */,
 				C75DECFB29AE7E7D00A4EC47 /* RecordViewController.xib in Resources */,
 				C7BA067E29A25B6B00D2227A /* NotoSansKR-Medium.otf in Resources */,
 				C7A4CE5E29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.xib in Resources */,
@@ -895,6 +900,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunningCrew/Pods-RunningCrew-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C7D5FB6929C8293600F54568 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
