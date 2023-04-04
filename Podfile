@@ -10,6 +10,7 @@ target 'RunningCrew' do
     pod 'RxCocoa', '6.5.0'
     pod 'NMapsMap', '3.15.0'
     pod 'SwiftLint', '0.48.0'
+    pod 'SnapKit', '~> 5.6.0'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing
