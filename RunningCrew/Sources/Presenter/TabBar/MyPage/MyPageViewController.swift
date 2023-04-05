@@ -100,5 +100,6 @@ class MyPageViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = setButton
     }
 
+    //샘플 주석 추가
 
 }
