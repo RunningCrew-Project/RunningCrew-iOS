@@ -18,6 +18,8 @@ final class MyPageCoordinator: Coordinator {
     }
     
     func start() {
+        let mypageVC: MyPageViewController = .init()
+        self.navigationController.pushViewController(mypageVC, animated: false)
         
     }
     

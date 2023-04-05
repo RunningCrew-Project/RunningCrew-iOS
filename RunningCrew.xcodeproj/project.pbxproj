@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
+		BE70B7C629DC7F1F006DC224 /* ProfileStackview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE70B7C529DC7F1F006DC224 /* ProfileStackview.swift */; };
 		C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3029B9664D00ADA90C /* UIViewController+.swift */; };
 		C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */; };
 		C7211E3629B9721E00ADA90C /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */; };
@@ -98,6 +99,7 @@
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE70B7C529DC7F1F006DC224 /* ProfileStackview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileStackview.swift; sourceTree = "<group>"; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7211E3029B9664D00ADA90C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +210,14 @@
 				D0BCB0478C25AB8849DDAF93 /* Pods-RunningCrewTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BE70B7C229DC7E71006DC224 /* ProfileStackview */ = {
+			isa = PBXGroup;
+			children = (
+				BE70B7C529DC7F1F006DC224 /* ProfileStackview.swift */,
+			);
+			path = ProfileStackview;
 			sourceTree = "<group>";
 		};
 		C7211E3229B9717D00ADA90C /* AddImageButtonCell */ = {
@@ -498,6 +508,7 @@
 		C7DE68002999374300C824A9 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				BE70B7C229DC7E71006DC224 /* ProfileStackview */,
 				C7DE6807299938C000C824A9 /* Coordinator */,
 				C7DE68012999376800C824A9 /* MyPageViewController.swift */,
 			);
@@ -935,6 +946,7 @@
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
 				C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */,
 				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
+				BE70B7C629DC7F1F006DC224 /* ProfileStackview.swift in Sources */,
 				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
 				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
