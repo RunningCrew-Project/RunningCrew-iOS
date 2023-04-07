@@ -11,12 +11,12 @@ import SnapKit
 class MyPageViewController: UIViewController {
     //MARK: - UI ProPerties
     
-    lazy var profileStackview:UIStackView = {
-        let stackview = UIStackView()
-        stackview.backgroundColor = .white
-        stackview.autoresizingMask = [.flexibleTopMargin, .flexibleHeight]
+    lazy var profileView:UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+//        stackview.autoresizingMask = [.flexibleTopMargin, .flexibleHeight]
         
-        return stackview
+        return view
     }()
     
     lazy var profileImage:UIImageView = {
@@ -26,12 +26,22 @@ class MyPageViewController: UIViewController {
         return iamgeView
     }()
     
+    lazy var container:UIStackView = {
+        let stackview = UIStackView()
+        stackview.axis = .horizontal
+        stackview.alignment = .center
+        
+        return stackview
+    }()
+    
     lazy var profileTitle:UILabel = {
         let label = UILabel()
         label.text = "닉네임"
+        label.font = UIFont(name: "NotoSansKR-Medium", size: 24)
         
         return label
     }()
+    
     
     lazy var profileChagneButton:UIButton = {
         let button = UIButton()
@@ -49,7 +59,6 @@ class MyPageViewController: UIViewController {
         setAddView()
         setView()
         setConstraint()
-    
     }
     //MARK: - Define Method
 
@@ -57,29 +66,27 @@ class MyPageViewController: UIViewController {
     //MARK: - Set UI
     
     func setAddView(){
-        view.addSubview(profileStackview)
-        profileStackview.addArrangedSubview(profileImage)
-        profileStackview.addArrangedSubview(profileTitle)
-        profileStackview.addArrangedSubview(profileChagneButton)
+        view.addSubview(profileView)
+        profileView.addSubview(profileImage)
+        container.addArrangedSubview(profileTitle)
+        container.addArrangedSubview(profileChagneButton)
+        profileView.addSubview(container)
     }
     
     func setView() {
         view.backgroundColor = .white
     }
     
-    func setprofileStackview() {
-        profileStackview.axis = .horizontal
-        profileStackview.alignment = .trailing
-    }
-    
     
     func setConstraint() {
-        profileStackviewConstraint()
+        profileViewConstraint()
         profileImageConstraint()
+        containercConstraint()
+        profileChagneButtonConstraint()
     }
     
-    func profileStackviewConstraint() {
-        profileStackview.snp.makeConstraints { make in
+    func profileViewConstraint() {
+        profileView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.height.equalTo(view.snp.height).multipliedBy(CGFloat(Double(166) / Double(1624)))
@@ -88,10 +95,26 @@ class MyPageViewController: UIViewController {
     
     func profileImageConstraint() {
         profileImage.snp.makeConstraints { make in
-            make.height.width.equalTo(view.snp.height).multipliedBy(CGFloat(Double(166) / Double(1624)))
+            make.height.width.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(CGFloat(Double(166) / Double(1624)))
+            make.leading.equalTo(profileView.snp.leading).offset(48)
+            make.centerY.equalTo(profileView.snp.centerY)
         }
     }
     
+    func containercConstraint() {
+        container.snp.makeConstraints { make in
+            make.centerY.equalTo(profileView.snp.centerY)
+            make.centerX.equalTo(profileView.snp.centerX)
+        }
+    }
+
+    
+    func profileChagneButtonConstraint() {
+        profileChagneButton.snp.makeConstraints { make in
+            make.height.width.equalTo(view.snp.height).multipliedBy(CGFloat(Double(65) / Double(1624)))
+        }
+        
+    }
     
     func setNavigationBar() {
         let setImage = UIImage(systemName: "gearshape")
@@ -100,6 +123,6 @@ class MyPageViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = setButton
     }
 
-    //샘플
+    
 
 }
