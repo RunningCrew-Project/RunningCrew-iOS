@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
-		BE54B0DE29E2A07100FAF893 /* MyPageCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54B0DD29E2A07100FAF893 /* MyPageCalendarViewController.swift */; };
+		BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */; };
 		BE741D7729DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741D7529DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift */; };
 		BE741D7829DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE741D7629DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib */; };
 		BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */; };
@@ -102,7 +102,7 @@
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BE54B0DD29E2A07100FAF893 /* MyPageCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarViewController.swift; sourceTree = "<group>"; };
+		BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarView.swift; sourceTree = "<group>"; };
 		BE741D7529DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
 		BE741D7629DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageMyRunningCollectionViewCell.xib; sourceTree = "<group>"; };
 		BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningViewController.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 		BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				BE54B0DD29E2A07100FAF893 /* MyPageCalendarViewController.swift */,
+				BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */,
 			);
 			path = MyPageCalendar;
 			sourceTree = "<group>";
@@ -978,7 +978,6 @@
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C751527929B27038003D8987 /* UIImage+.swift in Sources */,
 				C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */,
-				BE54B0DE29E2A07100FAF893 /* MyPageCalendarViewController.swift in Sources */,
 				C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
@@ -997,6 +996,7 @@
 				C7A4CE5D29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift in Sources */,
 				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
+				BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
 				C7663E8129ABA5720046068B /* GoalSettingLabelStackView.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,

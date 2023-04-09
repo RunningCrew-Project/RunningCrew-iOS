@@ -7,7 +7,7 @@
 
 import UIKit
 import FSCalendar
-class MyPageCalendarViewController: UIViewController {
+class MyPageCalendarViewController:  {
     //MARK: - UI ProPerties
     
 
