@@ -61,6 +61,12 @@ class MyPageViewController: UIViewController {
         setConstraint()
     }
     //MARK: - Define Method
+    func setNavigationBar() {
+        let setImage = UIImage(systemName: "gearshape")
+        let setButton = UIBarButtonItem(image: setImage, style: .plain, target: self, action: nil)
+        self.navigationItem.title = "마이페이지"
+        self.navigationItem.rightBarButtonItem = setButton
+    }
 
     
     //MARK: - Set UI
@@ -116,13 +122,7 @@ class MyPageViewController: UIViewController {
         
     }
     
-    func setNavigationBar() {
-        let setImage = UIImage(systemName: "gearshape")
-        let setButton = UIBarButtonItem(image: setImage, style: .plain, target: self, action: nil)
-        self.navigationItem.title = "마이페이지"
-        self.navigationItem.rightBarButtonItem = setButton
-    }
-
+  
     
 
 }

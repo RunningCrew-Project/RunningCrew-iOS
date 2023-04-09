@@ -1,4 +1,5 @@
 PODS:
+  - FSCalendar (2.8.4)
   - NMapsMap (3.15.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
@@ -10,6 +11,7 @@ PODS:
   - SwiftLint (0.48.0)
 
 DEPENDENCIES:
+  - FSCalendar
   - NMapsMap (= 3.15.0)
   - RxCocoa (= 6.5.0)
   - RxSwift (= 6.5.0)
@@ -18,6 +20,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - FSCalendar
     - NMapsMap
     - RxCocoa
     - RxRelay
@@ -26,6 +29,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
   NMapsMap: f151761c088d6516064c59da03ab6503769486e6
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -33,6 +37,6 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
 
-PODFILE CHECKSUM: ae8c9c825b3fd2646301927bc7c279d2be88ac46
+PODFILE CHECKSUM: 83767c142c9fbb33fa1475e9d5be4f0089fc6244
 
 COCOAPODS: 1.12.0

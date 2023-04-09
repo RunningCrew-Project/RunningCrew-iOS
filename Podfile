@@ -11,6 +11,7 @@ target 'RunningCrew' do
     pod 'NMapsMap', '3.15.0'
     pod 'SwiftLint', '0.48.0'
     pod 'SnapKit', '~> 5.6.0'
+    pod 'FSCalendar'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing
