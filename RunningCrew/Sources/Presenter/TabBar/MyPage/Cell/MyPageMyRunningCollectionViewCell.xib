@@ -18,10 +18,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="gTV-IL-0wX" customClass="MyPageMyRunningCollectionViewCell" customModule="RunningCrew" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="357" height="125"/>
+            <rect key="frame" x="0.0" y="0.0" width="327" height="125"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="357" height="125"/>
+                <rect key="frame" x="0.0" y="0.0" width="327" height="125"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B크루 정기 러닝" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oX4-St-5d0">
@@ -51,23 +51,23 @@
                             </label>
                         </subviews>
                     </stackView>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="lastBaseline" spacing="30" id="WEp-AM-DIf">
-                        <rect key="frame" x="20" y="97" width="282" height="35"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="lastBaseline" spacing="16" id="WEp-AM-DIf">
+                        <rect key="frame" x="20" y="97" width="252" height="35"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" id="fx3-58-hDz">
-                                <rect key="frame" x="0.0" y="0.0" width="56.666666666666664" height="17.666666666666668"/>
+                                <rect key="frame" x="0.0" y="0.0" width="56.333333333333336" height="17.666666666666668"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="거리" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7I5-jg-0i9">
-                                        <rect key="frame" x="0.0" y="0.0" width="23" height="17.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22.666666666666668" height="17.666666666666668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5KM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RAs-k9-gGx">
-                                        <rect key="frame" x="31" y="0.0" width="25.666666666666671" height="17.666666666666668"/>
+                                        <rect key="frame" x="30.666666666666664" y="0.0" width="25.666666666666664" height="17.666666666666668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                         <nil key="textColor"/>
@@ -76,18 +76,18 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" id="fQ5-TG-jZN">
-                                <rect key="frame" x="86.666666666666671" y="0.0" width="63.666666666666671" height="17.666666666666668"/>
+                                <rect key="frame" x="72.333333333333329" y="0.0" width="62.999999999999986" height="17.666666666666668"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시간" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DdI-GK-GJN">
-                                        <rect key="frame" x="0.0" y="0.0" width="23.333333333333332" height="17.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="22.666666666666668" height="17.666666666666668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="33:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yiG-H6-h5O">
-                                        <rect key="frame" x="31.333333333333332" y="0.0" width="32.333333333333343" height="17.666666666666668"/>
+                                        <rect key="frame" x="30.666666666666675" y="0.0" width="32.333333333333343" height="17.666666666666668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                         <nil key="textColor"/>
@@ -96,18 +96,18 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" id="ruy-Ze-qcG">
-                                <rect key="frame" x="180.33333333333334" y="0.0" width="101.66666666666666" height="17.666666666666668"/>
+                                <rect key="frame" x="151.33333333333334" y="0.0" width="100.66666666666666" height="17.666666666666668"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="평균 페이스" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gaG-Jp-li6">
-                                        <rect key="frame" x="0.0" y="0.0" width="60.666666666666664" height="17.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="17.666666666666668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Medium" family="Noto Sans KR" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6'42''" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5pZ-Oz-fMY">
-                                        <rect key="frame" x="68.666666666666657" y="0.0" width="33" height="17.666666666666668"/>
+                                        <rect key="frame" x="67.666666666666657" y="0.0" width="33" height="17.666666666666668"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NotoSansKR-Bold" family="Noto Sans KR" pointSize="12"/>
                                         <nil key="textColor"/>
@@ -120,17 +120,16 @@
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.92156863209999995" green="0.92156863209999995" blue="0.92156863209999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-            <size key="customSize" width="357" height="136"/>
+            <size key="customSize" width="322" height="143"/>
             <connections>
-                <outlet property="dd" destination="8sh-xm-axT" id="3U0-Dx-IX9"/>
                 <outlet property="runningDate" destination="lK0-eK-6Vx" id="I9O-9O-8Np"/>
                 <outlet property="runningDistance" destination="RAs-k9-gGx" id="A7E-9Z-Wes"/>
                 <outlet property="runningEverage" destination="5pZ-Oz-fMY" id="zfC-qK-zNX"/>
+                <outlet property="runningPlace" destination="8sh-xm-axT" id="pZr-LZ-Q30"/>
                 <outlet property="runningTime" destination="yiG-H6-h5O" id="Q4l-xA-gtz"/>
-                <outlet property="runningTitel" destination="oX4-St-5d0" id="VQr-EJ-hsH"/>
                 <outlet property="runningTitle" destination="oX4-St-5d0" id="Hvs-na-oJN"/>
             </connections>
-            <point key="canvasLocation" x="138.1679389312977" y="22.887323943661972"/>
+            <point key="canvasLocation" x="110.68702290076335" y="25.35211267605634"/>
         </collectionViewCell>
     </objects>
 </document>

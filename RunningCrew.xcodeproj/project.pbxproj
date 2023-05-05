@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
 		BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */; };
-		BE741D7729DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE741D7529DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift */; };
-		BE741D7829DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE741D7629DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib */; };
+		BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */; };
 		BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */; };
+		BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */; };
+		BEEAFDD72A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */; };
 		C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3029B9664D00ADA90C /* UIViewController+.swift */; };
 		C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */; };
 		C7211E3629B9721E00ADA90C /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */; };
@@ -103,9 +104,10 @@
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarView.swift; sourceTree = "<group>"; };
-		BE741D7529DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
-		BE741D7629DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageMyRunningCollectionViewCell.xib; sourceTree = "<group>"; };
+		BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarViewController.swift; sourceTree = "<group>"; };
 		BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningViewController.swift; sourceTree = "<group>"; };
+		BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningCollectionView.swift; sourceTree = "<group>"; };
+		BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7211E3029B9664D00ADA90C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -221,7 +223,6 @@
 		BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */ = {
 			isa = PBXGroup;
 			children = (
-				BEE5E4DC29DFE41A00A49FC5 /* Cell */,
 				BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */,
 			);
 			path = MyPageMyRunning;
@@ -230,8 +231,7 @@
 		BEE5E4DC29DFE41A00A49FC5 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				BE741D7529DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift */,
-				BE741D7629DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib */,
+				BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -240,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */,
+				BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */,
 			);
 			path = MyPageCalendar;
 			sourceTree = "<group>";
@@ -532,6 +533,8 @@
 		C7DE68002999374300C824A9 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */,
+				BEE5E4DC29DFE41A00A49FC5 /* Cell */,
 				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
 				BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */,
 				C7DE6807299938C000C824A9 /* Coordinator */,
@@ -764,6 +767,7 @@
 				TargetAttributes = {
 					C7670EE32995460800E3CD77 = {
 						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1430;
 					};
 					C7670EF92995460900E3CD77 = {
 						CreatedOnToolsVersion = 14.2;
@@ -807,7 +811,6 @@
 				C751528129B79981003D8987 /* SaveRecordRunningViewController.xib in Resources */,
 				C7DE6849299FD4AC00C824A9 /* CrewAlarmTableViewCell.xib in Resources */,
 				C7A1F21729BA1194009AE7BA /* CustomAlertViewController.xib in Resources */,
-				BE741D7829DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.xib in Resources */,
 				C7211E3B29B9EA9700ADA90C /* ImageCollectionViewCell.xib in Resources */,
 				C7A4CE5529BC2135000DAE8B /* ImagePickerViewController.xib in Resources */,
 				C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */,
@@ -975,6 +978,7 @@
 				C7DE6822299A858300C824A9 /* CustomTabBar.swift in Sources */,
 				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
 				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
+				BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				C751527929B27038003D8987 /* UIImage+.swift in Sources */,
 				C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */,
@@ -989,6 +993,7 @@
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
 				C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */,
+				BEEAFDD72A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift in Sources */,
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
@@ -1000,11 +1005,11 @@
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
 				C7663E8129ABA5720046068B /* GoalSettingLabelStackView.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
-				BE741D7729DFD09300FDC439 /* MyPageMyRunningCollectionViewCell.swift in Sources */,
 				C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
 				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
 				C7811F7429A201B700801E6B /* DotView.swift in Sources */,
+				BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */,
 				C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */,
 				C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */,
 			);
@@ -1163,6 +1168,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FQ63CT4A3G;
@@ -1186,6 +1192,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tekim.RunningCrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1197,6 +1204,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FQ63CT4A3G;

@@ -12,23 +12,21 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
     static let identifier = "MyPageMyRunningCollectionViewCell"
 
     @IBOutlet weak var runningTitle: UILabel!
-    @IBOutlet weak var runningPlace: UILabel!
     @IBOutlet weak var runningDistance: UILabel!
     @IBOutlet weak var runningDate: UILabel!
     @IBOutlet weak var runningTime: UILabel!
     @IBOutlet weak var runningEverage: UILabel!
     
     
+    @IBOutlet weak var runningPlace: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setShadow()
-        
-    
     }
-    
+
     func setCell (){
-        contentView.layer.cornerRadius = 14
+        contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true
     }
     

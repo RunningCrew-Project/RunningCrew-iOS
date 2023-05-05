@@ -19,7 +19,15 @@ final class MyPageCoordinator: Coordinator {
     
     func start() {
         let mypageVC: MyPageViewController = .init()
+        let myrunningVC = MyPageMyRunningViewController()
+        myrunningVC.tabBarItem.title = "마이러닝"
+        let calendarVC = MyPageCalendarViewController()
+        calendarVC.tabBarItem.title = "캘린더"
+        mypageVC.setItems(items: [myrunningVC, calendarVC])
         self.navigationController.pushViewController(mypageVC, animated: false)
+        
+        
+        
         
     }
     

@@ -8,16 +8,17 @@
 import UIKit
 import SnapKit
 
-class MyPageViewController: UIViewController {
+class MyPageViewController: CustomTopTabBarController {
     //MARK: - UI ProPerties
+    
     
     lazy var profileView:UIView = {
         let view = UIView()
         view.backgroundColor = .white
-//        stackview.autoresizingMask = [.flexibleTopMargin, .flexibleHeight]
         
         return view
     }()
+    
     
     lazy var profileImage:UIImageView = {
         let iamgeView = UIImageView()
@@ -49,7 +50,15 @@ class MyPageViewController: UIViewController {
         
         return button
     }()
-
+    
+//    lazy var calendar = MyPageClendarView()
+    
+    lazy var topTabBarContainer: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
     
     //MARK: - Properties
 
@@ -59,6 +68,7 @@ class MyPageViewController: UIViewController {
         setAddView()
         setView()
         setConstraint()
+        topTabBarMenu.delegate = self
     }
     //MARK: - Define Method
     func setNavigationBar() {
@@ -77,6 +87,9 @@ class MyPageViewController: UIViewController {
         container.addArrangedSubview(profileTitle)
         container.addArrangedSubview(profileChagneButton)
         profileView.addSubview(container)
+        view.addSubview(topTabBarContainer)
+        topTabBarContainer.addSubview(topTabBarMenu)
+        view.addSubview(pageView)
     }
     
     func setView() {
@@ -89,6 +102,9 @@ class MyPageViewController: UIViewController {
         profileImageConstraint()
         containercConstraint()
         profileChagneButtonConstraint()
+        setTopTabContainer()
+        setTopTabBarConstraint()
+        setPageViewConstraint()
     }
     
     func profileViewConstraint() {
@@ -101,7 +117,8 @@ class MyPageViewController: UIViewController {
     
     func profileImageConstraint() {
         profileImage.snp.makeConstraints { make in
-            make.height.width.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(CGFloat(Double(166) / Double(1624)))
+//            make.height.width.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(CGFloat(Double(166) / Double(1624)))
+            make.height.width.equalTo(84)
             make.leading.equalTo(profileView.snp.leading).offset(48)
             make.centerY.equalTo(profileView.snp.centerY)
         }
@@ -110,7 +127,7 @@ class MyPageViewController: UIViewController {
     func containercConstraint() {
         container.snp.makeConstraints { make in
             make.centerY.equalTo(profileView.snp.centerY)
-            make.centerX.equalTo(profileView.snp.centerX)
+            make.leading.equalToSuperview().offset(155)
         }
     }
 
@@ -122,7 +139,39 @@ class MyPageViewController: UIViewController {
         
     }
     
-  
-    
+//    func calendarConstraint(){
+//        calendar.snp.makeConstraints { make in
+//            make.center.equalTo(view.center)
+//        }
+//
+//    }
 
+    
+    func setTopTabContainer() {
+        NSLayoutConstraint.activate([
+
+            topTabBarContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            topTabBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topTabBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topTabBarContainer.heightAnchor.constraint(equalToConstant: view.frame.height * (Double(120)/Double(1624)))
+        ])
+    }
+    
+    func setTopTabBarConstraint() {
+        NSLayoutConstraint.activate([
+            topTabBarMenu.topAnchor.constraint(equalTo: topTabBarContainer.topAnchor),
+            topTabBarMenu.leadingAnchor.constraint(equalTo: topTabBarContainer.leadingAnchor),
+            topTabBarMenu.trailingAnchor.constraint(equalTo: topTabBarContainer.trailingAnchor),
+            topTabBarMenu.bottomAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor)
+        ])
+    }
+    
+    func setPageViewConstraint() {
+        NSLayoutConstraint.activate([
+            pageView.topAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor),
+            pageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            pageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            pageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+    }
 }
