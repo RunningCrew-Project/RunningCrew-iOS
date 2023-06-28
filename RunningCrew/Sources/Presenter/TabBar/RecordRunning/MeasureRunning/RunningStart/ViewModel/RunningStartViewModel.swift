@@ -29,3 +29,6 @@ class RunningStartViewModel {
     }
     
 }
+
+// Relay 스스로가 관찰 가능하고 관찰을 받을 수 있는 것
+// ViewModel의 목적이 비지니스 로직의 분리

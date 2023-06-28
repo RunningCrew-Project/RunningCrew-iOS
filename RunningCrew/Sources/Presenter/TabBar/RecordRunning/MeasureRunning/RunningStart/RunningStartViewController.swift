@@ -146,7 +146,6 @@ class RunningStartViewController: UIViewController {
             startButtonStackView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: view.frame.height * (CGFloat(71) / CGFloat(1624))),
             startButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: CGFloat(180) / CGFloat(1624)),
             startButton.widthAnchor.constraint(equalTo: startButton.heightAnchor)
-            
         ])
     }
     
