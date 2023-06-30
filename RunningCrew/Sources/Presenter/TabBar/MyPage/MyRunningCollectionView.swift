@@ -9,7 +9,6 @@ import UIKit
 
 class MyRunningCollectionView:UIView {
     
-    
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: CGRect(), collectionViewLayout: flowLayout)
@@ -69,8 +68,6 @@ extension MyRunningCollectionView: UICollectionViewDelegate, UICollectionViewDat
 extension MyRunningCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let viewsize = collectionView.frame.width
-//        let width = viewsize/2
         let width = self.frame.inset(by: UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)).width
         let height = 125.0
         
