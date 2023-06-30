@@ -11,7 +11,6 @@ import UIKit
 final class CrewCoordinator: Coordinator {
     
     var navigationController: UINavigationController
-    
     var childCoordinators: [Coordinator] = []
     
     init(_ navigationController: UINavigationController) {
@@ -22,6 +21,11 @@ final class CrewCoordinator: Coordinator {
         let vc = CrewViewController()
         navigationController.pushViewController(vc, animated: false)
     }
-    
+    func presentCrewGenerateViewController(_ viewController: UIViewController) {
+        let vc = CrewGenerateViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .fullScreen
+        viewController.present(nav, animated: true)
+    }
     
 }

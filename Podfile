@@ -12,6 +12,7 @@ target 'RunningCrew' do
     pod 'SwiftLint', '0.48.0'
     pod 'SnapKit', '~> 5.6.0'
     pod 'FSCalendar'
+    pod 'YPImagePicker'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing

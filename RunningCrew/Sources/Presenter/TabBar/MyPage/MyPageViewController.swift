@@ -175,3 +175,6 @@ class MyPageViewController: CustomTopTabBarController {
         ])
     }
 }
+
+// 회원가입 뷰모델
+

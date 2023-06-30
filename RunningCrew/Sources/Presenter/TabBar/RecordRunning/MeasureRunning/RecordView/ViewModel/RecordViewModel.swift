@@ -10,12 +10,12 @@ import RxSwift
 import RxCocoa
 
 class RecordViewModel {
-    
     //MARK: - Timer Properties
     private var runningHour: Int = 0
     private var runningMinute: Int = 0
     private var runningSecond: Int = 0
     private var timer: Timer?
+
     let timerText: BehaviorRelay<String> = BehaviorRelay(value: "00:00:00")
     var isRunning: Bool = false
     

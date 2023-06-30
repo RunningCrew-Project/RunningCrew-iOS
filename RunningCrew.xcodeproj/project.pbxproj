@@ -7,6 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */; };
+		931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90162A2C8074007EE1DC /* NetworkManager.swift */; };
+		931A901A2A2C808A007EE1DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 931A90192A2C808A007EE1DC /* Alamofire */; };
+		931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */; };
+		936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */; };
+		936257962A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */; };
+		936257992A04FC1A001E9CA6 /* CrewJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257982A04FC1A001E9CA6 /* CrewJoinViewController.swift */; };
+		9362579B2A04FC23001E9CA6 /* CrewJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362579A2A04FC23001E9CA6 /* CrewJoinView.swift */; };
+		9362579D2A10B0EE001E9CA6 /* YPImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362579C2A10B0EE001E9CA6 /* YPImagePickerManager.swift */; };
+		9398DCF029DD9FDE00748F64 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398DCEF29DD9FDE00748F64 /* BaseView.swift */; };
+		9398DCF229DDA03100748F64 /* CrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398DCF129DDA03100748F64 /* CrewView.swift */; };
+		93FC2FBC29E435A80007B551 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 93FC2FBB29E435A80007B551 /* SnapKit */; };
+		93FC2FC129E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC029E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift */; };
+		93FC2FC329E6CC430007B551 /* CrewListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC229E6CC430007B551 /* CrewListCollectionViewCell.swift */; };
+		93FC2FC829EA866D0007B551 /* CrewGenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */; };
+		93FC2FCA29EA8BA70007B551 /* CrewGenerateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC929EA8BA70007B551 /* CrewGenerateTextField.swift */; };
+		93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */; };
+		93FC2FCE29EA93A00007B551 /* CrewGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FCD29EA93A00007B551 /* CrewGenerateViewController.swift */; };
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
 		BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */; };
 		BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */; };
@@ -102,6 +120,22 @@
 		49645AC81E6AA34CA37B1351 /* Pods_RunningCrew_RunningCrewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew_RunningCrewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
+		931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNoticeManager.swift; sourceTree = "<group>"; };
+		931A90162A2C8074007EE1DC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNoticeModel.swift; sourceTree = "<group>"; };
+		936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateFinishView.swift; sourceTree = "<group>"; };
+		936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateFinishViewController.swift; sourceTree = "<group>"; };
+		936257982A04FC1A001E9CA6 /* CrewJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewJoinViewController.swift; sourceTree = "<group>"; };
+		9362579A2A04FC23001E9CA6 /* CrewJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewJoinView.swift; sourceTree = "<group>"; };
+		9362579C2A10B0EE001E9CA6 /* YPImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPImagePickerManager.swift; sourceTree = "<group>"; };
+		9398DCEF29DD9FDE00748F64 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		9398DCF129DDA03100748F64 /* CrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewView.swift; sourceTree = "<group>"; };
+		93FC2FC029E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMemberCollectionViewCell.swift; sourceTree = "<group>"; };
+		93FC2FC229E6CC430007B551 /* CrewListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewListCollectionViewCell.swift; sourceTree = "<group>"; };
+		93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateView.swift; sourceTree = "<group>"; };
+		93FC2FC929EA8BA70007B551 /* CrewGenerateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateTextField.swift; sourceTree = "<group>"; };
+		93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectButton.swift; sourceTree = "<group>"; };
+		93FC2FCD29EA93A00007B551 /* CrewGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateViewController.swift; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarView.swift; sourceTree = "<group>"; };
 		BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +218,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				931A901A2A2C808A007EE1DC /* Alamofire in Frameworks */,
 				A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */,
+				93FC2FBC29E435A80007B551 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +243,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		931A90132A2C804B007EE1DC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				931A901D2A2C86F5007EE1DC /* Model */,
+				931A90162A2C8074007EE1DC /* NetworkManager.swift */,
+				931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		931A901D2A2C86F5007EE1DC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		936257922A04C29A001E9CA6 /* CrewGenerateFinish */ = {
+			isa = PBXGroup;
+			children = (
+				936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */,
+				936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */,
+			);
+			path = CrewGenerateFinish;
+			sourceTree = "<group>";
+		};
+		936257972A04FBF0001E9CA6 /* CrewJoin&Info */ = {
+			isa = PBXGroup;
+			children = (
+				936257982A04FC1A001E9CA6 /* CrewJoinViewController.swift */,
+				9362579A2A04FC23001E9CA6 /* CrewJoinView.swift */,
+			);
+			path = "CrewJoin&Info";
+			sourceTree = "<group>";
+		};
+		9398DCEC29DD9FC200748F64 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				9398DCEF29DD9FDE00748F64 /* BaseView.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		93FC2FC429EA85AA0007B551 /* CrewListView */ = {
+			isa = PBXGroup;
+			children = (
+				C7DE68052999378300C824A9 /* CrewViewController.swift */,
+				9398DCF129DDA03100748F64 /* CrewView.swift */,
+				93FC2FC029E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift */,
+				93FC2FC229E6CC430007B551 /* CrewListCollectionViewCell.swift */,
+			);
+			path = CrewListView;
+			sourceTree = "<group>";
+		};
+		93FC2FC529EA85B70007B551 /* CrewGenerate */ = {
+			isa = PBXGroup;
+			children = (
+				93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */,
+				93FC2FCD29EA93A00007B551 /* CrewGenerateViewController.swift */,
+			);
+			path = CrewGenerate;
+			sourceTree = "<group>";
+		};
+		93FC2FC629EA865B0007B551 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				93FC2FC929EA8BA70007B551 /* CrewGenerateTextField.swift */,
+				93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */,
+			);
+			path = Custom;
+			sourceTree = "<group>";
+		};
 		B177AEB6EAB444E45D0937E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +515,7 @@
 			children = (
 				C7DE67E92997AA3600C824A9 /* Application */,
 				C7DE67EE2998DF2900C824A9 /* Presenter */,
+				931A90132A2C804B007EE1DC /* Network */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -427,6 +537,7 @@
 				C7A4CE5629BCABE9000DAE8B /* ImagePickerCell */,
 				C7A4CE5229BC2135000DAE8B /* ImagePickerViewController.swift */,
 				C7A4CE5329BC2135000DAE8B /* ImagePickerViewController.xib */,
+				9362579C2A10B0EE001E9CA6 /* YPImagePickerManager.swift */,
 			);
 			path = ImagePicker;
 			sourceTree = "<group>";
@@ -452,6 +563,7 @@
 		C7DE67EE2998DF2900C824A9 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				9398DCEC29DD9FC200748F64 /* Base */,
 				C7DE6823299A85D400C824A9 /* Utils */,
 				C7DE67EF2998DF5D00C824A9 /* Common */,
 				C7DE67F02998DF6300C824A9 /* TabBar */,
@@ -513,8 +625,12 @@
 		C7DE67FE2999372A00C824A9 /* Crew */ = {
 			isa = PBXGroup;
 			children = (
+				936257972A04FBF0001E9CA6 /* CrewJoin&Info */,
+				93FC2FC629EA865B0007B551 /* Custom */,
+				93FC2FC529EA85B70007B551 /* CrewGenerate */,
+				936257922A04C29A001E9CA6 /* CrewGenerateFinish */,
+				93FC2FC429EA85AA0007B551 /* CrewListView */,
 				C7DE6809299939CC00C824A9 /* Coordinator */,
-				C7DE68052999378300C824A9 /* CrewViewController.swift */,
 			);
 			path = Crew;
 			sourceTree = "<group>";
@@ -712,6 +828,10 @@
 			dependencies = (
 			);
 			name = RunningCrew;
+			packageProductDependencies = (
+				93FC2FBB29E435A80007B551 /* SnapKit */,
+				931A90192A2C808A007EE1DC /* Alamofire */,
+			);
 			productName = RunningCrew;
 			productReference = C7670EE42995460800E3CD77 /* RunningCrew.app */;
 			productType = "com.apple.product-type.application";
@@ -788,6 +908,10 @@
 				Base,
 			);
 			mainGroup = C7670EDB2995460800E3CD77;
+			packageReferences = (
+				93FC2FBA29E435A80007B551 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				931A90182A2C808A007EE1DC /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = C7670EE52995460800E3CD77 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -964,13 +1088,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */,
+				931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */,
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */,
 				C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */,
 				C7A1F21929BA385A009AE7BA /* UIView+.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
+				931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */,
+				93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */,
+				931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
+				93FC2FCA29EA8BA70007B551 /* CrewGenerateTextField.swift in Sources */,
+				9362579B2A04FC23001E9CA6 /* CrewJoinView.swift in Sources */,
 				C7A4CE5429BC2135000DAE8B /* ImagePickerViewController.swift in Sources */,
 				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
@@ -980,23 +1110,30 @@
 				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
 				BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
+				936257992A04FC1A001E9CA6 /* CrewJoinViewController.swift in Sources */,
+				936257962A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift in Sources */,
 				C751527929B27038003D8987 /* UIImage+.swift in Sources */,
 				C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */,
 				C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */,
+				9398DCF029DD9FDE00748F64 /* BaseView.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
 				C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */,
 				C7E00A2329C36F4900B39709 /* CameraCollectionViewCell.swift in Sources */,
+				93FC2FC829EA866D0007B551 /* CrewGenerateView.swift in Sources */,
 				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
 				C7A1F21629BA1194009AE7BA /* CustomAlertViewController.swift in Sources */,
 				C7E00A1C29C1AF8D00B39709 /* ImagePickerViewModel.swift in Sources */,
+				936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */,
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
 				C7F95B2E29AF803200C69D1B /* RunningStartViewModel.swift in Sources */,
 				BEEAFDD72A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift in Sources */,
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
+				93FC2FC129E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift in Sources */,
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
+				93FC2FCE29EA93A00007B551 /* CrewGenerateViewController.swift in Sources */,
 				C751528029B79981003D8987 /* SaveRecordRunningViewController.swift in Sources */,
 				C7A4CE5D29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift in Sources */,
 				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
@@ -1007,10 +1144,13 @@
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
 				C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
+				9362579D2A10B0EE001E9CA6 /* YPImagePickerManager.swift in Sources */,
 				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
 				C7811F7429A201B700801E6B /* DotView.swift in Sources */,
 				BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */,
+				9398DCF229DDA03100748F64 /* CrewView.swift in Sources */,
 				C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */,
+				93FC2FC329E6CC430007B551 /* CrewListCollectionViewCell.swift in Sources */,
 				C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1353,6 +1493,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		931A90182A2C808A007EE1DC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		93FC2FBA29E435A80007B551 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		931A90192A2C808A007EE1DC /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 931A90182A2C808A007EE1DC /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		93FC2FBB29E435A80007B551 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 93FC2FBA29E435A80007B551 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C7670EDC2995460800E3CD77 /* Project object */;
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+/// Coordinator패턴
+/// 화면전환 메서드를 클래스 및 프로토콜 델리게이트 패턴으로 빼서 뷰컨트롤러의 의존성을 낮춘 -> 뷰모델인데 화면 전환(데이터전달과 같은 기능들 포함) 메서드만 담당한다.
+
+
 final class RecordRunningCoordinator: Coordinator {
     var navigationController: UINavigationController
     
