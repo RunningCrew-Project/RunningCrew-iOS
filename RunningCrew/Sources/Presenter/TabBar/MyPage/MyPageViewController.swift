@@ -72,7 +72,7 @@ class MyPageViewController: CustomTopTabBarController {
     }
     //MARK: - Define Method
     func setNavigationBar() {
-        let setImage = UIImage(systemName: "gearshape")
+        let setImage = UIImage(systemName: "gearshape") 
         let setButton = UIBarButtonItem(image: setImage, style: .plain, target: self, action: nil)
         self.navigationItem.title = "마이페이지"
         self.navigationItem.rightBarButtonItem = setButton
