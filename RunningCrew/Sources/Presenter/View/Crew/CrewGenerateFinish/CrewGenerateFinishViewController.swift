@@ -8,7 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
-import YPImagePicker
+//import YPImagePicker
 
 class CrewGenerateFinishViewController: UIViewController {
     let crewGenerateFinishView = CrewGenerateFinishView()

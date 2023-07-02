@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3B9DCF1D2A50876E00AC531D /* BaseVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */; };
+		3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */; };
+		3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF262A51601500AC531D /* BaseViewModelType.swift */; };
+		3B9DCF2B2A51801F00AC531D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF2A2A51801F00AC531D /* LocationManager.swift */; };
 		931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */; };
 		931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90162A2C8074007EE1DC /* NetworkManager.swift */; };
 		931A901A2A2C808A007EE1DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 931A90192A2C808A007EE1DC /* Alamofire */; };
@@ -118,6 +121,9 @@
 /* Begin PBXFileReference section */
 		03C919EEFAB1F2E8071FD34F /* Pods-RunningCrew-RunningCrewUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.release.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIewController.swift; sourceTree = "<group>"; };
+		3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewModel.swift; sourceTree = "<group>"; };
+		3B9DCF262A51601500AC531D /* BaseViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelType.swift; sourceTree = "<group>"; };
+		3B9DCF2A2A51801F00AC531D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		444E77919FDC0F8D936ECE3D /* Pods-RunningCrewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrewTests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrewTests/Pods-RunningCrewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49645AC81E6AA34CA37B1351 /* Pods_RunningCrew_RunningCrewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew_RunningCrewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,14 +251,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		931A90132A2C804B007EE1DC /* Network */ = {
+		3B9DCF282A51618F00AC531D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				931A901D2A2C86F5007EE1DC /* Model */,
+				C7DE67F72999296B00C824A9 /* RecordRunning */,
+				C7DE67FE2999372A00C824A9 /* Crew */,
+				C7DE67FF2999373B00C824A9 /* Alarm */,
+				C7DE68002999374300C824A9 /* MyPage */,
+				C7DE67F02998DF6300C824A9 /* TabBar */,
+				C7DE67EF2998DF5D00C824A9 /* Common */,
+				9398DCEC29DD9FC200748F64 /* Base */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		3B9DCF292A51619500AC531D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3B9DCF262A51601500AC531D /* BaseViewModelType.swift */,
+				3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */,
+				C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */,
+				C751527B29B34224003D8987 /* RecordViewModel.swift */,
+				C7E00A1B29C1AF8D00B39709 /* ImagePickerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		931A90132A2C804B007EE1DC /* Manager */ = {
+			isa = PBXGroup;
+			children = (
 				931A90162A2C8074007EE1DC /* NetworkManager.swift */,
 				931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */,
+				3B9DCF2A2A51801F00AC531D /* LocationManager.swift */,
 			);
-			path = Network;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		931A901D2A2C86F5007EE1DC /* Model */ = {
@@ -284,6 +316,7 @@
 		9398DCEC29DD9FC200748F64 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE67F22998DFC200C824A9 /* Coordinator.swift */,
 				3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */,
 				9398DCEF29DD9FDE00748F64 /* BaseView.swift */,
 			);
@@ -384,14 +417,6 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		C751527A29B34212003D8987 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C751527B29B34224003D8987 /* RecordViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C751527D29B7994B003D8987 /* SaveRunningRecord */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,7 +441,6 @@
 		C75DECFC29AE7E8300A4EC47 /* RecordView */ = {
 			isa = PBXGroup;
 			children = (
-				C751527A29B34212003D8987 /* ViewModel */,
 				C75DECF829AE7E7D00A4EC47 /* RecordViewController.swift */,
 				C75DECF929AE7E7D00A4EC47 /* RecordViewController.xib */,
 			);
@@ -518,7 +542,7 @@
 			children = (
 				C7DE67E92997AA3600C824A9 /* Application */,
 				C7DE67EE2998DF2900C824A9 /* Presenter */,
-				931A90132A2C804B007EE1DC /* Network */,
+				931A90132A2C804B007EE1DC /* Manager */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -535,7 +559,6 @@
 		C7A4CE5129BC2109000DAE8B /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				C7E00A1A29C1AF7E00B39709 /* ViewModel */,
 				C7E00A2029C36F2C00B39709 /* CameraCell */,
 				C7A4CE5629BCABE9000DAE8B /* ImagePickerCell */,
 				C7A4CE5229BC2135000DAE8B /* ImagePickerViewController.swift */,
@@ -566,10 +589,10 @@
 		C7DE67EE2998DF2900C824A9 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				9398DCEC29DD9FC200748F64 /* Base */,
+				931A901D2A2C86F5007EE1DC /* Model */,
+				3B9DCF292A51619500AC531D /* ViewModel */,
+				3B9DCF282A51618F00AC531D /* View */,
 				C7DE6823299A85D400C824A9 /* Utils */,
-				C7DE67EF2998DF5D00C824A9 /* Common */,
-				C7DE67F02998DF6300C824A9 /* TabBar */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -579,7 +602,6 @@
 			children = (
 				C7A4CE5129BC2109000DAE8B /* ImagePicker */,
 				C7A1F21329BA0D38009AE7BA /* Alert */,
-				C7DE67F12998DFB600C824A9 /* Coordinator */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -588,21 +610,9 @@
 			isa = PBXGroup;
 			children = (
 				C7DE6820299A857400C824A9 /* CustomTabBar */,
-				C7DE68002999374300C824A9 /* MyPage */,
-				C7DE67FF2999373B00C824A9 /* Alarm */,
-				C7DE67FE2999372A00C824A9 /* Crew */,
-				C7DE67F72999296B00C824A9 /* RecordRunning */,
 				C7DE67F42998E4B900C824A9 /* Coordinator */,
 			);
 			path = TabBar;
-			sourceTree = "<group>";
-		};
-		C7DE67F12998DFB600C824A9 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				C7DE67F22998DFC200C824A9 /* Coordinator.swift */,
-			);
-			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		C7DE67F42998E4B900C824A9 /* Coordinator */ = {
@@ -617,10 +627,10 @@
 		C7DE67F72999296B00C824A9 /* RecordRunning */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */,
 				C7663E5129A4BF6E0046068B /* MeasureRunning */,
 				C7DE6826299B890500C824A9 /* Button */,
 				C7DE6808299939BE00C824A9 /* Coordinator */,
-				C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */,
 			);
 			path = RecordRunning;
 			sourceTree = "<group>";
@@ -768,14 +778,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C7E00A1A29C1AF7E00B39709 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C7E00A1B29C1AF8D00B39709 /* ImagePickerViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C7E00A2029C36F2C00B39709 /* CameraCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,18 +790,9 @@
 		C7F95B2B29AF7F8A00C69D1B /* RunningStart */ = {
 			isa = PBXGroup;
 			children = (
-				C7F95B2C29AF7FBE00C69D1B /* ViewModel */,
 				C7663E5229A4BFB70046068B /* RunningStartViewController.swift */,
 			);
 			path = RunningStart;
-			sourceTree = "<group>";
-		};
-		C7F95B2C29AF7FBE00C69D1B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				C7F95B2D29AF803200C69D1B /* RunningStartViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		E0411EDA38A4BEEFC0698F7C /* Frameworks */ = {
@@ -1143,12 +1136,15 @@
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */,
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
+				3B9DCF2B2A51801F00AC531D /* LocationManager.swift in Sources */,
+				3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */,
 				C7663E8129ABA5720046068B /* GoalSettingLabelStackView.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
 				C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
 				9362579D2A10B0EE001E9CA6 /* YPImagePickerManager.swift in Sources */,
 				C7DE68022999376800C824A9 /* MyPageViewController.swift in Sources */,
+				3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */,
 				C7811F7429A201B700801E6B /* DotView.swift in Sources */,
 				BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */,
 				9398DCF229DDA03100748F64 /* CrewView.swift in Sources */,
@@ -1315,12 +1311,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 77295VQTPM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunningCrew/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받습니다.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받습니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "러닝거리 측정을 위해 위치 권한이 필요합니다.\\n설정으로 이동하시겠습니까?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1333,7 +1329,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tekim.RunningCrew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RunningCrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1354,12 +1350,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7HDHR2SNR7;
+				DEVELOPMENT_TEAM = 77295VQTPM;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RunningCrew/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받습니다.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자의 위치를 받습니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "러닝거리 측정을 위해 위치 권한이 필요합니다.\\n설정으로 이동하시겠습니까?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1372,7 +1368,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.tekim.RunningCrew;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RunningCrew;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

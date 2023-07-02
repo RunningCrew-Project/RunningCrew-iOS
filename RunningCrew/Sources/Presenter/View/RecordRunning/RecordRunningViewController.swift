@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 import RxSwift
+import RxCocoa
 import SnapKit
 
 protocol RecordRunningViewControllerDelegate: AnyObject {
@@ -17,6 +19,17 @@ protocol RecordRunningViewControllerDelegate: AnyObject {
 final class RecordRunningViewController: BaseViewController {
     
     weak var delegate: RecordRunningViewControllerDelegate?
+    
+    let viewModel: RecordRunningViewModel
+    
+    init(viewModel: RecordRunningViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +55,7 @@ final class RecordRunningViewController: BaseViewController {
     lazy var discussionLabel: UILabel = {
         let label = UILabel()
         label.text = "러닝 기록하기"
+        label.textColor = .black
         label.font = UIFont(name: "NotoSansKR-Bold", size: 24)
         
         return label
@@ -145,10 +159,24 @@ final class RecordRunningViewController: BaseViewController {
     }
     
     override func bind() {
-        locationButton.rx.tap
-            .bind {
-                print("aaa")
-                print($0)
+        let locationButtonDidTap = locationButton.rx.tap.asObservable()
+        
+        let input = RecordRunningViewModel.Input(locationButtonDidTap: locationButtonDidTap)
+        
+        let output = viewModel.transform(input: input)
+        
+        output.isNeedLocationAuth
+            .bind { [weak self] isNeed in
+                if isNeed {
+                    //TODO: 위치 권한 요청 팝업
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.locationInformation
+            .observe(on: MainScheduler.instance)
+            .bind { [weak self] location in
+                self?.locationButton.setTitle(location, for: .normal)
             }
             .disposed(by: disposeBag)
         

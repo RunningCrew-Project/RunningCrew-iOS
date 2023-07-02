@@ -35,5 +35,4 @@ final class LocationButton: UIButton {
         config.attributedTitle = titleAttr
         self.configuration = config
     }
-
 }
