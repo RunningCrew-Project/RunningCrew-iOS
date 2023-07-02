@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LocationButton: UIButton {
+final class LocationButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()

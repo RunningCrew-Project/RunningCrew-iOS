@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RunningButton: UIButton {
+final class RunningButton: UIButton {
 
     let discussionLabel: UILabel = {
         let label = UILabel()
