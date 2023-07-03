@@ -55,7 +55,7 @@ final class RecordRunningViewController: BaseViewController {
     lazy var discussionLabel: UILabel = {
         let label = UILabel()
         label.text = "러닝 기록하기"
-        label.textColor = .black
+        label.textColor = .darkModeBasicColor
         label.font = UIFont(name: "NotoSansKR-Bold", size: 24)
         
         return label
@@ -113,7 +113,7 @@ final class RecordRunningViewController: BaseViewController {
         let leadTrailInset = self.view.frame.width * (Double(48) / Double(750))
         
         self.view.layoutMargins = UIEdgeInsets(top: 0, left: leadTrailInset, bottom: 0, right: leadTrailInset)
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .systemBackground
         self.navigationController?.navigationBar.layoutMargins = UIEdgeInsets(top: 0, left: 40, bottom: 0, right: 0)
     }
     

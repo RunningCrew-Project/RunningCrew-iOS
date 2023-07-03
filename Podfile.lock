@@ -5,6 +5,9 @@ PODS:
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
@@ -20,6 +23,7 @@ DEPENDENCIES:
   - NMapsMap (= 3.15.0)
   - PryntTrimmerView
   - RxCocoa (= 6.5.0)
+  - RxGesture (= 4.0.4)
   - RxSwift (= 6.5.0)
   - SnapKit (~> 5.6.0)
   - SwiftLint (= 0.48.0)
@@ -31,6 +35,7 @@ SPEC REPOS:
     - NMapsMap
     - PryntTrimmerView
     - RxCocoa
+    - RxGesture
     - RxRelay
     - RxSwift
     - SnapKit
@@ -43,6 +48,7 @@ SPEC CHECKSUMS:
   NMapsMap: f151761c088d6516064c59da03ab6503769486e6
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
@@ -50,6 +56,6 @@ SPEC CHECKSUMS:
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 1af52aae5e4a26d201a1cf9086ae2967c6d87247
+PODFILE CHECKSUM: c1845ef71e5963cb25a57fc32ef1b6a6bf41b7a6
 
 COCOAPODS: 1.12.1

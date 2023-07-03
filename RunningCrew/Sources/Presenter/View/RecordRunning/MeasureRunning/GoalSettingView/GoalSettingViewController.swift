@@ -6,48 +6,25 @@
 //
 
 import UIKit
+import SnapKit
 import RxCocoa
 import RxSwift
 
 protocol GoalSettingViewDelegate: AnyObject {
-    func tapSettingButton(goalType: GoalType, goal: String)
+    func tapCancleButton()
+    func tapSettingButton()
 }
 
-class GoalSettingViewController: UIViewController {
-    
-    lazy var goalLabelBindingTextField: GoalTextField = {
-        let textField = GoalTextField(goalType: goalType)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        
-        return textField
-    }()
-    
-    lazy var goalLabel: GoalSettingStackView = {
-        let goalLabel = GoalSettingStackView(goalType: goalType)
-        goalLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        return goalLabel
-    }()
-    
-    private var disposeBag = DisposeBag()
-    
-    let goalType: GoalType
+class GoalSettingViewController: BaseViewController {
     
     weak var delegate: GoalSettingViewDelegate?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        setNavigationBarItem()
-        setBindingTextField()
-        setGoalLabel()
-        setTextFieldSizeLimit()
-        bindTextFieldToLabel()
-        navigationItem.title = "러닝 목표 설정"
-    }
     
-    init(goalType: GoalType) {
+    let goalType: GoalType
+    let viewModel: RunningStartViewModel
+    
+    init(goalType: GoalType, viewModel: RunningStartViewModel) {
         self.goalType = goalType
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -55,32 +32,84 @@ class GoalSettingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setBindingTextField() {
-        view.addSubview(goalLabelBindingTextField)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+        navigationItem.title = "러닝 목표 설정"
+    }
+    
+    lazy var goalLabelBindingTextField: GoalTextField = {
+        let textField = GoalTextField(goalType: goalType)
+        
+        return textField
+    }()
+    
+    lazy var goalLabel: GoalSettingStackView = {
+        let goalLabel = GoalSettingStackView(goalType: goalType)
+        
+        return goalLabel
+    }()
+    
+    deinit {
+        print("deinit setting goal view")
+    }
+    
+    override func setView() {
         goalLabelBindingTextField.becomeFirstResponder()
-        NSLayoutConstraint.activate([
-            goalLabelBindingTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            goalLabelBindingTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: nil)
+        navigationController?.navigationBar.tintColor = .darkModeBasicColor
     }
     
-    func setGoalLabel() {
+    override func setAddView() {
+        view.addSubview(goalLabelBindingTextField)
         view.addSubview(goalLabel)
-        NSLayoutConstraint.activate([
-            goalLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            goalLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
     }
     
-    func setNavigationBarItem() {
-        let cancelButton = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(tapCancelButton))
-        let doneButton = UIBarButtonItem(title: "설정", style: .plain, target: self, action: #selector(tapDoneButton))
-        navigationItem.leftBarButtonItem = cancelButton
-        navigationItem.rightBarButtonItem = doneButton
-        navigationController?.navigationBar.tintColor = .black
+    override func setConstraint() {
+        goalLabelBindingTextField.snp.makeConstraints {
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
+            $0.centerX.equalToSuperview()
+        }
+        
+        goalLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+        }
     }
     
-    func setTextFieldSizeLimit() {
+    override func bind() {
+        goalLabelBindingTextField.rx.text.orEmpty
+            .map { [weak self] input -> String? in
+                guard let self = self else { return "" }
+                
+                switch self.goalType {
+                case .distance:
+                    if input.isEmpty {
+                        return "0"
+                    }
+                    if input == "0" {
+                        self.goalLabelBindingTextField.text?.removeLast()
+                        return "0"
+                    }
+                    return input
+                case .time:
+                    if input.isEmpty {
+                        return "00:00"
+                    }
+                    let len = input.count
+                    let paddedStr = String(repeating: "0", count: 4 - len) + input
+                    let index1 = paddedStr.index(paddedStr.startIndex, offsetBy: 2)
+                    let index2 = paddedStr.index(paddedStr.startIndex, offsetBy: 4)
+                    let result = "\(paddedStr[..<index1]):\(paddedStr[index1..<index2])"
+                    
+                    return result
+                }
+            }
+            .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+                
         goalLabelBindingTextField.rx.text.orEmpty
             .asDriver()
             .map({ input in
@@ -95,74 +124,32 @@ class GoalSettingViewController: UIViewController {
                     self?.goalLabelBindingTextField.text = String(self?.goalLabelBindingTextField.text?.dropLast() ?? "")
                 }
             }.disposed(by: disposeBag)
-    }
-    
-    private func bindTextFieldToLabel() {
-        switch goalType {
-        case .distance:
-            distanceBind()
-        case .time:
-            timeBind()
-        }
-    }
-    
-    private func distanceBind() {
-        goalLabelBindingTextField.rx.text.orEmpty
-            .map{ [weak self] input -> String? in
-                if input.isEmpty {
-                    return "0"
-                }
-                if input == "0" {
-                    self?.goalLabelBindingTextField.text?.removeLast()
-                    return "0"
-                }
-                return input
-            }
-            .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    private func timeBind() {
-        goalLabelBindingTextField.rx.text.orEmpty
-            .map{ input -> String? in
-                if input.isEmpty {
-                    return "00:00"
-                }
-                let len = input.count
-                let paddedStr = String(repeating: "0", count: 4 - len) + input
-                let index1 = paddedStr.index(paddedStr.startIndex, offsetBy: 2)
-                let index2 = paddedStr.index(paddedStr.startIndex, offsetBy: 4)
-                let result = "\(paddedStr[..<index1]):\(paddedStr[index1..<index2])"
-                
-                return result
-            }
-            .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    @objc func tapCancelButton() {
-        closeKeyboard {
-            self.dismiss(animated: false)
-        }
-    }
-    
-    func closeKeyboard(completion: @escaping()-> ()) {
-        view.endEditing(true)
-        completion()
-    }
-    
-    @objc func tapDoneButton() {
-        delegate?.tapSettingButton(goalType: goalType, goal: goalLabel.goalSettingLabelStackView.destinationLabel.text ?? "")
-        closeKeyboard {
-            self.dismiss(animated: false)
-        }
-    }
-    
-    func convertToTime(num: Int) {
         
-    }
-    
-    deinit {
-        print("deinit setting goal view")
+        navigationItem.leftBarButtonItem?.rx.tap
+            .bind { self.delegate?.tapCancleButton() }
+            .disposed(by: disposeBag)
+        
+        navigationItem.rightBarButtonItem?.rx.tap
+            .bind { [weak self] _ in
+                guard let self = self else { return }
+                
+                switch self.goalType {
+                case .distance:
+                    viewModel.goalDistance.accept(Float(goalLabelBindingTextField.text ?? "0") ?? 0)
+                case .time:
+                    let time = (goalLabelBindingTextField.text ?? "00:00").split(separator: ":").map {Int($0)}
+                    viewModel.goalHour.accept(time[0] ?? 0)
+                    viewModel.goalMinute.accept(time[1] ?? 0)
+                }
+                
+                self.delegate?.tapSettingButton()
+            }
+            .disposed(by: disposeBag)
     }
 }
+
+
+
+
+
+

@@ -21,7 +21,7 @@ final class LocationButton: UIButton {
     private func setupView() {
         setImage(UIImage(named: "Location"), for: .normal)
         titleLabel?.font = UIFont(name: "NotoSansKR-Medium", size: 16)
-        setTitleColor(.black, for: .normal)
+        setTitleColor(.darkModeBasicColor, for: .normal)
     }
     
     private func setConfiguration() {
@@ -30,7 +30,6 @@ final class LocationButton: UIButton {
         config.imagePadding = 8
         config.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
         var titleAttr = AttributedString.init("주소를 입력하세요")
-        titleAttr.foregroundColor = .black
         titleAttr.font = .boldSystemFont(ofSize: 16)
         config.attributedTitle = titleAttr
         self.configuration = config

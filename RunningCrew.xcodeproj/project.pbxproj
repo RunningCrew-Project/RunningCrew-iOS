@@ -450,11 +450,11 @@
 		C7663E5129A4BF6E0046068B /* MeasureRunning */ = {
 			isa = PBXGroup;
 			children = (
+				C7F95B2B29AF7F8A00C69D1B /* RunningStart */,
+				C7663E7929A9F1090046068B /* GoalSettingView */,
+				C75DECFC29AE7E8300A4EC47 /* RecordView */,
 				C751527D29B7994B003D8987 /* SaveRunningRecord */,
 				C75DECF529ABB36B00A4EC47 /* UI */,
-				C7F95B2B29AF7F8A00C69D1B /* RunningStart */,
-				C75DECFC29AE7E8300A4EC47 /* RecordView */,
-				C7663E7929A9F1090046068B /* GoalSettingView */,
 			);
 			path = MeasureRunning;
 			sourceTree = "<group>";

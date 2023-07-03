@@ -8,6 +8,7 @@ target 'RunningCrew' do
   # Pods for RunningCrew
     pod 'RxSwift', '6.5.0'
     pod 'RxCocoa', '6.5.0'
+    pod 'RxGesture', '4.0.4'
     pod 'NMapsMap', '3.15.0'
     pod 'SwiftLint', '0.48.0'
     pod 'SnapKit', '~> 5.6.0'

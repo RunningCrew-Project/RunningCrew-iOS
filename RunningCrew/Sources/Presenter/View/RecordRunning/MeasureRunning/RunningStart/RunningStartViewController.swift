@@ -9,8 +9,37 @@ import UIKit
 import NMapsMap
 import RxCocoa
 import RxSwift
+import RxGesture
 
-class RunningStartViewController: UIViewController {
+protocol RunningStartViewControllerDelegate: AnyObject {
+    func showGoalSettingView(goalType: GoalType, viewModel: RunningStartViewModel)
+    func showRecordView()
+}
+
+class RunningStartViewController: BaseViewController {
+    
+    weak var delegate: RunningStartViewControllerDelegate?
+    
+    let viewModel: RunningStartViewModel
+    
+    init(viewModel: RunningStartViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        startButton.clipsToBounds = true
+        startButton.layer.cornerRadius = startButton.frame.height / 2
+    }
     
     //MARK: - UI Properties
     
@@ -31,19 +60,14 @@ class RunningStartViewController: UIViewController {
         stackView.alignment = .center
         stackView.spacing = 41.0
         
-        return  stackView
+        return stackView
     }()
     
     lazy var distanceSettingStackView: GoalSettingStackView = {
         let distanceSettingStackView = GoalSettingStackView(goalType: .distance)
         distanceSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapDistanceLabel))
         distanceSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
-        distanceSettingStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
-        
         distanceSettingStackView.beforeButton.isHidden = true
-        distanceSettingStackView.nextButton.addTarget(self, action: #selector(tapGoalChangeButton), for: .touchUpInside)
         
         return distanceSettingStackView
     }()
@@ -51,23 +75,10 @@ class RunningStartViewController: UIViewController {
     lazy var timeSettingStackView: GoalSettingStackView = {
         let timeSettingStackView = GoalSettingStackView(goalType: .time)
         timeSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapTimeLabel))
         timeSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
-        timeSettingStackView.goalSettingLabelStackView.addGestureRecognizer(tapGestureRecognizer)
-        
         timeSettingStackView.nextButton.isHidden = true
-        timeSettingStackView.beforeButton.addTarget(self, action: #selector(tapGoalChangeButton), for: .touchUpInside)
         
         return timeSettingStackView
-    }()
-    
-    lazy var underButtonStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        
-        return stackView
     }()
     
     lazy var startButton: UIButton = {
@@ -75,72 +86,37 @@ class RunningStartViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .tabBarSelect
         button.setTitle("시작", for: .normal)
-        button.addTarget(self, action: #selector(tapStartButton), for: .touchUpInside)
         button.titleLabel?.font = UIFont(name: "NotoSansKR-Bold", size: 24.0)
         
         return button
     }()
     
-    //MARK: - Properties
-    let viewModel: RunningStartViewModel?
-    let disposeBag = DisposeBag()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        setMapView()
-        setStartButtonStackView()
-        bind()
+    deinit {
+        print("deinit runningStart view")
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        startButton.clipsToBounds = true
-        startButton.layer.cornerRadius = startButton.frame.height / 2
+    
+    override func setView() {
+        timeSettingStackView.isHidden = true
+        self.view.backgroundColor = .systemBackground
     }
     
-    //MARK: - Initalizer
-    init(viewModel: RunningStartViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    //MARK: - Method
-    
-    private func bind() {
-        viewModel?.goalDistance.asDriver()
-            .map({String(format: "%.2f", $0)})
-            .drive(distanceSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel?.goalTimeRelay.asDriver()
-            .drive(timeSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
-            .disposed(by: disposeBag)
-    }
-    
-    //MARK: - UI Settings
-    
-    func setMapView() {
+    override func setAddView() {
         view.addSubview(mapView)
+        view.addSubview(startButtonStackView)
+        startButtonStackView.addArrangedSubview(distanceSettingStackView)
+        startButtonStackView.addArrangedSubview(timeSettingStackView)
+        startButtonStackView.addArrangedSubview(startButton)
+    }
+    
+    override func setConstraint() {
         NSLayoutConstraint.activate([
             mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.45)
         ])
-    }
-    
-    func setStartButtonStackView() {
-        view.addSubview(startButtonStackView)
-        startButtonStackView.addArrangedSubview(distanceSettingStackView)
-        startButtonStackView.addArrangedSubview(timeSettingStackView)
-        timeSettingStackView.isHidden = true
-        startButtonStackView.addArrangedSubview(startButton)
-        
+
         NSLayoutConstraint.activate([
             startButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             startButtonStackView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: view.frame.height * (CGFloat(71) / CGFloat(1624))),
@@ -149,53 +125,47 @@ class RunningStartViewController: UIViewController {
         ])
     }
     
-    @objc func tapDistanceLabel() {
-        presentSettingGoalView(goalType: .distance)
-    }
+    //MARK: - Method
     
-    @objc func tapTimeLabel() {
-        presentSettingGoalView(goalType: .time)
-    }
-    
-    func presentSettingGoalView(goalType: GoalType) {
-        let navigationVC = UINavigationController()
-        navigationVC.modalPresentationStyle = .fullScreen
-        navigationVC.navigationBar.titleTextAttributes = [.font: UIFont(name: "NotoSansKR-Medium", size: 20) ?? .boldSystemFont(ofSize: 20)]
-        let vc = GoalSettingViewController(goalType: goalType)
-        vc.delegate = self
-        navigationVC.pushViewController(vc, animated: false)
-        present(navigationVC, animated: false)
-    }
-    
-    @objc func tapStartButton() {
-        let vc = RecordViewController(viewModel: RecordViewModel())
-        vc.modalPresentationStyle = .fullScreen
+    override func bind() {
         
-        present(vc, animated: false)
+        distanceSettingStackView.goalSettingLabelStackView.destinationLabel.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in self.delegate?.showGoalSettingView(goalType: .distance, viewModel: self.viewModel) }
+            .disposed(by: disposeBag)
+        
+        timeSettingStackView.goalSettingLabelStackView.destinationLabel.rx.tapGesture()
+            .when(.recognized)
+            .bind { _ in self.delegate?.showGoalSettingView(goalType: .time, viewModel: self.viewModel) }
+            .disposed(by: disposeBag)
+        
+        distanceSettingStackView.nextButton.rx.tap
+            .bind { _ in
+                self.distanceSettingStackView.isHidden = true
+                self.timeSettingStackView.isHidden = false
+            }
+            .disposed(by: disposeBag)
+        
+        timeSettingStackView.beforeButton.rx.tap
+            .bind { _ in
+                self.distanceSettingStackView.isHidden = false
+                self.timeSettingStackView.isHidden = true
+            }
+            .disposed(by: disposeBag)
+        
+        startButton.rx.tap
+            .bind { _ in
+                self.delegate?.showRecordView()
+            }
+            .disposed(by: disposeBag)
+        
+        viewModel.goalDistance.asDriver()
+            .map({String(format: "%.2f", $0)})
+            .drive(distanceSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.goalTimeRelay.asDriver()
+            .drive(timeSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
     }
-    
-    @objc func tapGoalChangeButton() {
-        distanceSettingStackView.isHidden = !distanceSettingStackView.isHidden
-        timeSettingStackView.isHidden = !timeSettingStackView.isHidden
-    }
-    
-    deinit {
-        print("deinit runningStart view")
-    }
-    
-}
-
-extension RunningStartViewController: GoalSettingViewDelegate {
-    
-    func tapSettingButton(goalType: GoalType, goal: String) {
-        switch goalType {
-        case .distance:
-            viewModel?.goalDistance.accept(Float(goal)!)
-        case .time:
-            let time = goal.split(separator: ":").map {Int($0)}
-            viewModel?.goalHour.accept(time[0] ?? 0)
-            viewModel?.goalMinute.accept(time[1] ?? 0)
-        }
-    }
-    
 }

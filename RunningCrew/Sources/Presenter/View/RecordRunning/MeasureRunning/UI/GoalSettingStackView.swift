@@ -56,10 +56,10 @@ class GoalSettingStackView: UIStackView {
     
     lazy var beforeButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(systemName: "chevron.backward")?.resizeImageTo(size: CGSize(width: 20, height: 30))
+        let image = UIImage(systemName: "chevron.backward")?.resizeImageTo(size: CGSize(width: 20, height: 30))?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = .black
+        button.tintColor = .darkModeBasicColor
         
         return button
     }()
@@ -74,10 +74,10 @@ class GoalSettingStackView: UIStackView {
     
     lazy var nextButton: UIButton = {
         let button = UIButton()
+        let image = UIImage(systemName: "chevron.forward")?.resizeImageTo(size: CGSize(width: 20, height: 30))?.withRenderingMode(.alwaysTemplate)
         button.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(systemName: "chevron.forward")?.resizeImageTo(size: CGSize(width: 20, height: 30))
         button.setImage(image, for: .normal)
-        button.tintColor = .black
+        button.tintColor = .darkModeBasicColor
         
         return button
     }()
@@ -87,10 +87,10 @@ class GoalSettingStackView: UIStackView {
     init(goalType: GoalType) {
         self.goalType = goalType
         super.init(frame: .zero)
+        setTitle()
         setCurrentLabelStackView()
         setDestinationStackView()
         setButtonConstraint()
-        setTitle()
         spacing = 11
     }
     
@@ -130,10 +130,10 @@ class GoalSettingStackView: UIStackView {
         NSLayoutConstraint.activate([
             beforeButtonBackgroundView.heightAnchor.constraint(equalToConstant: 44),
             beforeButtonBackgroundView.widthAnchor.constraint(equalToConstant: 44),
-            
+
             nextButtonBackgroundView.heightAnchor.constraint(equalToConstant: 44),
             nextButtonBackgroundView.widthAnchor.constraint(equalToConstant: 44),
-            
+
             beforeButton.topAnchor.constraint(equalTo: beforeButtonBackgroundView.topAnchor),
             beforeButton.leadingAnchor.constraint(equalTo: beforeButtonBackgroundView.leadingAnchor),
             beforeButton.trailingAnchor.constraint(equalTo: beforeButtonBackgroundView.trailingAnchor),
@@ -142,9 +142,7 @@ class GoalSettingStackView: UIStackView {
             nextButton.topAnchor.constraint(equalTo: nextButtonBackgroundView.topAnchor),
             nextButton.leadingAnchor.constraint(equalTo: nextButtonBackgroundView.leadingAnchor),
             nextButton.trailingAnchor.constraint(equalTo: nextButtonBackgroundView.trailingAnchor),
-            nextButton.bottomAnchor.constraint(equalTo: nextButtonBackgroundView.bottomAnchor),
+            nextButton.bottomAnchor.constraint(equalTo: nextButtonBackgroundView.bottomAnchor)
         ])
     }
-    
 }
-

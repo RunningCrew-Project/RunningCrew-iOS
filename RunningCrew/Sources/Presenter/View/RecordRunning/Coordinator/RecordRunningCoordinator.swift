@@ -13,6 +13,7 @@ import CoreLocation
 
 
 final class RecordRunningCoordinator: Coordinator {
+    
     var navigationController: UINavigationController
     var childCoordinators: [Coordinator]
     
@@ -33,18 +34,45 @@ final class RecordRunningCoordinator: Coordinator {
 
 extension RecordRunningCoordinator {
     func showRecordRunningViewController() {
-        let recordVC: RecordRunningViewController = RecordRunningViewController(viewModel: RecordRunningViewModel())
-        self.navigationController.pushViewController(recordVC, animated: false)
-        recordVC.delegate = self
+        let recordRunningVC: RecordRunningViewController = RecordRunningViewController(viewModel: RecordRunningViewModel())
+        recordRunningVC.delegate = self
+        self.navigationController.pushViewController(recordRunningVC, animated: false)
     }
 }
 
 extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     func showIndividualView() {
-        self.navigationController.pushViewController(RunningStartViewController(viewModel: RunningStartViewModel(viewTitle: "개인러닝")), animated: true)
+        let runningStartVC: RunningStartViewController = RunningStartViewController(viewModel: RunningStartViewModel(viewTitle: "개인러닝"))
+        runningStartVC.delegate = self
+        self.navigationController.pushViewController(runningStartVC, animated: true)
     }
     
     func showCrewView() {
-        self.navigationController.pushViewController(MyRunningViewController(), animated: true)
+        let myrunningVC: MyRunningViewController = MyRunningViewController()
+        self.navigationController.pushViewController(myrunningVC, animated: true)
+    }
+}
+
+extension RecordRunningCoordinator: RunningStartViewControllerDelegate {
+    func showGoalSettingView(goalType: GoalType, viewModel: RunningStartViewModel) {
+        let goalSettingVC = GoalSettingViewController(goalType: goalType, viewModel: viewModel)
+        goalSettingVC.delegate = self
+        self.navigationController.pushViewController(goalSettingVC, animated: false)
+    }
+    
+    func showRecordView() {
+        let recordVC = RecordViewController(viewModel: RecordViewModel())
+        recordVC.modalPresentationStyle = .fullScreen
+        self.navigationController.present(recordVC, animated: false)
+    }
+}
+
+extension RecordRunningCoordinator: GoalSettingViewDelegate {
+    func tapCancleButton() {
+        self.navigationController.popViewController(animated: true)
+    }
+    
+    func tapSettingButton() {
+        self.navigationController.popViewController(animated: true)
     }
 }
