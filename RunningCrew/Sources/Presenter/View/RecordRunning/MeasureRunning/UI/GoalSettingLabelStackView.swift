@@ -21,7 +21,7 @@ class GoalSettingLabelStackView: UIStackView {
     lazy var underLineView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
+        view.backgroundColor = .darkModeBasicColor
         
         return view
     }()

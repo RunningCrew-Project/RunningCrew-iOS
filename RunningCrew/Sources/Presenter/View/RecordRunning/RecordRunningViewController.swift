@@ -168,7 +168,7 @@ final class RecordRunningViewController: BaseViewController {
         output.isNeedLocationAuth
             .bind { [weak self] isNeed in
                 if isNeed {
-                    //TODO: 위치 권한 요청 팝업
+                    //TODO: 위치 권한 요청 Alert
                 }
             }
             .disposed(by: disposeBag)

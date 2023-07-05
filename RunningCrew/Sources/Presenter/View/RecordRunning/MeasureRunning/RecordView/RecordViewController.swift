@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class RecordViewController: UIViewController {
+class RecordViewController: BaseViewController {
     
     @IBOutlet weak var runningMeasuringView: UIView!
     @IBOutlet weak var readyDiscussionLabel: UILabel!
@@ -23,7 +23,6 @@ class RecordViewController: UIViewController {
     private var timer: Timer?
     private var readyTimerNum = 5
     var viewModel: RecordViewModel?
-    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +43,15 @@ class RecordViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    //MARK: - deinit
+    deinit {
+        timer?.invalidate()
+        timer = nil
+        viewModel?.deinitViewModel()
+        print("deinit record viewcontroller")
+    }
+    
     
     //MARK: - Ready Time Method
     private func startReadyTimer() {
@@ -76,14 +84,6 @@ class RecordViewController: UIViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
-    }
-    
-    //MARK: - bind
-    private func bind() {
-        viewModel?.timerText.asDriver()
-            .drive(runningTimerLabel.rx
-                .text)
-            .disposed(by: disposeBag)
     }
     
     //MARK: - Action Method
@@ -144,14 +144,12 @@ class RecordViewController: UIViewController {
         completeButtonRingLayer.strokeEnd = 0
     }
     
-    //MARK: - CompleteButton Action Method
-    
-    
-    //MARK: - deinit
-    deinit {
-        timer?.invalidate()
-        timer = nil
-        viewModel?.deinitViewModel()
-        print("deinit record viewcontroller")
+  
+    //MARK: - bind
+    private func bind() {
+        viewModel?.timerText.asDriver()
+            .drive(runningTimerLabel.rx
+                .text)
+            .disposed(by: disposeBag)
     }
 }

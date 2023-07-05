@@ -18,12 +18,10 @@ protocol GoalSettingViewDelegate: AnyObject {
 class GoalSettingViewController: BaseViewController {
     
     weak var delegate: GoalSettingViewDelegate?
-    
-    let goalType: GoalType
+
     let viewModel: RunningStartViewModel
     
-    init(goalType: GoalType, viewModel: RunningStartViewModel) {
-        self.goalType = goalType
+    init(viewModel: RunningStartViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -39,13 +37,13 @@ class GoalSettingViewController: BaseViewController {
     }
     
     lazy var goalLabelBindingTextField: GoalTextField = {
-        let textField = GoalTextField(goalType: goalType)
+        let textField = GoalTextField(goalType: viewModel.goalType)
         
         return textField
     }()
     
     lazy var goalLabel: GoalSettingStackView = {
-        let goalLabel = GoalSettingStackView(goalType: goalType)
+        let goalLabel = GoalSettingStackView(goalType: viewModel.goalType)
         
         return goalLabel
     }()
@@ -79,77 +77,53 @@ class GoalSettingViewController: BaseViewController {
     }
     
     override func bind() {
+        let input = RunningStartViewModel.Input(
+            nextButtonDidTap: goalLabel.nextButton.rx.tap.asObservable(),
+            beforeButtonDidTap: goalLabel.beforeButton.rx.tap.asObservable(),
+            navigationRightButtonDidTap: navigationItem.rightBarButtonItem?.rx.tap
+                .map { self.goalLabel.goalSettingLabelStackView.destinationLabel.text ?? "" })
+        
+        let output = viewModel.transform(input: input)
+        
+        output.goalText
+            .drive(goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         goalLabelBindingTextField.rx.text.orEmpty
             .map { [weak self] input -> String? in
                 guard let self = self else { return "" }
                 
-                switch self.goalType {
+                switch self.viewModel.goalType.value {
                 case .distance:
                     if input.isEmpty {
-                        return "0"
+                        return "0.00"
+                    } else if input.count <= 2 {
+                        return input + ".00"
+                    } else {
+                        goalLabelBindingTextField.text = String(input.prefix(2))
+                        return (goalLabelBindingTextField.text ?? "0") + ".00"
                     }
-                    if input == "0" {
-                        self.goalLabelBindingTextField.text?.removeLast()
-                        return "0"
-                    }
-                    return input
                 case .time:
                     if input.isEmpty {
                         return "00:00"
+                    } else if input.count <= 4 {
+                        let string = String(format: "%.4d", Int(input) ?? 0)
+                        return String(string.prefix(2)) + ":" + String(string.suffix(2))
+                    } else {
+                        goalLabelBindingTextField.text = String(input.prefix(4))
+                        return (goalLabelBindingTextField.text ?? "00").prefix(2) + ":" + (goalLabelBindingTextField.text ?? "00").suffix(2)
                     }
-                    let len = input.count
-                    let paddedStr = String(repeating: "0", count: 4 - len) + input
-                    let index1 = paddedStr.index(paddedStr.startIndex, offsetBy: 2)
-                    let index2 = paddedStr.index(paddedStr.startIndex, offsetBy: 4)
-                    let result = "\(paddedStr[..<index1]):\(paddedStr[index1..<index2])"
-                    
-                    return result
                 }
             }
             .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
             .disposed(by: disposeBag)
-        
-                
-        goalLabelBindingTextField.rx.text.orEmpty
-            .asDriver()
-            .map({ input in
-                if input.contains(".") || input.contains(":") {
-                    return input.count <= 5
-                } else {
-                    return input.count <= 4
-                }
-            })
-            .drive { [weak self] in
-                if !$0 {
-                    self?.goalLabelBindingTextField.text = String(self?.goalLabelBindingTextField.text?.dropLast() ?? "")
-                }
-            }.disposed(by: disposeBag)
         
         navigationItem.leftBarButtonItem?.rx.tap
             .bind { self.delegate?.tapCancleButton() }
             .disposed(by: disposeBag)
         
         navigationItem.rightBarButtonItem?.rx.tap
-            .bind { [weak self] _ in
-                guard let self = self else { return }
-                
-                switch self.goalType {
-                case .distance:
-                    viewModel.goalDistance.accept(Float(goalLabelBindingTextField.text ?? "0") ?? 0)
-                case .time:
-                    let time = (goalLabelBindingTextField.text ?? "00:00").split(separator: ":").map {Int($0)}
-                    viewModel.goalHour.accept(time[0] ?? 0)
-                    viewModel.goalMinute.accept(time[1] ?? 0)
-                }
-                
-                self.delegate?.tapSettingButton()
-            }
+            .bind { self.delegate?.tapSettingButton() }
             .disposed(by: disposeBag)
     }
 }
-
-
-
-
-
-

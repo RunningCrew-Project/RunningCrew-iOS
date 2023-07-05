@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxRelay
+import RxSwift
 
 enum GoalType {
     case distance
@@ -82,25 +84,17 @@ class GoalSettingStackView: UIStackView {
         return button
     }()
     
-    var goalType: GoalType
+    var goalType: BehaviorRelay<GoalType>
+    var disposeBag = DisposeBag()
     
-    init(goalType: GoalType) {
+    init(goalType: BehaviorRelay<GoalType>) {
         self.goalType = goalType
         super.init(frame: .zero)
-        setTitle()
         setCurrentLabelStackView()
         setDestinationStackView()
         setButtonConstraint()
+        bind()
         spacing = 11
-    }
-    
-    func setTitle() {
-        switch goalType {
-        case .distance:
-            self.currentLabel.text = "킬로미터"
-        case .time:
-            self.currentLabel.text = "시간 : 분"
-        }
     }
     
     required init(coder: NSCoder) {
@@ -144,5 +138,21 @@ class GoalSettingStackView: UIStackView {
             nextButton.trailingAnchor.constraint(equalTo: nextButtonBackgroundView.trailingAnchor),
             nextButton.bottomAnchor.constraint(equalTo: nextButtonBackgroundView.bottomAnchor)
         ])
+    }
+    
+    func bind() {
+        goalType.bind { type in
+            switch type {
+            case .distance:
+                self.currentLabel.text = "킬로미터"
+                self.beforeButton.isHidden = true
+                self.nextButton.isHidden = false
+            case .time:
+                self.currentLabel.text = "시간 : 분"
+                self.beforeButton.isHidden = false
+                self.nextButton.isHidden = true
+            }
+        }
+        .disposed(by: disposeBag)
     }
 }

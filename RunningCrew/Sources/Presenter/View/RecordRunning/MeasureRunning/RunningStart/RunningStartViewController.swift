@@ -12,7 +12,7 @@ import RxSwift
 import RxGesture
 
 protocol RunningStartViewControllerDelegate: AnyObject {
-    func showGoalSettingView(goalType: GoalType, viewModel: RunningStartViewModel)
+    func showGoalSettingView(viewModel: RunningStartViewModel)
     func showRecordView()
 }
 
@@ -63,22 +63,13 @@ class RunningStartViewController: BaseViewController {
         return stackView
     }()
     
-    lazy var distanceSettingStackView: GoalSettingStackView = {
-        let distanceSettingStackView = GoalSettingStackView(goalType: .distance)
-        distanceSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        distanceSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
-        distanceSettingStackView.beforeButton.isHidden = true
+    lazy var goalSettingStackView: GoalSettingStackView = {
+        let goalSettingStackView = GoalSettingStackView(goalType: viewModel.goalType)
+        goalSettingStackView.translatesAutoresizingMaskIntoConstraints = false
+        goalSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
+        goalSettingStackView.beforeButton.isHidden = true
         
-        return distanceSettingStackView
-    }()
-    
-    lazy var timeSettingStackView: GoalSettingStackView = {
-        let timeSettingStackView = GoalSettingStackView(goalType: .time)
-        timeSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        timeSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
-        timeSettingStackView.nextButton.isHidden = true
-        
-        return timeSettingStackView
+        return goalSettingStackView
     }()
     
     lazy var startButton: UIButton = {
@@ -95,17 +86,14 @@ class RunningStartViewController: BaseViewController {
         print("deinit runningStart view")
     }
     
-    
     override func setView() {
-        timeSettingStackView.isHidden = true
         self.view.backgroundColor = .systemBackground
     }
     
     override func setAddView() {
         view.addSubview(mapView)
         view.addSubview(startButtonStackView)
-        startButtonStackView.addArrangedSubview(distanceSettingStackView)
-        startButtonStackView.addArrangedSubview(timeSettingStackView)
+        startButtonStackView.addArrangedSubview(goalSettingStackView)
         startButtonStackView.addArrangedSubview(startButton)
     }
     
@@ -128,44 +116,24 @@ class RunningStartViewController: BaseViewController {
     //MARK: - Method
     
     override func bind() {
+        let input = RunningStartViewModel.Input(
+            nextButtonDidTap: goalSettingStackView.nextButton.rx.tap.asObservable(),
+            beforeButtonDidTap: goalSettingStackView.beforeButton.rx.tap.asObservable(),
+            navigationRightButtonDidTap: nil)
         
-        distanceSettingStackView.goalSettingLabelStackView.destinationLabel.rx.tapGesture()
+        let output = viewModel.transform(input: input)
+        
+        output.goalText
+            .drive(goalSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        goalSettingStackView.goalSettingLabelStackView.destinationLabel.rx.tapGesture()
             .when(.recognized)
-            .bind { _ in self.delegate?.showGoalSettingView(goalType: .distance, viewModel: self.viewModel) }
+            .bind { _ in self.delegate?.showGoalSettingView(viewModel: self.viewModel) }
             .disposed(by: disposeBag)
-        
-        timeSettingStackView.goalSettingLabelStackView.destinationLabel.rx.tapGesture()
-            .when(.recognized)
-            .bind { _ in self.delegate?.showGoalSettingView(goalType: .time, viewModel: self.viewModel) }
-            .disposed(by: disposeBag)
-        
-        distanceSettingStackView.nextButton.rx.tap
-            .bind { _ in
-                self.distanceSettingStackView.isHidden = true
-                self.timeSettingStackView.isHidden = false
-            }
-            .disposed(by: disposeBag)
-        
-        timeSettingStackView.beforeButton.rx.tap
-            .bind { _ in
-                self.distanceSettingStackView.isHidden = false
-                self.timeSettingStackView.isHidden = true
-            }
-            .disposed(by: disposeBag)
-        
+    
         startButton.rx.tap
-            .bind { _ in
-                self.delegate?.showRecordView()
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.goalDistance.asDriver()
-            .map({String(format: "%.2f", $0)})
-            .drive(distanceSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
-            .disposed(by: disposeBag)
-        
-        viewModel.goalTimeRelay.asDriver()
-            .drive(timeSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+            .bind { self.delegate?.showRecordView() }
             .disposed(by: disposeBag)
     }
 }

@@ -7,13 +7,16 @@
 
 import UIKit
 import RxCocoa
+import RxRelay
+import RxSwift
 
 class GoalTextField: UITextField {
     
-    var type: GoalType
+    var goalType: BehaviorRelay<GoalType>
+    var disposeBag = DisposeBag()
     
-    init(goalType: GoalType) {
-        self.type = goalType
+    init(goalType: BehaviorRelay<GoalType>) {
+        self.goalType = goalType
         super.init(frame: .zero)
         backgroundColor = .clear
         borderStyle = .none
@@ -22,12 +25,15 @@ class GoalTextField: UITextField {
     }
     
     func setKeyboard() {
-        switch type {
-        case .distance:
-            self.keyboardType = .decimalPad
-        case .time:
-            self.keyboardType = .numberPad
+        goalType.bind { type in
+            switch type {
+            case .distance:
+                self.keyboardType = .decimalPad
+            case .time:
+                self.keyboardType = .numberPad
+            }
         }
+        .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {

@@ -42,7 +42,7 @@ extension RecordRunningCoordinator {
 
 extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     func showIndividualView() {
-        let runningStartVC: RunningStartViewController = RunningStartViewController(viewModel: RunningStartViewModel(viewTitle: "개인러닝"))
+        let runningStartVC: RunningStartViewController = RunningStartViewController(viewModel: RunningStartViewModel())
         runningStartVC.delegate = self
         self.navigationController.pushViewController(runningStartVC, animated: true)
     }
@@ -54,8 +54,8 @@ extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
 }
 
 extension RecordRunningCoordinator: RunningStartViewControllerDelegate {
-    func showGoalSettingView(goalType: GoalType, viewModel: RunningStartViewModel) {
-        let goalSettingVC = GoalSettingViewController(goalType: goalType, viewModel: viewModel)
+    func showGoalSettingView(viewModel: RunningStartViewModel) {
+        let goalSettingVC = GoalSettingViewController(viewModel: viewModel)
         goalSettingVC.delegate = self
         self.navigationController.pushViewController(goalSettingVC, animated: false)
     }

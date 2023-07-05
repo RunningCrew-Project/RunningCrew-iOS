@@ -8,27 +8,61 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import RxRelay
 
-class RunningStartViewModel {
+final class RunningStartViewModel: BaseViewModelType {
     
-    let viewTitle: String
-    
+    var goalType: BehaviorRelay<GoalType> = BehaviorRelay<GoalType>(value: .distance)
     var goalDistance: BehaviorRelay<Float> = BehaviorRelay<Float>(value: 5.00)
     var goalHour: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
     var goalMinute: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
-    var goalTimeRelay = BehaviorRelay<String>(value: "")
     
-    let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     
-    init(viewTitle: String) {
-        self.viewTitle = viewTitle
-        Observable.combineLatest(goalHour, goalMinute).map({ hour, minute in
-            "\(String(format: "%.2d", hour)):\(String(format: "%.2d", minute))"
-        }).bind(to: goalTimeRelay)
-            .disposed(by: disposeBag)
+    struct Input {
+        let nextButtonDidTap: Observable<Void>
+        let beforeButtonDidTap: Observable<Void>
+        let navigationRightButtonDidTap: Observable<String>?
     }
     
+    struct Output {
+        let goalText: Driver<String>
+    }
+    
+    func transform(input: Input) -> Output {
+        input.nextButtonDidTap
+            .bind { self.goalType.accept(.time) }
+            .disposed(by: disposeBag)
+        
+        input.beforeButtonDidTap
+            .bind { self.goalType.accept(.distance) }
+            .disposed(by: disposeBag)
+        
+        input.navigationRightButtonDidTap?
+            .bind { [weak self] text in
+                guard let self = self else { return }
+                
+                switch goalType.value {
+                case .distance:
+                    goalDistance.accept(Float(text) ?? 0)
+                case .time:
+                    let time = (text).split(separator: ":").map {Int($0)}
+                    
+                    goalHour.accept(time[0] ?? 0 )
+                    goalMinute.accept(time[1] ?? 0)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        let goalText = Observable.combineLatest(goalType, goalDistance, goalHour, goalMinute)
+            .map { type, distance, hour, minute in
+                switch type {
+                case .distance: return String(format: "%.2f", distance)
+                case .time: return String(format: "%.2d", hour) + ":" + String(format: "%.2d", minute)
+                }
+            }
+            .asDriver(onErrorJustReturn: "")
+        
+        return Output(goalText: goalText)
+    }
 }
-
-// Relay 스스로가 관찰 가능하고 관찰을 받을 수 있는 것
-// ViewModel의 목적이 비지니스 로직의 분리
