@@ -28,6 +28,9 @@
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
 		BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */; };
 		BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */; };
+		BEBF54142A56595D0058C895 /* ProfileChnageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF54132A56595D0058C895 /* ProfileChnageViewController.swift */; };
+		BEBF54162A5659690058C895 /* ProfileChnageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF54152A5659690058C895 /* ProfileChnageView.swift */; };
+		BEBF54182A5675DF0058C895 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF54172A5675DE0058C895 /* GenderButton.swift */; };
 		BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */; };
 		BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */; };
 		BEEAFDD72A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */; };
@@ -139,6 +142,9 @@
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarView.swift; sourceTree = "<group>"; };
 		BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarViewController.swift; sourceTree = "<group>"; };
+		BEBF54132A56595D0058C895 /* ProfileChnageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChnageViewController.swift; sourceTree = "<group>"; };
+		BEBF54152A5659690058C895 /* ProfileChnageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChnageView.swift; sourceTree = "<group>"; };
+		BEBF54172A5675DE0058C895 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
 		BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningViewController.swift; sourceTree = "<group>"; };
 		BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningCollectionView.swift; sourceTree = "<group>"; };
 		BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -327,6 +333,16 @@
 				D0BCB0478C25AB8849DDAF93 /* Pods-RunningCrewTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BEBF54122A5659430058C895 /* profileChnage */ = {
+			isa = PBXGroup;
+			children = (
+				BEBF54132A56595D0058C895 /* ProfileChnageViewController.swift */,
+				BEBF54152A5659690058C895 /* ProfileChnageView.swift */,
+				BEBF54172A5675DE0058C895 /* GenderButton.swift */,
+			);
+			path = profileChnage;
 			sourceTree = "<group>";
 		};
 		BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */ = {
@@ -649,6 +665,7 @@
 		C7DE68002999374300C824A9 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				BEBF54122A5659430058C895 /* profileChnage */,
 				BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */,
 				BEE5E4DC29DFE41A00A49FC5 /* Cell */,
 				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
@@ -1109,6 +1126,7 @@
 				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
 				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
 				BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */,
+				BEBF54162A5659690058C895 /* ProfileChnageView.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
 				936257992A04FC1A001E9CA6 /* CrewJoinViewController.swift in Sources */,
 				936257962A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift in Sources */,
@@ -1117,6 +1135,7 @@
 				C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */,
 				9398DCF029DD9FDE00748F64 /* BaseView.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
+				BEBF54182A5675DF0058C895 /* GenderButton.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
 				C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */,
 				C7E00A2329C36F4900B39709 /* CameraCollectionViewCell.swift in Sources */,
@@ -1135,6 +1154,7 @@
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
 				93FC2FCE29EA93A00007B551 /* CrewGenerateViewController.swift in Sources */,
 				C751528029B79981003D8987 /* SaveRecordRunningViewController.swift in Sources */,
+				BEBF54142A56595D0058C895 /* ProfileChnageViewController.swift in Sources */,
 				C7A4CE5D29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift in Sources */,
 				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
