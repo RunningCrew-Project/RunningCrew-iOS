@@ -8,7 +8,11 @@
 import UIKit
 import RxSwift
 
-class RecordViewController: BaseViewController {
+protocol RecordViewDelegate: AnyObject {
+    func finishRunning()
+}
+
+final class RecordViewController: BaseViewController {
     
     @IBOutlet weak var runningMeasuringView: UIView!
     @IBOutlet weak var readyDiscussionLabel: UILabel!
@@ -23,6 +27,8 @@ class RecordViewController: BaseViewController {
     //MARK: - Properties
     private var readyTimer = Observable<Int>.timer(.seconds(1), period: .seconds(1), scheduler: MainScheduler.instance)
     private var viewModel: RecordViewModel
+    
+    weak var delegate: RecordViewDelegate?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -107,9 +113,7 @@ class RecordViewController: BaseViewController {
         completeButton.rx.controlEvent(.touchDown)
             .bind {
                 Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: {[weak self] timer in
-                    let vc = SaveRecordRunningViewController()
-                    vc.modalPresentationStyle = .fullScreen
-                    self?.present(vc, animated: true)
+                    self?.delegate?.finishRunning()
                 })
                 
                 let animation = CABasicAnimation(keyPath: "strokeEnd")

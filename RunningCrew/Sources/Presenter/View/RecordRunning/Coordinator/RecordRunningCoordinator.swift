@@ -63,6 +63,7 @@ extension RecordRunningCoordinator: RunningStartViewControllerDelegate {
     func showRecordView(goalType: GoalType, goal: String) {
         let recordVC = RecordViewController(viewModel: RecordViewModel(goalType: goalType, goal: goal))
         recordVC.modalPresentationStyle = .fullScreen
+        recordVC.delegate = self
         self.navigationController.present(recordVC, animated: false)
     }
 }
@@ -74,5 +75,14 @@ extension RecordRunningCoordinator: GoalSettingViewDelegate {
     
     func tapSettingButton() {
         self.navigationController.popViewController(animated: true)
+    }
+}
+
+extension RecordRunningCoordinator: RecordViewDelegate {
+    func finishRunning() {
+        self.navigationController.viewControllers.last?.dismiss(animated: false)
+        let saveRecordRunningVC = SaveRecordRunningViewController()
+        saveRecordRunningVC.modalPresentationStyle = .fullScreen
+        self.navigationController.present(saveRecordRunningVC, animated: true)
     }
 }
