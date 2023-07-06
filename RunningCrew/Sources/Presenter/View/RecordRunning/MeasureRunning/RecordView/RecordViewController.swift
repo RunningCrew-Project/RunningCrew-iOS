@@ -17,21 +17,15 @@ class RecordViewController: BaseViewController {
     @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var completeButtonContainerView: UIView!
     @IBOutlet weak var runningTimerLabel: UILabel!
+    @IBOutlet weak var runningDistanceLabel: UILabel!
     private var completeButtonRingLayer: CAShapeLayer?
     
     //MARK: - Properties
-    private var timer: Timer?
-    private var readyTimerNum = 5
-    var viewModel: RecordViewModel?
+    private var readyTimer = Observable<Int>.timer(.seconds(1), period: .seconds(1), scheduler: MainScheduler.instance)
+    private var viewModel: RecordViewModel
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        runningMeasuringView.isHidden = true
-        setControlButtonCornerRadius()
-        startReadyTimer()
-        setCompleteButton()
-        setCompleteButtonRing()
-        bind()
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     //MARK: - Initalizer
@@ -46,92 +40,18 @@ class RecordViewController: BaseViewController {
     
     //MARK: - deinit
     deinit {
-        timer?.invalidate()
-        timer = nil
-        viewModel?.deinitViewModel()
+        viewModel.deinitViewModel()
         print("deinit record viewcontroller")
     }
     
-    
-    //MARK: - Ready Time Method
-    private func startReadyTimer() {
-        self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(readyTimerCallBack), userInfo: nil, repeats: true)
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
     
-    @objc func readyTimerCallBack() {
-        readyTimerNum -= 1
-        if readyTimerNum == 0 {
-            timer?.invalidate()
-            timer = nil
-            hiddenTimerLabel()
-            runningMeasuringView.isHidden = false
-            viewModel?.startTimer()
-        }
-        readyTimerLabel.text = String(readyTimerNum)
-    }
-    
-    //MARK: - Set UI Constraint
-    private func setControlButtonCornerRadius() {
+    override func setView() {
         pauseAndPlayButton.layer.cornerRadius = pauseAndPlayButton.frame.height / 2
-        
         completeButton.layer.cornerRadius = completeButton.frame.height / 2
-    }
-    
-    private func hiddenTimerLabel() {
-        readyDiscussionLabel.isHidden = true
-        readyTimerLabel.isHidden = true
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
-    //MARK: - Action Method
-
-    @IBAction func tapPauseOrPlayButton(_ sender: Any) {
-        guard let viewModel = viewModel else { return }
-        if viewModel.isRunning {
-            pauseAndPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
-            viewModel.stopTimer()
-        } else {
-            pauseAndPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
-            viewModel.startTimer()
-        }
-    }
-    
-    func setCompleteButton() {
-        completeButton.addTarget(self, action: #selector(completeButtonTouchDown), for: .touchDown)
-        completeButton.addTarget(self, action: #selector(completeButtonTouchUp), for: .touchUpInside)
-    }
-    
-    @objc func completeButtonTouchDown() {
-        if timer == nil {
-            timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: {[weak self] timer in
-                let vc = SaveRecordRunningViewController()
-                vc.modalPresentationStyle = .fullScreen
-                self?.present(vc, animated: true)
-            })
-        }
-        let animation = CABasicAnimation(keyPath: "strokeEnd")
-        animation.toValue = 1
-        animation.duration = 2
-        animation.isRemovedOnCompletion = false
-        animation.fillMode = .forwards
-        completeButtonRingLayer?.add(animation, forKey: "animation")
-    }
-    
-    @objc func completeButtonTouchUp() {
-        completeButtonRingLayer?.removeAllAnimations()
-        timer?.invalidate()
-        timer = nil
-        showToastMessage()
-    }
-    
-    func showToastMessage() {
-        print("show toast message ")
-    }
-    
-    func setCompleteButtonRing() {
+        
         let trackLayer = CAShapeLayer()
         trackLayer.frame = completeButton.bounds
         completeButtonRingLayer = CAShapeLayer()
@@ -144,12 +64,68 @@ class RecordViewController: BaseViewController {
         completeButtonRingLayer.strokeEnd = 0
     }
     
+    func showToastMessage() {
+        print("show toast message ")
+    }
   
     //MARK: - bind
-    private func bind() {
-        viewModel?.timerText.asDriver()
-            .drive(runningTimerLabel.rx
-                .text)
+    override func bind() {
+        let input = RecordViewModel.Input(pauseAndPlayButtonDidTap: pauseAndPlayButton.rx.tap.asObservable())
+        
+        let output = viewModel.transform(input: input)
+        
+        output.isRunning
+            .bind { isRunning in
+                if isRunning {
+                    self.pauseAndPlayButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
+                } else {
+                    self.pauseAndPlayButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.timerText
+            .drive(runningTimerLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.runningDistance
+            .drive(runningDistanceLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        
+        readyTimer.take(5)
+            .subscribe(onNext: { value in
+                self.readyTimerLabel.text = String(4-value)
+            }, onDisposed: {
+                self.readyDiscussionLabel.isHidden = true
+                self.readyTimerLabel.isHidden = true
+                self.runningMeasuringView.isHidden = false
+                self.viewModel.startTimer()
+            })
+            .disposed(by: disposeBag)
+        
+        completeButton.rx.controlEvent(.touchDown)
+            .bind {
+                Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false, block: {[weak self] timer in
+                    let vc = SaveRecordRunningViewController()
+                    vc.modalPresentationStyle = .fullScreen
+                    self?.present(vc, animated: true)
+                })
+                
+                let animation = CABasicAnimation(keyPath: "strokeEnd")
+                animation.toValue = 1
+                animation.duration = 2
+                animation.isRemovedOnCompletion = false
+                animation.fillMode = .forwards
+                self.completeButtonRingLayer?.add(animation, forKey: "animation")
+            }
+            .disposed(by: disposeBag)
+        
+        completeButton.rx.controlEvent(.touchUpInside)
+            .bind {
+                self.completeButtonRingLayer?.removeAllAnimations()
+                self.showToastMessage()
+            }
             .disposed(by: disposeBag)
     }
 }

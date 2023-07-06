@@ -60,8 +60,8 @@ extension RecordRunningCoordinator: RunningStartViewControllerDelegate {
         self.navigationController.pushViewController(goalSettingVC, animated: false)
     }
     
-    func showRecordView() {
-        let recordVC = RecordViewController(viewModel: RecordViewModel())
+    func showRecordView(goalType: GoalType, goal: String) {
+        let recordVC = RecordViewController(viewModel: RecordViewModel(goalType: goalType, goal: goal))
         recordVC.modalPresentationStyle = .fullScreen
         self.navigationController.present(recordVC, animated: false)
     }

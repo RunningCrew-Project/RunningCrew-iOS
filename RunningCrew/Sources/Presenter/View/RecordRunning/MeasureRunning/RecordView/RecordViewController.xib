@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -26,6 +26,7 @@
                 <outlet property="pauseAndPlayButton" destination="2HC-tE-siq" id="g3W-g3-7qh"/>
                 <outlet property="readyDiscussionLabel" destination="vay-W8-NzT" id="KL6-dD-In9"/>
                 <outlet property="readyTimerLabel" destination="E9f-6d-nuA" id="D3R-It-96z"/>
+                <outlet property="runningDistanceLabel" destination="0Uq-dW-nRt" id="KUD-Px-1XB"/>
                 <outlet property="runningMeasuringView" destination="WQ8-ny-CUm" id="YEz-1y-d8Y"/>
                 <outlet property="runningTimerLabel" destination="pf3-vx-iVb" id="1cT-P6-8qe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -36,7 +37,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQ8-ny-CUm">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQ8-ny-CUm">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mLZ-bP-uxG">
@@ -149,9 +150,6 @@
                                                                 <imageReference key="image" image="pause.fill" catalog="system" symbolScale="default"/>
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="44"/>
                                                             </buttonConfiguration>
-                                                            <connections>
-                                                                <action selector="tapPauseOrPlayButton:" destination="-1" eventType="touchUpInside" id="vAU-HD-Ef1"/>
-                                                            </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoV-vj-Ho7">
                                                             <rect key="frame" x="145" y="0.0" width="90" height="90"/>

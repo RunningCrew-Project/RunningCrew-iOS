@@ -15,7 +15,7 @@ final class LocationManager: NSObject {
     
     private let locationManager = CLLocationManager()
     
-    var currentCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.554763, longitude: 126.97092)
+    var currentCoordinate: BehaviorRelay<CLLocationCoordinate2D> = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 37.554763, longitude: 126.97092))
     var address: BehaviorRelay<String> = BehaviorRelay<String>(value: "현 위치를 찾을 수 없습니다.")
     var isNeedLocationAuthorization: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     
@@ -35,7 +35,7 @@ extension LocationManager {
     
     private func reverseGeocode() {
         Task {
-            let location = CLLocation(latitude: currentCoordinate.latitude, longitude: currentCoordinate.longitude)
+            let location = CLLocation(latitude: currentCoordinate.value.latitude, longitude: currentCoordinate.value.longitude)
             let geocoder = CLGeocoder()
             let locale = Locale(identifier: "Ko-kr")
             let placemarks = try await geocoder.reverseGeocodeLocation(location, preferredLocale: locale)
@@ -54,7 +54,7 @@ extension LocationManager {
 extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let coordinate = manager.location?.coordinate else { return }
-        currentCoordinate = coordinate
+        currentCoordinate.accept(coordinate)
         reverseGeocode()
         self.locationManager.stopUpdatingLocation()
     }

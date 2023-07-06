@@ -13,7 +13,7 @@ import RxGesture
 
 protocol RunningStartViewControllerDelegate: AnyObject {
     func showGoalSettingView(viewModel: RunningStartViewModel)
-    func showRecordView()
+    func showRecordView(goalType: GoalType, goal: String)
 }
 
 class RunningStartViewController: BaseViewController {
@@ -133,7 +133,8 @@ class RunningStartViewController: BaseViewController {
             .disposed(by: disposeBag)
     
         startButton.rx.tap
-            .bind { self.delegate?.showRecordView() }
+            .bind { self.delegate?.showRecordView(goalType: self.viewModel.goalType.value,
+                                                  goal: self.goalSettingStackView.goalSettingLabelStackView.destinationLabel.text ?? "") }
             .disposed(by: disposeBag)
     }
 }
