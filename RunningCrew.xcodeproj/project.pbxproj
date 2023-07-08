@@ -447,18 +447,6 @@
 			path = RecordView;
 			sourceTree = "<group>";
 		};
-		C7663E5129A4BF6E0046068B /* MeasureRunning */ = {
-			isa = PBXGroup;
-			children = (
-				C7F95B2B29AF7F8A00C69D1B /* RunningStart */,
-				C7663E7929A9F1090046068B /* GoalSettingView */,
-				C75DECFC29AE7E8300A4EC47 /* RecordView */,
-				C751527D29B7994B003D8987 /* SaveRunningRecord */,
-				C75DECF529ABB36B00A4EC47 /* UI */,
-			);
-			path = MeasureRunning;
-			sourceTree = "<group>";
-		};
 		C7663E7929A9F1090046068B /* GoalSettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,7 +616,11 @@
 			isa = PBXGroup;
 			children = (
 				C7DE67F829992A2C00C824A9 /* RecordRunningViewController.swift */,
-				C7663E5129A4BF6E0046068B /* MeasureRunning */,
+				C7F95B2B29AF7F8A00C69D1B /* RunningStart */,
+				C7663E7929A9F1090046068B /* GoalSettingView */,
+				C75DECFC29AE7E8300A4EC47 /* RecordView */,
+				C751527D29B7994B003D8987 /* SaveRunningRecord */,
+				C75DECF529ABB36B00A4EC47 /* UI */,
 				C7DE6826299B890500C824A9 /* Button */,
 				C7DE6808299939BE00C824A9 /* Coordinator */,
 			);
