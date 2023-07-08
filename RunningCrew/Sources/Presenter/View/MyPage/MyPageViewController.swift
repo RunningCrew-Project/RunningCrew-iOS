@@ -47,11 +47,11 @@ class MyPageViewController: CustomTopTabBarController {
     lazy var profileChagneButton:UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+        button.addTarget(self, action: #selector(profileChagneButtonTapped(_:)), for: .touchUpInside)
         
         return button
     }()
-    
-//    lazy var calendar = MyPageClendarView()
+
     
     lazy var topTabBarContainer: UIView = {
         let view = UIView()
@@ -62,6 +62,8 @@ class MyPageViewController: CustomTopTabBarController {
     
     //MARK: - Properties
 
+
+    //MARK: - Define Method
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
@@ -70,12 +72,18 @@ class MyPageViewController: CustomTopTabBarController {
         setConstraint()
         topTabBarMenu.delegate = self
     }
-    //MARK: - Define Method
+    
     func setNavigationBar() {
         let setImage = UIImage(systemName: "gearshape") 
         let setButton = UIBarButtonItem(image: setImage, style: .plain, target: self, action: nil)
         self.navigationItem.title = "마이페이지"
         self.navigationItem.rightBarButtonItem = setButton
+    }
+    
+    @objc func profileChagneButtonTapped(_ sender: UIButton) {
+        let destinationViewController = ProfileChnageViewController()
+        self.navigationController?.pushViewController(destinationViewController, animated: true)
+//        present(destinationViewController, animated: true)
     }
 
     
@@ -117,7 +125,6 @@ class MyPageViewController: CustomTopTabBarController {
     
     func profileImageConstraint() {
         profileImage.snp.makeConstraints { make in
-//            make.height.width.equalTo(view.safeAreaLayoutGuide.snp.height).multipliedBy(CGFloat(Double(166) / Double(1624)))
             make.height.width.equalTo(84)
             make.leading.equalTo(profileView.snp.leading).offset(48)
             make.centerY.equalTo(profileView.snp.centerY)
@@ -138,13 +145,6 @@ class MyPageViewController: CustomTopTabBarController {
         }
         
     }
-    
-//    func calendarConstraint(){
-//        calendar.snp.makeConstraints { make in
-//            make.center.equalTo(view.center)
-//        }
-//
-//    }
 
     
     func setTopTabContainer() {
@@ -176,5 +176,5 @@ class MyPageViewController: CustomTopTabBarController {
     }
 }
 
-// 회원가입 뷰모델
+
 

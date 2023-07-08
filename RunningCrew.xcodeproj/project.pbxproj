@@ -11,6 +11,9 @@
 		3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */; };
 		3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF262A51601500AC531D /* BaseViewModelType.swift */; };
 		3B9DCF2B2A51801F00AC531D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF2A2A51801F00AC531D /* LocationManager.swift */; };
+		3B9DCF382A59013100AC531D /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF352A59013100AC531D /* GenderButton.swift */; };
+		3B9DCF392A59013100AC531D /* ProfileChnageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF362A59013100AC531D /* ProfileChnageView.swift */; };
+		3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */; };
 		931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */; };
 		931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90162A2C8074007EE1DC /* NetworkManager.swift */; };
 		931A901A2A2C808A007EE1DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 931A90192A2C808A007EE1DC /* Alamofire */; };
@@ -124,6 +127,9 @@
 		3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewModel.swift; sourceTree = "<group>"; };
 		3B9DCF262A51601500AC531D /* BaseViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelType.swift; sourceTree = "<group>"; };
 		3B9DCF2A2A51801F00AC531D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		3B9DCF352A59013100AC531D /* GenderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
+		3B9DCF362A59013100AC531D /* ProfileChnageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileChnageView.swift; sourceTree = "<group>"; };
+		3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileChnageViewController.swift; sourceTree = "<group>"; };
 		444E77919FDC0F8D936ECE3D /* Pods-RunningCrewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrewTests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrewTests/Pods-RunningCrewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49645AC81E6AA34CA37B1351 /* Pods_RunningCrew_RunningCrewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew_RunningCrewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -275,6 +281,16 @@
 				C7E00A1B29C1AF8D00B39709 /* ImagePickerViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		3B9DCF2E2A5900F400AC531D /* profileChange */ = {
+			isa = PBXGroup;
+			children = (
+				3B9DCF352A59013100AC531D /* GenderButton.swift */,
+				3B9DCF362A59013100AC531D /* ProfileChnageView.swift */,
+				3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */,
+			);
+			path = profileChange;
 			sourceTree = "<group>";
 		};
 		931A90132A2C804B007EE1DC /* Manager */ = {
@@ -654,6 +670,7 @@
 		C7DE68002999374300C824A9 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				3B9DCF2E2A5900F400AC531D /* profileChange */,
 				BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */,
 				BEE5E4DC29DFE41A00A49FC5 /* Cell */,
 				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
@@ -1081,7 +1098,9 @@
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */,
 				C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */,
+				3B9DCF382A59013100AC531D /* GenderButton.swift in Sources */,
 				C7A1F21929BA385A009AE7BA /* UIView+.swift in Sources */,
+				3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */,
 				93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */,
@@ -1112,6 +1131,7 @@
 				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
 				C7A1F21629BA1194009AE7BA /* CustomAlertViewController.swift in Sources */,
 				C7E00A1C29C1AF8D00B39709 /* ImagePickerViewModel.swift in Sources */,
+				3B9DCF392A59013100AC531D /* ProfileChnageView.swift in Sources */,
 				936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */,
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
