@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import GoogleSignIn
 
 final class LogInView: BaseView {
     
@@ -31,7 +32,7 @@ final class LogInView: BaseView {
         button.backgroundColor = UIColor(named: "GoogleLogInButton")
         button.setTitle("Google 로그인", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        
+
         return button
     }()
     

@@ -7,7 +7,10 @@
 
 import UIKit
 import RxCocoa
+import RxSwift
+import RxGesture
 import KakaoSDKUser
+import GoogleSignIn
 
 final class LogInViewController: BaseViewController {
     
@@ -20,21 +23,24 @@ final class LogInViewController: BaseViewController {
     
     override func bind() {
         logInView.kakaoLogInButton.rx.tap
-            .bind { [weak self] _ in self?.kakaoLogIn() }
+            .throttle(.seconds(2), scheduler: MainScheduler.instance)
+            .bind { [weak self] _ in self?.kakaoLogInDidTap() }
             .disposed(by: disposeBag)
         
         logInView.googleLogInButton.rx.tap
-            .bind { }
+            .throttle(.seconds(2), scheduler: MainScheduler.instance)
+            .bind { [weak self] _ in self?.googleLogInDidTap() }
             .disposed(by: disposeBag)
         
         logInView.appleLogInButton.rx.tap
-            .bind { }
+            .throttle(.seconds(2), scheduler: MainScheduler.instance)
+            .bind { _ in }
             .disposed(by: disposeBag)
     }
 }
 
 extension LogInViewController {
-    private func kakaoLogIn() {
+    private func kakaoLogInDidTap() {
         if (UserApi.isKakaoTalkLoginAvailable()) {
             UserApi.shared.loginWithKakaoTalk { (oauthToken, error) in
                 if let error = error {
@@ -53,6 +59,15 @@ extension LogInViewController {
                     print("토큰", oauthToken)
                 }
             }
+        }
+    }
+    
+    private func googleLogInDidTap() {
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { signInResult, error in
+            guard error == nil else { return }
+            
+            print(signInResult?.user.accessToken.tokenString)
+            print(signInResult?.user.idToken?.tokenString)
         }
     }
 }

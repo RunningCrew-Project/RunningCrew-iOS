@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxRelay
 
 final class LogInManager {
     
@@ -13,7 +14,9 @@ final class LogInManager {
     
     private init() { }
     
-    func isLogIn() -> Bool {
-        return false
+    let isLogIn: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    
+    func updateLogInStatus() {
+        
     }
 }

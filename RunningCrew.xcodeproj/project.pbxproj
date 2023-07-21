@@ -16,6 +16,7 @@
 		3B50AAA02A6A52E2002FC1A3 /* LogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA9F2A6A52E2002FC1A3 /* LogInManager.swift */; };
 		3B50AAA32A6A5584002FC1A3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */; };
 		3B50AAA52A6A559F002FC1A3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA42A6A559F002FC1A3 /* LogInView.swift */; };
+		3B50AAA72A6A72EF002FC1A3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA62A6A72EF002FC1A3 /* NetworkManager.swift */; };
 		3B9DCF1D2A50876E00AC531D /* BaseVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */; };
 		3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */; };
 		3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF262A51601500AC531D /* BaseViewModelType.swift */; };
@@ -24,7 +25,6 @@
 		3B9DCF392A59013100AC531D /* ProfileChnageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF362A59013100AC531D /* ProfileChnageView.swift */; };
 		3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */; };
 		931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */; };
-		931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90162A2C8074007EE1DC /* NetworkManager.swift */; };
 		931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */; };
 		936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */; };
 		936257962A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */; };
@@ -133,6 +133,7 @@
 		3B50AA9F2A6A52E2002FC1A3 /* LogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInManager.swift; sourceTree = "<group>"; };
 		3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3B50AAA42A6A559F002FC1A3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		3B50AAA62A6A72EF002FC1A3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIewController.swift; sourceTree = "<group>"; };
 		3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewModel.swift; sourceTree = "<group>"; };
 		3B9DCF262A51601500AC531D /* BaseViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelType.swift; sourceTree = "<group>"; };
@@ -145,7 +146,6 @@
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNoticeManager.swift; sourceTree = "<group>"; };
-		931A90162A2C8074007EE1DC /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNoticeModel.swift; sourceTree = "<group>"; };
 		936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateFinishView.swift; sourceTree = "<group>"; };
 		936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateFinishViewController.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 		931A90132A2C804B007EE1DC /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				931A90162A2C8074007EE1DC /* NetworkManager.swift */,
+				3B50AAA62A6A72EF002FC1A3 /* NetworkManager.swift */,
 				931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */,
 				3B9DCF2A2A51801F00AC531D /* LocationManager.swift */,
 				3B2D00DB2A611C2200CD2E67 /* MotionManager.swift */,
@@ -1028,6 +1028,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B50AAA72A6A72EF002FC1A3 /* NetworkManager.swift in Sources */,
 				C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */,
 				3B50AAA02A6A52E2002FC1A3 /* LogInManager.swift in Sources */,
 				931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */,
@@ -1042,7 +1043,6 @@
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */,
 				93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */,
-				931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */,
 				3B50AA9A2A68C6F9002FC1A3 /* BaseView.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
 				93FC2FCA29EA8BA70007B551 /* CrewGenerateTextField.swift in Sources */,

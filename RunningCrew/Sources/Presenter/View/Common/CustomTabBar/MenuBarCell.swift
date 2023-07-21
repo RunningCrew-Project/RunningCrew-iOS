@@ -13,12 +13,14 @@ final class MenuBarCell: UICollectionViewCell {
     lazy var itemTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "NotoSansKR-Medium", size: 16)
+        label.textColor = .darkModeBasicColor
+        
         return label
     }()
     
     lazy var currentMarkView: UIView = {
         let view = UIView()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemBackground
         
         return view
     }()
@@ -28,12 +30,13 @@ final class MenuBarCell: UICollectionViewCell {
     override var isSelected: Bool {
         didSet {
             self.itemTitle.font = isSelected ? UIFont(name: "NotoSansKR-Bold", size: 16) : UIFont(name: "NotoSansKR-Medium", size: 16)
-            self.currentMarkView.backgroundColor = isSelected ? .black : .lightGray
+            self.currentMarkView.backgroundColor = isSelected ? .darkModeBasicColor : .systemBackground
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .systemBackground
         addViews()
         setupView()
     }

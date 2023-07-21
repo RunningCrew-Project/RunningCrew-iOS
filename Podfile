@@ -18,6 +18,7 @@ target 'RunningCrew' do
     pod 'KakaoSDKAuth'
     pod 'KakaoSDKUser'
     pod 'KakaoSDKCommon'
+    pod 'GoogleSignIn'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing

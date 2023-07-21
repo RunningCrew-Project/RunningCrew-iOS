@@ -53,7 +53,7 @@ final class MyPageViewController: BaseViewController {
         
         myPageView.profileTitle.rx.tapGesture().when(.recognized)
             .bind { [weak self] _ in
-                if LogInManager.shared.isLogIn() == false {
+                if LogInManager.shared.isLogIn.value == false {
                     self?.delegate?.showLogInView()
                 }
             }
@@ -61,6 +61,12 @@ final class MyPageViewController: BaseViewController {
         
         myPageView.profileChagneButton.rx.tap.asDriver()
             .drive { [weak self] _ in self?.delegate?.showProfileChangeView() }
+            .disposed(by: disposeBag)
+        
+        LogInManager.shared.isLogIn.asDriver()
+            .drive { [weak self] isLogIn in
+                self?.showNeedLogInView(isLogIn: isLogIn)
+            }
             .disposed(by: disposeBag)
     }
 }
@@ -74,19 +80,22 @@ extension MyPageViewController {
         self.navigationItem.title = "마이페이지"
         self.navigationController?.navigationBar.tintColor = .darkModeBasicColor
     }
+    
+    private func showNeedLogInView(isLogIn: Bool) {
+        if isLogIn == false {
+            self.myPageView.pageView.subviews.forEach { view in
+                view.isHidden = true
+            }
+            self.myPageView.needLogInLabel.isHidden = false
+        } else {
+            self.myPageView.needLogInLabel.isHidden = true
+        }
+    }
 }
 
 extension MyPageViewController: CustomTabBarDelegate {
     func didSelect(indexNum: Int) {
-        if LogInManager.shared.isLogIn() == false {
-            myPageView.pageView.subviews.forEach { view in
-                view.isHidden = true
-            }
-            myPageView.needLogInLabel.isHidden = false
-            return
-        } else {
-            myPageView.needLogInLabel.isHidden = true
-        }
+        if LogInManager.shared.isLogIn.value == false { return }
         
         let isContainView = myPageView.pageView.subviews.contains(where: {$0.isEqual(viewControllers[indexNum].view)})
         

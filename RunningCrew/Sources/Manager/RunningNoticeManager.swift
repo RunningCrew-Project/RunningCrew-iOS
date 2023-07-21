@@ -5,10 +5,10 @@
 ////  Created by Kim TaeSoo on 2023/06/04.
 ////
 //
-//import Foundation
+// import Foundation
 //
 //
-//class RunningNoticeManager {
+// class RunningNoticeManager {
 //    let mainURL = NetworkManager.mainurl
 //    let id: String
 //    var uri = "/api/running-notices/"
@@ -54,4 +54,4 @@
 //            }
 //        }
 //    }
-//}
+// }
