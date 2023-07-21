@@ -7,9 +7,10 @@
 
 import UIKit
 
-class ProfileChnageViewController: UIViewController {
+final class ProfileChangeViewController: UIViewController {
     
     let profileChnageView = ProfileChnageView()
+    
     override func loadView() {
         view = profileChnageView
     }

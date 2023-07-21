@@ -13,6 +13,15 @@ class MyPageCalendarViewController: UIViewController {
     lazy var calendar = MyPageClendarView()
     lazy var collectionview = MyRunningCollectionView()
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.tabBarItem.title = "캘린더"
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()

@@ -65,13 +65,12 @@ final class RunningStartViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        runningStartView.goalSettingStackView.destinationLabel.rx.tapGesture()
-            .when(.recognized)
+        runningStartView.goalSettingStackView.destinationLabel.rx.tapGesture().when(.recognized)
             .bind { _ in self.delegate?.showGoalSettingView(viewModel: self.viewModel) }
             .disposed(by: disposeBag)
     
-        runningStartView.startButton.rx.tap
-            .bind { _ in
+        runningStartView.startButton.rx.tap.asDriver()
+            .drive { _ in
                 if MotionManager.shared.isNeedAuthSetting() {
                     self.showMoveSettingAlert()
                 } else {

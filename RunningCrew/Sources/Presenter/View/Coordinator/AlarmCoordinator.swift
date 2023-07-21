@@ -18,12 +18,14 @@ final class AlarmCoordinator: Coordinator {
     }
     
     func start() {
-        let alarmVC: AlarmViewController = .init()
         let crewAlarmVC = CrewAlarmViewController()
-        crewAlarmVC.tabBarItem.title = "크루"
         let myRunningVC = MyRunningViewController()
+        
+        crewAlarmVC.tabBarItem.title = "크루"
         myRunningVC.tabBarItem.title = "마이러닝"
-        alarmVC.setItems(items: [crewAlarmVC, myRunningVC])
+        
+        let alarmVC: AlarmViewController = AlarmViewController(viewControllers: [crewAlarmVC, myRunningVC])
+        
         self.navigationController.pushViewController(alarmVC, animated: false)
     }
     

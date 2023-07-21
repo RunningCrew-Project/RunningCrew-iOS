@@ -12,6 +12,7 @@
 		3B2D00E42A6280B700CD2E67 /* RunningStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D00E32A6280B700CD2E67 /* RunningStartView.swift */; };
 		3B2D00E62A62842F00CD2E67 /* GoalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D00E52A62842F00CD2E67 /* GoalSettingView.swift */; };
 		3B50AA9A2A68C6F9002FC1A3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA992A68C6F9002FC1A3 /* BaseView.swift */; };
+		3B50AA9C2A6A0D6E002FC1A3 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */; };
 		3B9DCF1D2A50876E00AC531D /* BaseVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */; };
 		3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */; };
 		3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF262A51601500AC531D /* BaseViewModelType.swift */; };
@@ -88,8 +89,7 @@
 		C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6824299A85DF00C824A9 /* Color+.swift */; };
 		C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE682B299B934800C824A9 /* RunningButton.swift */; };
 		C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE682D299BD61300C824A9 /* LocationButton.swift */; };
-		C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */; };
-		C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6839299D1A1C00C824A9 /* CustomTopTabBarController.swift */; };
+		C7DE6834299CF15F00C824A9 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6833299CF15F00C824A9 /* CustomTabBar.swift */; };
 		C7DE683D299D272A00C824A9 /* MenuBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE683C299D272A00C824A9 /* MenuBarCell.swift */; };
 		C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */; };
 		C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */; };
@@ -127,6 +127,7 @@
 		3B2D00E32A6280B700CD2E67 /* RunningStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningStartView.swift; sourceTree = "<group>"; };
 		3B2D00E52A62842F00CD2E67 /* GoalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingView.swift; sourceTree = "<group>"; };
 		3B50AA992A68C6F9002FC1A3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIewController.swift; sourceTree = "<group>"; };
 		3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewModel.swift; sourceTree = "<group>"; };
 		3B9DCF262A51601500AC531D /* BaseViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelType.swift; sourceTree = "<group>"; };
@@ -211,8 +212,7 @@
 		C7DE6824299A85DF00C824A9 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		C7DE682B299B934800C824A9 /* RunningButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningButton.swift; sourceTree = "<group>"; };
 		C7DE682D299BD61300C824A9 /* LocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationButton.swift; sourceTree = "<group>"; };
-		C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuBar.swift; sourceTree = "<group>"; };
-		C7DE6839299D1A1C00C824A9 /* CustomTopTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTopTabBarController.swift; sourceTree = "<group>"; };
+		C7DE6833299CF15F00C824A9 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		C7DE683C299D272A00C824A9 /* MenuBarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarCell.swift; sourceTree = "<group>"; };
 		C7DE683E299E58CA00C824A9 /* CrewAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewAlarmViewController.swift; sourceTree = "<group>"; };
 		C7DE6840299E590D00C824A9 /* MyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRunningViewController.swift; sourceTree = "<group>"; };
@@ -284,9 +284,9 @@
 		3B9DCF2E2A5900F400AC531D /* ProfileChange */ = {
 			isa = PBXGroup;
 			children = (
-				3B9DCF352A59013100AC531D /* GenderButton.swift */,
-				3B9DCF362A59013100AC531D /* ProfileChnageView.swift */,
 				3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */,
+				3B9DCF362A59013100AC531D /* ProfileChnageView.swift */,
+				3B9DCF352A59013100AC531D /* GenderButton.swift */,
 			);
 			path = ProfileChange;
 			sourceTree = "<group>";
@@ -393,8 +393,8 @@
 		BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */,
 				BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */,
+				BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */,
 			);
 			path = MyPageCalendar;
 			sourceTree = "<group>";
@@ -588,7 +588,7 @@
 		C7DE67EF2998DF5D00C824A9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C7DE6832299CF0FE00C824A9 /* CustomTopTabBar */,
+				C7DE6832299CF0FE00C824A9 /* CustomTabBar */,
 				C7A4CE5129BC2109000DAE8B /* ImagePicker */,
 			);
 			path = Common;
@@ -624,9 +624,9 @@
 		C7DE67FF2999373B00C824A9 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
+				C7DE68032999377800C824A9 /* AlarmViewController.swift */,
 				C7DE6831299CEEBA00C824A9 /* MyRunning */,
 				C7DE6830299CEEA500C824A9 /* Crew */,
-				C7DE68032999377800C824A9 /* AlarmViewController.swift */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -635,6 +635,7 @@
 			isa = PBXGroup;
 			children = (
 				C7DE68012999376800C824A9 /* MyPageViewController.swift */,
+				3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */,
 				3B9DCF2E2A5900F400AC531D /* ProfileChange */,
 				BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */,
 				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
@@ -693,22 +694,13 @@
 			path = MyRunning;
 			sourceTree = "<group>";
 		};
-		C7DE6832299CF0FE00C824A9 /* CustomTopTabBar */ = {
+		C7DE6832299CF0FE00C824A9 /* CustomTabBar */ = {
 			isa = PBXGroup;
 			children = (
-				C7DE683B299D26CB00C824A9 /* MenuBar */,
-				C7DE6839299D1A1C00C824A9 /* CustomTopTabBarController.swift */,
-			);
-			path = CustomTopTabBar;
-			sourceTree = "<group>";
-		};
-		C7DE683B299D26CB00C824A9 /* MenuBar */ = {
-			isa = PBXGroup;
-			children = (
+				C7DE6833299CF15F00C824A9 /* CustomTabBar.swift */,
 				C7DE683C299D272A00C824A9 /* MenuBarCell.swift */,
-				C7DE6833299CF15F00C824A9 /* CustomMenuBar.swift */,
 			);
-			path = MenuBar;
+			path = CustomTabBar;
 			sourceTree = "<group>";
 		};
 		C7DE6845299FD49D00C824A9 /* Cell */ = {
@@ -1058,8 +1050,8 @@
 				C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */,
 				C7E00A2329C36F4900B39709 /* CameraCollectionViewCell.swift in Sources */,
 				93FC2FC829EA866D0007B551 /* CrewGenerateView.swift in Sources */,
-				C7DE683A299D1A1C00C824A9 /* CustomTopTabBarController.swift in Sources */,
 				C7E00A1C29C1AF8D00B39709 /* SaveRecordViewModel.swift in Sources */,
+				3B50AA9C2A6A0D6E002FC1A3 /* MyPageView.swift in Sources */,
 				3B9DCF392A59013100AC531D /* ProfileChnageView.swift in Sources */,
 				936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */,
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
@@ -1076,7 +1068,7 @@
 				93FC2FCE29EA93A00007B551 /* CrewGenerateViewController.swift in Sources */,
 				C751528029B79981003D8987 /* SaveRecordRunningViewController.swift in Sources */,
 				C7A4CE5D29BCAC2C000DAE8B /* ImagePickerCollectionViewCell.swift in Sources */,
-				C7DE6834299CF15F00C824A9 /* CustomMenuBar.swift in Sources */,
+				C7DE6834299CF15F00C824A9 /* CustomTabBar.swift in Sources */,
 				C7DE68062999378300C824A9 /* CrewViewController.swift in Sources */,
 				3B2D00DC2A611C2200CD2E67 /* MotionManager.swift in Sources */,
 				BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */,

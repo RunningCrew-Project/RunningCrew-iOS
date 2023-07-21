@@ -18,14 +18,21 @@ final class MyPageCoordinator: Coordinator {
     }
     
     func start() {
-        let mypageVC: MyPageViewController = .init()
-        let myrunningVC = MyPageMyRunningViewController()
+        let myRunningVC = MyPageMyRunningViewController()
         let calendarVC = MyPageCalendarViewController()
+        let myPageVC: MyPageViewController = MyPageViewController(viewControllers: [myRunningVC, calendarVC])
+        self.navigationController.pushViewController(myPageVC, animated: false)
+        myPageVC.delegate = self
+    }
+}
+
+extension MyPageCoordinator: MyPageViewControllerDelegate {
+    func showSettingView() {
         
-        myrunningVC.tabBarItem.title = "마이러닝"
-        calendarVC.tabBarItem.title = "캘린더"
-        
-        mypageVC.setItems(items: [myrunningVC, calendarVC])
-        self.navigationController.pushViewController(mypageVC, animated: false)
+    }
+    
+    func showProfileChangeView() {
+        let profileChangeVC = ProfileChangeViewController()
+        self.navigationController.pushViewController(profileChangeVC, animated: true)
     }
 }

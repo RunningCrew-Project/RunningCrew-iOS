@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlarmViewController: CustomTopTabBarController {
+class AlarmViewController: BaseViewController {
     
     lazy var topTabBarContainer: UIView = {
         let view = UIView()
@@ -16,13 +16,36 @@ class AlarmViewController: CustomTopTabBarController {
         return view
     }()
     
+    private var viewControllers: [UIViewController]!
+    
+
+    
+    init(viewControllers: [UIViewController]) {
+        super.init(nibName: nil, bundle: nil)
+        self.viewControllers = viewControllers
+        
+//        myPageView.topTabBarContainer = customTabBarController.view
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func loadView() {
+//        self.myPageView = MyPageView()
+//        self.view = myPageView
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setNavigationBar()
         addView()
         setConstraint()
-        topTabBarMenu.delegate = self
+//        topTabBarMenu.delegate = self
+        
+        setNavigationBar()
     }
     
     func setNavigationBar() {
@@ -35,14 +58,14 @@ class AlarmViewController: CustomTopTabBarController {
     
     func addView() {
         view.addSubview(topTabBarContainer)
-        topTabBarContainer.addSubview(topTabBarMenu)
-        view.addSubview(pageView)
+//        topTabBarContainer.addSubview(topTabBarMenu)
+//        view.addSubview(pageView)
     }
     
     func setConstraint() {
         setTopTabContainer()
-        setTopTabBarConstraint()
-        setPageViewConstraint()
+//        setTopTabBarConstraint()
+//        setPageViewConstraint()
     }
     
     func setTopTabContainer() {
@@ -54,23 +77,23 @@ class AlarmViewController: CustomTopTabBarController {
         ])
     }
     
-    func setTopTabBarConstraint() {
-        NSLayoutConstraint.activate([
-            topTabBarMenu.topAnchor.constraint(equalTo: topTabBarContainer.topAnchor),
-            topTabBarMenu.leadingAnchor.constraint(equalTo: topTabBarContainer.leadingAnchor),
-            topTabBarMenu.trailingAnchor.constraint(equalTo: topTabBarContainer.trailingAnchor),
-            topTabBarMenu.bottomAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor)
-        ])
-    }
-    
-    func setPageViewConstraint() {
-        NSLayoutConstraint.activate([
-            pageView.topAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor),
-            pageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            pageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            pageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
+//    func setTopTabBarConstraint() {
+//        NSLayoutConstraint.activate([
+//            topTabBarMenu.topAnchor.constraint(equalTo: topTabBarContainer.topAnchor),
+//            topTabBarMenu.leadingAnchor.constraint(equalTo: topTabBarContainer.leadingAnchor),
+//            topTabBarMenu.trailingAnchor.constraint(equalTo: topTabBarContainer.trailingAnchor),
+//            topTabBarMenu.bottomAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor)
+//        ])
+//    }
+//
+//    func setPageViewConstraint() {
+//        NSLayoutConstraint.activate([
+//            pageView.topAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor),
+//            pageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            pageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            pageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+//        ])
+//    }
     
 }
 
