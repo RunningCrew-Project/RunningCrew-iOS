@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NMapsMap
 import RxCocoa
 import RxSwift
 import RxGesture
@@ -16,11 +15,11 @@ protocol RunningStartViewControllerDelegate: AnyObject {
     func showRecordView(goalType: GoalType, goal: String)
 }
 
-class RunningStartViewController: BaseViewController {
+final class RunningStartViewController: BaseViewController {
     
     weak var delegate: RunningStartViewControllerDelegate?
-    
-    let viewModel: RunningStartViewModel
+    private let viewModel: RunningStartViewModel
+    private var runningStartView: RunningStartView!
     
     init(viewModel: RunningStartViewModel) {
         self.viewModel = viewModel
@@ -31,110 +30,76 @@ class RunningStartViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        self.runningStartView = RunningStartView()
+        self.view = runningStartView
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        startButton.clipsToBounds = true
-        startButton.layer.cornerRadius = startButton.frame.height / 2
+    override func viewWillAppear(_ animated: Bool) {
+        setupNavigationBarAndTabBar()
     }
     
-    //MARK: - UI Properties
-    
-    lazy var mapView: NMFNaverMapView = {
-       let mapView = NMFNaverMapView()
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        mapView.mapView.zoomLevel = 16
-        mapView.showLocationButton = true
-        mapView.showZoomControls = false
-        
-        return mapView
-    }()
-    
-    lazy var startButtonStackView: UIStackView = {
-       let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.spacing = 41.0
-        
-        return stackView
-    }()
-    
-    lazy var goalSettingStackView: GoalSettingStackView = {
-        let goalSettingStackView = GoalSettingStackView(goalType: viewModel.goalType)
-        goalSettingStackView.translatesAutoresizingMaskIntoConstraints = false
-        goalSettingStackView.goalSettingLabelStackView.isUserInteractionEnabled = true
-        goalSettingStackView.beforeButton.isHidden = true
-        
-        return goalSettingStackView
-    }()
-    
-    lazy var startButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.backgroundColor = .tabBarSelect
-        button.setTitle("시작", for: .normal)
-        button.titleLabel?.font = UIFont(name: "NotoSansKR-Bold", size: 24.0)
-        
-        return button
-    }()
-    
-    deinit {
-        print("deinit runningStart view")
+    override func viewWillLayoutSubviews() {
+        runningStartView.setViewStyle()
     }
-    
-    override func setView() {
-        self.view.backgroundColor = .systemBackground
-    }
-    
-    override func setAddView() {
-        view.addSubview(mapView)
-        view.addSubview(startButtonStackView)
-        startButtonStackView.addArrangedSubview(goalSettingStackView)
-        startButtonStackView.addArrangedSubview(startButton)
-    }
-    
-    override func setConstraint() {
-        NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            mapView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.45)
-        ])
-
-        NSLayoutConstraint.activate([
-            startButtonStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            startButtonStackView.topAnchor.constraint(equalTo: mapView.bottomAnchor, constant: view.frame.height * (CGFloat(71) / CGFloat(1624))),
-            startButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: CGFloat(180) / CGFloat(1624)),
-            startButton.widthAnchor.constraint(equalTo: startButton.heightAnchor)
-        ])
-    }
-    
-    //MARK: - Method
     
     override func bind() {
-        let input = RunningStartViewModel.Input(
-            nextButtonDidTap: goalSettingStackView.nextButton.rx.tap.asObservable(),
-            beforeButtonDidTap: goalSettingStackView.beforeButton.rx.tap.asObservable(),
-            navigationRightButtonDidTap: nil)
+        let nextButtonDidTap = runningStartView.goalSettingStackView.nextButton.rx.tap.asObservable()
+        let beforeButtonDidTap = runningStartView.goalSettingStackView.beforeButton.rx.tap.asObservable()
+        
+        let input = RunningStartViewModel.Input(nextButtonDidTap: nextButtonDidTap,
+                                                beforeButtonDidTap: beforeButtonDidTap,
+                                                navigationRightButtonDidTap: nil)
         
         let output = viewModel.transform(input: input)
         
-        output.goalText
-            .drive(goalSettingStackView.goalSettingLabelStackView.destinationLabel.rx.text)
+        output.goalType
+            .bind { [weak self] type in
+                self?.runningStartView.goalSettingStackView.changeGoalType(type: type)
+            }
             .disposed(by: disposeBag)
         
-        goalSettingStackView.goalSettingLabelStackView.destinationLabel.rx.tapGesture()
+        output.goalText
+            .bind { [weak self] text in
+                self?.runningStartView.goalSettingStackView.destinationLabel.text = text
+            }
+            .disposed(by: disposeBag)
+        
+        runningStartView.goalSettingStackView.destinationLabel.rx.tapGesture()
             .when(.recognized)
             .bind { _ in self.delegate?.showGoalSettingView(viewModel: self.viewModel) }
             .disposed(by: disposeBag)
     
-        startButton.rx.tap
-            .bind { self.delegate?.showRecordView(goalType: self.viewModel.goalType.value,
-                                                  goal: self.goalSettingStackView.goalSettingLabelStackView.destinationLabel.text ?? "") }
+        runningStartView.startButton.rx.tap
+            .bind { _ in
+                if MotionManager.shared.isNeedAuthSetting() {
+                    self.showMoveSettingAlert()
+                } else {
+                    self.delegate?.showRecordView(goalType: self.viewModel.goalType.value,
+                                                  goal: self.runningStartView.goalSettingStackView.destinationLabel.text ?? "")
+                }
+            }
             .disposed(by: disposeBag)
+    }
+}
+
+extension RunningStartViewController {
+    private func setupNavigationBarAndTabBar() {
+        self.navigationItem.title = "개인 러닝"
+        self.navigationController?.navigationBar.tintColor = .darkModeBasicColor
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func showMoveSettingAlert() {
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        let confirmAction = UIAlertAction(title: "예", style: .default) {_ in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+        showAlert(title: "동작 및 피트니스 권한", message: "걸음수 데이터 측정을 위해 데이터 접근 권한이 필요합니다. 설정으로 이동하시겠습니까?", actions: [cancelAction, confirmAction])
     }
 }

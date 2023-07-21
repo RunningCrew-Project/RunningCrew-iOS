@@ -18,8 +18,8 @@ protocol GoalSettingViewDelegate: AnyObject {
 class GoalSettingViewController: BaseViewController {
     
     weak var delegate: GoalSettingViewDelegate?
-
-    let viewModel: RunningStartViewModel
+    private let viewModel: RunningStartViewModel
+    private var goalSettingView: GoalSettingView!
     
     init(viewModel: RunningStartViewModel) {
         self.viewModel = viewModel
@@ -30,92 +30,44 @@ class GoalSettingViewController: BaseViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        navigationItem.title = "러닝 목표 설정"
-    }
-    
-    lazy var goalLabelBindingTextField: GoalTextField = {
-        let textField = GoalTextField(goalType: viewModel.goalType)
+    override func loadView() {
+        self.goalSettingView = GoalSettingView()
+        self.view = goalSettingView
         
-        return textField
-    }()
-    
-    lazy var goalLabel: GoalSettingStackView = {
-        let goalLabel = GoalSettingStackView(goalType: viewModel.goalType)
-        
-        return goalLabel
-    }()
-    
-    deinit {
-        print("deinit setting goal view")
-    }
-    
-    override func setView() {
-        goalLabelBindingTextField.becomeFirstResponder()
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: nil)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: nil)
-        navigationController?.navigationBar.tintColor = .darkModeBasicColor
-    }
-    
-    override func setAddView() {
-        view.addSubview(goalLabelBindingTextField)
-        view.addSubview(goalLabel)
-    }
-    
-    override func setConstraint() {
-        goalLabelBindingTextField.snp.makeConstraints {
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom)
-            $0.centerX.equalToSuperview()
-        }
-        
-        goalLabel.snp.makeConstraints {
-            $0.centerX.centerY.equalToSuperview()
-        }
+        setupNavigationBarAndTabBar()
     }
     
     override func bind() {
+        let nextButtonDidTap = goalSettingView.goalLabel.nextButton.rx.tap.asObservable()
+        let beforeButtonDidTap = goalSettingView.goalLabel.beforeButton.rx.tap.asObservable()
+        let navigationRightButtonDidTap = navigationItem.rightBarButtonItem?.rx.tap.map {
+            self.goalSettingView.goalLabel.destinationLabel.text ?? "" }.asObservable()
+        
         let input = RunningStartViewModel.Input(
-            nextButtonDidTap: goalLabel.nextButton.rx.tap.asObservable(),
-            beforeButtonDidTap: goalLabel.beforeButton.rx.tap.asObservable(),
-            navigationRightButtonDidTap: navigationItem.rightBarButtonItem?.rx.tap
-                .map { self.goalLabel.goalSettingLabelStackView.destinationLabel.text ?? "" })
+            nextButtonDidTap: nextButtonDidTap,
+            beforeButtonDidTap: beforeButtonDidTap,
+            navigationRightButtonDidTap: navigationRightButtonDidTap)
         
         let output = viewModel.transform(input: input)
         
-        output.goalText
-            .drive(goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
+        output.goalType
+            .bind { [weak self] type in
+                self?.goalSettingView.goalLabel.changeGoalType(type: type)
+            }
             .disposed(by: disposeBag)
         
-        goalLabelBindingTextField.rx.text.orEmpty
+        goalSettingView.goalLabelBindingTextField.rx.text.orEmpty
             .map { [weak self] input -> String? in
                 guard let self = self else { return "" }
-                
+
                 switch self.viewModel.goalType.value {
                 case .distance:
-                    if input.isEmpty {
-                        return "0.00"
-                    } else if input.count <= 2 {
-                        return input + ".00"
-                    } else {
-                        goalLabelBindingTextField.text = String(input.prefix(2))
-                        return (goalLabelBindingTextField.text ?? "0") + ".00"
-                    }
+                    return self.convertDistanceString(input: input)
                 case .time:
-                    if input.isEmpty {
-                        return "00:00"
-                    } else if input.count <= 4 {
-                        let string = String(format: "%.4d", Int(input) ?? 0)
-                        return String(string.prefix(2)) + ":" + String(string.suffix(2))
-                    } else {
-                        goalLabelBindingTextField.text = String(input.prefix(4))
-                        return (goalLabelBindingTextField.text ?? "00").prefix(2) + ":" + (goalLabelBindingTextField.text ?? "00").suffix(2)
-                    }
+                    return self.convertTimeString(input: input)
                 }
             }
-            .bind(to: self.goalLabel.goalSettingLabelStackView.destinationLabel.rx.text)
+            .bind(to: goalSettingView.goalLabel.destinationLabel.rx.text)
             .disposed(by: disposeBag)
         
         navigationItem.leftBarButtonItem?.rx.tap
@@ -125,5 +77,46 @@ class GoalSettingViewController: BaseViewController {
         navigationItem.rightBarButtonItem?.rx.tap
             .bind { self.delegate?.tapSettingButton() }
             .disposed(by: disposeBag)
+    }
+}
+
+extension GoalSettingViewController {
+    private func convertDistanceString(input: String) -> String? {
+        if input.count == 0 {
+            return "00.00"
+        } else if input.count == 1 {
+            return "00.0" + input
+        } else if input.count == 2 {
+            return "00." + input
+        } else if input.count == 3 {
+            return "0" + String(input.prefix(1)) + "." + String(input.suffix(2))
+        } else if input.count == 4 {
+            return String(input.prefix(2)) + "." + String(input.suffix(2))
+        } else {
+            return goalSettingView.goalLabel.destinationLabel.text
+        }
+    }
+    
+    private func convertTimeString(input: String) -> String? {
+        if input.count == 0 {
+            return "00:00"
+        } else if input.count == 1 {
+            return "00:0" + input
+        } else if input.count == 2 {
+            return "00:" + input
+        } else if input.count == 3 {
+            return "0" + String(input.prefix(1)) + ":" + String(input.suffix(2))
+        } else if input.count == 4 {
+            return String(input.prefix(2)) + ":" + String(input.suffix(2))
+        } else {
+            return goalSettingView.goalLabel.destinationLabel.text
+        }
+    }
+    
+    private func setupNavigationBarAndTabBar() {
+        navigationItem.title = "러닝 목표 설정"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "취소", style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: nil)
+        navigationController?.navigationBar.tintColor = .darkModeBasicColor
     }
 }

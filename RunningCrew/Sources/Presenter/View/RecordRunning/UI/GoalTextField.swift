@@ -6,34 +6,13 @@
 //
 
 import UIKit
-import RxCocoa
-import RxRelay
-import RxSwift
 
-class GoalTextField: UITextField {
-    
-    var goalType: BehaviorRelay<GoalType>
-    var disposeBag = DisposeBag()
-    
-    init(goalType: BehaviorRelay<GoalType>) {
-        self.goalType = goalType
+final class GoalTextField: UITextField {
+    init() {
         super.init(frame: .zero)
         backgroundColor = .clear
         borderStyle = .none
         textColor = .clear
-        setKeyboard()
-    }
-    
-    func setKeyboard() {
-        goalType.bind { type in
-            switch type {
-            case .distance:
-                self.keyboardType = .decimalPad
-            case .time:
-                self.keyboardType = .numberPad
-            }
-        }
-        .disposed(by: disposeBag)
     }
     
     required init?(coder: NSCoder) {
@@ -51,7 +30,4 @@ class GoalTextField: UITextField {
     override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
         []
     }
-
 }
-
-

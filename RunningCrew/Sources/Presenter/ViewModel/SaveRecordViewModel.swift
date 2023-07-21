@@ -1,18 +1,23 @@
 //
-//  ImagePickerViewModel.swift
+//  SaveRecordViewModel.swift
 //  RunningCrew
 //
-//  Created by JunHwan Kim on 2023/03/15.
+//  Created by 김기훈 Kim on 2023/07/15.
 //
 
 import UIKit
 import Photos
 
-class ImagePickerViewModel {
+final class SaveRecordViewModel {
     
     var selectedImages: [UIImage] = []
     private let photosOption: PHFetchOptions = PHFetchOptions()
     var allPhotos : PHFetchResult<PHAsset> = .init()
+    let path: [(Double, Double)]
+    
+    init(path: [(Double, Double)]) {
+        self.path = path
+    }
     
     func viewDidLoad() {
         setPhotosOption()

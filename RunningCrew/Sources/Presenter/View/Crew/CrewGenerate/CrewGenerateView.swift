@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CrewGenerateView: BaseView {
+class CrewGenerateView: UIView {
     let closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -84,10 +84,10 @@ class CrewGenerateView: BaseView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    override func setupUI() {
+    func setupUI() {
         [closeButton, setCrewLabel, crewNameTfView, regionLabel, regionStackView, crewIntroduceLabel, crewIntroduceTfView, generateButton].forEach {self.addSubview($0)}
     }
-    override func makeConstraints() {
+    func makeConstraints() {
         let topLeading = 16
         let padding = 20
         closeButton.snp.makeConstraints { make in

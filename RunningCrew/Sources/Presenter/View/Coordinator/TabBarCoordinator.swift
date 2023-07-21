@@ -9,21 +9,23 @@ import UIKit
 
 final class TabBarCoordinator {
     var window: UIWindow
-    var tabBarController: CustomTabBarController
+    var tabBarController: UITabBarController
     var childCoordinators: [Coordinator]
     
     init(_ window: UIWindow) {
         self.window = window
-        self.tabBarController = CustomTabBarController()
+        self.tabBarController = UITabBarController()
         self.childCoordinators = []
+        setTabBarUI()
     }
-    
+}
+
+extension TabBarCoordinator {
     func start() {
         self.window.rootViewController = tabBarController
         let items: [TabBarItem] = [.recordRunning, .crew, .alarm, .myPage].sorted { $0.rawValue < $1.rawValue }
         let controllers = items.map { getTabController($0) }
-        tabBarController.items = controllers
-        tabBarController.configureTabBarController()
+        tabBarController.setViewControllers(controllers, animated: false)
     }
     
     func getTabController(_ item: TabBarItem) -> UINavigationController {
@@ -53,8 +55,12 @@ final class TabBarCoordinator {
         }
     }
     
-    deinit {
-        print("deinit tabbar coordinator")
+    func setTabBarUI() {
+        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.unselectedItemTintColor = .black
+        tabBarController.tabBar.tintColor = .tabBarSelect
+        tabBarController.tabBar.layer.borderColor = UIColor.tabBarBorder?.cgColor
+        tabBarController.tabBar.layer.borderWidth = 1
+        tabBarController.tabBar.clipsToBounds = true
     }
-    
 }

@@ -13,9 +13,9 @@ import RxRelay
 final class RunningStartViewModel: BaseViewModelType {
     
     var goalType: BehaviorRelay<GoalType> = BehaviorRelay<GoalType>(value: .distance)
-    var goalDistance: BehaviorRelay<Float> = BehaviorRelay<Float>(value: 5.00)
-    var goalHour: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
-    var goalMinute: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
+    private var goalDistance: BehaviorRelay<Float> = BehaviorRelay<Float>(value: 5.00)
+    private var goalHour: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
+    private var goalMinute: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 5)
     
     var disposeBag = DisposeBag()
     
@@ -26,7 +26,8 @@ final class RunningStartViewModel: BaseViewModelType {
     }
     
     struct Output {
-        let goalText: Driver<String>
+        let goalType: Observable<GoalType>
+        let goalText: Observable<String>
     }
     
     func transform(input: Input) -> Output {
@@ -61,8 +62,9 @@ final class RunningStartViewModel: BaseViewModelType {
                 case .time: return String(format: "%.2d", hour) + ":" + String(format: "%.2d", minute)
                 }
             }
-            .asDriver(onErrorJustReturn: "")
+            .asObservable()
         
-        return Output(goalText: goalText)
+        return Output(goalType: goalType.asObservable(),
+                      goalText: goalText)
     }
 }

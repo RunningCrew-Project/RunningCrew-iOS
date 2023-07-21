@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CrewView: BaseView {
+class CrewView: UIView {
     let adBanner: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray
@@ -28,11 +28,15 @@ class CrewView: BaseView {
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    override func setupUI() {
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func setupUI() {
         [adBanner, myCrewCollectionView, dividerView, recommandCrewCollectionView].forEach { self.addSubview($0) }
         
     }
-    override func makeConstraints() {
+    func makeConstraints() {
         adBanner.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)

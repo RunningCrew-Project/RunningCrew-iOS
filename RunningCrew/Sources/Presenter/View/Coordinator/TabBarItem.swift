@@ -5,7 +5,6 @@
 //  Created by JunHwan Kim on 2023/02/12.
 //
 
-import Foundation
 import UIKit
 
 enum TabBarItem: Int {

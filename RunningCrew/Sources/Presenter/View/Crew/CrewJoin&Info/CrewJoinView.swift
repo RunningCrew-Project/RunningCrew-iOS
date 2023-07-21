@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CrewJoinView: BaseView {
+class CrewJoinView: UIView {
     let crewIconImageView: UIImageView = {
         let image = UIImageView()
         image.clipsToBounds = true
@@ -99,14 +99,18 @@ class CrewJoinView: BaseView {
         super.init(frame: frame)
     }
     
-    override func setupUI() {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+     func setupUI() {
         [crewIconImageView, topStackView, dividerView1,
          regionLabel, regionDetailLabel, dividerView2,
          numberOfPeopleLabel, numberOfPeopleDetailLabel, dividerView3,
          crewLeaderLabel, crewLeaderDetailLabel, dividerView4,
          crewIntroduceLabel,crewIntroduceDetailLabel].forEach {self.addSubview($0)}
     }
-    override func makeConstraints() {
+     func makeConstraints() {
         let topLeading = 12
         crewIconImageView.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(topLeading)

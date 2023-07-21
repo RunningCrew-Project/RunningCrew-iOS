@@ -14,15 +14,8 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.setView()
-        self.setAddView()
-        self.setConstraint()
-        self.bind()
+        bind()
     }
     
-    func setView() { }
-    func setAddView() { }
-    func setConstraint() { }
     func bind() { }
 }

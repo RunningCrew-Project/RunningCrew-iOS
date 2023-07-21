@@ -15,23 +15,39 @@ final class RecordRunningViewModel: BaseViewModelType {
     
     struct Input {
         let locationButtonDidTap: Observable<Void>
+        let individualRunningButtonDidTap: Observable<Void>
+        let crewRunningButtonDidTap: Observable<Void>
     }
     
     struct Output {
-        let isNeedLocationAuth: Observable<Bool>
         let locationInformation: Observable<String>
+        let isNeedLocationAuthorization: Observable<Bool>
+        let isAvailableIndividualRunning: Observable<Bool>
+        let isAvailableCrewRunning: Observable<Bool>
     }
     
     func transform(input: Input) -> Output {
-        input.locationButtonDidTap
-            .throttle(.seconds(1), scheduler: MainScheduler.instance)
-            .bind { LocationManager.shared.updateLocation() }
-            .disposed(by: disposeBag)
-        
         let locationManager = LocationManager.shared
         
-        return Output(isNeedLocationAuth: locationManager.isNeedLocationAuthorization.asObservable(),
-                      locationInformation: locationManager.address.asObservable())
+        input.locationButtonDidTap
+            .throttle(.seconds(1), scheduler: MainScheduler.instance)
+            .bind { _ in
+                if locationManager.isNeedLocationAuthorization.value == false {
+                    LocationManager.shared.updateLocation()
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        let isAvailableIndividualRunning = input.individualRunningButtonDidTap
+            .map { locationManager.isNeedLocationAuthorization.value }
+            
+        let isAvailableCrewRunning = input.crewRunningButtonDidTap
+            .map { locationManager.isNeedLocationAuthorization.value }
+        
+        return Output(locationInformation: locationManager.address.asObservable(),
+                      isNeedLocationAuthorization: locationManager.isNeedLocationAuthorization.asObservable(),
+                      isAvailableIndividualRunning: isAvailableIndividualRunning,
+                      isAvailableCrewRunning: isAvailableCrewRunning)
     }
 }
 

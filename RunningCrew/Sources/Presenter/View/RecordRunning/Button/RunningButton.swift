@@ -22,7 +22,7 @@ final class RunningButton: UIButton {
         setupView()
         setTitleLabel()
         setDiscussionLabel()
-        setButtonShadow()
+//        setButtonShadow()
     }
     
     required init?(coder: NSCoder) {

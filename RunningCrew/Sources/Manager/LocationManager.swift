@@ -28,7 +28,7 @@ final class LocationManager: NSObject {
     }
 }
 
-extension LocationManager {
+extension LocationManager {    
     func updateLocation() {
         locationManager.startUpdatingLocation()
     }
@@ -49,6 +49,20 @@ extension LocationManager {
             self.address.accept("\(locality) \(subLocality) \(name)")
         }
     }
+    
+    private func degreesToRadians(_ degrees: Double) -> Double {
+        return degrees * .pi / 180.0
+    }
+    
+    func distanceBetweenTwoCoordinates(lastLocation: (Double, Double), coordinator: CLLocationCoordinate2D) -> Double {
+            let latitudeRadian = self.degreesToRadians(coordinator.latitude - lastLocation.0)
+            let longitudeRadian = self.degreesToRadians(coordinator.longitude - lastLocation.1)
+            
+            let intermediateCalculation = sin(latitudeRadian/2) * sin(latitudeRadian/2) + cos(self.degreesToRadians(coordinator.latitude)) * cos(self.degreesToRadians(lastLocation.0)) * sin(longitudeRadian/2) * sin(longitudeRadian/2)
+            let distance = 6371 * 2 * atan2(sqrt(intermediateCalculation), sqrt(1-intermediateCalculation))
+            
+           return distance
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -56,7 +70,7 @@ extension LocationManager: CLLocationManagerDelegate {
         guard let coordinate = manager.location?.coordinate else { return }
         currentCoordinate.accept(coordinate)
         reverseGeocode()
-        self.locationManager.stopUpdatingLocation()
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

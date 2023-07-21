@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyPageViewController: CustomTopTabBarController {
+final class MyPageViewController: CustomTopTabBarController {
     //MARK: - UI ProPerties
     
     
@@ -83,7 +83,7 @@ class MyPageViewController: CustomTopTabBarController {
     @objc func profileChagneButtonTapped(_ sender: UIButton) {
         let destinationViewController = ProfileChnageViewController()
         self.navigationController?.pushViewController(destinationViewController, animated: true)
-//        present(destinationViewController, animated: true)
+        present(destinationViewController, animated: true)
     }
 
     
@@ -165,7 +165,7 @@ class MyPageViewController: CustomTopTabBarController {
             topTabBarMenu.bottomAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor)
         ])
     }
-    
+
     func setPageViewConstraint() {
         NSLayoutConstraint.activate([
             pageView.topAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor),

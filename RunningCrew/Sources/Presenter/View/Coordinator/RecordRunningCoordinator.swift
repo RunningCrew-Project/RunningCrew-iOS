@@ -44,12 +44,12 @@ extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     func showIndividualView() {
         let runningStartVC: RunningStartViewController = RunningStartViewController(viewModel: RunningStartViewModel())
         runningStartVC.delegate = self
-        self.navigationController.pushViewController(runningStartVC, animated: true)
+        self.navigationController.pushViewController(runningStartVC, animated: false)
     }
     
     func showCrewView() {
         let myrunningVC: MyRunningViewController = MyRunningViewController()
-        self.navigationController.pushViewController(myrunningVC, animated: true)
+        self.navigationController.pushViewController(myrunningVC, animated: false)
     }
 }
 
@@ -70,19 +70,21 @@ extension RecordRunningCoordinator: RunningStartViewControllerDelegate {
 
 extension RecordRunningCoordinator: GoalSettingViewDelegate {
     func tapCancleButton() {
-        self.navigationController.popViewController(animated: true)
+        self.navigationController.popViewController(animated: false)
     }
     
     func tapSettingButton() {
-        self.navigationController.popViewController(animated: true)
+        self.navigationController.popViewController(animated: false)
     }
 }
 
-extension RecordRunningCoordinator: RecordViewDelegate {
-    func finishRunning() {
+extension RecordRunningCoordinator: RecordViewDelegate {    
+    func finishRunning(path: [(Double, Double)]) {
         self.navigationController.viewControllers.last?.dismiss(animated: false)
-        let saveRecordRunningVC = SaveRecordRunningViewController()
+        self.navigationController.popViewController(animated: false)
+        
+        let saveRecordRunningVC = SaveRecordRunningViewController(viewModel: SaveRecordViewModel(path: path))
         saveRecordRunningVC.modalPresentationStyle = .fullScreen
-        self.navigationController.present(saveRecordRunningVC, animated: true)
+        self.navigationController.present(saveRecordRunningVC, animated: false)
     }
 }

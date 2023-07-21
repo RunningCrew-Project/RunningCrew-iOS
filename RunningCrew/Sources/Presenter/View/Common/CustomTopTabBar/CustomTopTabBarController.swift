@@ -40,7 +40,6 @@ class CustomTopTabBarController: UIViewController {
         }
         topTabBarMenu.setItems(items: menuItemList)
     }
-    
 }
 
 extension CustomTopTabBarController: CustomMenuBarDelegate {

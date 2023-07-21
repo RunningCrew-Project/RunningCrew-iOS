@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CrewGenerateFinishView: BaseView {
+class CrewGenerateFinishView: UIView {
     let closeButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -34,26 +34,26 @@ class CrewGenerateFinishView: BaseView {
         return button
     }()
    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    override func setupUI() {
-        [closeButton, mainLabel, showCrewButton].forEach { self.addSubview($0) }
-    }
-    override func makeConstraints() {
-        let topLeading = 16
-        closeButton.snp.makeConstraints { make in
-            make.top.equalTo(safeAreaLayoutGuide).offset(topLeading)
-            make.leading.equalTo(safeAreaLayoutGuide).offset(topLeading)
-        }
-        mainLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(68)
-            make.top.equalTo(safeAreaLayoutGuide).offset(100)
-        }
-        showCrewButton.snp.makeConstraints { make in
-            make.bottom.equalTo(keyboardLayoutGuide.snp.top)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
-            make.height.equalTo(52)
-        }
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//    }
+//    func setupUI() {
+//        [closeButton, mainLabel, showCrewButton].forEach { self.addSubview($0) }
+//    }
+//    func makeConstraints() {
+//        let topLeading = 16
+//        closeButton.snp.makeConstraints { make in
+//            make.top.equalTo(safeAreaLayoutGuide).offset(topLeading)
+//            make.leading.equalTo(safeAreaLayoutGuide).offset(topLeading)
+//        }
+//        mainLabel.snp.makeConstraints { make in
+//            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(68)
+//            make.top.equalTo(safeAreaLayoutGuide).offset(100)
+//        }
+//        showCrewButton.snp.makeConstraints { make in
+//            make.bottom.equalTo(keyboardLayoutGuide.snp.top)
+//            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
+//            make.height.equalTo(52)
+//        }
+//    }
 }

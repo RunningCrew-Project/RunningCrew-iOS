@@ -2,29 +2,23 @@
 //  BaseView.swift
 //  RunningCrew
 //
-//  Created by Kim TaeSoo on 2023/04/05.
+//  Created by 김기훈 on 2023/07/20.
 //
 
 import UIKit
-import RxSwift
 
 class BaseView: UIView {
-    
-    var disposeBag = DisposeBag()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
-        makeConstraints()
         self.backgroundColor = .systemBackground
+        addViews()
+        setConstraint()
     }
     
-    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupUI() { }
-    func makeConstraints() { }
+    func addViews() { }
+    func setConstraint() { }
 }
-
