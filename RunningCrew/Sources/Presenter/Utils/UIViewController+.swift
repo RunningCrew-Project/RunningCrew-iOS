@@ -20,10 +20,11 @@ extension UIViewController {
         self.view.endEditing(true)
     }
     
-    //MARK: - Alert
-    func showAlert() {
-        let customAlterVC = CustomAlertViewController()
-        customAlterVC.modalPresentationStyle = .overFullScreen
-        present(customAlterVC, animated: true)
+    func showAlert(title: String, message: String, actions: [UIAlertAction]) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        actions.forEach { action in alertVC.addAction(action) }
+        
+        present(alertVC, animated: false)
     }
 }
