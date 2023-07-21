@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import KakaoSDKCommon
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        guard let url = Bundle.main.url(forResource: "Info", withExtension: "plist"),
+              let dictionary = NSDictionary(contentsOf: url),
+              let kakaoNativeAppKey = (dictionary["KakaoNativeAppKey"] as? String) else {
+            return true
+        }
+        
+        KakaoSDK.initSDK(appKey: kakaoNativeAppKey)
         return true
     }
 

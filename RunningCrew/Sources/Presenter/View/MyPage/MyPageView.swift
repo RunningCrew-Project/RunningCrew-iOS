@@ -42,8 +42,15 @@ final class MyPageView: BaseView {
     
     lazy var pageView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray5
+        
         return view
+    }()
+    
+    lazy var needLogInLabel: UILabel = {
+        let label = UILabel()
+        label.text = "로그인하면 이용할 수 있습니다"
+        
+        return label
     }()
     
     private var items: [MenuItem]
@@ -63,6 +70,7 @@ final class MyPageView: BaseView {
         self.addSubview(profileChagneButton)
         self.addSubview(customTabBar)
         self.addSubview(pageView)
+        pageView.addSubview(needLogInLabel)
     }
     
     override func setConstraint() {
@@ -94,6 +102,10 @@ final class MyPageView: BaseView {
             $0.top.equalTo(customTabBar.snp.bottom)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        needLogInLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
         }
     }
 }

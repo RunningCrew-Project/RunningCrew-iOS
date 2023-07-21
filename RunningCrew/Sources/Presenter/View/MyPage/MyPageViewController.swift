@@ -7,9 +7,12 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import RxGesture
 
 protocol MyPageViewControllerDelegate: AnyObject {
     func showSettingView()
+    func showLogInView()
     func showProfileChangeView()
 }
 
@@ -41,14 +44,20 @@ final class MyPageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
-        myPageView.pageView.addSubview(viewControllers[0].view)
+        didSelect(indexNum: 0)
         myPageView.customTabBar.delegate = self
     }
     
     override func bind() {
         
         
-        
+        myPageView.profileTitle.rx.tapGesture().when(.recognized)
+            .bind { [weak self] _ in
+                if LogInManager.shared.isLogIn() == false {
+                    self?.delegate?.showLogInView()
+                }
+            }
+            .disposed(by: disposeBag)
         
         myPageView.profileChagneButton.rx.tap.asDriver()
             .drive { [weak self] _ in self?.delegate?.showProfileChangeView() }
@@ -69,6 +78,15 @@ extension MyPageViewController {
 
 extension MyPageViewController: CustomTabBarDelegate {
     func didSelect(indexNum: Int) {
+        if LogInManager.shared.isLogIn() == false {
+            myPageView.pageView.subviews.forEach { view in
+                view.isHidden = true
+            }
+            myPageView.needLogInLabel.isHidden = false
+            return
+        } else {
+            myPageView.needLogInLabel.isHidden = true
+        }
         
         let isContainView = myPageView.pageView.subviews.contains(where: {$0.isEqual(viewControllers[indexNum].view)})
         

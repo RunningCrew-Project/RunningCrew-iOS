@@ -13,6 +13,9 @@
 		3B2D00E62A62842F00CD2E67 /* GoalSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B2D00E52A62842F00CD2E67 /* GoalSettingView.swift */; };
 		3B50AA9A2A68C6F9002FC1A3 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA992A68C6F9002FC1A3 /* BaseView.swift */; };
 		3B50AA9C2A6A0D6E002FC1A3 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */; };
+		3B50AAA02A6A52E2002FC1A3 /* LogInManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA9F2A6A52E2002FC1A3 /* LogInManager.swift */; };
+		3B50AAA32A6A5584002FC1A3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */; };
+		3B50AAA52A6A559F002FC1A3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA42A6A559F002FC1A3 /* LogInView.swift */; };
 		3B9DCF1D2A50876E00AC531D /* BaseVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */; };
 		3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */; };
 		3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF262A51601500AC531D /* BaseViewModelType.swift */; };
@@ -22,7 +25,6 @@
 		3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */; };
 		931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */; };
 		931A90172A2C8074007EE1DC /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90162A2C8074007EE1DC /* NetworkManager.swift */; };
-		931A901A2A2C808A007EE1DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 931A90192A2C808A007EE1DC /* Alamofire */; };
 		931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */; };
 		936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */; };
 		936257962A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */; };
@@ -128,6 +130,9 @@
 		3B2D00E52A62842F00CD2E67 /* GoalSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSettingView.swift; sourceTree = "<group>"; };
 		3B50AA992A68C6F9002FC1A3 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		3B50AA9F2A6A52E2002FC1A3 /* LogInManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInManager.swift; sourceTree = "<group>"; };
+		3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		3B50AAA42A6A559F002FC1A3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIewController.swift; sourceTree = "<group>"; };
 		3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewModel.swift; sourceTree = "<group>"; };
 		3B9DCF262A51601500AC531D /* BaseViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelType.swift; sourceTree = "<group>"; };
@@ -231,7 +236,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				931A901A2A2C808A007EE1DC /* Alamofire in Frameworks */,
 				A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +259,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B50AAA12A6A5572002FC1A3 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */,
+				3B50AAA42A6A559F002FC1A3 /* LogInView.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
 		3B9DCF282A51618F00AC531D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +311,7 @@
 				931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */,
 				3B9DCF2A2A51801F00AC531D /* LocationManager.swift */,
 				3B2D00DB2A611C2200CD2E67 /* MotionManager.swift */,
+				3B50AA9F2A6A52E2002FC1A3 /* LogInManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -568,8 +582,8 @@
 		C7DE67E92997AA3600C824A9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				C7670EE92995460800E3CD77 /* SceneDelegate.swift */,
 				C7670EE72995460800E3CD77 /* AppDelegate.swift */,
+				C7670EE92995460800E3CD77 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -637,6 +651,7 @@
 				C7DE68012999376800C824A9 /* MyPageViewController.swift */,
 				3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */,
 				3B9DCF2E2A5900F400AC531D /* ProfileChange */,
+				3B50AAA12A6A5572002FC1A3 /* LogIn */,
 				BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */,
 				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
 			);
@@ -760,7 +775,6 @@
 			);
 			name = RunningCrew;
 			packageProductDependencies = (
-				931A90192A2C808A007EE1DC /* Alamofire */,
 			);
 			productName = RunningCrew;
 			productReference = C7670EE42995460800E3CD77 /* RunningCrew.app */;
@@ -839,7 +853,6 @@
 			);
 			mainGroup = C7670EDB2995460800E3CD77;
 			packageReferences = (
-				931A90182A2C808A007EE1DC /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C7670EE52995460800E3CD77 /* Products */;
 			projectDirPath = "";
@@ -1016,6 +1029,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */,
+				3B50AAA02A6A52E2002FC1A3 /* LogInManager.swift in Sources */,
 				931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */,
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
@@ -1024,6 +1038,7 @@
 				3B9DCF382A59013100AC531D /* GenderButton.swift in Sources */,
 				C7A1F21929BA385A009AE7BA /* UIView+.swift in Sources */,
 				3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */,
+				3B50AAA52A6A559F002FC1A3 /* LogInView.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* Color+.swift in Sources */,
 				931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */,
 				93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */,
@@ -1037,6 +1052,7 @@
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
 				C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */,
 				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
+				3B50AAA32A6A5584002FC1A3 /* LogInViewController.swift in Sources */,
 				C7663E5329A4BFB70046068B /* RunningStartViewController.swift in Sources */,
 				BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */,
 				C7670EE82995460800E3CD77 /* AppDelegate.swift in Sources */,
@@ -1253,6 +1269,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받습니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "러닝거리 측정을 위해 위치 권한이 필요합니다.\\n설정으로 이동하시겠습니까?";
+				INFOPLIST_KEY_NSMotionUsageDescription = "런닝 기록 측정을 위해 데이터 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1292,6 +1309,7 @@
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자의 위치를 받습니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "러닝거리 측정을 위해 위치 권한이 필요합니다.\\n설정으로 이동하시겠습니까?";
+				INFOPLIST_KEY_NSMotionUsageDescription = "런닝 기록 측정을 위해 데이터 접근 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 사진 라이브러리에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1435,25 +1453,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		931A90182A2C808A007EE1DC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		931A90192A2C808A007EE1DC /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 931A90182A2C808A007EE1DC /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C7670EDC2995460800E3CD77 /* Project object */;
 }

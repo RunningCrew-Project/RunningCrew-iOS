@@ -15,6 +15,9 @@ target 'RunningCrew' do
     pod 'FSCalendar'
     pod 'YPImagePicker'
     pod 'PryntTrimmerView'
+    pod 'KakaoSDKAuth'
+    pod 'KakaoSDKUser'
+    pod 'KakaoSDKCommon'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing

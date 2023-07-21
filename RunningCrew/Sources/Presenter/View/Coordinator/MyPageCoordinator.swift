@@ -31,6 +31,11 @@ extension MyPageCoordinator: MyPageViewControllerDelegate {
         
     }
     
+    func showLogInView() {
+        let logInVC = LogInViewController()
+        self.navigationController.pushViewController(logInVC, animated: true)
+    }
+    
     func showProfileChangeView() {
         let profileChangeVC = ProfileChangeViewController()
         self.navigationController.pushViewController(profileChangeVC, animated: true)

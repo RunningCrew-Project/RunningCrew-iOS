@@ -1,5 +1,17 @@
 PODS:
+  - Alamofire (5.7.1)
   - FSCalendar (2.8.4)
+  - KakaoSDKAuth (2.16.0):
+    - KakaoSDKCommon (= 2.16.0)
+  - KakaoSDKCommon (2.16.0):
+    - KakaoSDKCommon/Common (= 2.16.0)
+    - KakaoSDKCommon/Network (= 2.16.0)
+  - KakaoSDKCommon/Common (2.16.0)
+  - KakaoSDKCommon/Network (2.16.0):
+    - Alamofire (~> 5.1)
+    - KakaoSDKCommon/Common (= 2.16.0)
+  - KakaoSDKUser (2.16.0):
+    - KakaoSDKAuth (= 2.16.0)
   - NMapsMap (3.15.0)
   - PryntTrimmerView (4.0.2)
   - RxCocoa (6.5.0):
@@ -20,6 +32,9 @@ PODS:
 
 DEPENDENCIES:
   - FSCalendar
+  - KakaoSDKAuth
+  - KakaoSDKCommon
+  - KakaoSDKUser
   - NMapsMap (= 3.15.0)
   - PryntTrimmerView
   - RxCocoa (= 6.5.0)
@@ -31,7 +46,11 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - FSCalendar
+    - KakaoSDKAuth
+    - KakaoSDKCommon
+    - KakaoSDKUser
     - NMapsMap
     - PryntTrimmerView
     - RxCocoa
@@ -44,7 +63,11 @@ SPEC REPOS:
     - YPImagePicker
 
 SPEC CHECKSUMS:
+  Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  KakaoSDKAuth: 1b85ed7c41b0517bfd1fc9dc46c292c75b8cb610
+  KakaoSDKCommon: d6579aa2e9d963d74e13d741cbf1cce48b8b0c17
+  KakaoSDKUser: 427e5b3884abd19ee6d9a7bd6e3f3029eb2968b8
   NMapsMap: f151761c088d6516064c59da03ab6503769486e6
   PryntTrimmerView: 6a43cc90df5d99addeabd33d4ba09b1365322130
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
@@ -56,6 +79,6 @@ SPEC CHECKSUMS:
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: c1845ef71e5963cb25a57fc32ef1b6a6bf41b7a6
+PODFILE CHECKSUM: 6695e32acaee6245d00f3e846514c690a5a36933
 
 COCOAPODS: 1.12.1
