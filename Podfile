@@ -19,6 +19,10 @@ target 'RunningCrew' do
     pod 'KakaoSDKUser'
     pod 'KakaoSDKCommon'
     pod 'GoogleSignIn'
+    pod 'Moya/RxSwift'
+    pod 'FirebaseAuth'
+    pod 'FirebaseFirestore'
+    pod 'FirebaseMessaging'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing
