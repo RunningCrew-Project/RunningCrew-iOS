@@ -55,4 +55,13 @@ final class KeyChainRepository {
 
         return SecItemUpdate(updateQuery as CFDictionary, attributes as CFDictionary) == errSecSuccess
     }
+    
+    func deleteToken(key: String) -> Bool {
+        let deleteQuery: [CFString: Any] = [
+            kSecClass: kSecClassKey,
+            kSecAttrApplicationTag: key
+        ]
+        
+        return SecItemDelete(deleteQuery as CFDictionary) == errSecSuccess
+    }
 }

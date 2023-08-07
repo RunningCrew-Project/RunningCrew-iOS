@@ -63,13 +63,13 @@ final class IndividualRunningView: BaseView {
             $0.width.height.equalTo(self.safeAreaLayoutGuide.snp.width).multipliedBy(CGFloat(Double(180) / Double(750)))
         }
     }
+    
+    override func setViewStyle() {
+        startButton.layer.cornerRadius = startButton.frame.width / 2
+    }
 }
 
 extension IndividualRunningView {
-    func setViewStyle() {
-        startButton.layer.cornerRadius = startButton.frame.width / 2
-    }
-    
     func cameraUpdate(latitude: Double, longitude: Double) {
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: latitude, lng: longitude))
         cameraUpdate.animation = .fly

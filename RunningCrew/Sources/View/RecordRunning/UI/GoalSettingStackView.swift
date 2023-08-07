@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 enum GoalType {
-    case distance(kilometer: Float)
+    case distance(kilometer: Double)
     case time(hour: Int, minute: Int)
 }
 

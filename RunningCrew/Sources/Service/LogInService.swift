@@ -9,45 +9,78 @@ import Foundation
 import RxSwift
 
 final class LogInService {
-    private let logInRepository: UserRepository
+    private let userRepository: UserRepository
     private let keyChainRepository: KeyChainRepository = KeyChainRepository.shared
     
-    init(logInRepository: UserRepository) {
-        self.logInRepository = logInRepository
+    init(userRepository: UserRepository) {
+        self.userRepository = userRepository
     }
 }
  
 extension LogInService {
-    func logIn(accessToken: String = "", idToken: String = "", origin: String) -> Observable<SocialLogInResponseModel> {
+    func logIn(accessToken: String = "", idToken: String = "", origin: String) -> Observable<SocialLogInResponse> {
         guard let fcmToken = try? keyChainRepository.readToken(key: "fcmToken") else {
             return Observable.error(KeyChainError.readToken)
         }
-        let model = SocialLogInRequestModel(fcmToken: fcmToken, accessToken: accessToken, idToken: idToken, origin: origin)
+        let model = SocialLogInRequest(fcmToken: fcmToken, accessToken: accessToken, idToken: idToken, origin: origin)
         
-        return logInRepository.logIn(body: model)
-            .map { try JSONDecoder().decode(SocialLogInResponseModel.self, from: $0) }
+        return userRepository.logIn(body: model)
+            .map { try JSONDecoder().decode(SocialLogInResponse.self, from: $0) }
+            .withUnretained(self)
+            .map { (owner, response) in
+                if owner.keyChainRepository.saveToken(key: "accessToken", value: response.accessToken) == false {
+                    _ = owner.keyChainRepository.updateToken(key: "accessToken", newValue: response.accessToken)
+                }
+                if owner.keyChainRepository.saveToken(key: "refreshToken", value: response.refreshToken) == false {
+                    _ = owner.keyChainRepository.updateToken(key: "refreshToken", newValue: response.refreshToken)
+                }
+                
+                return response
+            }
     }
     
     func isLogIn() -> Bool {
-        guard let accessToken = try? KeyChainRepository.shared.readToken(key: "accessToken") else {
+        guard (try? keyChainRepository.readToken(key: "accessToken")) != nil else {
             return false
         }
-        //accessToken으로 인증
+        return true
+    }
+    
+    func logOut() -> Bool {
+        if keyChainRepository.deleteToken(key: "accessToken") {
+            return keyChainRepository.deleteToken(key: "refreshToken")
+        }
         return false
     }
     
-    func getUserData() -> Observable<User> {
-        guard let accessToken = try? KeyChainRepository.shared.readToken(key: "accessToken") else {
+    func getUserData() -> Observable<Me> {
+        guard let accessToken = try? keyChainRepository.readToken(key: "accessToken") else {
             return Observable.error(KeyChainError.readToken)
         }
         
-        return logInRepository.isLogIn(accessToken: accessToken)
+        return userRepository.logInUserInformation(accessToken: accessToken)
+            .map { try JSONDecoder().decode(Me.self, from: $0) }
+    }
+    
+    func signUp(accessToken: String, name: String, nickName: String, dongId: Int, birthday: String, sex: String, height: Int, weight: Int) -> Observable<User> {
+        return userRepository.signUp(accessToken: accessToken, name: name, nickName: nickName, dongId: dongId, birthday: birthday, sex: sex, height: height, weight: weight)
             .map { try JSONDecoder().decode(User.self, from: $0) }
     }
     
-    func storeToken(key: String, value: String) {
-        if keyChainRepository.saveToken(key: key, value: value) == false {
-            _ = keyChainRepository.updateToken(key: key, newValue: value)
+    func deleteUser() -> Observable<Bool> {
+        guard let accessToken = try? keyChainRepository.readToken(key: "accessToken") else {
+            return Observable.error(KeyChainError.readToken)
         }
+        
+        return getUserData()
+            .withUnretained(self)
+            .flatMap { (owner, me) in owner.userRepository.deleteUser(accessToken: accessToken, userID: "\(me.id)") }
+            .withUnretained(self)
+            .map { (owner, result) in
+                if result {
+                    _ = owner.logOut()
+                }
+                return result
+            }
     }
 }

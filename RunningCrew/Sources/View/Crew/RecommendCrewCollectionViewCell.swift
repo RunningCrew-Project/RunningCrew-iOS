@@ -8,7 +8,10 @@
 import UIKit
 import SnapKit
 
-class CrewListCollectionViewCell: UICollectionViewCell {
+final class RecommendCrewCollectionViewCell: UICollectionViewCell {
+    
+    static let identifier = "RecommendCrewCollectionViewCell"
+    
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.layer.masksToBounds = true
@@ -17,12 +20,14 @@ class CrewListCollectionViewCell: UICollectionViewCell {
         
         return image
     }()
+    
     let crewNameLabel: UILabel = {
         let label = UILabel()
         label.text = "서초구 크루"
         label.font = .systemFont(ofSize: 16)
         return label
     }()
+    
     let crewIntroduceLabel: UILabel = {
         let label = UILabel()
         label.text = "크루소개크루소개크루소개크루소개크루소개크루소개크루소개크루소개크루소개크루소개크루소개"
@@ -30,6 +35,7 @@ class CrewListCollectionViewCell: UICollectionViewCell {
         label.font = .systemFont(ofSize: 12)
         return label
     }()
+    
     let crewBriefLabel: UILabel = {
         let label = UILabel()
         
@@ -41,25 +47,36 @@ class CrewListCollectionViewCell: UICollectionViewCell {
         imageAttachment.image = image
         imageAttachment.bounds = CGRect(x: 0, y: 0, width: 8, height: 8)
         attributedString.append(NSAttributedString(attachment: imageAttachment))
-        attributedString.append(NSAttributedString(string: "131 · 서울 서초구", attributes: [NSAttributedString.Key.foregroundColor : UIColor.darkGray, NSAttributedString.Key.font : UIFont.systemFont(ofSize: 12)]))
+        attributedString.append(NSAttributedString(string: "131 · 서울 서초구", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)]))
         label.attributedText = attributedString
         return label
     }()
+    
     let divideView: UIView = {
         let view = UIView()
         view.backgroundColor = .lightGray
         return view
     }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        [imageView, crewNameLabel, crewIntroduceLabel, crewBriefLabel, divideView].forEach { self.addSubview($0) }
-        makeConstraints()
+        addViews()
+        setConstraint()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func makeConstraints() {
+    
+    private func addViews() {
+        self.addSubview(imageView)
+        self.addSubview(crewNameLabel)
+        self.addSubview(crewIntroduceLabel)
+        self.addSubview(crewBriefLabel)
+        self.addSubview(divideView)
+    }
+    
+    private func setConstraint() {
         let topLeading = 12
         imageView.snp.makeConstraints { make in
             make.leading.equalTo(safeAreaLayoutGuide).offset(topLeading)

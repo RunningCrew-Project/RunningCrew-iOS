@@ -1,5 +1,5 @@
 //
-//  LogInModel.swift
+//  SocialLogIn.swift
 //  RunningCrew
 //
 //  Created by 김기훈 on 2023/07/24.
@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct SocialLogInRequestModel: Encodable {
+struct SocialLogInRequest: Encodable {
     let fcmToken: String
     let accessToken: String
     let idToken: String
     let origin: String
 }
 
-struct SocialLogInResponseModel: Decodable {
+struct SocialLogInResponse: Decodable {
     let accessToken: String
     let refreshToken: String
     let initData: Bool
@@ -24,12 +24,4 @@ struct SocialLogInResponseModel: Decodable {
         case refreshToken
         case initData
     }
-}
-
-struct User: Codable {
-    let id: Int
-    let email: String
-    let name: String
-    let nickname: String
-    let imgUrl: String
 }

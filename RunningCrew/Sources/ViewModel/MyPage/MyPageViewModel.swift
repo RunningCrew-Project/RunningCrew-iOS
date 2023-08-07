@@ -28,7 +28,6 @@ final class MyPageViewModel: BaseViewModelType {
     
     init(logInService: LogInService) {
         self.logInService = logInService
-        
         isLogIn.accept(logInService.isLogIn())
     }
     

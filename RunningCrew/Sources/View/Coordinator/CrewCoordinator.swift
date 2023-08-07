@@ -18,14 +18,31 @@ final class CrewCoordinator: Coordinator {
     }
     
     func start() {
-        let vc = CrewViewController()
-        navigationController.pushViewController(vc, animated: false)
+        let crewViewModel = CrewViewModel()
+        let crewVC = CrewViewController(viewModel: crewViewModel)
+        crewVC.coordinator = self
+        navigationController.pushViewController(crewVC, animated: false)
     }
-    func presentCrewGenerateViewController(_ viewController: UIViewController) {
-        let vc = CrewGenerateViewController()
-        let nav = UINavigationController(rootViewController: vc)
-        nav.modalPresentationStyle = .fullScreen
-        viewController.present(nav, animated: true)
+}
+
+extension CrewCoordinator: CrewViewControllerDelegate {
+    func showCrewGenerateView() {
+        let crewGenerateViewModel = CrewGenerateViewModel()
+        let crewGenerateVC = CrewGenerateViewController(viewModel: crewGenerateViewModel)
+        crewGenerateVC.modalPresentationStyle = .fullScreen
+        crewGenerateVC.coordinator = self
+        self.navigationController.present(crewGenerateVC, animated: true)
     }
     
+    func showCrewJoinView() {
+        let crewJoinVC = CrewJoinViewController()
+        crewJoinVC.modalPresentationStyle = .fullScreen
+        self.navigationController.present(crewJoinVC, animated: true)
+    }
+}
+
+extension CrewCoordinator: CrewGenerateViewControllerDelegate {
+    func closeCrewGenerateView() {
+        self.navigationController.dismiss(animated: true)
+    }
 }

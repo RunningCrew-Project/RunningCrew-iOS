@@ -11,7 +11,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "MyPageMyRunningCollectionViewCell"
 
-    lazy var runningTitle:UILabel = {
+    lazy var runningTitle: UILabel = {
         let label = UILabel()
         label.text = "B크루 정기러닝"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 40)
@@ -21,7 +21,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var runningDate:UILabel = {
+    lazy var runningDate: UILabel = {
         let label = UILabel()
         label.text = "1월 19일 20시"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
@@ -31,8 +31,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    
-    lazy var runningPlace:UILabel = {
+    lazy var runningPlace: UILabel = {
         let label = UILabel()
         label.text = "서울시 광진구"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
@@ -41,9 +40,8 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         
         return label
     }()
-    
-    
-    lazy var secondLineStackView:UIStackView = {
+     
+    lazy var secondLineStackView: UIStackView = {
         let stackveiw = UIStackView()
         stackveiw.alignment = .leading
         
@@ -51,8 +49,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         
     }()
     
-    
-    lazy var runningDistance:UILabel = {
+    lazy var runningDistance: UILabel = {
         let label = UILabel()
         label.text = "거리 5Km"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
@@ -62,7 +59,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var runningTime:UILabel = {
+    lazy var runningTime: UILabel = {
         let label = UILabel()
         label.text = "시간 33:30"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
@@ -72,7 +69,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var runningEverage:UILabel = {
+    lazy var runningEverage: UILabel = {
         let label = UILabel()
 //        label.text = "평균 페이스 6'42'"
         label.font = UIFont(name: "NotoSansKR-Bold", size: 14)
@@ -82,12 +79,11 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    lazy var thirdLineStackView:UIStackView = {
+    lazy var thirdLineStackView: UIStackView = {
         let stackveiw = UIStackView()
         stackveiw.alignment = .leading
         
         return stackveiw
-        
     }()
     
     override init(frame: CGRect) {
@@ -102,7 +98,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setCell (){
+    func setCell () {
         contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true
         contentView.backgroundColor = UIColor.lightGray
@@ -116,7 +112,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         layer.masksToBounds = false
     }
     
-    func setView(){
+    func setView() {
         contentView.addSubview(runningTitle)
         contentView.addSubview(secondLineStackView)
         contentView.addSubview(thirdLineStackView)
@@ -125,22 +121,20 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         
     }
     
-    
-    func setsecondLineStackView(){
+    func setsecondLineStackView() {
         secondLineStackView.addArrangedSubview(runningDate)
         secondLineStackView.addArrangedSubview(runningPlace)
     }
     
     
-    func setthirdLineStackView(){
+    func setthirdLineStackView() {
         thirdLineStackView.addArrangedSubview(runningDistance)
         thirdLineStackView.addArrangedSubview(runningTime)
         thirdLineStackView.addArrangedSubview(runningEverage)
-        
     }
     
     
-    func setConstraint(){
+    func setConstraint() {
         runningTitleConstraint()
         secondLineStackViewConstriant()
         runningDateConstraint()
@@ -153,7 +147,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
 
     }
     
-    func cellConstraint(){
+    func cellConstraint() {
         contentView.snp.makeConstraints { make in
             make.width.equalTo(327)
             make.height.equalTo(125)
@@ -163,7 +157,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func runningTitleConstraint(){
+    func runningTitleConstraint() {
         runningTitle.snp.makeConstraints { make in
             make.leading.equalTo(contentView.snp.leading).offset(16)
             make.top.equalTo(contentView.snp.top)
@@ -176,15 +170,13 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(contentView.snp.leading).offset(16)
             make.top.equalTo(runningTitle.snp.bottom).offset(4)
         }
-
+    }
+    
+    func runningDateConstraint() {
         
     }
     
-    func runningDateConstraint(){
-        
-    }
-    
-    func runningPlaceConstraint(){
+    func runningPlaceConstraint() {
         
     }
     
@@ -193,20 +185,17 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(contentView.snp.leading).offset(16)
             make.top.equalTo(secondLineStackView.snp.bottom).offset(19)
         }
+    }
+    
+    func  runningDistanceConstraint() {
         
     }
     
-    func  runningDistanceConstraint(){
+    func runningTimeConstraint() {
         
     }
     
-    func runningTimeConstraint(){
+    func runningEverageConstraint() {
         
     }
-    
-    func runningEverageConstraint(){
-        
-    }
-   
-    
 }

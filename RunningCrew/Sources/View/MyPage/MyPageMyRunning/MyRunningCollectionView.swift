@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyRunningCollectionView:UIView {
+final class MyRunningCollectionView: UIView {
     
     lazy var collectionView: UICollectionView = {
         let flowLayout = UICollectionViewFlowLayout()
@@ -15,7 +15,6 @@ class MyRunningCollectionView:UIView {
         
         return collectionView
     }()
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,8 +25,6 @@ class MyRunningCollectionView:UIView {
         collectionView.dataSource = self
     }
     
-    
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,7 +32,6 @@ class MyRunningCollectionView:UIView {
     func setCollectionVeiw() {
         collectionView.backgroundColor = .white
         collectionView.register(MyPageMyRunningCollectionViewCell.self, forCellWithReuseIdentifier: MyPageMyRunningCollectionViewCell.identifier)
-        
     }
     
     func collectionViewConstraint() {
@@ -43,10 +39,7 @@ class MyRunningCollectionView:UIView {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
-    
-    
 }
-
 
 extension MyRunningCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,8 +75,3 @@ extension MyRunningCollectionView: UICollectionViewDelegateFlowLayout {
         return CGFloat(15.0)
     }
 }
-
-
-
-
-

@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxCocoa
+import RxSwift
 
 final class SignUpViewController: BaseViewController {
     
@@ -27,7 +29,28 @@ final class SignUpViewController: BaseViewController {
     }
     
     override func bind() {
-        let input = SignUpViewModel.Input()
+        let input = SignUpViewModel.Input(
+            nameTextFieldDidChanged: signUpView.nameTextField.rx.text.orEmpty.asObservable(),
+            nickNameTextFieldDidChanged: signUpView.nickNameTextField.rx.text.orEmpty.asObservable(),
+            signUpButtonDidTap: signUpView.signUpButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
+        
+        output.isNickNamePossible
+            .bind { _ in }
+            .disposed(by: disposeBag)
+        
+        output.signUpResult
+            .subscribe(onNext: { result in
+                print(result)
+                print("⭐️")
+//                if result {
+//                    // 회원가입 성공
+//                } else {
+//                    // 회원가입 실패
+//                }
+            }, onError: { error in
+                print("에러입니다", error)
+            })
+            .disposed(by: disposeBag)
     }
 }

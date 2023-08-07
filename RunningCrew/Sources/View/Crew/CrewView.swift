@@ -8,22 +8,26 @@
 import UIKit
 import SnapKit
 
-class CrewView: UIView {
-    let adBanner: UIView = {
+final class CrewView: BaseView {
+    
+    lazy var adBanner: UIView = {
         let view = UIView()
         view.backgroundColor = .darkGray
         return view
     }()
     
-    lazy var myCrewCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createMyCrewLayout())
-    let dividerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        return view
+    lazy var myCrewCollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createMyCrewLayout())
+        collectionView.register(MyCrewCollectionViewCell.self, forCellWithReuseIdentifier: MyCrewCollectionViewCell.identifier)
+        return collectionView
     }()
-    lazy var recommandCrewCollectionView = UICollectionView(frame: .zero, collectionViewLayout: createRecommandCrewLayout())
-    
-    
+
+    lazy var recommandCrewCollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: createRecommandCrewLayout())
+        collectionView.register(RecommendCrewCollectionViewCell.self, forCellWithReuseIdentifier: RecommendCrewCollectionViewCell.identifier)
+        
+        return collectionView
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,35 +36,35 @@ class CrewView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setupUI() {
-        [adBanner, myCrewCollectionView, dividerView, recommandCrewCollectionView].forEach { self.addSubview($0) }
-        
+    
+    override func addViews() {
+        self.addSubview(adBanner)
+        self.addSubview(myCrewCollectionView)
+        self.addSubview(recommandCrewCollectionView)
     }
-    func makeConstraints() {
+    
+    override func setConstraint() {
         adBanner.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(48)
         }
+        
         myCrewCollectionView.snp.makeConstraints { make in
             make.top.equalTo(adBanner.snp.bottom)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(160)
         }
-        dividerView.snp.makeConstraints { make in
-            make.top.equalTo(myCrewCollectionView.snp.bottom)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide)
-            make.height.equalTo(12)
-        }
+        
         recommandCrewCollectionView.snp.makeConstraints { make in
-            make.top.equalTo(dividerView.snp.bottom)
+            make.top.equalTo(myCrewCollectionView.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide)
             make.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
     
-    func createMyCrewLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { section, env in
+    private func createMyCrewLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { section, env in
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
                 heightDimension: .fractionalHeight(0.5)
@@ -81,8 +85,8 @@ class CrewView: UIView {
         }
     }
     
-    func createRecommandCrewLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { section, env in
+    private func createRecommandCrewLayout() -> UICollectionViewLayout {
+        return UICollectionViewCompositionalLayout { section, env in
             let itemSize = NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1.0),
                 heightDimension: .fractionalHeight(0.2)
@@ -101,6 +105,4 @@ class CrewView: UIView {
             return section
         }
     }
-   
-
 }

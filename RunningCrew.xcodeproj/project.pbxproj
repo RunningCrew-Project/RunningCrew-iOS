@@ -16,7 +16,7 @@
 		3B50AAA02A6A52E2002FC1A3 /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AA9F2A6A52E2002FC1A3 /* LogInService.swift */; };
 		3B50AAA32A6A5584002FC1A3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */; };
 		3B50AAA52A6A559F002FC1A3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA42A6A559F002FC1A3 /* LogInView.swift */; };
-		3B50AAAA2A6E010B002FC1A3 /* LogInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA92A6E010B002FC1A3 /* LogInModel.swift */; };
+		3B50AAAA2A6E010B002FC1A3 /* SocialLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAA92A6E010B002FC1A3 /* SocialLogIn.swift */; };
 		3B50AAAE2A6E09B6002FC1A3 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAAD2A6E09B6002FC1A3 /* LogInViewModel.swift */; };
 		3B50AAB02A6E2565002FC1A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B50AAAF2A6E2565002FC1A3 /* GoogleService-Info.plist */; };
 		3B50AAB22A6E3B77002FC1A3 /* KeyChainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAB12A6E3B77002FC1A3 /* KeyChainRepository.swift */; };
@@ -29,7 +29,7 @@
 		3B50AAC72A736AEB002FC1A3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAC62A736AEB002FC1A3 /* SignUpViewController.swift */; };
 		3B50AAC92A736AF4002FC1A3 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AAC82A736AF4002FC1A3 /* SignUpView.swift */; };
 		3B50AACB2A736B27002FC1A3 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AACA2A736B27002FC1A3 /* SignUpViewModel.swift */; };
-		3B50AACD2A736DFF002FC1A3 /* SignUpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AACC2A736DFF002FC1A3 /* SignUpService.swift */; };
+		3B50AACF2A737E79002FC1A3 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B50AACE2A737E79002FC1A3 /* ToastView.swift */; };
 		3B9DCF1D2A50876E00AC531D /* BaseVIewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */; };
 		3B9DCF252A515F7B00AC531D /* RecordRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */; };
 		3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF262A51601500AC531D /* BaseViewModelType.swift */; };
@@ -37,16 +37,27 @@
 		3B9DCF382A59013100AC531D /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF352A59013100AC531D /* GenderButton.swift */; };
 		3B9DCF392A59013100AC531D /* ProfileChnageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF362A59013100AC531D /* ProfileChnageView.swift */; };
 		3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */; };
+		3BE69C7D2A80987D006A8C5F /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C7C2A80987D006A8C5F /* UserAPI.swift */; };
+		3BE69C7F2A80ABB9006A8C5F /* CrewRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C7E2A80ABB9006A8C5F /* CrewRunningViewController.swift */; };
+		3BE69C812A80AC29006A8C5F /* CrewRunningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C802A80AC29006A8C5F /* CrewRunningViewModel.swift */; };
+		3BE69C832A80ACCB006A8C5F /* CrewRunningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C822A80ACCB006A8C5F /* CrewRunningView.swift */; };
+		3BE69C852A80AE37006A8C5F /* CrewRunningScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C842A80AE37006A8C5F /* CrewRunningScheduleCell.swift */; };
+		3BE69C872A80B75E006A8C5F /* CrewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C862A80B75E006A8C5F /* CrewModel.swift */; };
+		3BE69C892A80B9C0006A8C5F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C882A80B9C0006A8C5F /* User.swift */; };
+		3BE69C8B2A80E1C4006A8C5F /* UserDefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C8A2A80E1C4006A8C5F /* UserDefaultRepository.swift */; };
+		3BE69C8D2A81040E006A8C5F /* Me.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C8C2A81040E006A8C5F /* Me.swift */; };
+		3BE69C912A810E36006A8C5F /* CrewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C902A810E36006A8C5F /* CrewViewModel.swift */; };
+		3BE69C932A8119A4006A8C5F /* CrewGenerateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE69C922A8119A4006A8C5F /* CrewGenerateViewModel.swift */; };
 		931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */; };
-		931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */; };
+		931A901F2A2C8707007EE1DC /* RunningNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 931A901E2A2C8707007EE1DC /* RunningNotice.swift */; };
 		936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */; };
 		936257962A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */; };
 		936257992A04FC1A001E9CA6 /* CrewJoinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936257982A04FC1A001E9CA6 /* CrewJoinViewController.swift */; };
 		9362579B2A04FC23001E9CA6 /* CrewJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362579A2A04FC23001E9CA6 /* CrewJoinView.swift */; };
 		9362579D2A10B0EE001E9CA6 /* YPImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9362579C2A10B0EE001E9CA6 /* YPImagePickerManager.swift */; };
 		9398DCF229DDA03100748F64 /* CrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9398DCF129DDA03100748F64 /* CrewView.swift */; };
-		93FC2FC129E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC029E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift */; };
-		93FC2FC329E6CC430007B551 /* CrewListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC229E6CC430007B551 /* CrewListCollectionViewCell.swift */; };
+		93FC2FC129E6C9AB0007B551 /* MyCrewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC029E6C9AB0007B551 /* MyCrewCollectionViewCell.swift */; };
+		93FC2FC329E6CC430007B551 /* RecommendCrewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC229E6CC430007B551 /* RecommendCrewCollectionViewCell.swift */; };
 		93FC2FC829EA866D0007B551 /* CrewGenerateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */; };
 		93FC2FCA29EA8BA70007B551 /* CrewGenerateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FC929EA8BA70007B551 /* CrewGenerateTextField.swift */; };
 		93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */; };
@@ -58,8 +69,6 @@
 		BEEAFDD52A04E27B00A06954 /* MyRunningCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */; };
 		BEEAFDD72A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */; };
 		C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3029B9664D00ADA90C /* UIViewController+.swift */; };
-		C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */; };
-		C7211E3629B9721E00ADA90C /* AddImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */; };
 		C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7211E3829B9EA9700ADA90C /* ImageCollectionViewCell.swift */; };
 		C7211E3B29B9EA9700ADA90C /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7211E3929B9EA9700ADA90C /* ImageCollectionViewCell.xib */; };
 		C751527929B27038003D8987 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C751527829B27038003D8987 /* UIImage+.swift */; };
@@ -147,7 +156,7 @@
 		3B50AAA22A6A5584002FC1A3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3B50AAA42A6A559F002FC1A3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		3B50AAA82A6D7A8C002FC1A3 /* RunningCrew.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RunningCrew.entitlements; sourceTree = "<group>"; };
-		3B50AAA92A6E010B002FC1A3 /* LogInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInModel.swift; sourceTree = "<group>"; };
+		3B50AAA92A6E010B002FC1A3 /* SocialLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLogIn.swift; sourceTree = "<group>"; };
 		3B50AAAD2A6E09B6002FC1A3 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		3B50AAAF2A6E2565002FC1A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B50AAB12A6E3B77002FC1A3 /* KeyChainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainRepository.swift; sourceTree = "<group>"; };
@@ -160,7 +169,7 @@
 		3B50AAC62A736AEB002FC1A3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3B50AAC82A736AF4002FC1A3 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		3B50AACA2A736B27002FC1A3 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
-		3B50AACC2A736DFF002FC1A3 /* SignUpService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpService.swift; sourceTree = "<group>"; };
+		3B50AACE2A737E79002FC1A3 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		3B9DCF1C2A50876E00AC531D /* BaseVIewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVIewController.swift; sourceTree = "<group>"; };
 		3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRunningViewModel.swift; sourceTree = "<group>"; };
 		3B9DCF262A51601500AC531D /* BaseViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModelType.swift; sourceTree = "<group>"; };
@@ -168,20 +177,31 @@
 		3B9DCF352A59013100AC531D /* GenderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
 		3B9DCF362A59013100AC531D /* ProfileChnageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileChnageView.swift; sourceTree = "<group>"; };
 		3B9DCF372A59013100AC531D /* ProfileChnageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileChnageViewController.swift; sourceTree = "<group>"; };
+		3BE69C7C2A80987D006A8C5F /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		3BE69C7E2A80ABB9006A8C5F /* CrewRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRunningViewController.swift; sourceTree = "<group>"; };
+		3BE69C802A80AC29006A8C5F /* CrewRunningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRunningViewModel.swift; sourceTree = "<group>"; };
+		3BE69C822A80ACCB006A8C5F /* CrewRunningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRunningView.swift; sourceTree = "<group>"; };
+		3BE69C842A80AE37006A8C5F /* CrewRunningScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewRunningScheduleCell.swift; sourceTree = "<group>"; };
+		3BE69C862A80B75E006A8C5F /* CrewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewModel.swift; sourceTree = "<group>"; };
+		3BE69C882A80B9C0006A8C5F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3BE69C8A2A80E1C4006A8C5F /* UserDefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultRepository.swift; sourceTree = "<group>"; };
+		3BE69C8C2A81040E006A8C5F /* Me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Me.swift; sourceTree = "<group>"; };
+		3BE69C902A810E36006A8C5F /* CrewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewViewModel.swift; sourceTree = "<group>"; };
+		3BE69C922A8119A4006A8C5F /* CrewGenerateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateViewModel.swift; sourceTree = "<group>"; };
 		444E77919FDC0F8D936ECE3D /* Pods-RunningCrewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrewTests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrewTests/Pods-RunningCrewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		49645AC81E6AA34CA37B1351 /* Pods_RunningCrew_RunningCrewUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew_RunningCrewUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrew.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D992A5C10CA9AF1EAAE9D5A /* Pods-RunningCrew.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew/Pods-RunningCrew.debug.xcconfig"; sourceTree = "<group>"; };
 		931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNoticeManager.swift; sourceTree = "<group>"; };
-		931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNoticeModel.swift; sourceTree = "<group>"; };
+		931A901E2A2C8707007EE1DC /* RunningNotice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningNotice.swift; sourceTree = "<group>"; };
 		936257932A04C2B4001E9CA6 /* CrewGenerateFinishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateFinishView.swift; sourceTree = "<group>"; };
 		936257952A04C2C3001E9CA6 /* CrewGenerateFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateFinishViewController.swift; sourceTree = "<group>"; };
 		936257982A04FC1A001E9CA6 /* CrewJoinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewJoinViewController.swift; sourceTree = "<group>"; };
 		9362579A2A04FC23001E9CA6 /* CrewJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewJoinView.swift; sourceTree = "<group>"; };
 		9362579C2A10B0EE001E9CA6 /* YPImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPImagePickerManager.swift; sourceTree = "<group>"; };
 		9398DCF129DDA03100748F64 /* CrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewView.swift; sourceTree = "<group>"; };
-		93FC2FC029E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMemberCollectionViewCell.swift; sourceTree = "<group>"; };
-		93FC2FC229E6CC430007B551 /* CrewListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewListCollectionViewCell.swift; sourceTree = "<group>"; };
+		93FC2FC029E6C9AB0007B551 /* MyCrewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCrewCollectionViewCell.swift; sourceTree = "<group>"; };
+		93FC2FC229E6CC430007B551 /* RecommendCrewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCrewCollectionViewCell.swift; sourceTree = "<group>"; };
 		93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateView.swift; sourceTree = "<group>"; };
 		93FC2FC929EA8BA70007B551 /* CrewGenerateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateTextField.swift; sourceTree = "<group>"; };
 		93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectButton.swift; sourceTree = "<group>"; };
@@ -194,8 +214,6 @@
 		BEEAFDD62A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningCollectionViewCell.swift; sourceTree = "<group>"; };
 		C4430C2AE358A87631BAC200 /* Pods-RunningCrew-RunningCrewUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; path = "Target Support Files/Pods-RunningCrew-RunningCrewUITests/Pods-RunningCrew-RunningCrewUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7211E3029B9664D00ADA90C /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
-		C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		C7211E3829B9EA9700ADA90C /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		C7211E3929B9EA9700ADA90C /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		C751527829B27038003D8987 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
@@ -300,6 +318,7 @@
 			children = (
 				3B9DCF242A515F7B00AC531D /* RecordRunningViewModel.swift */,
 				C7F95B2D29AF803200C69D1B /* IndividualRunningViewModel.swift */,
+				3BE69C802A80AC29006A8C5F /* CrewRunningViewModel.swift */,
 				3B50AAC32A70FF0B002FC1A3 /* GoalSettingViewModel.swift */,
 				C751527B29B34224003D8987 /* RecordViewModel.swift */,
 				C7E00A1B29C1AF8D00B39709 /* SaveRecordViewModel.swift */,
@@ -320,8 +339,10 @@
 		3B50AAB32A6E695C002FC1A3 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				3BE69C7B2A809872006A8C5F /* Network */,
 				3B50AAB72A6EBD27002FC1A3 /* UserRepository.swift */,
 				3B50AAB12A6E3B77002FC1A3 /* KeyChainRepository.swift */,
+				3BE69C8A2A80E1C4006A8C5F /* UserDefaultRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -339,6 +360,9 @@
 		3B50AAC22A70F74D002FC1A3 /* CrewRunning */ = {
 			isa = PBXGroup;
 			children = (
+				3BE69C7E2A80ABB9006A8C5F /* CrewRunningViewController.swift */,
+				3BE69C822A80ACCB006A8C5F /* CrewRunningView.swift */,
+				3BE69C842A80AE37006A8C5F /* CrewRunningScheduleCell.swift */,
 			);
 			path = CrewRunning;
 			sourceTree = "<group>";
@@ -370,6 +394,7 @@
 			children = (
 				3B9DCF262A51601500AC531D /* BaseViewModelType.swift */,
 				3B50AAAB2A6E0989002FC1A3 /* RecordRunning */,
+				3BE69C8F2A810E29006A8C5F /* Crew */,
 				3B50AAAC2A6E0998002FC1A3 /* MyPage */,
 			);
 			path = ViewModel;
@@ -385,6 +410,30 @@
 			path = ProfileChange;
 			sourceTree = "<group>";
 		};
+		3BE69C7B2A809872006A8C5F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3BE69C7C2A80987D006A8C5F /* UserAPI.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3BE69C8E2A810C3A006A8C5F /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		3BE69C8F2A810E29006A8C5F /* Crew */ = {
+			isa = PBXGroup;
+			children = (
+				3BE69C902A810E36006A8C5F /* CrewViewModel.swift */,
+				3BE69C922A8119A4006A8C5F /* CrewGenerateViewModel.swift */,
+			);
+			path = Crew;
+			sourceTree = "<group>";
+		};
 		931A90132A2C804B007EE1DC /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,7 +441,6 @@
 				3B2D00DB2A611C2200CD2E67 /* MotionService.swift */,
 				931A90142A2C806D007EE1DC /* RunningNoticeManager.swift */,
 				3B50AA9F2A6A52E2002FC1A3 /* LogInService.swift */,
-				3B50AACC2A736DFF002FC1A3 /* SignUpService.swift */,
 				931A901D2A2C86F5007EE1DC /* Model */,
 			);
 			path = Service;
@@ -401,8 +449,11 @@
 		931A901D2A2C86F5007EE1DC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				931A901E2A2C8707007EE1DC /* RunningNoticeModel.swift */,
-				3B50AAA92A6E010B002FC1A3 /* LogInModel.swift */,
+				931A901E2A2C8707007EE1DC /* RunningNotice.swift */,
+				3B50AAA92A6E010B002FC1A3 /* SocialLogIn.swift */,
+				3BE69C882A80B9C0006A8C5F /* User.swift */,
+				3BE69C862A80B75E006A8C5F /* CrewModel.swift */,
+				3BE69C8C2A81040E006A8C5F /* Me.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -416,13 +467,13 @@
 			path = CrewGenerateFinish;
 			sourceTree = "<group>";
 		};
-		936257972A04FBF0001E9CA6 /* CrewJoin&Info */ = {
+		936257972A04FBF0001E9CA6 /* CrewJoin */ = {
 			isa = PBXGroup;
 			children = (
 				936257982A04FC1A001E9CA6 /* CrewJoinViewController.swift */,
 				9362579A2A04FC23001E9CA6 /* CrewJoinView.swift */,
 			);
-			path = "CrewJoin&Info";
+			path = CrewJoin;
 			sourceTree = "<group>";
 		};
 		9398DCEC29DD9FC200748F64 /* Base */ = {
@@ -435,33 +486,22 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		93FC2FC429EA85AA0007B551 /* CrewListView */ = {
-			isa = PBXGroup;
-			children = (
-				C7DE68052999378300C824A9 /* CrewViewController.swift */,
-				9398DCF129DDA03100748F64 /* CrewView.swift */,
-				93FC2FC029E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift */,
-				93FC2FC229E6CC430007B551 /* CrewListCollectionViewCell.swift */,
-			);
-			path = CrewListView;
-			sourceTree = "<group>";
-		};
 		93FC2FC529EA85B70007B551 /* CrewGenerate */ = {
 			isa = PBXGroup;
 			children = (
-				93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */,
 				93FC2FCD29EA93A00007B551 /* CrewGenerateViewController.swift */,
+				93FC2FC729EA866D0007B551 /* CrewGenerateView.swift */,
 			);
 			path = CrewGenerate;
 			sourceTree = "<group>";
 		};
-		93FC2FC629EA865B0007B551 /* Custom */ = {
+		93FC2FC629EA865B0007B551 /* CrewSearch */ = {
 			isa = PBXGroup;
 			children = (
 				93FC2FC929EA8BA70007B551 /* CrewGenerateTextField.swift */,
 				93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */,
 			);
-			path = Custom;
+			path = CrewSearch;
 			sourceTree = "<group>";
 		};
 		B177AEB6EAB444E45D0937E0 /* Pods */ = {
@@ -496,15 +536,6 @@
 			path = MyPageCalendar;
 			sourceTree = "<group>";
 		};
-		C7211E3229B9717D00ADA90C /* AddImageButtonCell */ = {
-			isa = PBXGroup;
-			children = (
-				C7211E3329B9721E00ADA90C /* AddImageCollectionViewCell.swift */,
-				C7211E3429B9721E00ADA90C /* AddImageCollectionViewCell.xib */,
-			);
-			path = AddImageButtonCell;
-			sourceTree = "<group>";
-		};
 		C7211E3729B9EA8100ADA90C /* ImageCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,7 +560,6 @@
 				C751527E29B79981003D8987 /* SaveRecordRunningViewController.swift */,
 				C751527F29B79981003D8987 /* SaveRecordRunningViewController.xib */,
 				C7211E3729B9EA8100ADA90C /* ImageCell */,
-				C7211E3229B9717D00ADA90C /* AddImageButtonCell */,
 			);
 			path = SaveRunningRecord;
 			sourceTree = "<group>";
@@ -590,7 +620,7 @@
 			isa = PBXGroup;
 			children = (
 				3B50AAA82A6D7A8C002FC1A3 /* RunningCrew.entitlements */,
-				C7811F7729A258C200801E6B /* Resources */,
+				C7811F7729A258C200801E6B /* Application */,
 				C7811F7829A258CE00801E6B /* Sources */,
 			);
 			path = RunningCrew;
@@ -623,27 +653,27 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		C7811F7729A258C200801E6B /* Resources */ = {
+		C7811F7729A258C200801E6B /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				C730C16329A259720076C83C /* Font */,
 				C7670EF52995460900E3CD77 /* Info.plist */,
+				C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */,
+				C7670EE72995460800E3CD77 /* AppDelegate.swift */,
+				C7670EE92995460800E3CD77 /* SceneDelegate.swift */,
 				3B50AAAF2A6E2565002FC1A3 /* GoogleService-Info.plist */,
 				C7670EF02995460900E3CD77 /* Assets.xcassets */,
 			);
-			path = Resources;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		C7811F7829A258CE00801E6B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				3B50AABF2A70C36F002FC1A3 /* Error */,
-				C7DE6823299A85D400C824A9 /* Utils */,
 				3B50AAB32A6E695C002FC1A3 /* Repository */,
 				931A90132A2C804B007EE1DC /* Service */,
 				3B9DCF292A51619500AC531D /* ViewModel */,
 				3B9DCF282A51618F00AC531D /* View */,
-				C7DE67E92997AA3600C824A9 /* Application */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -669,22 +699,15 @@
 			path = ImagePickerCell;
 			sourceTree = "<group>";
 		};
-		C7DE67E92997AA3600C824A9 /* Application */ = {
-			isa = PBXGroup;
-			children = (
-				C7DE681B299A84B500C824A9 /* Launch Screen.storyboard */,
-				C7670EE72995460800E3CD77 /* AppDelegate.swift */,
-				C7670EE92995460800E3CD77 /* SceneDelegate.swift */,
-			);
-			path = Application;
-			sourceTree = "<group>";
-		};
 		C7DE67EF2998DF5D00C824A9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C730C16329A259720076C83C /* Font */,
+				C7DE6823299A85D400C824A9 /* Extension */,
 				9398DCEC29DD9FC200748F64 /* Base */,
 				C7DE6832299CF0FE00C824A9 /* CustomTabBar */,
 				C7A4CE5129BC2109000DAE8B /* ImagePicker */,
+				3B50AACE2A737E79002FC1A3 /* ToastView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -707,11 +730,14 @@
 		C7DE67FE2999372A00C824A9 /* Crew */ = {
 			isa = PBXGroup;
 			children = (
-				936257972A04FBF0001E9CA6 /* CrewJoin&Info */,
-				93FC2FC629EA865B0007B551 /* Custom */,
+				C7DE68052999378300C824A9 /* CrewViewController.swift */,
+				9398DCF129DDA03100748F64 /* CrewView.swift */,
+				93FC2FC029E6C9AB0007B551 /* MyCrewCollectionViewCell.swift */,
+				93FC2FC229E6CC430007B551 /* RecommendCrewCollectionViewCell.swift */,
 				93FC2FC529EA85B70007B551 /* CrewGenerate */,
 				936257922A04C29A001E9CA6 /* CrewGenerateFinish */,
-				93FC2FC429EA85AA0007B551 /* CrewListView */,
+				936257972A04FBF0001E9CA6 /* CrewJoin */,
+				93FC2FC629EA865B0007B551 /* CrewSearch */,
 			);
 			path = Crew;
 			sourceTree = "<group>";
@@ -731,9 +757,10 @@
 			children = (
 				C7DE68012999376800C824A9 /* MyPageViewController.swift */,
 				3B50AA9B2A6A0D6E002FC1A3 /* MyPageView.swift */,
-				3B9DCF2E2A5900F400AC531D /* ProfileChange */,
+				3BE69C8E2A810C3A006A8C5F /* Setting */,
 				3B50AAA12A6A5572002FC1A3 /* LogIn */,
 				3B50AAC52A736AD4002FC1A3 /* SignUp */,
+				3B9DCF2E2A5900F400AC531D /* ProfileChange */,
 				BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */,
 				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
 			);
@@ -753,7 +780,7 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		C7DE6823299A85D400C824A9 /* Utils */ = {
+		C7DE6823299A85D400C824A9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				C7DE6824299A85DF00C824A9 /* UIColor+.swift */,
@@ -761,7 +788,7 @@
 				C7211E3029B9664D00ADA90C /* UIViewController+.swift */,
 				C7A1F21829BA385A009AE7BA /* UIView+.swift */,
 			);
-			path = Utils;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		C7DE6830299CEEA500C824A9 /* Crew */ = {
@@ -953,7 +980,6 @@
 				C7211E3B29B9EA9700ADA90C /* ImageCollectionViewCell.xib in Resources */,
 				C7A4CE5529BC2135000DAE8B /* ImagePickerViewController.xib in Resources */,
 				C7811F7029A0F51E00801E6B /* MyRunningCollectionViewCell.xib in Resources */,
-				C7211E3629B9721E00ADA90C /* AddImageCollectionViewCell.xib in Resources */,
 				C7DE681C299A84B500C824A9 /* Launch Screen.storyboard in Resources */,
 				C7670EF12995460900E3CD77 /* Assets.xcassets in Resources */,
 				C7BA067C29A25AF100D2227A /* NotoSansKR-Bold.otf in Resources */,
@@ -1105,6 +1131,7 @@
 				C75DECFA29AE7E7D00A4EC47 /* RecordViewController.swift in Sources */,
 				3B50AAA02A6A52E2002FC1A3 /* LogInService.swift in Sources */,
 				931A90152A2C806D007EE1DC /* RunningNoticeManager.swift in Sources */,
+				3BE69C7F2A80ABB9006A8C5F /* CrewRunningViewController.swift in Sources */,
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */,
@@ -1114,21 +1141,24 @@
 				3B9DCF3A2A59013100AC531D /* ProfileChnageViewController.swift in Sources */,
 				3B50AAA52A6A559F002FC1A3 /* LogInView.swift in Sources */,
 				C7DE6825299A85DF00C824A9 /* UIColor+.swift in Sources */,
-				931A901F2A2C8707007EE1DC /* RunningNoticeModel.swift in Sources */,
+				931A901F2A2C8707007EE1DC /* RunningNotice.swift in Sources */,
 				3B50AAB22A6E3B77002FC1A3 /* KeyChainRepository.swift in Sources */,
 				93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */,
 				3B50AA9A2A68C6F9002FC1A3 /* BaseView.swift in Sources */,
 				3B50AACB2A736B27002FC1A3 /* SignUpViewModel.swift in Sources */,
+				3BE69C892A80B9C0006A8C5F /* User.swift in Sources */,
 				C7DE67FB29992A5E00C824A9 /* TabBarItem.swift in Sources */,
+				3BE69C812A80AC29006A8C5F /* CrewRunningViewModel.swift in Sources */,
 				93FC2FCA29EA8BA70007B551 /* CrewGenerateTextField.swift in Sources */,
 				9362579B2A04FC23001E9CA6 /* CrewJoinView.swift in Sources */,
 				C7A4CE5429BC2135000DAE8B /* ImagePickerViewController.swift in Sources */,
-				3B50AACD2A736DFF002FC1A3 /* SignUpService.swift in Sources */,
 				C7DE682C299B934800C824A9 /* RunningButton.swift in Sources */,
 				C7DE6841299E590D00C824A9 /* MyRunningViewController.swift in Sources */,
-				C7211E3529B9721E00ADA90C /* AddImageCollectionViewCell.swift in Sources */,
+				3BE69C912A810E36006A8C5F /* CrewViewModel.swift in Sources */,
+				3B50AACF2A737E79002FC1A3 /* ToastView.swift in Sources */,
 				C7663E7D29AA125B0046068B /* GoalSettingStackView.swift in Sources */,
-				3B50AAAA2A6E010B002FC1A3 /* LogInModel.swift in Sources */,
+				3B50AAAA2A6E010B002FC1A3 /* SocialLogIn.swift in Sources */,
+				3BE69C832A80ACCB006A8C5F /* CrewRunningView.swift in Sources */,
 				3B50AAA32A6A5584002FC1A3 /* LogInViewController.swift in Sources */,
 				C7663E5329A4BFB70046068B /* IndividualRunningViewController.swift in Sources */,
 				3B50AAB82A6EBD27002FC1A3 /* UserRepository.swift in Sources */,
@@ -1142,6 +1172,7 @@
 				C7211E3129B9664D00ADA90C /* UIViewController+.swift in Sources */,
 				C7670EEA2995460800E3CD77 /* SceneDelegate.swift in Sources */,
 				C7DE681029993A7000C824A9 /* MyPageCoordinator.swift in Sources */,
+				3BE69C932A8119A4006A8C5F /* CrewGenerateViewModel.swift in Sources */,
 				C7211E3A29B9EA9700ADA90C /* ImageCollectionViewCell.swift in Sources */,
 				3B50AAC72A736AEB002FC1A3 /* SignUpViewController.swift in Sources */,
 				C7E00A2329C36F4900B39709 /* CameraCollectionViewCell.swift in Sources */,
@@ -1152,6 +1183,7 @@
 				3B9DCF392A59013100AC531D /* ProfileChnageView.swift in Sources */,
 				936257942A04C2B4001E9CA6 /* CrewGenerateFinishView.swift in Sources */,
 				C751527C29B34224003D8987 /* RecordViewModel.swift in Sources */,
+				3BE69C8D2A81040E006A8C5F /* Me.swift in Sources */,
 				3B2D00E42A6280B700CD2E67 /* IndividualRunningView.swift in Sources */,
 				C7DE683F299E58CA00C824A9 /* CrewAlarmViewController.swift in Sources */,
 				3B50AABA2A709E2A002FC1A3 /* MyPageViewModel.swift in Sources */,
@@ -1159,7 +1191,7 @@
 				C7F95B2E29AF803200C69D1B /* IndividualRunningViewModel.swift in Sources */,
 				BEEAFDD72A04E86100A06954 /* MyPageMyRunningCollectionViewCell.swift in Sources */,
 				C7DE680C299939E800C824A9 /* CrewCoordinator.swift in Sources */,
-				93FC2FC129E6C9AB0007B551 /* CrewMemberCollectionViewCell.swift in Sources */,
+				93FC2FC129E6C9AB0007B551 /* MyCrewCollectionViewCell.swift in Sources */,
 				3B2D00E22A627C6200CD2E67 /* RecordRunningView.swift in Sources */,
 				C7DE67F62998E4D300C824A9 /* TabBarCoordinator.swift in Sources */,
 				C7DE680E29993A5400C824A9 /* AlarmCoordinator.swift in Sources */,
@@ -1173,6 +1205,7 @@
 				C7DE68042999377800C824A9 /* AlarmViewController.swift in Sources */,
 				3B9DCF2B2A51801F00AC531D /* LocationService.swift in Sources */,
 				3B9DCF272A51601500AC531D /* BaseViewModelType.swift in Sources */,
+				3BE69C7D2A80987D006A8C5F /* UserAPI.swift in Sources */,
 				C7DE67F929992A2C00C824A9 /* RecordRunningViewController.swift in Sources */,
 				C7811F6F29A0F51E00801E6B /* MyRunningCollectionViewCell.swift in Sources */,
 				C7DE67F32998DFC200C824A9 /* Coordinator.swift in Sources */,
@@ -1183,10 +1216,13 @@
 				3B50AAC42A70FF0B002FC1A3 /* GoalSettingViewModel.swift in Sources */,
 				3B50AAC12A70C728002FC1A3 /* TokenError.swift in Sources */,
 				C7811F7429A201B700801E6B /* DotView.swift in Sources */,
+				3BE69C852A80AE37006A8C5F /* CrewRunningScheduleCell.swift in Sources */,
 				BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */,
 				9398DCF229DDA03100748F64 /* CrewView.swift in Sources */,
 				C75DECF729ABB3AF00A4EC47 /* GoalSettingViewController.swift in Sources */,
-				93FC2FC329E6CC430007B551 /* CrewListCollectionViewCell.swift in Sources */,
+				3BE69C8B2A80E1C4006A8C5F /* UserDefaultRepository.swift in Sources */,
+				93FC2FC329E6CC430007B551 /* RecommendCrewCollectionViewCell.swift in Sources */,
+				3BE69C872A80B75E006A8C5F /* CrewModel.swift in Sources */,
 				3B9DCF1D2A50876E00AC531D /* BaseVIewController.swift in Sources */,
 				3B50AAAE2A6E09B6002FC1A3 /* LogInViewModel.swift in Sources */,
 				C7DE682E299BD61300C824A9 /* LocationButton.swift in Sources */,
@@ -1352,7 +1388,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 77295VQTPM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RunningCrew/Resources/Info.plist;
+				INFOPLIST_FILE = RunningCrew/Application/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "러닝거리 측정을 위해 위치 권한이 필요합니다.\\n설정으로 이동하시겠습니까?";
 				INFOPLIST_KEY_NSMotionUsageDescription = "런닝 기록 측정을 위해 데이터 접근 권한이 필요합니다.";
@@ -1392,7 +1428,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 77295VQTPM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = RunningCrew/Resources/Info.plist;
+				INFOPLIST_FILE = RunningCrew/Application/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "사진을 촬영하여 게시물에 사진을 첨부하는 기능 사용을 위해 카메라에 접근하도록 허용합니다.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "러닝거리 측정을 위해 위치 권한이 필요합니다.\\n설정으로 이동하시겠습니까?";
 				INFOPLIST_KEY_NSMotionUsageDescription = "런닝 기록 측정을 위해 데이터 접근 권한이 필요합니다.";

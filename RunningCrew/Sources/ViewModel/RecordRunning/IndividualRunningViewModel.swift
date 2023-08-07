@@ -25,6 +25,7 @@ final class IndividualRunningViewModel: BaseViewModelType {
         let canStartButton: Observable<(possible: Bool, goalType: GoalType)>
         let location: Observable<(latitude: Double, longitude: Double)>
         let goalSettingType: Observable<GoalType>
+        let isLogIn: Bool
     }
     
     private var goalType: BehaviorRelay<GoalType> = BehaviorRelay<GoalType>(value: .distance(kilometer: 5.00))
@@ -33,12 +34,14 @@ final class IndividualRunningViewModel: BaseViewModelType {
     
     private let locationService: LocationService
     private let motionService: MotionService
+    private let logInService: LogInService
     
     var disposeBag = DisposeBag()
     
-    init(locationService: LocationService, motionService: MotionService) {
+    init(locationService: LocationService, motionService: MotionService, logInService: LogInService) {
         self.locationService = locationService
         self.motionService = motionService
+        self.logInService = logInService
     }
     
     func transform(input: Input) -> Output {
@@ -80,6 +83,7 @@ final class IndividualRunningViewModel: BaseViewModelType {
         return Output(goalType: goalType.asObservable(),
                       canStartButton: canStartButton,
                       location: location,
-                      goalSettingType: goalSettingType)
+                      goalSettingType: goalSettingType,
+                      isLogIn: logInService.isLogIn())
     }
 }

@@ -38,7 +38,7 @@ extension TabBarCoordinator {
     }
     
     func setTabCoordinator(of item: TabBarItem, to navigationController: UINavigationController) {
-        var coordinator: Coordinator? = nil
+        var coordinator: Coordinator?
         switch item {
         case .recordRunning:
             coordinator = RecordRunningCoordinator(navigationController)

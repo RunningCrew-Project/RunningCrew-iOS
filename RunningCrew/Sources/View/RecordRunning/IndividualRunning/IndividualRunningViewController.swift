@@ -93,6 +93,13 @@ final class IndividualRunningViewController: BaseViewController {
                 owner.coordinator?.showGoalSettingView(goalType: goalType)
             }
             .disposed(by: disposeBag)
+        
+        if output.isLogIn == false {
+            Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance).take(1)
+                .withUnretained(self)
+                .bind { (owner, _) in owner.individualRunningView.showToast(message: "로그아웃 상태입니다.\n로그아웃 상태에서는 런닝을 저장할 수 없습니다.", position: .top) }
+                .disposed(by: disposeBag)
+        }
     }
 }
 

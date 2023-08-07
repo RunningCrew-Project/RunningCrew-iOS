@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol RecordViewControllerDelegate: AnyObject {
-    func finishRunning(path: [(Double, Double)])
+    func finishRunning(path: [(Double, Double)], distance: Double, milliSeconds: Int)
 }
 
 final class RecordViewController: BaseViewController {
@@ -42,7 +42,14 @@ final class RecordViewController: BaseViewController {
     }
   
     override func bind() {
-        let input = RecordViewModel.Input(pauseAndPlayButtonDidTap: pauseAndPlayButton.rx.tap.asObservable())
+        let input = RecordViewModel.Input(
+            pauseAndPlayButtonDidTap: pauseAndPlayButton.rx.tap.asObservable(),
+            completeButtonDidTap: completeButton.rx.controlEvent(.touchDown)
+                .flatMapLatest { _ -> Observable<Int> in
+                    return Observable<Int>.timer(.seconds(2), scheduler: ConcurrentMainScheduler.instance)
+                        .take(until: self.completeButton.rx.controlEvent([.touchUpInside, .touchUpOutside]))
+                }
+        )
         let output = viewModel.transform(input: input)
         
         output.startCount
@@ -62,12 +69,12 @@ final class RecordViewController: BaseViewController {
             }
             .disposed(by: disposeBag)
         
-        output.runningSecond
+        output.runningMilliSecond
             .map { Int($0) }
-            .map { totalSeconds in
-                let second = String(format: "%02d", totalSeconds % 60)
-                let minute = String(format: "%02d", (totalSeconds % 3600) / 60)
-                let hour = String(format: "%02d", totalSeconds / 3600)
+            .map { totalMilliSecond in
+                let second = String(format: "%02d", (totalMilliSecond / 1000) % 60)
+                let minute = String(format: "%02d", ((totalMilliSecond / 1000) % 3600) / 60)
+                let hour = String(format: "%02d", (totalMilliSecond / 1000) / 3600)
                 
                 return hour + ":" + minute + ":" + second
             }
@@ -75,8 +82,16 @@ final class RecordViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.runningDistance
-            .map { String($0) }
+            .map { String(format: "%05.2f", $0) }
             .bind(to: runningDistanceLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        output.runningData
+            .withUnretained(self)
+            .subscribe { (owner, data) in
+                guard let data = data else { return }
+                owner.coordinator?.finishRunning(path: data.path, distance: data.distance, milliSeconds: data.milliSeconds)
+            }
             .disposed(by: disposeBag)
         
         completeButton.rx.controlEvent(.touchDown)
@@ -85,20 +100,10 @@ final class RecordViewController: BaseViewController {
             })
             .disposed(by: disposeBag)
         
-        completeButton.rx.controlEvent(.touchDown)
-            .flatMapLatest { _ -> Observable<Int> in
-                return Observable<Int>.timer(.seconds(2), scheduler: ConcurrentMainScheduler.instance)
-                    .take(until: self.completeButton.rx.controlEvent([.touchUpInside, .touchUpOutside]))
-            }
-            .subscribe { [weak self] _ in
-                self?.coordinator?.finishRunning(path: self?.viewModel.pathInformation() ?? [])
-            }
-            .disposed(by: disposeBag)
-        
         completeButton.rx.controlEvent([.touchUpInside, .touchUpOutside])
             .bind { [weak self] _ in
                 self?.completeButtonRingLayer?.removeAllAnimations()
-                self?.showToastMessage()
+                self?.view.showToast(message: "기록을 중지하시려면 정지버튼을\n2초 이상 누르세요", position: .bottom)
             }
             .disposed(by: disposeBag)
     }
@@ -134,9 +139,5 @@ extension RecordViewController {
                                                     startAngle: .pi * (3/2),
                                                     endAngle: .pi * (7/2),
                                                     clockwise: true).cgPath
-    }
-    
-    private func showToastMessage() {
-        //TODO: 토스트 메시지
     }
 }

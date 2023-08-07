@@ -45,15 +45,17 @@ extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     func showIndividualView() {
         let locationService = LocationService()
         let motionService = MotionService()
-        let individualViewModel = IndividualRunningViewModel(locationService: locationService, motionService: motionService)
+        let logInService = LogInService(userRepository: UserRepository())
+        let individualViewModel = IndividualRunningViewModel(locationService: locationService, motionService: motionService, logInService: logInService)
         let individualRunningVC: IndividualRunningViewController = IndividualRunningViewController(viewModel: individualViewModel)
         individualRunningVC.coordinator = self
         self.navigationController.pushViewController(individualRunningVC, animated: false)
     }
     
     func showCrewView() {
-        let myrunningVC: MyRunningViewController = MyRunningViewController()
-        self.navigationController.pushViewController(myrunningVC, animated: false)
+        let crewRunningViewModel = CrewRunningViewModel()
+        let crewRunningVC = CrewRunningViewController(viewModel: crewRunningViewModel)
+        self.navigationController.pushViewController(crewRunningVC, animated: false)
     }
 }
 
@@ -90,12 +92,23 @@ extension RecordRunningCoordinator: GoalSettingViewControllerDelegate {
 }
 
 extension RecordRunningCoordinator: RecordViewControllerDelegate {    
-    func finishRunning(path: [(Double, Double)]) {
+    func finishRunning(path: [(Double, Double)], distance: Double, milliSeconds: Int) {
         self.navigationController.viewControllers.last?.dismiss(animated: false)
         self.navigationController.popViewController(animated: false)
         
-        let saveRecordRunningVC = SaveRecordRunningViewController(viewModel: SaveRecordViewModel(path: path))
+        let userRepository = UserRepository()
+        let logInService = LogInService(userRepository: userRepository)
+        let locationService = LocationService()
+        let saveRecordViewModel = SaveRecordViewModel(path: path, distance: distance, milliSeconds: milliSeconds, locationService: locationService, logInService: logInService)
+        let saveRecordRunningVC = SaveRecordRunningViewController(viewModel: saveRecordViewModel)
         saveRecordRunningVC.modalPresentationStyle = .fullScreen
+        saveRecordRunningVC.coordinator = self
         self.navigationController.present(saveRecordRunningVC, animated: false)
+    }
+}
+
+extension RecordRunningCoordinator: SaveRecordRunningViewControllerDelegate {
+    func dismissView() {
+        self.navigationController.viewControllers.last?.dismiss(animated: false)
     }
 }

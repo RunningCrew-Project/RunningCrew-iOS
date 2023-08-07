@@ -8,8 +8,7 @@
 import UIKit
 import SnapKit
 
-class MyPageMyRunningViewController: UIViewController {
-    //MARK: - UI ProPerties
+final class MyPageMyRunningViewController: UIViewController {
     
     lazy var collectionView = MyRunningCollectionView()
     
@@ -22,29 +21,19 @@ class MyPageMyRunningViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Properties
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionView()
         collectionViewConstraint()
     }
     
-    //MARK: - Set UI
-    
-    func collectionViewConstraint() {
-        collectionView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-            
-        }
-    }
-    
-   
-    
-    //MARK: - Define Method
-    
     func setCollectionView() {
         view.addSubview(collectionView)
     }
     
+    func collectionViewConstraint() {
+        collectionView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+    }
 }
-    

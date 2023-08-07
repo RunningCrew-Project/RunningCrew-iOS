@@ -72,8 +72,8 @@ final class GoalSettingViewModel: BaseViewModelType {
 }
 
 extension GoalSettingViewModel {
-    private func setGoalDistance(text: String) -> Float {
-        guard let number = Float(text) else {
+    private func setGoalDistance(text: String) -> Double {
+        guard let number = Double(text) else {
             return 0
         }
         return number / 100

@@ -72,7 +72,7 @@ final class LogInViewController: BaseViewController {
             .bind { (owner, socialLogInResponse) in
                 if socialLogInResponse.initData {
                     owner.coordinator?.showMyPageView()
-                } else {
+                } else if socialLogInResponse.initData == false {
                     owner.coordinator?.showSignUpView(accessToken: socialLogInResponse.accessToken, refreshToken: socialLogInResponse.refreshToken)
                 }
             }

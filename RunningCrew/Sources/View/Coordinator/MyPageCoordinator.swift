@@ -21,8 +21,8 @@ final class MyPageCoordinator: Coordinator {
         let myRunningVC = MyPageMyRunningViewController()
         let calendarVC = MyPageCalendarViewController()
         
-        let logInRepository = UserRepository()
-        let logInService = LogInService(logInRepository: logInRepository)
+        let userRepository = UserRepository()
+        let logInService = LogInService(userRepository: userRepository)
         let myPageViewModel = MyPageViewModel(logInService: logInService)
         
         let myPageVC: MyPageViewController = MyPageViewController(viewControllers: [myRunningVC, calendarVC], myPageViewModel: myPageViewModel)
@@ -37,8 +37,8 @@ extension MyPageCoordinator: MyPageViewControllerDelegate {
     }
     
     func showLogInView() {
-        let logInRepository = UserRepository()
-        let logInService = LogInService(logInRepository: logInRepository)
+        let userRepository = UserRepository()
+        let logInService = LogInService(userRepository: userRepository)
         let logInViewModel = LogInViewModel(logInService: logInService)
         let logInVC = LogInViewController(viewModel: logInViewModel)
         logInVC.coordinator = self
@@ -57,8 +57,9 @@ extension MyPageCoordinator: LogInViewControllerDelegate {
     }
     
     func showSignUpView(accessToken: String, refreshToken: String) {
-        let signUpService = SignUpService()
-        let signUpViewModel = SignUpViewModel(signUpService: signUpService)
+        let userRepository = UserRepository()
+        let logInService = LogInService(userRepository: userRepository)
+        let signUpViewModel = SignUpViewModel(logInService: logInService, accessToken: accessToken, refreshToken: refreshToken)
         let signUpVC = SignUpViewController(viewModel: signUpViewModel)
         self.navigationController.pushViewController(signUpVC, animated: true)
     }

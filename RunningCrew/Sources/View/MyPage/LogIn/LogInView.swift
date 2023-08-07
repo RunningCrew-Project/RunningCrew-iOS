@@ -13,6 +13,7 @@ final class LogInView: BaseView {
     lazy var logInTitle: UILabel = {
         let label: UILabel = UILabel()
         label.text = "로그인"
+        label.font = UIFont(name: "NotoSansKR-Bold", size: 40)
         
         return label
     }()

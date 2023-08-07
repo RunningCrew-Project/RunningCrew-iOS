@@ -29,6 +29,7 @@ final class MyPageView: BaseView {
     lazy var profileTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "NotoSansKR-Medium", size: 24)
+        label.text = "프로필"
         label.textColor = .darkModeBasicColor
         label.isHidden = true
         

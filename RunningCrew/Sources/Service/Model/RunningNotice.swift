@@ -1,5 +1,5 @@
 //
-//  RunningNoticeModel.swift
+//  RunningNotice.swift
 //  RunningCrew
 //
 //  Created by Kim TaeSoo on 2023/06/04.
@@ -24,7 +24,6 @@ struct Member: Codable {
     let user: Profile
 }
 
-// MARK: - User
 struct Profile: Codable {
     let id: Int
     let nickname, imgURL: String
