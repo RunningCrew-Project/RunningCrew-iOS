@@ -9,7 +9,7 @@ import UIKit
 
 class ProfileStackview: UIStackView {
     
-    lazy var container:UIStackView = {
+    lazy var container: UIStackView = {
         let stackview = UIStackView()
         stackview.backgroundColor = .white
         stackview.autoresizingMask = [.flexibleTopMargin, .flexibleHeight]
@@ -17,21 +17,21 @@ class ProfileStackview: UIStackView {
         return stackview
     }()
     
-    lazy var profileImage:UIImageView = {
+    lazy var profileImage: UIImageView = {
         let iamgeView = UIImageView()
         iamgeView.image = UIImage(systemName: "person.circle")
         
         return iamgeView
     }()
     
-    lazy var profileStackview:UIStackView = {
+    lazy var profileStackview: UIStackView = {
         let stackview = UIStackView()
         stackview.backgroundColor = .white
     
         return stackview
     }()
     
-    lazy var profileTitle:UILabel = {
+    lazy var profileTitle: UILabel = {
         let label = UILabel()
         label.text = "닉네임"
         label.font = UIFont(name: "NotoSansKR-Medium", size: 24)
@@ -39,7 +39,7 @@ class ProfileStackview: UIStackView {
         return label
     }()
     
-    lazy var profileChagneButton:UIButton = {
+    lazy var profileChagneButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
         
@@ -58,7 +58,7 @@ class ProfileStackview: UIStackView {
         setprofileStackview()
     }
     
-    func setAddView(){
+    func setAddView() {
         self.addSubview(container)
         container.addArrangedSubview(profileImage)
         container.addArrangedSubview(profileStackview)
@@ -71,12 +71,9 @@ class ProfileStackview: UIStackView {
 
     }
     
-    
     func setprofileStackview() {
         profileStackview.axis = .horizontal
         profileStackview.spacing  = 10
-
-        
     }
     
     func containerConstraint() {
@@ -86,11 +83,7 @@ class ProfileStackview: UIStackView {
         
     }
     
-    
-    
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }

@@ -29,7 +29,7 @@ final class ToastView: BaseView {
         }
     }
     
-    override func setViewStyle() {
+    override func setUpUI() {
         backgroundColor = .white
         layer.cornerRadius = 8
         clipsToBounds = true

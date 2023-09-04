@@ -18,6 +18,7 @@ final class RecordRunningViewModel: BaseViewModelType {
     }
     
     struct Output {
+        let isLogIn: Observable<Bool>
         let currentAddress: Observable<String>
         let needAction: Observable<Actiontype>
     }
@@ -27,13 +28,16 @@ final class RecordRunningViewModel: BaseViewModelType {
         case individualRunning
         case crewRunning
         case needAuthorizationAlert
+        case needLogIn
     }
     
+    private let logInService: LogInService
     private let locationService: LocationService
     
     var disposeBag = DisposeBag()
     
-    init(locationService: LocationService) {
+    init(logInService: LogInService, locationService: LocationService) {
+        self.logInService = logInService
         self.locationService = locationService
     }
     
@@ -57,10 +61,17 @@ final class RecordRunningViewModel: BaseViewModelType {
             .throttle(.seconds(1), scheduler: MainScheduler.instance)
             .withUnretained(self)
             .map {  (owner, _) -> Actiontype in
-                return owner.locationService.isNeedAuthorization() ? .needAuthorizationAlert : .crewRunning
+                if owner.locationService.isNeedAuthorization() {
+                    return .needAuthorizationAlert
+                } else if owner.logInService.isLogIn.value == false {
+                    return .needLogIn
+                } else {
+                    return .crewRunning
+                }
             }
         
-        return Output(currentAddress: locationService.getCurrentAddress(),
+        return Output(isLogIn: logInService.isLogIn.asObservable(),
+                      currentAddress: locationService.getCurrentAddress(),
                       needAction: Observable.merge(locationButtonDidTap,
                                                    individualRunningButtonDidTap,
                                                    crewRunningButtonDidTap))

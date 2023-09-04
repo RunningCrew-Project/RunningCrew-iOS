@@ -40,7 +40,7 @@ final class IndividualRunningViewController: BaseViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        individualRunningView.setViewStyle()
+        individualRunningView.setUpUI()
     }
     
     override func bind() {

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class RecommendCrewCollectionViewCell: UICollectionViewCell {
     
@@ -52,12 +53,6 @@ final class RecommendCrewCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    let divideView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .lightGray
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
@@ -67,41 +62,49 @@ final class RecommendCrewCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+extension RecommendCrewCollectionViewCell {
     private func addViews() {
         self.addSubview(imageView)
         self.addSubview(crewNameLabel)
         self.addSubview(crewIntroduceLabel)
         self.addSubview(crewBriefLabel)
-        self.addSubview(divideView)
     }
     
     private func setConstraint() {
         let topLeading = 12
+        
         imageView.snp.makeConstraints { make in
-            make.leading.equalTo(safeAreaLayoutGuide).offset(topLeading)
+            make.leading.equalTo(safeAreaLayoutGuide)
             make.verticalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
             make.width.equalTo(imageView.snp.height)
         }
+        
         crewNameLabel.snp.makeConstraints { make in
             make.top.equalTo(safeAreaLayoutGuide).offset(topLeading)
             make.leading.equalTo(imageView.snp.trailing).offset(topLeading)
+            make.trailing.equalTo(safeAreaLayoutGuide).inset(topLeading)
         }
-        crewBriefLabel.snp.makeConstraints { make in
-            make.bottom.equalTo(safeAreaLayoutGuide).inset(topLeading)
-            make.leading.equalTo(imageView.snp.trailing).offset(topLeading)
-        }
+        
         crewIntroduceLabel.snp.makeConstraints { make in
             make.top.equalTo(crewNameLabel.snp.bottom)
             make.leading.equalTo(imageView.snp.trailing).offset(topLeading)
             make.trailing.equalTo(safeAreaLayoutGuide).inset(topLeading)
-            make.bottom.equalTo(crewBriefLabel.snp.top).inset(8)
-        }
-        divideView.snp.makeConstraints { make in
-            make.height.equalTo(1)
-            make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(topLeading)
-            make.top.equalTo(safeAreaLayoutGuide.snp.bottom)
         }
         
+        crewBriefLabel.snp.makeConstraints { make in
+            make.top.equalTo(crewIntroduceLabel.snp.bottom)
+            make.leading.equalTo(imageView.snp.trailing).offset(topLeading)
+            make.bottom.equalTo(safeAreaLayoutGuide).inset(topLeading)
+        }
+    }
+    
+    func configure(recommendCrew: GuRecommendCrew) {
+        let url = URL(string: recommendCrew.crewImgURL)
+        imageView.kf.setImage(with: url)
+        crewNameLabel.text = recommendCrew.name
+        crewIntroduceLabel.text = recommendCrew.introduction
+        crewBriefLabel.text = "\(recommendCrew.memberCount) · "
     }
 }

@@ -84,6 +84,6 @@ final class IndividualRunningViewModel: BaseViewModelType {
                       canStartButton: canStartButton,
                       location: location,
                       goalSettingType: goalSettingType,
-                      isLogIn: logInService.isLogIn())
+                      isLogIn: logInService.isLogIn.value)
     }
 }

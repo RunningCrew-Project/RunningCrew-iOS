@@ -18,7 +18,21 @@ final class CrewCoordinator: Coordinator {
     }
     
     func start() {
-        let crewViewModel = CrewViewModel()
+       showCrewView()
+    }
+}
+
+extension CrewCoordinator {
+    func showCrewView() {
+        let runningRecordRepository = RunningRecordRepository()
+        let tokenRepository = TokenRepository()
+        let crewRepository = CrewRepository()
+        
+        let runnningService = RunningService(runningRecordRepository: runningRecordRepository, tokenRepository: tokenRepository, crewRepository: crewRepository)
+        let logInService = LogInService.shared
+        let locationService = LocationService(areaRepository: AreaRepository())
+        
+        let crewViewModel = CrewViewModel(logInService: logInService, runningService: runnningService, locationService: locationService)
         let crewVC = CrewViewController(viewModel: crewViewModel)
         crewVC.coordinator = self
         navigationController.pushViewController(crewVC, animated: false)
@@ -26,6 +40,10 @@ final class CrewCoordinator: Coordinator {
 }
 
 extension CrewCoordinator: CrewViewControllerDelegate {
+    func showCrewSearchView() {
+        
+    }
+    
     func showCrewGenerateView() {
         let crewGenerateViewModel = CrewGenerateViewModel()
         let crewGenerateVC = CrewGenerateViewController(viewModel: crewGenerateViewModel)
@@ -43,6 +61,6 @@ extension CrewCoordinator: CrewViewControllerDelegate {
 
 extension CrewCoordinator: CrewGenerateViewControllerDelegate {
     func closeCrewGenerateView() {
-        self.navigationController.dismiss(animated: true)
+        self.navigationController.dismiss(animated: false)
     }
 }

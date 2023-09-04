@@ -50,7 +50,7 @@ final class RecordRunningViewController: BaseViewController {
         output.currentAddress
             .observe(on: MainScheduler.instance)
             .bind { [weak self] location in
-                self?.recordRunningView.locationButton.setTitle(location, for: .normal)
+                self?.recordRunningView.locationLabel.setTitle(location, for: .normal)
             }
             .disposed(by: disposeBag)
         
@@ -66,6 +66,8 @@ final class RecordRunningViewController: BaseViewController {
                     self?.coordinator?.showCrewView()
                 case .needAuthorizationAlert:
                     self?.showMoveSettingAlert()
+                case .needLogIn:
+                    self?.showAlert(title: "비로그인", message: "로그인해야 이용할 수 있습니다.", actions: [UIAlertAction(title: "확인", style: .cancel)])
                 }
             }
             .disposed(by: disposeBag)

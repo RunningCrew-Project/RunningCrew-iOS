@@ -17,11 +17,20 @@ final class RecordRunningView: BaseView {
         return view
     }()
     
-    lazy var locationButton: UIButton = {
-        let button = LocationButton()
+    lazy var locationLabel: UIButton = {
+        let button = LocationLabel()
         button.contentHorizontalAlignment = .left
+        button.isUserInteractionEnabled = false
         
         return button
+    }()
+    
+    lazy var locationButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: "LocationButton"), for: .normal)
+        
+        return button
+        
     }()
     
     lazy var discussionLabel: UILabel = {
@@ -52,6 +61,7 @@ final class RecordRunningView: BaseView {
 
     override func addViews() {
         self.addSubview(advertisementContainer)
+        self.addSubview(locationLabel)
         self.addSubview(locationButton)
         self.addSubview(discussionLabel)
         self.addSubview(individualRunningButton)
@@ -64,15 +74,20 @@ final class RecordRunningView: BaseView {
             $0.height.equalToSuperview().multipliedBy(CGFloat(Double(120) / Double(1624)))
         }
 
-        locationButton.snp.makeConstraints {
+        locationLabel.snp.makeConstraints {
             $0.bottom.equalToSuperview().multipliedBy(CGFloat(Double(288) / Double(1624)))
-            $0.centerX.equalToSuperview()
-            $0.width.equalToSuperview().multipliedBy(CGFloat(Double(694) / Double(750)))
+            $0.leading.equalToSuperview().offset(10)
             $0.height.equalToSuperview().multipliedBy(CGFloat(Double(68) / Double(1624)))
+        }
+        
+        locationButton.snp.makeConstraints {
+            $0.centerY.equalTo(locationLabel)
+            $0.height.width.equalTo(locationLabel.snp.height).multipliedBy(0.6)
+            $0.leading.equalTo(locationLabel.snp.trailing).offset(10)
         }
 
         discussionLabel.snp.makeConstraints {
-            $0.top.equalTo(locationButton.snp.bottom)
+            $0.top.equalTo(locationLabel.snp.bottom)
             $0.centerX.equalToSuperview().multipliedBy(CGFloat(Double(186) / Double(375)))
             $0.height.equalToSuperview().multipliedBy(CGFloat(Double(70) / Double(1624)))
         }

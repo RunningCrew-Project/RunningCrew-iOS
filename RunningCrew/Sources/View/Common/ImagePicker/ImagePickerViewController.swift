@@ -5,19 +5,19 @@
 ////  Created by JunHwan Kim on 2023/03/11.
 ////
 //
-//import UIKit
-//import Photos
+// import UIKit
+// import Photos
 //
-//class ImagePickerViewController: UIViewController {
+// class ImagePickerViewController: UIViewController {
 //
-//    //MARK: - ImageCollectionView UI
+    // MARK: - ImageCollectionView UI
 //    @IBOutlet weak var collectionView: UICollectionView!
 //
-//    //MARK: - Authorization UI
+    // MARK: - Authorization UI
 //    @IBOutlet weak var authorizationView: UIView!
 //    @IBOutlet weak var authorizationButton: UIButton!
 //
-//    //MARK: - Photo Properties
+    // MARK: - Photo Properties
 //    private let imageManager: PHCachingImageManager = .init()
 //
 //    private var thumnailSize: CGSize?
@@ -85,9 +85,9 @@
 //        }
 //    }
 //
-//}
+// }
 //
-//extension ImagePickerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+// extension ImagePickerViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 //
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        return viewModel.allPhotos.count + 1
@@ -118,9 +118,9 @@
 //            cell?.isSelected.toggle()
 //        }
 //    }
-//}
+// }
 //
-//extension ImagePickerViewController: UICollectionViewDelegateFlowLayout {
+// extension ImagePickerViewController: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //        let collectionViewWidth = collectionView.bounds.width
 //        let width = Double(collectionViewWidth/3) - cellSpacing
@@ -135,4 +135,4 @@
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
 //        return cellSpacing
 //    }
-//}
+// }

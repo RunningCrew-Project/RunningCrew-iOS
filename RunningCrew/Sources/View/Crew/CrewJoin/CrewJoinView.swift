@@ -108,7 +108,7 @@ class CrewJoinView: UIView {
          regionLabel, regionDetailLabel, dividerView2,
          numberOfPeopleLabel, numberOfPeopleDetailLabel, dividerView3,
          crewLeaderLabel, crewLeaderDetailLabel, dividerView4,
-         crewIntroduceLabel,crewIntroduceDetailLabel].forEach {self.addSubview($0)}
+         crewIntroduceLabel, crewIntroduceDetailLabel].forEach {self.addSubview($0)}
     }
      func makeConstraints() {
         let topLeading = 12

@@ -13,7 +13,7 @@ class BaseView: UIView {
         self.backgroundColor = .systemBackground
         addViews()
         setConstraint()
-        setViewStyle()
+        setUpUI()
     }
     
     required init?(coder: NSCoder) {
@@ -22,5 +22,5 @@ class BaseView: UIView {
     
     func addViews() { }
     func setConstraint() { }
-    func setViewStyle() { }
+    func setUpUI() { }
 }

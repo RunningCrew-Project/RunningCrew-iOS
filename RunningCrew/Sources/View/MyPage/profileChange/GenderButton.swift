@@ -8,9 +8,9 @@
 import UIKit
 
 class GenderButton: UIView {
-    //MARK: - UI ProPerties
+    // MARK: - UI ProPerties
     
-    lazy var genderPick:UIButton = {
+    lazy var genderPick: UIButton = {
         let button = UIButton()
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 2
@@ -18,7 +18,7 @@ class GenderButton: UIView {
         return button
     }()
     
-    lazy var gender:UILabel = {
+    lazy var gender: UILabel = {
         let label = UILabel()
         label.text = "남성"
         label.font = UIFont(name: "NotoSansKR-Medium", size: 14)
@@ -27,8 +27,7 @@ class GenderButton: UIView {
         return label
     }()
     
-    
-    //MARK: - Define Method
+    // MARK: - Define Method
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,11 +39,6 @@ class GenderButton: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    //MARK: - Properties
-    
-    
-    //MARK: - Set Ui
     func setView() {
         self.addSubview(gender)
         self.addSubview(genderPick)
@@ -65,7 +59,5 @@ class GenderButton: UIView {
             make.top.equalTo(safeAreaLayoutGuide)
             make.leading.equalTo(genderPick.snp.trailing).offset(2)
         }
-        
     }
-
 }

@@ -11,6 +11,7 @@ import RxSwift
 
 protocol CrewViewControllerDelegate: AnyObject {
     func showCrewGenerateView()
+    func showCrewSearchView()
     func showCrewJoinView()
 }
 
@@ -21,8 +22,8 @@ final class CrewViewController: BaseViewController {
     private let viewModel: CrewViewModel
     private var crewView: CrewView!
     
-    var myCrewDataSource: UICollectionViewDiffableDataSource<Int, String>!
-    var recommendCrewDataSource: UICollectionViewDiffableDataSource<Int, String>!
+    private var myCrewDataSource: UICollectionViewDiffableDataSource<Int, Crew>!
+    private var recommendCrewDataSource: UICollectionViewDiffableDataSource<Int, GuRecommendCrew>!
     
     init(viewModel: CrewViewModel) {
         self.viewModel = viewModel
@@ -37,6 +38,7 @@ final class CrewViewController: BaseViewController {
         self.crewView = CrewView()
         self.view = crewView
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: nil)
     }
     
     override func viewDidLoad() {
@@ -47,38 +49,78 @@ final class CrewViewController: BaseViewController {
     }
     
     override func bind() {
+        let input = CrewViewModel.Input(
+            leftBarButtonItemDidTap: navigationItem.leftBarButtonItem?.rx.tap.asObservable(),
+            rightBarButtonItemDidTap: navigationItem.rightBarButtonItem?.rx.tap.asObservable())
+        let output = viewModel.transform(input: input)
         
-        navigationItem.leftBarButtonItem?.rx.tap
-            .bind { [weak self] in self?.coordinator?.showCrewGenerateView() }
+        output.isLogIn
+            .subscribe(onNext: { [weak self] isLogIn in
+                self?.crewView.myCrewTitleLabel.isHidden = !isLogIn
+                self?.crewView.myCrewCollectionView.isHidden = !isLogIn
+            })
+            .disposed(by: disposeBag)
+        
+        output.myCrew
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, crew) in
+                var updateSnapshot = NSDiffableDataSourceSnapshot<Int, Crew>()
+                updateSnapshot.appendSections([0])
+                updateSnapshot.appendItems(crew, toSection: 0)
+                owner.myCrewDataSource.apply(updateSnapshot)
+            })
+            .disposed(by: disposeBag)
+        
+        output.recommendCrew
+            .withUnretained(self)
+            .subscribe(onNext: { (owner, recommendCrew) in
+                var listSnapshot = NSDiffableDataSourceSnapshot<Int, GuRecommendCrew>()
+                listSnapshot.appendSections([0])
+                listSnapshot.appendItems(recommendCrew, toSection: 0)
+                owner.recommendCrewDataSource.apply(listSnapshot)
+            })
+            .disposed(by: disposeBag)
+        
+        output.address
+            .withUnretained(self)
+            .bind { (owner, address) in
+                guard address != "현 위치를 찾을 수 없습니다." else { return }
+                let gu = address.components(separatedBy: " ")[...1].joined(separator: " ")
+                owner.crewView.recommendCrewLabel.text = gu + " 추천 크루"
+            }
+            .disposed(by: disposeBag)
+        
+        output.generateCrewResult?
+            .bind { [weak self] _ in self?.coordinator?.showCrewGenerateView() }
+            .disposed(by: disposeBag)
+        
+        output.searchCrewResult?
+            .bind { [weak self] _ in self?.coordinator?.showCrewSearchView() }
             .disposed(by: disposeBag)
     }
-    
-    func setMyCrewDataSource() {
-        myCrewDataSource = UICollectionViewDiffableDataSource(collectionView: crewView.myCrewCollectionView) { collectionView, indexPath, itemIdentifier in
+}
+
+extension CrewViewController {
+    private func setMyCrewDataSource() {
+        myCrewDataSource = UICollectionViewDiffableDataSource(collectionView: crewView.myCrewCollectionView) { collectionView, indexPath, crew in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyCrewCollectionViewCell.identifier, for: indexPath) as? MyCrewCollectionViewCell else {
                 return MyCrewCollectionViewCell()
             }
+            cell.configure(crew: crew)
             return cell
         }
-        let tempItem = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
-        
-        var updateSnapshot = NSDiffableDataSourceSnapshot<Int, String>()
-        updateSnapshot.appendSections([0, 1])
-        updateSnapshot.appendItems(tempItem, toSection: 0)
-        myCrewDataSource.apply(updateSnapshot)
     }
     
-    func setRecommendCrewDataSource() {
-        recommendCrewDataSource = UICollectionViewDiffableDataSource(collectionView: crewView.recommandCrewCollectionView) { collectionView, indexPath, itemIdentifier in
+    private func setRecommendCrewDataSource() {
+        recommendCrewDataSource = UICollectionViewDiffableDataSource(collectionView: crewView.recommendCrewCollectionView) { collectionView, indexPath, recommendCrew in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendCrewCollectionViewCell.identifier, for: indexPath) as? RecommendCrewCollectionViewCell else {
                 return RecommendCrewCollectionViewCell()
             }
+            cell.configure(recommendCrew: recommendCrew)
             return cell
         }
-        
-        var listSnapshot = NSDiffableDataSourceSnapshot<Int, String>()
-        listSnapshot.appendSections([0])
-        listSnapshot.appendItems(["1", "2", "3", "4", "5", "6", "7", "8", "9"], toSection: 0)
-        recommendCrewDataSource.apply(listSnapshot)
     }
+}
+
+extension CrewViewController {
 }

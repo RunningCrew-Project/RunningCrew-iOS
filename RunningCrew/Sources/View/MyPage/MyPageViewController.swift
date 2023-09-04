@@ -13,7 +13,7 @@ import RxGesture
 protocol MyPageViewControllerDelegate: AnyObject {
     func showSettingView()
     func showLogInView()
-    func showProfileChangeView()
+    func showProfileChangeView(id: Int)
 }
 
 final class MyPageViewController: BaseViewController {
@@ -45,20 +45,46 @@ final class MyPageViewController: BaseViewController {
     }
     
     override func viewDidLoad() {
-        didSelect(indexNum: 0)
         setNavigationBar()
         myPageView.customTabBar.delegate = self
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        didSelect(indexNum: 0)
+    }
+    
     override func bind() {
-        let input = MyPageViewModel.Input()
+        let settingButtonDidTap = navigationItem.rightBarButtonItem?.rx.tap.asObservable()
+        let profileChangeButtonDidTap = myPageView.profileChangeButton.rx.tap.asObservable()
+        
+        let input = MyPageViewModel.Input(settingButtonDidTap: settingButtonDidTap, profileChangeButtonDidTap: profileChangeButtonDidTap)
         let output = viewModel.transform(input: input)
         
-        output.isLogIn
-            .bind { [weak self] isLogIn in
-                self?.showNeedLogInView(isLogIn: isLogIn)
+        output.settingButtonResult?
+            .bind { [weak self] _ in
+                self?.coordinator?.showSettingView()
             }
+            .disposed(by: disposeBag)
+        
+        output.profileButtonResult
+            .bind { [weak self] id in
+                guard let id = id else { return }
+                self?.coordinator?.showProfileChangeView(id: id)
+            }
+            .disposed(by: disposeBag)
+        
+        output.isLogIn
+            .subscribe(onNext: { [weak self] isLogIn in
+                self?.showNeedLogInView(isLogIn: isLogIn)
+            })
+            .disposed(by: disposeBag)
+        
+        output.me
+            .subscribe(onNext: { [weak self] me in
+                guard let me = me else { return }
+                self?.myPageView.configure(me: me)
+            })
             .disposed(by: disposeBag)
         
         myPageView.needLogInTitle.rx.tapGesture().when(.recognized)
@@ -66,48 +92,36 @@ final class MyPageViewController: BaseViewController {
                 self?.coordinator?.showLogInView()
             }
             .disposed(by: disposeBag)
-        
-        myPageView.profileChangeButton.rx.tap.asObservable()
-            .bind { [weak self] _ in
-                self?.coordinator?.showProfileChangeView()
-            }
-            .disposed(by: disposeBag)
     }
 }
 
 extension MyPageViewController {
     private func setNavigationBar() {
-        let setImage = UIImage(systemName: "gearshape")
-        let setButton = UIBarButtonItem(image: setImage, style: .plain, target: self, action: nil)
-        self.navigationItem.rightBarButtonItem = setButton
-        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gearshape"), style: .plain, target: self, action: nil)
         self.navigationItem.title = "마이페이지"
         self.navigationController?.navigationBar.tintColor = .darkModeBasicColor
     }
     
     private func showNeedLogInView(isLogIn: Bool) {
-        self.myPageView.pageView.subviews.forEach { view in
-            view.isHidden = !isLogIn
-        }
-        self.myPageView.needLogInLabel.isHidden = isLogIn
         self.myPageView.needLogInTitle.isHidden = isLogIn
-        self.myPageView.profileChangeButton.isHidden = !isLogIn
         self.myPageView.profileTitle.isHidden = !isLogIn
+        self.myPageView.profileChangeButton.isHidden = !isLogIn
     }
 }
 
 extension MyPageViewController: CustomTabBarDelegate {
     func didSelect(indexNum: Int) {
-        if self.myPageView.needLogInTitle.isHidden == false { return }
-        
-        let isContainView = myPageView.pageView.subviews.contains(where: {$0.isEqual(viewControllers[indexNum].view)})
-        
-        if isContainView == false {
-            myPageView.pageView.addSubview(viewControllers[indexNum].view)
+        if let lastView = myPageView.pageView.subviews.last {
+            lastView.removeFromSuperview()
         }
         
-        myPageView.pageView.subviews.forEach { view in
-            view.isHidden = viewControllers[indexNum].view != view ? true : false
+        if myPageView.needLogInTitle.isHidden == false {
+            myPageView.needLogInView.frame = myPageView.pageView.bounds
+            myPageView.pageView.addSubview(myPageView.needLogInView)
+        } else {
+            guard let newView = viewControllers[indexNum].view else { return }
+            newView.frame = myPageView.pageView.bounds
+            myPageView.pageView.addSubview(newView)
         }
     }
 }

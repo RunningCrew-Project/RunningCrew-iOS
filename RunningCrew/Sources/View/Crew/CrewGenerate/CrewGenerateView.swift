@@ -153,6 +153,4 @@ final class CrewGenerateView: BaseView {
             make.height.equalTo(52)
         }
     }
-    
 }
-

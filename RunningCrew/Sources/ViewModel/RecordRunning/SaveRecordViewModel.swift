@@ -14,62 +14,69 @@ final class SaveRecordViewModel: BaseViewModelType {
     struct Input {
         let textFieldDidChanged: Observable<String>
         let photos: Observable<[Data]>
+        let confirmSaveRecord: Observable<Void>
     }
     
     struct Output {
         let location: Observable<(latitude: Double, longitude: Double)>
         let photos: Observable<[Data]>
         let isLogIn: Bool
-        let distance: Double
-        let milliSeconds: Int
-        let path: [(Double, Double)]
-        let date: String
+        let runningRecord: RunningRecord
+        let isSuccessSaveRecord: Observable<Bool>
     }
     
     private let locationService: LocationService
     private let logInService: LogInService
+    private let runningService: RunningService
     
     private let currentTime = Date()
-    private let distance: Double
-    private let milliSeconds: Int
-    private let path: [(Double, Double)]
+    private var runningRecord: RunningRecord
     
     private let photos: BehaviorRelay<[Data]> = BehaviorRelay<[Data]>(value: [])
     private let content: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
+    private let isSuccessSaveRecord: PublishRelay<Bool> = PublishRelay()
     
     var disposeBag = DisposeBag()
     
-    init(path: [(Double, Double)], distance: Double, milliSeconds: Int, locationService: LocationService, logInService: LogInService) {
-        self.path = path
-        self.distance = distance
-        self.milliSeconds = milliSeconds
+    init(runningRecord: RunningRecord, locationService: LocationService, logInService: LogInService, runningService: RunningService) {
+        self.runningRecord = runningRecord
         self.locationService = locationService
         self.logInService = logInService
+        self.runningService = runningService
     }
     
     func transform(input: Input) -> Output {
         input.textFieldDidChanged
-            .bind(to: content)
+            .subscribe(onNext: { [weak self] text in
+                self?.runningRecord.runningDetails = text
+            })
             .disposed(by: disposeBag)
         
         input.photos
-            .bind(to: photos)
+            .subscribe(onNext: { [weak self] photos in
+                self?.runningRecord.files = photos
+            })
+            .disposed(by: disposeBag)
+        
+        input.confirmSaveRecord
+            .withUnretained(self)
+            .flatMap { (owner, _) -> Observable<Bool> in
+                return owner.runningService.createPersonalRunningRecord(data: owner.runningRecord)
+            }
+            .subscribe(onNext: { [weak self] result in
+                self?.isSuccessSaveRecord.accept(result)
+            }, onError: { [weak self] _ in
+                self?.isSuccessSaveRecord.accept(false)
+            })
             .disposed(by: disposeBag)
         
         let location = locationService.getCurrentCoordiate()
             .map { (latitude: $0.latitude, longitude: $0.longitude) }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        dateFormatter.dateFormat = "YYYY년 M월 d일 h:mm"
-        let date = dateFormatter.string(from: currentTime)
-        
         return Output(location: location,
                       photos: photos.asObservable(),
-                      isLogIn: logInService.isLogIn(),
-                      distance: distance,
-                      milliSeconds: milliSeconds,
-                      path: path,
-                      date: date)
+                      isLogIn: logInService.isLogIn.value,
+                      runningRecord: runningRecord,
+                      isSuccessSaveRecord: isSuccessSaveRecord.asObservable())
     }
 }

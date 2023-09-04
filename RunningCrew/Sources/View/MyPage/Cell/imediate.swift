@@ -17,7 +17,6 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var runningTime: UILabel!
     @IBOutlet weak var runningEverage: UILabel!
     
-    
     @IBOutlet weak var runningPlace: UILabel!
     
     override func awakeFromNib() {
@@ -25,7 +24,7 @@ class MyPageMyRunningCollectionViewCell: UICollectionViewCell {
         setShadow()
     }
 
-    func setCell (){
+    func setCell () {
         contentView.layer.cornerRadius = 20
         contentView.clipsToBounds = true
     }

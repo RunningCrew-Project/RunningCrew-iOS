@@ -23,6 +23,7 @@ final class TabBarCoordinator {
 extension TabBarCoordinator {
     func start() {
         self.window.rootViewController = tabBarController
+        tabBarController.tabBar.backgroundColor = .systemBackground
         let items: [TabBarItem] = [.recordRunning, .crew, .alarm, .myPage].sorted { $0.rawValue < $1.rawValue }
         let controllers = items.map { getTabController($0) }
         tabBarController.setViewControllers(controllers, animated: false)

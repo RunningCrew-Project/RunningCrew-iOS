@@ -8,7 +8,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
-//import YPImagePicker
+// import YPImagePicker
 
 class CrewGenerateFinishViewController: UIViewController {
     let crewGenerateFinishView = CrewGenerateFinishView()
@@ -32,9 +32,7 @@ class CrewGenerateFinishViewController: UIViewController {
             .withUnretained(self)
             .bind { vc, _ in
                 vc.dismiss(animated: true)
-                //vc.setPicker()
+                // vc.setPicker()
             }.disposed(by: disposeBag)
     }
-    
-    
 }

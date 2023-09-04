@@ -24,17 +24,13 @@ final class RecordRunningCoordinator: Coordinator {
     func start() {
         showRecordRunningViewController()
     }
-
-    deinit {
-        print("deinit recordRunningCoordinator")
-    }
-    
 }
 
 extension RecordRunningCoordinator {
     func showRecordRunningViewController() {
-        let locationService = LocationService()
-        let viewModel = RecordRunningViewModel(locationService: locationService)
+        let locationService = LocationService(areaRepository: AreaRepository())
+        let logInService = LogInService.shared
+        let viewModel = RecordRunningViewModel(logInService: logInService, locationService: locationService)
         let recordRunningVC: RecordRunningViewController = RecordRunningViewController(viewModel: viewModel)
         recordRunningVC.coordinator = self
         self.navigationController.pushViewController(recordRunningVC, animated: false)
@@ -43,9 +39,9 @@ extension RecordRunningCoordinator {
 
 extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     func showIndividualView() {
-        let locationService = LocationService()
+        let locationService = LocationService(areaRepository: AreaRepository())
         let motionService = MotionService()
-        let logInService = LogInService(userRepository: UserRepository())
+        let logInService = LogInService.shared
         let individualViewModel = IndividualRunningViewModel(locationService: locationService, motionService: motionService, logInService: logInService)
         let individualRunningVC: IndividualRunningViewController = IndividualRunningViewController(viewModel: individualViewModel)
         individualRunningVC.coordinator = self
@@ -53,7 +49,12 @@ extension RecordRunningCoordinator: RecordRunningViewControllerDelegate {
     }
     
     func showCrewView() {
-        let crewRunningViewModel = CrewRunningViewModel()
+        let runningRecordRepository = RunningRecordRepository()
+        let tokenRepository = TokenRepository()
+        let crewRepository = CrewRepository()
+        
+        let runningService = RunningService(runningRecordRepository: runningRecordRepository, tokenRepository: tokenRepository, crewRepository: crewRepository)
+        let crewRunningViewModel = CrewRunningViewModel(runningService: runningService)
         let crewRunningVC = CrewRunningViewController(viewModel: crewRunningViewModel)
         self.navigationController.pushViewController(crewRunningVC, animated: false)
     }
@@ -68,7 +69,7 @@ extension RecordRunningCoordinator: IndividualRunningViewControllerDelegate {
     }
     
     func showRecordView(goalType: GoalType) {
-        let locationService = LocationService()
+        let locationService = LocationService(areaRepository: AreaRepository())
         let motionService = MotionService()
         let recordViewModel = RecordViewModel(goalType: goalType, locationService: locationService, motionService: motionService)
         let recordVC = RecordViewController(viewModel: recordViewModel)
@@ -92,14 +93,18 @@ extension RecordRunningCoordinator: GoalSettingViewControllerDelegate {
 }
 
 extension RecordRunningCoordinator: RecordViewControllerDelegate {    
-    func finishRunning(path: [(Double, Double)], distance: Double, milliSeconds: Int) {
+    func showSaveRunningRecordView(runningRecord: RunningRecord) {
         self.navigationController.viewControllers.last?.dismiss(animated: false)
         self.navigationController.popViewController(animated: false)
         
-        let userRepository = UserRepository()
-        let logInService = LogInService(userRepository: userRepository)
-        let locationService = LocationService()
-        let saveRecordViewModel = SaveRecordViewModel(path: path, distance: distance, milliSeconds: milliSeconds, locationService: locationService, logInService: logInService)
+        let runningRecordRepository = RunningRecordRepository()
+        let tokenRepository = TokenRepository()
+        let crewRepository = CrewRepository()
+        
+        let runningService = RunningService(runningRecordRepository: runningRecordRepository, tokenRepository: tokenRepository, crewRepository: crewRepository)
+        let logInService = LogInService.shared
+        let locationService = LocationService(areaRepository: AreaRepository())
+        let saveRecordViewModel = SaveRecordViewModel(runningRecord: runningRecord, locationService: locationService, logInService: logInService, runningService: runningService)
         let saveRecordRunningVC = SaveRecordRunningViewController(viewModel: saveRecordViewModel)
         saveRecordRunningVC.modalPresentationStyle = .fullScreen
         saveRecordRunningVC.coordinator = self

@@ -9,8 +9,8 @@ import UIKit
 import FSCalendar
 import SnapKit
 
-class MyPageClendarView: UIView {
-    // MARK: - UI ProPerties
+final class MyPageCalendarView: BaseView {
+    
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -25,7 +25,7 @@ class MyPageClendarView: UIView {
         return view
     }()
     
-    lazy var prevButton:UIButton = {
+    lazy var prevButton: UIButton = {
         let button = UIButton()
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
         button.setImage(UIImage(systemName: "chevron.left", withConfiguration: symbolConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
@@ -33,7 +33,7 @@ class MyPageClendarView: UIView {
         return button
     }()
     
-    lazy var nextButton:UIButton = {
+    lazy var nextButton: UIButton = {
         let button = UIButton()
         let symbolConfiguration = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium)
         button.setImage(UIImage(systemName: "chevron.right", withConfiguration: symbolConfiguration)?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
@@ -41,8 +41,7 @@ class MyPageClendarView: UIView {
         return button
     }()
     
-    
-    lazy var monthLabel:UILabel = {
+    lazy var monthLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -50,15 +49,14 @@ class MyPageClendarView: UIView {
         return label
     }()
     
-    lazy var monthStackView:UIStackView = {
+    lazy var monthStackView: UIStackView = {
         let stackveiw = UIStackView()
         stackveiw.alignment = .leading
         stackveiw.distribution = .equalCentering
         return stackveiw
-        
     }()
     
-    lazy var distanceLabel:UILabel = {
+    lazy var distanceLabel: UILabel = {
         let label = UILabel()
         label.text = "000.0"
         label.textColor = .black
@@ -67,7 +65,7 @@ class MyPageClendarView: UIView {
         return label
     }()
     
-    lazy var kmLabel:UILabel = {
+    lazy var kmLabel: UILabel = {
         let label = UILabel()
         label.text = "km"
         label.textColor = UIColor.darkGreen
@@ -77,7 +75,7 @@ class MyPageClendarView: UIView {
         return label
     }()
     
-    lazy var timeLabel:UILabel = {
+    lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.text = "00:00:00"
         label.textColor = .black
@@ -86,15 +84,14 @@ class MyPageClendarView: UIView {
         return label
     }()
     
-    lazy var runningStackView:UIStackView = {
+    lazy var runningStackView: UIStackView = {
         let stackveiw = UIStackView()
         stackveiw.alignment = .lastBaseline
         
         return stackveiw
-        
     }()
     
-    lazy var distanceKrLabel:UILabel = {
+    lazy var distanceKrLabel: UILabel = {
         let label = UILabel()
         label.text = "누적 거리"
         label.textColor = UIColor.darkGray
@@ -104,7 +101,7 @@ class MyPageClendarView: UIView {
         return label
     }()
     
-    lazy var timeKrLabel:UILabel = {
+    lazy var timeKrLabel: UILabel = {
         let label = UILabel()
         label.text = "누적 시간"
         label.textColor = UIColor.darkGray
@@ -119,7 +116,6 @@ class MyPageClendarView: UIView {
         stackveiw.alignment = .leading
         
         return stackveiw
-        
     }()
     
     lazy var dateLabel: UILabel = {
@@ -136,64 +132,76 @@ class MyPageClendarView: UIView {
         
         return label
     }()
-
     
-    //MARK: - Properties
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setView()
-        setConstraint()
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    //MARK: - Set UI
-    
-    func setView() {
+    override func addViews() {
         self.addSubview(calendar)
-        self.backgroundColor = .white
-        setmonthStackView()
-        setrunningStackView()
-        setKrStackView()
-        setCalendar()
-        self.addSubview(dateLabel)
-    }
-    
-    func setConstraint(){
-        viewConstraint()
-        calendarConstraint()
-        monthStackViewConstraint()
-        monthLabelConstraint()
-        runningStackViewConstraint()
-        distanceLabelConstraint()
-        krStackViewConstraint()
-        distanceKrLabelConstraint()
-        dateLabelConstraint()
-    }
-    
-    func setmonthStackView() {
+        
         self.addSubview(monthStackView)
         monthStackView.addArrangedSubview(prevButton)
         monthStackView.addArrangedSubview(monthLabel)
         monthStackView.addArrangedSubview(nextButton)
-    }
-    
-    func setrunningStackView() {
+        
         self.addSubview(runningStackView)
         runningStackView.addArrangedSubview(distanceLabel)
         runningStackView.addArrangedSubview(kmLabel)
         runningStackView.addArrangedSubview(timeLabel)
-    }
-    
-    func setKrStackView() {
+        
         self.addSubview(krStackView)
         krStackView.addArrangedSubview(distanceKrLabel)
         krStackView.addArrangedSubview(timeKrLabel)
         
+        self.addSubview(dateLabel)
+    }
+    
+    func setView() {
+        setCalendar()
+    }
+    
+    override func setConstraint() {
+        self.snp.makeConstraints { make in
+            make.width.equalTo(calendar.fs_width)
+            make.height.equalTo(425)
+        }
+        
+        calendar.snp.makeConstraints { make in
+            make.top.equalTo(self.snp.top).offset(130)
+            make.leading.equalTo(self.snp.leading)
+            make.trailing.equalTo(self.snp.trailing)
+            make.bottom.equalTo(self.snp.bottom)
+        }
+        
+        monthStackView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(self.snp.top).offset(13)
+        }
+        
+        monthLabel.snp.makeConstraints { make in
+            make.width.equalTo(119)
+        }
+        
+        runningStackView.snp.makeConstraints { make in
+            make.top.equalTo(monthStackView.snp.bottom)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(calendar.snp.width)
+            make.height.equalTo(72)
+        }
+        
+        distanceLabel.snp.makeConstraints { make in
+            make.width.equalTo(134)
+        }
+        
+        krStackView.snp.makeConstraints { make in
+            make.top.equalTo(runningStackView.snp.bottom)
+            make.bottom.equalTo(calendar.snp.top).offset(-10)
+        }
+        
+        distanceKrLabel.snp.makeConstraints { make in
+            make.width.equalTo(211)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.top.equalTo(calendar.snp.bottom).offset(10)
+        }
     }
     
     func setCalendar() {
@@ -201,7 +209,7 @@ class MyPageClendarView: UIView {
         calendar.backgroundColor = UIColor.lightGray
         calendar.layer.cornerRadius = 10
         calendar.appearance.todayColor = UIColor.darkGreen
-        //날짜 선택 시 색 변경
+        // 날짜 선택 시 색 변경
         calendar.appearance.selectionColor = UIColor.lightGreen
         // 다중 선택 가능
         calendar.allowsMultipleSelection = true
@@ -231,77 +239,7 @@ class MyPageClendarView: UIView {
         calendar.locale = Locale(identifier: "ko_KR")
         // 년월에 흐릿하게 보이는 애들 없애기
         calendar.appearance.headerMinimumDissolvedAlpha = 0
-        
-        
     }
-    
-    func viewConstraint() {
-        self.snp.makeConstraints { make in
-            make.width.equalTo(calendar.fs_width)
-            make.height.equalTo(425)
-        }
-    }
-
-    func calendarConstraint() {
-        calendar.snp.makeConstraints { make in
-            make.top.equalTo(self.snp.top).offset(130)
-            make.leading.equalTo(self.snp.leading)
-            make.trailing.equalTo(self.snp.trailing)
-            make.bottom.equalTo(self.snp.bottom)
-        }
-    }
-    
-    func monthStackViewConstraint() {
-        monthStackView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(self.snp.top).offset(13)
-
-        }
-    }
-    
-    func monthLabelConstraint() {
-        monthLabel.snp.makeConstraints { make in
-            make.width.equalTo(119)
-
-        }
-    }
-    
-    func runningStackViewConstraint() {
-        runningStackView.snp.makeConstraints { make in
-            make.top.equalTo(monthStackView.snp.bottom)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(calendar.snp.width)
-            make.height.equalTo(72)
-
-        }
-    }
-    
-    func distanceLabelConstraint() {
-        distanceLabel.snp.makeConstraints { make in
-            make.width.equalTo(134)
-
-        }
-    }
-    
-    func krStackViewConstraint() {
-        krStackView.snp.makeConstraints { make in
-            make.top.equalTo(runningStackView.snp.bottom)
-            make.bottom.equalTo(calendar.snp.top).offset(-10)
-        }
-    }
-    
-    func distanceKrLabelConstraint() {
-        distanceKrLabel.snp.makeConstraints { make in
-            make.width.equalTo(211)
-        }
-    }
-    
-    func dateLabelConstraint() {
-        dateLabel.snp.makeConstraints { make in
-            make.top.equalTo(calendar.snp.bottom).offset(10)
-        }
-    }
-    
     
     @objc func nextButtonTapped() {
         let currentPage = calendar.currentPage
@@ -324,24 +262,9 @@ class MyPageClendarView: UIView {
         formatter.dateFormat = "yyyy년 MM월"
         monthLabel.text = formatter.string(from: calendar.currentPage)
     }
-    
 }
 
-
-//MARK: - Define Method
-
-
-// 페이지 전환하는 메서드
-extension Date {
-    func addingMonths(_ months: Int) -> Date? {
-        let calendar = Calendar.current
-        var components = DateComponents()
-        components.month = months
-        return calendar.date(byAdding: components, to: self)
-    }
-}
-
-extension MyPageClendarView : FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
+extension MyPageCalendarView: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     
     // 날짜 선택 시 콜백 메소드
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -353,7 +276,7 @@ extension MyPageClendarView : FSCalendarDelegate, FSCalendarDataSource, FSCalend
         print(dateFormatter.string(from: date) + " 해제됨")
     }
     
-    //최대 선택 가능 갯수
+    // 최대 선택 가능 갯수
     func calendar(_ calendar: FSCalendar, shouldSelect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         // 날짜 30개까지만 선택되도록
         if calendar.selectedDates.count > 30 {
@@ -363,11 +286,8 @@ extension MyPageClendarView : FSCalendarDelegate, FSCalendarDataSource, FSCalend
         }
     }
     
-    //선택해제
+    // 선택해제
     func calendar(_ calendar: FSCalendar, shouldDeselect date: Date, at monthPosition: FSCalendarMonthPosition) -> Bool {
         return true // 선택해제 가능
     }
-    
-    
 }
-

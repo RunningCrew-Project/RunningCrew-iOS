@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 
 protocol RecordViewControllerDelegate: AnyObject {
-    func finishRunning(path: [(Double, Double)], distance: Double, milliSeconds: Int)
+    func showSaveRunningRecordView(runningRecord: RunningRecord)
 }
 
 final class RecordViewController: BaseViewController {
@@ -87,10 +87,8 @@ final class RecordViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         output.runningData
-            .withUnretained(self)
-            .subscribe { (owner, data) in
-                guard let data = data else { return }
-                owner.coordinator?.finishRunning(path: data.path, distance: data.distance, milliSeconds: data.milliSeconds)
+            .subscribe { [weak self] record in
+                self?.coordinator?.showSaveRunningRecordView(runningRecord: record)
             }
             .disposed(by: disposeBag)
         

@@ -64,7 +64,7 @@ final class IndividualRunningView: BaseView {
         }
     }
     
-    override func setViewStyle() {
+    override func setUpUI() {
         startButton.layer.cornerRadius = startButton.frame.width / 2
     }
 }

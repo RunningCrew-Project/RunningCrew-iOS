@@ -32,9 +32,13 @@ final class CrewRunningViewController: BaseViewController {
     override func loadView() {
         self.crewRunningView = CrewRunningView()
         self.view = crewRunningView
+        
+        self.navigationItem.title = "나의 크루 러닝"
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         dataSource = UICollectionViewDiffableDataSource<Int, Crew>(collectionView: crewRunningView.runningScheduleCollectionView) { (collectionView, indexPath, crew) -> UICollectionViewCell? in
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CrewRunningScheduleCell.identifier, for: indexPath) as? CrewRunningScheduleCell else { return CrewRunningScheduleCell() }
             cell.configure(crew: crew)
@@ -47,5 +51,11 @@ final class CrewRunningViewController: BaseViewController {
         let input = CrewRunningViewModel.Input()
         let output = viewModel.transform(input: input)
         
+        output.crews
+            .subscribe(onNext: { crews in
+                print(crews)
+                print("잘 받아옴")
+            })
+            .disposed(by: disposeBag)
     }
 }

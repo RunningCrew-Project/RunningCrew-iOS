@@ -783,6 +783,7 @@ PODS:
     - KakaoSDKCommon/Common (= 2.16.0)
   - KakaoSDKUser (2.16.0):
     - KakaoSDKAuth (= 2.16.0)
+  - Kingfisher (7.9.0)
   - leveldb-library (1.22.2)
   - Moya/Core (15.0.0):
     - Alamofire (~> 5.0)
@@ -822,6 +823,7 @@ DEPENDENCIES:
   - KakaoSDKAuth
   - KakaoSDKCommon
   - KakaoSDKUser
+  - Kingfisher (~> 7.0)
   - Moya/RxSwift
   - NMapsMap (= 3.15.0)
   - PryntTrimmerView
@@ -856,6 +858,7 @@ SPEC REPOS:
     - KakaoSDKAuth
     - KakaoSDKCommon
     - KakaoSDKUser
+    - Kingfisher
     - leveldb-library
     - Moya
     - nanopb
@@ -894,6 +897,7 @@ SPEC CHECKSUMS:
   KakaoSDKAuth: 1b85ed7c41b0517bfd1fc9dc46c292c75b8cb610
   KakaoSDKCommon: d6579aa2e9d963d74e13d741cbf1cce48b8b0c17
   KakaoSDKUser: 427e5b3884abd19ee6d9a7bd6e3f3029eb2968b8
+  Kingfisher: 59f908b6d2f403b0a3e539debb0eec05cb27002c
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
@@ -909,6 +913,6 @@ SPEC CHECKSUMS:
   SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
   YPImagePicker: f36043210c10b0783034eb1947d6e06e31c461e4
 
-PODFILE CHECKSUM: 690da3c3ce2890fbe467f851f3ccaf46a57b3e8f
+PODFILE CHECKSUM: 2123f373e2133917af13335e729c1c5dd11ab356
 
 COCOAPODS: 1.12.1

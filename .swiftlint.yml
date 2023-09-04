@@ -9,21 +9,14 @@ disabled_rules:
 - line_length
 - empty_enum_arguments
 - type_name
-- function_body_length
 - orphaned_doc_comment
 
 included:
-
 excluded:
 - Pods
-
-line_length:
+- Firebase
 
 identifier_name:
     min_length:
         warning: 1
     allowedsymbols: [""]
-
-
-trailing_whitespace:
-

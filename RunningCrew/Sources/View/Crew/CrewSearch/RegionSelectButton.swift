@@ -18,7 +18,7 @@ class RegionSelectButton: UIButton {
         self.backgroundColor = .white
         self.setTitleColor(.black, for: .normal)
         for title in actionNameArr {
-            let action = UIAction(title: title, state: .off){ _ in
+            let action = UIAction(title: title, state: .off) { _ in
                 self.setTitle(title, for: .normal)
             }
             actionArr.append(action)

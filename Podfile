@@ -23,6 +23,7 @@ target 'RunningCrew' do
     pod 'FirebaseAuth'
     pod 'FirebaseFirestore'
     pod 'FirebaseMessaging'
+    pod 'Kingfisher', '~> 7.0'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class MyPageView: BaseView {
     
@@ -29,7 +30,6 @@ final class MyPageView: BaseView {
     lazy var profileTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "NotoSansKR-Medium", size: 24)
-        label.text = "프로필"
         label.textColor = .darkModeBasicColor
         label.isHidden = true
         
@@ -46,11 +46,16 @@ final class MyPageView: BaseView {
     
     lazy var customTabBar: CustomTabBar = {
         let view = CustomTabBar(items: items)
-        view.backgroundColor = .red
         return view
     }()
     
     lazy var pageView: UIView = {
+        let view = UIView()
+        
+        return view
+    }()
+    
+    lazy var needLogInView: UIView = {
         let view = UIView()
         
         return view
@@ -81,7 +86,8 @@ final class MyPageView: BaseView {
         self.addSubview(profileChangeButton)
         self.addSubview(customTabBar)
         self.addSubview(pageView)
-        pageView.addSubview(needLogInLabel)
+//        pageView.addSubview(needLogInView)
+        needLogInView.addSubview(needLogInLabel)
     }
     
     override func setConstraint() {
@@ -105,6 +111,7 @@ final class MyPageView: BaseView {
         profileChangeButton.snp.makeConstraints {
             $0.width.equalToSuperview().multipliedBy(40.0/750.0)
             $0.height.equalTo(profileChangeButton.snp.width)
+            $0.centerY.equalTo(profileImage.snp.centerY)
             $0.leading.equalTo(profileTitle.snp.trailing).offset(14)
         }
         
@@ -119,9 +126,20 @@ final class MyPageView: BaseView {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom)
         }
+
+//        needLogInView.snp.makeConstraints {
+//            $0.edges.equalToSuperview()
+//        }
         
         needLogInLabel.snp.makeConstraints {
             $0.centerX.centerY.equalToSuperview()
         }
+    }
+    
+    func configure(me: Me) {
+        let url = URL(string: me.imgURL)
+        profileImage.kf.setImage(with: url)
+        
+        profileTitle.text = me.nickname
     }
 }

@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 
 final class CrewRunningScheduleCell: UICollectionViewCell {
+    
     static let identifier = "CrewRunningScheduleCell"
     
     lazy var timeLabel: UILabel = {
@@ -77,8 +78,6 @@ final class CrewRunningScheduleCell: UICollectionViewCell {
     }
     
     func configure(crew: Crew) {
-        
-        
         headCountLabel.text = "\(crew.memberCount)"
         locationLabel.text = crew.dong
     }

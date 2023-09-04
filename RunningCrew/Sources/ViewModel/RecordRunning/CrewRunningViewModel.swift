@@ -15,12 +15,18 @@ final class CrewRunningViewModel: BaseViewModelType {
     }
     
     struct Output {
-        
+        let crews: Observable<[Crew]>
     }
+    
+    private let runningService: RunningService
     
     var disposeBag = DisposeBag()
     
+    init(runningService: RunningService) {
+        self.runningService = runningService
+    }
+    
     func transform(input: Input) -> Output {
-        return Output()
+        return Output(crews: runningService.getMyCrewRunning())
     }
 }

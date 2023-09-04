@@ -20,7 +20,7 @@ extension UIView {
     
     func showToast(message: String, position: ToastViewPosition) {
         let toastView = ToastView(frame: CGRect(x: 0, y: 0, width: self.frame.width * 0.95, height: self.frame.height * 0.1))
-        let y = position == .top ? self.safeAreaLayoutGuide.layoutFrame.origin.y + self.frame.height * 0.1 : self.frame.height * 0.9
+        let y = position == .top ? self.safeAreaLayoutGuide.layoutFrame.origin.y + self.frame.height * 0.1 : self.safeAreaLayoutGuide.layoutFrame.height * 0.9
         
         self.addSubview(toastView)
         toastView.center = CGPoint(x: self.frame.size.width / 2, y: y)

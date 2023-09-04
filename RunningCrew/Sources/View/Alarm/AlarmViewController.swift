@@ -7,24 +7,16 @@
 
 import UIKit
 
-class AlarmViewController: BaseViewController {
+final class AlarmViewController: BaseViewController {
     
-    lazy var topTabBarContainer: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
+    private var alarmView: AlarmView!
+    private var viewModel: AlarmViewModel
+    private var viewControllers: [UIViewController]
     
-    private var viewControllers: [UIViewController]!
-    
-
-    
-    init(viewControllers: [UIViewController]) {
-        super.init(nibName: nil, bundle: nil)
+    init(viewControllers: [UIViewController], viewModel: AlarmViewModel) {
         self.viewControllers = viewControllers
-        
-//        myPageView.topTabBarContainer = customTabBarController.view
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -32,68 +24,54 @@ class AlarmViewController: BaseViewController {
     }
     
     override func loadView() {
-//        self.myPageView = MyPageView()
-//        self.view = myPageView
-    
+        let items = self.viewControllers.map { vc -> MenuItem in
+            let vcTabBarTitle = vc.tabBarItem.title ?? ""
+            return MenuItem(title: vcTabBarTitle, isSelect: false)
+        }
+        
+        self.alarmView = AlarmView(items: items)
+        self.view = alarmView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = .white
-        setNavigationBar()
-        addView()
-        setConstraint()
-//        topTabBarMenu.delegate = self
-        
+        alarmView.customTabBar.delegate = self
         setNavigationBar()
     }
     
-    func setNavigationBar() {
-        navigationController?.isNavigationBarHidden = false
+    override func bind() {
+        let input = AlarmViewModel.Input()
+        let output = viewModel.transform(input: input)
+        
+        output.isLogIn
+            .subscribe(onNext: { [weak self] isLogIn in
+                self?.showNeedLogInView(isLogIn: isLogIn)
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+extension AlarmViewController {
+    private func setNavigationBar() {
         navigationController?.navigationBar.topItem?.title = "알림"
         navigationController?.navigationBar.titleTextAttributes = [.font: UIFont.boldSystemFont(ofSize: 20)]
     }
     
-    //MARK: - Set UI
-    
-    func addView() {
-        view.addSubview(topTabBarContainer)
-//        topTabBarContainer.addSubview(topTabBarMenu)
-//        view.addSubview(pageView)
+    private func showNeedLogInView(isLogIn: Bool) {
+        self.alarmView.needLogInView.isHidden = isLogIn
+        self.didSelect(indexNum: 0)
     }
-    
-    func setConstraint() {
-        setTopTabContainer()
-//        setTopTabBarConstraint()
-//        setPageViewConstraint()
-    }
-    
-    func setTopTabContainer() {
-        NSLayoutConstraint.activate([
-            topTabBarContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            topTabBarContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            topTabBarContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            topTabBarContainer.heightAnchor.constraint(equalToConstant: view.frame.height * (Double(120)/Double(1624)))
-        ])
-    }
-    
-//    func setTopTabBarConstraint() {
-//        NSLayoutConstraint.activate([
-//            topTabBarMenu.topAnchor.constraint(equalTo: topTabBarContainer.topAnchor),
-//            topTabBarMenu.leadingAnchor.constraint(equalTo: topTabBarContainer.leadingAnchor),
-//            topTabBarMenu.trailingAnchor.constraint(equalTo: topTabBarContainer.trailingAnchor),
-//            topTabBarMenu.bottomAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor)
-//        ])
-//    }
-//
-//    func setPageViewConstraint() {
-//        NSLayoutConstraint.activate([
-//            pageView.topAnchor.constraint(equalTo: topTabBarContainer.bottomAnchor),
-//            pageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            pageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            pageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-//        ])
-//    }
-    
 }
 
+extension AlarmViewController: CustomTabBarDelegate {
+    func didSelect(indexNum: Int) {
+        if alarmView.needLogInView.isHidden == false {
+            return
+        }
+        
+        if let lastView = alarmView.pageView.subviews.last, lastView != alarmView.needLogInView {
+            lastView.removeFromSuperview()
+        }
+        alarmView.pageView.addSubview(viewControllers[indexNum].view)
+    }
+}

@@ -12,8 +12,6 @@ import RxCocoa
 
 final class RecordViewModel: BaseViewModelType {
     
-    typealias RunningData = (distance: Double, milliSeconds: Int, path: [(Double, Double)])
-    
     struct Input {
         let pauseAndPlayButtonDidTap: Observable<Void>
         let completeButtonDidTap: Observable<Int>
@@ -24,18 +22,24 @@ final class RecordViewModel: BaseViewModelType {
         let isRunning: Observable<Bool>
         let runningMilliSecond: Observable<Int>
         let runningDistance: Observable<Double>
-        let runningData: Observable<RunningData?>
+        let runningData: Observable<RunningRecord>
     }
     
     private let locationService: LocationService
     private let motionService: MotionService
     
+    private let startTime = Date()
+    private var startLocation: String = ""
     private let startCountTimer: Observable<Int> = Observable<Int>.timer(.seconds(1), period: .seconds(1), scheduler: MainScheduler.instance).take(5)
     private var runningInterval: Disposable?
     private let runningMilliSecond: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
     private let runningDistance: BehaviorRelay<Double> = BehaviorRelay<Double>(value: 0.0)
     private var path: [(Double, Double)] = []
-    private let runningData: BehaviorRelay<RunningData?> = BehaviorRelay<RunningData?>(value: nil)
+    private let currentPace: BehaviorRelay<Double> = BehaviorRelay<Double>(value: 0.0)
+    private var currentPaceTime: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
+    private let averagePage: BehaviorRelay<Double> = BehaviorRelay<Double>(value: 0.0)
+    
+    private let runningData: PublishRelay<RunningRecord> = PublishRelay()
     
     private let isRunning: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     private let goalType: GoalType
@@ -50,10 +54,18 @@ final class RecordViewModel: BaseViewModelType {
         bind()
     }
  
-    func bind() {
+    private func bind() {
         startCountTimer
             .subscribe(onCompleted: { [weak self] in
-                self?.startRunning()
+                guard let self = self else { return }
+                
+                self.locationService.getCurrentAddress()
+                    .subscribe(onNext: { location in
+                        self.startLocation = location
+                    })
+                    .disposed(by: disposeBag)
+                    
+                self.startRunning()
             })
             .disposed(by: disposeBag)
         
@@ -72,16 +84,7 @@ final class RecordViewModel: BaseViewModelType {
         runningMilliSecond.asObservable()
             .withUnretained(self)
             .bind { (owner, milliSeconds) in
-                if milliSeconds % 4000 == 0 && owner.motionService.isMoving.value {
-                    owner.locationService.updateCoordinate()
-                }
-                
-                switch owner.goalType {
-                case .distance(let killometer):
-                    if owner.runningDistance.value == killometer { owner.finishRunning() }
-                case .time(let hour, let minute):
-                    if milliSeconds == ((hour * 3600) + (minute * 60)) * 1000 { owner.finishRunning() }
-                }
+                owner.secondDidChanged(milliSecond: milliSeconds)
             }
             .disposed(by: disposeBag)
         
@@ -100,6 +103,9 @@ final class RecordViewModel: BaseViewModelType {
                     owner.path.append((coordinator.latitude, coordinator.longitude))
                     
                     if 0.004...0.050 ~= distance {
+                        if floor(owner.runningDistance.value + distance) == ceil(owner.runningDistance.value) {
+                            owner.currentPaceTime.accept(owner.runningMilliSecond.value)
+                        }
                         owner.runningDistance.accept(owner.runningDistance.value + distance)
                     }
                 }
@@ -117,9 +123,9 @@ final class RecordViewModel: BaseViewModelType {
         
         input.completeButtonDidTap
             .withUnretained(self)
-            .bind { (owner, _) in
-                owner.runningData.accept((distance: owner.runningDistance.value, milliSeconds: owner.runningMilliSecond.value, path: owner.path))
-            }
+            .subscribe(onNext: { (owner, _) in
+                owner.finishRunning()
+            })
             .disposed(by: disposeBag)
         
         return Output(startCount: startCountTimer,
@@ -141,7 +147,38 @@ extension RecordViewModel {
         motionService.stopActivity()
     }
     
+    private func secondDidChanged(milliSecond: Int) {
+        if milliSecond % 4000 == 0 && motionService.isMoving.value {
+            locationService.updateCoordinate()
+        }
+        
+        if milliSecond % 10000 == 0 {
+            let restDistance = self.runningDistance.value - floor(self.runningDistance.value)
+            let restTime = self.runningMilliSecond.value - self.currentPaceTime.value
+            
+            self.currentPace.accept(restDistance / Double(restTime / 1000))
+        }
+        
+        averagePage.accept(runningDistance.value / (Double(milliSecond) / 60000))
+        
+        switch goalType {
+        case .distance(let killometer):
+            if runningDistance.value == killometer { finishRunning() }
+        case .time(let hour, let minute):
+            if milliSecond == ((hour * 3600) + (minute * 60)) * 1000 { finishRunning() }
+        }
+    }
+    
     private func finishRunning() {
-        runningData.accept((distance: runningDistance.value, milliSeconds: runningMilliSecond.value, path: path))
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        dateFormatter.dateFormat = "YYYY-MM-dd HH:mm"
+        let date = dateFormatter.string(from: startTime)
+        
+        // TODO: 칼로리
+        
+        let runningRecord = RunningRecord(startDateTime: date, location: startLocation, runningDistance: runningDistance.value, runningTime: runningMilliSecond.value / 1000, runningPace: Int(averagePage.value) + 1, calories: 1, runningDetails: "", gps: path.map {GPSPoint(latitude: $0.0, longitude: $0.1)}, files: [], runningNoticeId: nil)
+        
+        runningData.accept(runningRecord)
     }
 }

@@ -6,9 +6,9 @@
 //
 
 import Foundation
-//import YPImagePicker
+// import YPImagePicker
 //
-//class YPImagePickerManager {
+// class YPImagePickerManager {
 //    var picker: YPImagePicker?
 //
 //    func setPicker(vc: UIViewController) {
@@ -32,4 +32,4 @@ import Foundation
 //        picker?.modalPresentationStyle = .overFullScreen
 //        vc.present(picker!, animated: true, completion: nil)
 //    }
-//}
+// }

@@ -64,13 +64,13 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        //TODO: Push를 탭한 경우
+        // TODO: Push를 탭한 경우
     }
 }
 
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         guard let fcmToken = fcmToken else { return }
-        _ = KeyChainRepository.shared.saveToken(key: "fcmToken", value: fcmToken)
+        _ = KeyChainManager.shared.save(key: "fcmToken", value: fcmToken)
     }
 }

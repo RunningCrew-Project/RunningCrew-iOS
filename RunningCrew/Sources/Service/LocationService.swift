@@ -14,11 +14,13 @@ final class LocationService: NSObject {
     
     private let locationManager = CLLocationManager()
     
+    private var areaRepository: AreaRepository
     private var currentCoordinate: BehaviorRelay<CLLocationCoordinate2D> = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D(latitude: 37.554763,
         longitude: 126.97092))
     private var currentAddress: BehaviorRelay<String> = BehaviorRelay<String>(value: "현 위치를 찾을 수 없습니다.")
     
-    override init() {
+    init(areaRepository: AreaRepository) {
+        self.areaRepository = areaRepository
         super.init()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -59,19 +61,22 @@ extension LocationService {
     }
     
     private func reverseGeocode(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
-        Task {
-            let location = CLLocation(latitude: latitude, longitude: longitude)
-            let geocoder = CLGeocoder()
-            let locale = Locale(identifier: "Ko-kr")
-            
-            guard let placemarks = try? await geocoder.reverseGeocodeLocation(location, preferredLocale: locale),
-                  let address = placemarks.last,
-                  let locality = address.locality,
-                  let subLocality = address.subLocality,
-                  let name = address.name else {
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        let geocoder = CLGeocoder()
+        let locale = Locale(identifier: "Ko-kr")
+        
+        geocoder.reverseGeocodeLocation(location, preferredLocale: locale) { [weak self] placemarks, error in
+            guard error == nil,
+                  let address = placemarks?.last?.description.components(separatedBy: ", "),
+                  address.count >= 2
+            else {
+                self?.currentAddress.accept("현 위치를 찾을 수 없습니다.")
                 return
             }
-            currentAddress.accept("\(locality) \(subLocality) \(name)")
+    
+            let fullAddress = address[1].components(separatedBy: " ")[1...].joined(separator: " ")
+            
+            self?.currentAddress.accept(fullAddress)
         }
     }
 }
@@ -88,5 +93,27 @@ extension LocationService: CLLocationManagerDelegate {
         currentCoordinate.accept(CLLocationCoordinate2D(latitude: 37.554763,
                                                         longitude: 126.97092))
         currentAddress.accept("현 위치를 찾을 수 없습니다.")
+    }
+}
+
+extension LocationService {
+    func getSi() -> Observable<SiDo> {
+        return areaRepository.getSi()
+            .map { try JSONDecoder().decode(SiDo.self, from: $0) }
+    }
+    
+    func getGu(siID: Int) -> Observable<Gu> {
+        return areaRepository.getGu(siID: siID)
+            .map { try JSONDecoder().decode(Gu.self, from: $0) }
+    }
+    
+    func getDong(guID: Int) -> Observable<Dong> {
+        return areaRepository.getDong(guID: guID)
+            .map { try JSONDecoder().decode(Dong.self, from: $0) }
+    }
+    
+    func getGuID(keyword: String) -> Observable<GuID> {
+        return areaRepository.getGuID(keyword: keyword)
+            .map { try JSONDecoder().decode(GuID.self, from: $0) }
     }
 }

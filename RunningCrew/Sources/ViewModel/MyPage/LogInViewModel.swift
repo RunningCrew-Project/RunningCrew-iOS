@@ -12,17 +12,21 @@ import RxRelay
 final class LogInViewModel: NSObject, BaseViewModelType {
     
     struct Input {
-        let kakaoLogInDidTap: Observable<String>
-        let googleLogInDidTap: Observable<(accessToken: String, idToken: String)>
-        let appleLogInDidTap: Observable<String>
+        let logInType: Observable<LogInType>
     }
     
     struct Output {
-        let socialLogInResponse: Observable<SocialLogInResponse>
+        let oAuthResponse: Observable<OAuthResponse?>
+    }
+    
+    enum LogInType {
+        case kakao(accessToken: String)
+        case google(accessToken: String, idToken: String)
+        case apple(idToken: String)
     }
     
     private let logInService: LogInService
-    
+    private let oAuthResponse: PublishRelay<OAuthResponse?> = PublishRelay()
     var disposeBag = DisposeBag()
     
     init(logInService: LogInService) {
@@ -30,27 +34,45 @@ final class LogInViewModel: NSObject, BaseViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let kakaoLogInDiaTap = input.kakaoLogInDidTap
+        input.logInType
             .withUnretained(self)
-            .flatMap { (owner, accessToken) -> Observable<SocialLogInResponse> in
-                return owner.logInService.logIn(accessToken: accessToken, origin: "kakao")
+            .bind { (owner, logIn) in
+                owner.logIn(logInType: logIn)
             }
+            .disposed(by: disposeBag)
+
+        return Output(oAuthResponse: oAuthResponse.asObservable())
+    }
+}
+
+extension LogInViewModel {
+    private func logIn(logInType: LogInType) {
         
-        let googleLogInDidTap = input.googleLogInDidTap
-            .withUnretained(self)
-            .flatMap { (owner, tokens) -> Observable<SocialLogInResponse> in
-                return owner.logInService.logIn(accessToken: tokens.accessToken, idToken: tokens.idToken, origin: "google")
-            }
-        
-        let appleLogInDidTap = input.appleLogInDidTap
-            .withUnretained(self)
-            .flatMap { (owner, idToken) -> Observable<SocialLogInResponse> in
-                if idToken == "" { return Observable.error(TokenError.getToken) }
-                return owner.logInService.logIn(idToken: idToken, origin: "apple")
-            }
-        
-        let socialLogInResponse = Observable.merge(kakaoLogInDiaTap, googleLogInDidTap, appleLogInDidTap)
-            
-        return Output(socialLogInResponse: socialLogInResponse)
+        switch logInType {
+        case .kakao(let accessToken):
+            logInService.logIn(accessToken: accessToken, origin: "kakao")
+                .subscribe(onNext: { [weak self] response in
+                    self?.oAuthResponse.accept(response)
+                }, onError: { [weak self] _ in
+                    self?.oAuthResponse.accept(nil)
+                })
+                .disposed(by: disposeBag)
+        case .google(let accessToken, let idToken):
+            logInService.logIn(accessToken: accessToken, idToken: idToken, origin: "google")
+                .subscribe(onNext: { [weak self] response in
+                    self?.oAuthResponse.accept(response)
+                }, onError: { [weak self] _ in
+                    self?.oAuthResponse.accept(nil)
+                })
+                .disposed(by: disposeBag)
+        case .apple(let idToken):
+            logInService.logIn(idToken: idToken, origin: "apple")
+                .subscribe(onNext: { [weak self] response in
+                    self?.oAuthResponse.accept(response)
+                }, onError: { [weak self] _ in
+                    self?.oAuthResponse.accept(nil)
+                })
+                .disposed(by: disposeBag)
+        }
     }
 }
