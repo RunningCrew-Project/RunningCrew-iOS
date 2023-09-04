@@ -8,55 +8,24 @@
 import UIKit
 import SnapKit
 
-class MyPageCalendarViewController: UIViewController {
-    
-    lazy var calendar = MyPageClendarView()
-    lazy var collectionview = MyRunningCollectionView()
+final class MyPageCalendarViewController: BaseViewController {
+        
+    private var myCalendarView: MyPageCalendarView!
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.tabBarItem.title = "캘린더"
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func loadView() {
+        self.myCalendarView = MyPageCalendarView()
+        self.view = myCalendarView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setView()
-        setConstraint()
-        
-       
     }
-    func setView(){
-        view.backgroundColor = .white
-        view.addSubview(calendar)
-        view.addSubview(collectionview)
-    }
-    
-    func setConstraint() {
-        calendarConstraint()
-        collectionviewConstraint()
-    }
-    
-    
-    func calendarConstraint(){
-        calendar.snp.makeConstraints { make in
-            make.centerX.equalTo(view.snp.centerX)
-            make.top.equalToSuperview()
-        }
-        
-    }
-    
-    func collectionviewConstraint(){
-        collectionview.snp.makeConstraints { make in
-            make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalTo(calendar.snp.bottom).offset(30)
-            make.centerX.equalToSuperview()
-        }
-        
-    }
-
-
 }
