@@ -103,6 +103,7 @@
 		93FC2FCC29EA8CD20007B551 /* RegionSelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */; };
 		93FC2FCE29EA93A00007B551 /* CrewGenerateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FC2FCD29EA93A00007B551 /* CrewGenerateViewController.swift */; };
 		A17FEA9E28A7F0046755DDCE /* Pods_RunningCrew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D82C19D66319609FF717AF /* Pods_RunningCrew.framework */; };
+		BE1A6F852A4EF428006E07AF /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1A6F842A4EF428006E07AF /* SetProfileViewController.swift */; };
 		BE54B0E029E2A28800FAF893 /* MyPageCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */; };
 		BEAB40F229E302A000F2130F /* MyPageCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */; };
 		BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */; };
@@ -284,6 +285,7 @@
 		93FC2FCB29EA8CD20007B551 /* RegionSelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectButton.swift; sourceTree = "<group>"; };
 		93FC2FCD29EA93A00007B551 /* CrewGenerateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewGenerateViewController.swift; sourceTree = "<group>"; };
 		B83D40D954F061F36AABF30C /* Pods_RunningCrewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningCrewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1A6F842A4EF428006E07AF /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
 		BE54B0DF29E2A28800FAF893 /* MyPageCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarView.swift; sourceTree = "<group>"; };
 		BEAB40F129E302A000F2130F /* MyPageCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageCalendarViewController.swift; sourceTree = "<group>"; };
 		BEE5E4DA29DFE41200A49FC5 /* MyPageMyRunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMyRunningViewController.swift; sourceTree = "<group>"; };
@@ -743,6 +745,13 @@
 				C7663E7C29AA125B0046068B /* GoalSettingStackView.swift */,
 				C7663E7A29A9F1260046068B /* GoalTextField.swift */,
 				C7DE682D299BD61300C824A9 /* LocationLabel.swift */,
+				BEEAFDD42A04E27B00A06954 /* MyRunningCollectionView.swift */,
+				BEE5E4DC29DFE41A00A49FC5 /* Cell */,
+				BEE5E4DD29DFF03900A49FC5 /* MyPageCalendar */,
+				BEE5E4D929DFE3D800A49FC5 /* MyPageMyRunning */,
+				C7DE6807299938C000C824A9 /* Coordinator */,
+				C7DE68012999376800C824A9 /* MyPageViewController.swift */,
+				BE1A6F842A4EF428006E07AF /* SetProfileViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1293,6 +1302,8 @@
 				3BE69C7F2A80ABB9006A8C5F /* CrewRunningViewController.swift in Sources */,
 				C7DE6848299FD4AC00C824A9 /* CrewAlarmViewCell.swift in Sources */,
 				3BE69CAA2A8369D6006A8C5F /* TokenRepository.swift in Sources */,
+				BE1A6F852A4EF428006E07AF /* SetProfileViewController.swift in Sources */,
+				C7DE6848299FD4AC00C824A9 /* CrewAlarmTableViewCell.swift in Sources */,
 				C7DE67FD2999301800C824A9 /* RecordRunningCoordinator.swift in Sources */,
 				BEE5E4DB29DFE41200A49FC5 /* MyPageMyRunningViewController.swift in Sources */,
 				C7663E7B29A9F1260046068B /* GoalTextField.swift in Sources */,
