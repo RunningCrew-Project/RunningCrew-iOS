@@ -15,6 +15,15 @@ target 'RunningCrew' do
     pod 'FSCalendar'
     pod 'YPImagePicker'
     pod 'PryntTrimmerView'
+    pod 'KakaoSDKAuth'
+    pod 'KakaoSDKUser'
+    pod 'KakaoSDKCommon'
+    pod 'GoogleSignIn'
+    pod 'Moya/RxSwift'
+    pod 'FirebaseAuth'
+    pod 'FirebaseFirestore'
+    pod 'FirebaseMessaging'
+    pod 'Kingfisher', '~> 7.0'
   target 'RunningCrewTests' do
     inherit! :search_paths
     # Pods for testing
